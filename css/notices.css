@@ -1,0 +1,15 @@
+.notice
+{
+	border-bottom : 1px solid black;
+}
+
+.notice .auteurs
+{
+	font : 12px Arial;
+}
+
+.notice .permalinks a
+{
+	font : 12px Arial;
+}
+

@@ -1,0 +1,80 @@
+*
+{
+	box-sizing: border-box;
+}
+
+body
+{
+	font: 16px Arial;
+}
+
+.autocomplete
+{
+	/*the container must be positioned relative:*/
+	position: relative;
+	display: inline-block;
+}
+
+input
+{
+	border: 1px solid transparent;
+	background-color: #F1F1F1;
+	padding: 10px;
+	font-size: 16px;
+}
+
+input[type=text]
+{
+	border-color: #D4D4D4;
+	background-color: #F1F1F1;
+}
+
+input[type=submit]
+{
+//	background-color: #CC0000;
+	border: 1px solid #D4D4D4;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+#loupe
+{
+	width: 41px;
+	height: 41px;
+	background: url("../img/loupe.jpg") no-repeat right;
+	background-size: 41px 41px;
+}
+
+.autocomplete-items
+{
+	position: absolute;
+	border: 1px solid #D4D4D4;
+	border-bottom: none;
+	border-top: none;
+	z-index: 99;
+	/*position the autocomplete items to be the same width as the container:*/
+	top: 100%;
+	left: 0;
+	right: 0;
+}
+
+.autocomplete-items div
+{
+	padding: 10px;
+	cursor: pointer;
+	background-color: #FFFFFF;
+	border-bottom: 1px solid #D4D4D4;
+}
+
+.autocomplete-items div:hover
+{
+	/*when hovering an item:*/
+	background-color: #E9E9E9;
+}
+
+.autocomplete-active
+{
+	/*when navigating through the items using the arrow keys:*/
+	background-color: DodgerBlue !important;
+	color: #FFFFFF;
+}

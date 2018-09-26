@@ -1,0 +1,25 @@
+.highlight
+{
+	background-color: #CCCCCC;
+}
+
+button
+{
+	padding: 1px;
+}
+
+button.danger
+{
+	background: #ff0000;
+	background-image: -webkit-linear-gradient(top, #FF0000, #BA0000);
+	background-image: -moz-linear-gradient(top, #FF0000, #BA0000);
+	background-image: -ms-linear-gradient(top, #FF0000, #BA0000);
+	background-image: -o-linear-gradient(top, #FF0000, #BA0000);
+	background-image: linear-gradient(to bottom, #FF0000, #BA0000);
+	border-color: #D43F3A;
+}
+
+button.danger:hover
+{
+	border-color: #8C2A26;
+}
