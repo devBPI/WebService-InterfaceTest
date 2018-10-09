@@ -1,4 +1,4 @@
-.notice
+.notice, .notice-online
 {
 	border-bottom : 1px solid black;
 }
@@ -13,3 +13,53 @@
 	font : 12px Arial;
 }
 
+#result-lists
+{
+	display: grid;
+	grid-auto-columns: 50%;
+}
+
+#notices
+{
+	background: #EEEEFF;
+}
+
+#notices .notice, #notices-online .notice-online
+{
+	padding: 5px;
+}
+
+#notices .notice:hover
+{
+	background: #CCCCDD;
+}
+
+#notices-online
+{
+	background: #EEFFEE;
+}
+
+#notices-online .notice-online:hover
+{
+	background: #BBFFBB;
+}
+
+#notices .pageButton
+{
+	background-color: rgba(150, 150, 255, 0.6);
+}
+
+#notices .clickablePageButton:hover
+{
+	background-color: rgba(150, 150, 255, 1);
+}
+
+#notices-online .pageButton
+{
+	background-color: rgba(150, 255, 150, 0.6);
+}
+
+#notices-online .clickablePageButton:hover
+{
+	background-color: rgba(150, 255, 150, 1);
+}

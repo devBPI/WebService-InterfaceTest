@@ -6,15 +6,20 @@
 		echo($errorText);
 		exit(500);
 	}
+	$page=1;
+	if(isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page']>=1)
+	{
+		$page=$_GET['page'];
+	}
 
 	$ini_array = parse_ini_file("etc/configuration.ini");
 
 	ini_set("display_errors",1);
 	error_reporting(E_ALL);
 
-	#header("Content-Type: text/html;charset=utf-8");
 	header("Content-Type: text/xml");
-	$url = $ini_array["url"].'search/notices?general='.urlencode($_GET['text']).'';
+	header("Content-Type: text/html;charset=utf-8");
+	$url = $ini_array["url"].'search/notices?page='.$page.'&general='.urlencode($_GET['text']);
 
 	$searchPage = file_get_contents($url);
 
@@ -24,7 +29,7 @@
 	$xml->loadXML($xmlTxt);
 
 	$xsl = new DOMDocument;
-	$xsl->load('xslt/searchResults.xsl');
+	$xsl->load('xslt/searchResultsNotices.xsl');
 
 	$proc = new XSLTProcessor();
 	$proc->importStyleSheet($xsl);

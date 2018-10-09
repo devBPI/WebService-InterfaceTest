@@ -2,10 +2,32 @@ function search()
 {
 	var txt = document.getElementById('searchbar').value;
 	//alert(txt);
-	var uri = "search.php?text="+txt;
+	var uri = "searchNotices.php?text="+txt;
 	var url = encodeURI(uri);
-	$("#notices_research").load(url);
+	$("#notices").load(url);
 	//alert(url);
+
+	var txt = document.getElementById('searchbar').value;
+	//alert(txt);
+	var uri = "searchNoticesOnline.php?text="+txt;
+	var url = encodeURI(uri);
+	$("#notices-online").load(url);
+}
+
+function changeNoticesPage(page)
+{
+	var txt = document.getElementById('searchbar').value;
+	var uri = "searchNotices.php?page="+page+"&text="+txt;
+	var url = encodeURI(uri);
+	$("#notices").load(url);
+}
+
+function changeNoticesOnlinePage(page)
+{
+	var txt = document.getElementById('searchbar').value;
+	var uri = "searchNoticesOnline.php?page="+page+"&text="+txt;
+	var url = encodeURI(uri);
+	$("#notices-online").load(url);
 }
 
 function autocomplete(inp, arr)
