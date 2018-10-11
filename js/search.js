@@ -1,33 +1,64 @@
 function search()
 {
-	var txt = document.getElementById('searchbar').value;
+	var txt = document.getElementById("searchbar").value;
 	//alert(txt);
 	var uri = "searchNotices.php?text="+txt;
 	var url = encodeURI(uri);
 	$("#notices").load(url);
 	//alert(url);
 
-	var txt = document.getElementById('searchbar').value;
+	var txt = document.getElementById("searchbar").value;
 	//alert(txt);
 	var uri = "searchNoticesOnline.php?text="+txt;
 	var url = encodeURI(uri);
 	$("#notices-online").load(url);
 }
 
+function changeNoticesRows(currentPage, currentRows)
+{
+	var rows=document.getElementById("notices-rows").value;
+
+	changeNoticesPage(Math.ceil(((currentPage-1)*currentRows+1)/rows));
+}
+
+function changeNoticesOnlineRows(currentPage, currentRows)
+{
+	var rows=document.getElementById("notices-online-rows").value;
+
+	changeNoticesOnlinePage(Math.ceil(((currentPage-1)*currentRows+1)/rows));
+}
+
 function changeNoticesPage(page)
 {
-	var txt = document.getElementById('searchbar').value;
-	var uri = "searchNotices.php?page="+page+"&text="+txt;
+	var rows=document.getElementById("notices-rows").value;
+	var txt = document.getElementById("searchbar").value;
+	var uri = "searchNotices.php?page="+page+"&rows="+rows+"&text="+txt;
 	var url = encodeURI(uri);
 	$("#notices").load(url);
 }
 
 function changeNoticesOnlinePage(page)
 {
+	var rows=document.getElementById("notices-online-rows").value;
 	var txt = document.getElementById('searchbar').value;
-	var uri = "searchNoticesOnline.php?page="+page+"&text="+txt;
+	var uri = "searchNoticesOnline.php?page="+page+"&rows="+rows+"&text="+txt;
 	var url = encodeURI(uri);
 	$("#notices-online").load(url);
+}
+
+function advancedSearch()
+{
+	var buttonValue=document.getElementById("advancedSearchButton").value;
+	if(buttonValue=='+')
+	{
+		document.getElementById("advancedSearchButton").value = '-';
+		document.getElementById("advancedSearchDiv").style.display = 'block';
+	}
+	else if(buttonValue=='-')
+	{
+		document.getElementById("advancedSearchButton").value = '+';
+		document.getElementById("advancedSearchDiv").style.display = 'none';
+	}
 }
 
 function autocomplete(inp, arr)

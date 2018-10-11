@@ -3,12 +3,14 @@
 	border-bottom : 1px solid black;
 }
 
-.notice .auteurs
+.notice .auteurs,
+.notice-online .auteurs
 {
 	font : 12px Arial;
 }
 
-.notice .permalinks a
+.notice .permalinks a,
+.notice-online .permalinks a
 {
 	font : 12px Arial;
 }
@@ -24,7 +26,8 @@
 	background: #EEEEFF;
 }
 
-#notices .notice, #notices-online .notice-online
+#notices .notice,
+#notices-online .notice-online
 {
 	padding: 5px;
 }
@@ -62,4 +65,10 @@
 #notices-online .clickablePageButton:hover
 {
 	background-color: rgba(150, 255, 150, 1);
+}
+
+#notices #notices-rows,
+#notices-online #notices-online-rows
+{
+	font: 16px Arial;
 }

@@ -15,12 +15,18 @@ body
 	display: inline-block;
 }
 
-input
+input,
+#searchBarSelection
 {
-	border: 1px solid transparent;
+	border: 1px solid #D4D4D4;
 	background-color: #F1F1F1;
 	padding: 10px;
 	font-size: 16px;
+}
+
+input
+{
+	border: 1px solid transparent;
 }
 
 input[type=text]
@@ -31,10 +37,15 @@ input[type=text]
 
 input[type=submit]
 {
-//	background-color: #CC0000;
+	background-color: #CC0000;
 	border: 1px solid #D4D4D4;
 	color: #FFFFFF;
 	cursor: pointer;
+}
+
+input[type=text]:disabled::placeholder
+{
+	text-decoration: line-through;
 }
 
 #loupe
@@ -43,6 +54,19 @@ input[type=submit]
 	height: 41px;
 	background: url("../img/loupe.jpg") no-repeat right;
 	background-size: 41px 41px;
+	vertical-align: middle;
+}
+
+#advancedSearchButton
+{
+	background-color: #F1F1F1;
+	color: #101010;
+	width: 41px;
+	height: 41px;
+	line-height: 12px;
+	font-size: 24px;
+	font-weight: bold;
+	vertical-align: middle;
 }
 
 .autocomplete-items
