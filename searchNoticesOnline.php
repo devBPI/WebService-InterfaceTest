@@ -24,7 +24,7 @@
 
 	header("Content-Type: text/xml");
 	header("Content-Type: text/html;charset=utf-8");
-	$url = $ini_array["url"].'search/notices-online?page='.$page.'&rows='.$rows.'&general='.urlencode($_GET['text']);
+	$url = $ini_array["CatalogueWebServiceUrl"].'search/notices-online?page='.$page.'&rows='.$rows.'&general='.urlencode($_GET['text']);
 	$xslUrl = "xslt/searchResultsNoticesOnline.xsl";
 
 	echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";

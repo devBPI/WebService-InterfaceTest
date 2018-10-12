@@ -1,0 +1,120 @@
+.autocomplete
+{
+	/*the container must be positioned relative:*/
+	position: relative;
+	display: inline-block;
+}
+
+#loupe,
+#advancedSearchButton
+{
+	width: 41px;
+	height: 41px;
+	vertical-align: middle;
+}
+
+#loupe
+{
+	background: url("../img/loupe.jpg") no-repeat right;
+	background-size: 41px 41px;
+}
+
+#advancedSearchButton
+{
+	background-color: #F1F1F1;
+	color: #101010;
+	line-height: 12px;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.autocomplete-items
+{
+	position: absolute;
+	border: 1px solid #D4D4D4;
+	border-bottom: none;
+	border-top: none;
+	z-index: 99;
+	/*position the autocomplete items to be the same width as the container:*/
+	top: 100%;
+	left: 0;
+	right: 0;
+}
+
+.autocomplete-items div
+{
+	padding: 10px;
+	cursor: pointer;
+	background-color: #FFFFFF;
+	border-bottom: 1px solid #D4D4D4;
+}
+
+.autocomplete-items div:hover
+{
+	/*when hovering an item:*/
+	background-color: #E9E9E9;
+}
+
+.autocomplete-active
+{
+	/*when navigating through the items using the arrow keys:*/
+	background-color: DodgerBlue !important;
+	color: #FFFFFF;
+}
+
+.pageButton
+{
+	display: inline-block;
+	min-width: 28px;
+	height: 28px;
+	margin: 1px;
+	background-color: rgba(200, 200, 200, 0.6);
+	border: 1px solid #A0A0A0;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 28px;
+	cursor: default;
+}
+
+.clickablePageButton
+{
+	cursor:pointer;
+}
+
+.clickablePageButton:hover
+{
+	background-color: rgba(200, 200, 200, 1);
+}
+
+#parkour
+{
+	margin-bottom: 10px;
+}
+
+#search #parkour a
+{
+	text-decoration: none;
+	color: inherit;
+	margin: 2px;
+	padding: 3px;
+	border: 1px grey solid;
+}
+
+#search #parkour a:hover
+{
+	background: rgb(200, 200, 200);
+	border: 1px grey solid;
+}
+
+#search #parkour .selected-parkour
+{
+	border: 1px black solid;
+	background: grey;
+	color: white;
+}
+
+#search #parkour .selected-parkour:hover
+{
+	border: 1px black solid;
+	background: grey;
+}

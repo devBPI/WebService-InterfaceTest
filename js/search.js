@@ -2,6 +2,23 @@ function search()
 {
 	var txt = document.getElementById("searchbar").value;
 	//alert(txt);
+	if(document.getElementById("searchbar").value!="")
+	{
+		var parkour = "";
+		var parkourAutoformation = document.getElementById("parkourAutoformation");
+		var parkourCinema = document.getElementById("parkourCinema");
+		var parkourMusique = document.getElementById("parkourMusique");
+		var parkourPresse = document.getElementById("parkourPresse");
+		if(parkourAutoformation.classList.contains("selected-parkour"))
+			parkour="autoformation";
+		if(parkourCinema.classList.contains("selected-parkour"))
+			parkour="cinema";
+		if(parkourMusique.classList.contains("selected-parkour"))
+			parkour="musique";
+		if(parkourPresse.classList.contains("selected-parkour"))
+			parkour="presse";
+		history.pushState({}, null, "/"+parkour+"?text="+txt);
+	}
 	var uri = "searchNotices.php?text="+txt;
 	var url = encodeURI(uri);
 	$("#notices").load(url);
@@ -67,20 +84,23 @@ function autocomplete(inp, arr)
  	the text field element and an array of possible autocompleted values:*/
 	var currentFocus;
 	/*execute a function when someone writes in the text field:*/
-	inp.addEventListener("input", function(e)
+
+	function openList(x)
 	{
-		var a, b, i, val = this.value;
+		var a, b, i, val = x.value;
+		//var a, b, i, val = this.value;
 		/*close any already open lists of autocompleted values*/
+		//alert(val);
 		closeAllLists();
 		if(!val)
 			return false;
 		currentFocus = -1;
 		/*create a DIV element that will contain the items (values):*/
 		a = document.createElement("div");
-		a.setAttribute("id", this.id + "autocomplete-list");
+		a.setAttribute("id", x.id + "autocomplete-list");
 		a.setAttribute("class", "autocomplete-items");
 		/*append the DIV element as a child of the autocomplete container:*/
-		this.parentNode.appendChild(a);
+		x.parentNode.appendChild(a);
 
 		var url = "autocomplete.php?text="+val;
 		//alert(url);
@@ -115,6 +135,7 @@ function autocomplete(inp, arr)
 							/*close the list of autocompleted values,
 							(or any other open lists of autocompleted values:*/
 							closeAllLists();
+							search();
 						});
 						a.appendChild(b);
 					}
@@ -124,41 +145,8 @@ function autocomplete(inp, arr)
 		xmlHttp.open("GET", url, true);
 		xmlHttp.send();
 		//document.getElementById("notices").innerHTML = url;//.getElementsByTagName('str')[0].childNodes[0].nodeValue;
-	});
+	}
 
-	/*execute a function presses a key on the keyboard:*/
-	inp.addEventListener("keydown", function(e)
-	{
-		var x = document.getElementById(this.id + "autocomplete-list");
-		if(x) x = x.getElementsByTagName("div");
-		if(e.keyCode == 40)
-		{
-			/*If the arrow DOWN key is pressed,
- 			increase the currentFocus variable:*/
-			currentFocus++;
-			/*and and make the current item more visible:*/
-			addActive(x);
-		}
-		else if(e.keyCode == 38) { //up
-			/*If the arrow UP key is pressed,
- 			decrease the currentFocus variable:*/
-			currentFocus--;
-			/*and and make the current item more visible:*/
-			addActive(x);
-		}
-		else if(e.keyCode == 13)
-		{
-			/*If the ENTER key is pressed, prevent the form from being submitted,*/
-			e.preventDefault();
-			if(currentFocus > -1)
-			{
-				/*and simulate a click on the "active" item:*/
-				if(x)
-					x[currentFocus].click();
-			}
-			search();
-		}
-	});
 
 	function addActive(x)
 	{
@@ -179,9 +167,7 @@ function autocomplete(inp, arr)
 	{
 		/*a function to remove the "active" class from all autocomplete items:*/
 		for(var i = 0; i < x.length; i++)
-		{
 			x[i].classList.remove("autocomplete-active");
-		}
 	}
 
 	function closeAllLists(elmnt)
@@ -192,11 +178,53 @@ function autocomplete(inp, arr)
 		for(var i = 0; i < x.length; i++)
 		{
 			if(elmnt != x[i] && elmnt != inp)
-			{
 				x[i].parentNode.removeChild(x[i]);
-			}
 		}
 	}
+
+	inp.addEventListener("input", function(e) { openList(this); });
+
+	/*execute a function presses a key on the keyboard:*/
+	inp.addEventListener("keydown", function(e)
+	{
+		var x = document.getElementById(this.id + "autocomplete-list");
+		if(x) x = x.getElementsByTagName("div");
+		if(e.keyCode == 40 || e.keyCode == 38)
+		{
+			if(!x) //open list if closed
+			{
+				openList(this);
+				return false;
+			}
+		
+			/*If the arrow UP or DOWN key is pressed,
+ 			change the currentFocus variable:*/
+			if(e.keyCode == 40)
+				currentFocus++;
+			else if(e.keyCode == 38)
+				currentFocus--;
+			/*and and make the current item more visible:*/
+			addActive(x);
+		}
+		else if(e.keyCode == 13)
+		{
+			/*If the ENTER key is pressed, prevent the form from being submitted,*/
+			e.preventDefault();
+			if(currentFocus > -1)
+			{
+				/*and simulate a click on the "active" item:*/
+				if(x)
+					x[currentFocus].click();
+			}
+			search();
+			closeAllLists();
+		}
+		else if(e.keyCode == 27) {
+			/*If the ESCAPE key is pressed,
+ 			close lists*/
+			closeAllLists();
+		}
+	});
 
 	/*execute a function when someone clicks in the document:*/
 	document.addEventListener("click", function (e)
@@ -205,5 +233,9 @@ function autocomplete(inp, arr)
 	});
 }
 
-autocomplete(document.getElementById("searchbar"), []);;
-
+window.onload = function(e)
+{
+	autocomplete(document.getElementById("searchbar"), []);;
+	if(document.getElementById("searchbar").value!="")
+		search();
+}

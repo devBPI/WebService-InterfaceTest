@@ -6,4 +6,12 @@ RewriteEngine On
 # Réécriture de index.html vers index.php 
 #RewriteRule ^notice\.html$ /notice.php [L]
 
-RewriteRule ^ark:/34201/([a-zA-Z0-9\-]+)$ /notice.php?text=$1 [L]
+#RewriteBase /
+#RewriteCond %{THE_REQUEST} \s/+\?(admin[^\s&]+) [NC]
+#RewriteCond "%{REQUEST_FILENAME}" "!-f"
+#RewriteCond "%{REQUEST_FILENAME}" "!-d"
+RewriteRule "^(autoformation|cinema|musique|presse)$" "/?parkour=$1" [L,QSA]
+RewriteRule ^(autoformation|cinema|musique|presse)/{0,1}$ /?parkour=$1 [L]
+#RewriteRule . /index.php [R]
+
+#RewriteRule ^ark:/34201/([a-zA-Z0-9\-]+)$ /notice.php?text=$1 [L]

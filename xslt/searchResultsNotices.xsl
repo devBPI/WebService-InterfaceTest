@@ -73,24 +73,30 @@
 			</div>
 			<div>
 			<xsl:for-each select="notices/noticesList/notice">
-				<div class="notice">
-					<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="./row"/></div>
-					<div class="titres">
-						<xsl:for-each select="./titres/titre">
-							<div><xsl:value-of select="."/></div>
-						</xsl:for-each>
+				<a class="notice-link" href="./notice/{./permalink}">
+					<div class="notice">
+						<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="./row"/></div>
+						<div class="titres">
+							<xsl:for-each select="./titres/titre">
+								<div><xsl:value-of select="."/></div>
+							</xsl:for-each>
+						</div>
+						<div class="auteurs">
+							<xsl:for-each select="./auteurs/auteur">
+								<div><xsl:value-of select="."/></div>
+							</xsl:for-each>
+						</div>
+						<div class="exemplaires">
+						</div>
+						<div class="liens">
+						</div>
+						<div class="permalinks">
+							<xsl:for-each select="./permalink">
+								<div><a href="./notice/{.}"><xsl:value-of select="."/></a></div>
+							</xsl:for-each>
+						</div>
 					</div>
-					<div class="auteurs">
-						<xsl:for-each select="./auteurs/auteur">
-							<div><xsl:value-of select="."/></div>
-						</xsl:for-each>
-					</div>
-					<div class="permalinks">
-						<xsl:for-each select="./permalink">
-							<div><a href="./notice/{.}"><xsl:value-of select="."/></a></div>
-						</xsl:for-each>
-					</div>
-				</div>
+				</a>
 			</xsl:for-each>
 			</div>
 		</div>

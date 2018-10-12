@@ -1,5 +1,14 @@
+a.notice-link,
+a.notice-online-link
+{
+	display: block;
+	text-decoration: none;
+	color: inherit;
+}
+
 .notice, .notice-online
 {
+	display: block;
 	border-bottom : 1px solid black;
 }
 

@@ -1,7 +1,36 @@
 <!--<label for="searchbar">Search: </label>-->
 <div id="search">
+	<div id="parkour">
+		<?php
+			$parkour="general";
+			if(isset($_GET['parkour']) && $_GET['parkour']!=null && $_GET['parkour']!="")
+			{
+				switch($_GET['parkour'])
+				{
+					case "autoformation":
+					case "cinema":
+					case "musique":
+					case "presse":
+						$parkour=$_GET['parkour'];
+					break;
+					default:
+					break;
+				}
+			}
+		?>
+		<!--<a href="/" <?php if($parkour=="general"){echo "class=\"selected-parkour\"";}?>>General</a>
+		<a id="parkourAutoformation" href="/autoformation" <?php if($parkour=="autoformation"){echo "class=\"selected-parkour\"";}?>>Autoformation</a>
+		<a id="parkourCinema" href="/cinema" <?php if($parkour=="cinema"){echo "class=\"selected-parkour\"";}?>>Cinema</a>
+		<a id="parkourMusique" href="/musique" <?php if($parkour=="musique"){echo "class=\"selected-parkour\"";}?>>Musique</a>
+		<a id="parkourPresse" href="/presse" <?php if($parkour=="presse"){echo "class=\"selected-parkour\"";}?>>Presse</a>-->
+		<a onclick="window.location='/'+window.location.search;" <?php if($parkour=="general"){echo "class=\"selected-parkour\"";}?>>General</a>
+		<a id="parkourAutoformation" onclick="window.location='/autoformation'+window.location.search;" <?php if($parkour=="autoformation"){echo "class=\"selected-parkour\"";}?>>Autoformation</a>
+		<a id="parkourCinema" onclick="window.location='/cinema'+window.location.search;" <?php if($parkour=="cinema"){echo "class=\"selected-parkour\"";}?>>Cinema</a>
+		<a id="parkourMusique" onclick="window.location='/musique'+window.location.search;" <?php if($parkour=="musique"){echo "class=\"selected-parkour\"";}?>>Musique</a>
+		<a id="parkourPresse" onclick="window.location='/presse'+window.location.search;" <?php if($parkour=="presse"){echo "class=\"selected-parkour\"";}?>>Presse</a>
+	</div>
 	<div class="autocomplete">
-		<input type="text" id="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13)search();" />
+		<input type="text" id="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13)search();" <?php if($defaultSearchText!=null){echo "value=\"".$defaultSearchText."\"";} ?>	/>
 	</div>
 	<select id="searchBarSelection">
 		<option value="Generale">Générale</option>
