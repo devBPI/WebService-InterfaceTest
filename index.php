@@ -30,7 +30,7 @@
 	<body>
 		<div class="pageHead" style="margin-bottom:6px;">
 		<?php
-			/*$url =  "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+			$url =  "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
 			$url = $_SERVER['PHP_SELF'];
 			$parts = array();
 			foreach( $_GET as $k=>$v ) {
@@ -38,7 +38,7 @@
 			}
 			$url .= "?" . implode("&", $parts);
 			$url = "{$_SERVER['HTTP_HOST']}{$url}";
-			echo "<a href=\"//{$url}\">{$url}</a>";*/
+			echo "<a href=\"//{$url}\">{$url}</a>";
 		?>
 		</div>
 		<div class="pageMid">
