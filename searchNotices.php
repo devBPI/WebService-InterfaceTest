@@ -16,6 +16,21 @@
 	{
 		$rows=$_GET['rows'];
 	}
+	$parkour="general";
+	if(isset($_GET['parkour']) && $_GET['parkour']!=null && $_GET['parkour']!="")
+	{
+		switch($_GET['parkour'])
+		{
+			case "autoformation":
+			case "cinema":
+			case "musique":
+			case "presse":
+			$parkour=$_GET['parkour'];
+			break;
+			default:
+			break;
+		}
+	}
 
 	$ini_array = parse_ini_file("etc/configuration.ini");
 
@@ -24,7 +39,7 @@
 
 	header("Content-Type: text/xml");
 	header("Content-Type: text/html;charset=utf-8");
-	$url = $ini_array["CatalogueWebServiceUrl"].'search/notices?page='.$page.'&rows='.$rows.'&general='.urlencode($_GET['text']);
+	$url = $ini_array["CatalogueWebServiceUrl"].'search/notices?parcours='.$parkour.'&page='.$page.'&rows='.$rows.'&general='.urlencode($_GET['text']);
 	$xslUrl = "xslt/searchResultsNotices.xsl";
 
 	echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";

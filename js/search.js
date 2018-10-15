@@ -19,14 +19,14 @@ function search()
 			parkour="presse";
 		history.pushState({}, null, "/"+parkour+"?text="+txt);
 	}
-	var uri = "searchNotices.php?text="+txt;
+	var uri = "searchNotices.php?"+((parkour=="") ? "" : ("parkour="+parkour+"&"))+"text="+txt;
 	var url = encodeURI(uri);
 	$("#notices").load(url);
 	//alert(url);
 
 	var txt = document.getElementById("searchbar").value;
 	//alert(txt);
-	var uri = "searchNoticesOnline.php?text="+txt;
+	var uri = "searchNoticesOnline.php?"+((parkour=="") ? "" : ("parkour="+parkour+"&"))+"text="+txt;
 	var url = encodeURI(uri);
 	$("#notices-online").load(url);
 }
