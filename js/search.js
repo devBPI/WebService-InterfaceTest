@@ -1,5 +1,7 @@
 function search()
 {
+	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
+	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	var txt = document.getElementById("searchbar").value;
 	//alert(txt);
 	if(document.getElementById("searchbar").value!="")
@@ -49,7 +51,25 @@ function changeNoticesPage(page)
 {
 	var rows=document.getElementById("notices-rows").value;
 	var txt = document.getElementById("searchbar").value;
-	var uri = "searchNotices.php?page="+page+"&rows="+rows+"&text="+txt;
+	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
+	if(document.getElementById("searchbar").value!="")
+	{
+		var parkour = "";
+		var parkourAutoformation = document.getElementById("parkourAutoformation");
+		var parkourCinema = document.getElementById("parkourCinema");
+		var parkourMusique = document.getElementById("parkourMusique");
+		var parkourPresse = document.getElementById("parkourPresse");
+		if(parkourAutoformation.classList.contains("selected-parkour"))
+			parkour="autoformation";
+		if(parkourCinema.classList.contains("selected-parkour"))
+			parkour="cinema";
+		if(parkourMusique.classList.contains("selected-parkour"))
+			parkour="musique";
+		if(parkourPresse.classList.contains("selected-parkour"))
+			parkour="presse";
+		history.pushState({}, null, "/"+parkour+"?text="+txt);
+	}
+	var uri = "searchNotices.php?"+((parkour=="") ? "" : ("parkour="+parkour+"&"))+"page="+page+"&rows="+rows+"&text="+txt;
 	var url = encodeURI(uri);
 	$("#notices").load(url);
 }
@@ -58,7 +78,25 @@ function changeNoticesOnlinePage(page)
 {
 	var rows=document.getElementById("notices-online-rows").value;
 	var txt = document.getElementById('searchbar').value;
-	var uri = "searchNoticesOnline.php?page="+page+"&rows="+rows+"&text="+txt;
+	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
+	if(document.getElementById("searchbar").value!="")
+	{
+		var parkour = "";
+		var parkourAutoformation = document.getElementById("parkourAutoformation");
+		var parkourCinema = document.getElementById("parkourCinema");
+		var parkourMusique = document.getElementById("parkourMusique");
+		var parkourPresse = document.getElementById("parkourPresse");
+		if(parkourAutoformation.classList.contains("selected-parkour"))
+			parkour="autoformation";
+		if(parkourCinema.classList.contains("selected-parkour"))
+			parkour="cinema";
+		if(parkourMusique.classList.contains("selected-parkour"))
+			parkour="musique";
+		if(parkourPresse.classList.contains("selected-parkour"))
+			parkour="presse";
+		history.pushState({}, null, "/"+parkour+"?text="+txt);
+	}
+	var uri = "searchNoticesOnline.php?"+((parkour=="") ? "" : ("parkour="+parkour+"&"))+"page="+page+"&rows="+rows+"&text="+txt;
 	var url = encodeURI(uri);
 	$("#notices-online").load(url);
 }

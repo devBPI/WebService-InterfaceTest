@@ -45,9 +45,17 @@
 	ini_set("display_errors",1);
 	error_reporting(E_ALL);
 
+	include "php/postXML.php";
+
 	header("Content-Type: text/xml");
 	header("Content-Type: text/html;charset=utf-8");
-	$url = $ini_array["CatalogueWebServiceUrl"].'search/notices?parcours='.$parkour.'&page='.$page.'&rows='.$rows.'&general='.urlencode($_GET['text']);
+
+	$data = array('parcours' => $parkour, 'page' => $page, 'rows' => $rows, 'general' => $_GET['text']);
+	$xmlData = array_to_xml_main("search-criterias", $data);
+	//$url = $ini_array["CatalogueWebServiceUrl"].'search/notices?parcours='.$parkour.'&page='.$page.'&rows='.$rows.'&general='.urlencode($_GET['text']);
+	$url = $ini_array["CatalogueWebServiceUrl"]."search/notices"."?criters=".urlencode($xmlData->asXML());;
+	//$result = getArrayToXmlIntoUrl($url, "search-criterias", $data);
+
 	$xslUrl = "xslt/searchResultsNotices.xsl";
 
 	echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";
