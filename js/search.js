@@ -1,36 +1,119 @@
-function search()
+function printKeys(map)
 {
-	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
-	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
-	var txt = document.getElementById("searchbar").value;
-	//alert(txt);
-	if(document.getElementById("searchbar").value!="")
+	for (var i = 0, keys = Object.keys(map), ii = keys.length; i < ii; i++)
 	{
-		var parkour = "";
-		var parkourAutoformation = document.getElementById("parkourAutoformation");
-		var parkourCinema = document.getElementById("parkourCinema");
-		var parkourMusique = document.getElementById("parkourMusique");
-		var parkourPresse = document.getElementById("parkourPresse");
-		if(parkourAutoformation.classList.contains("selected-parkour"))
-			parkour="autoformation";
-		if(parkourCinema.classList.contains("selected-parkour"))
-			parkour="cinema";
-		if(parkourMusique.classList.contains("selected-parkour"))
-			parkour="musique";
-		if(parkourPresse.classList.contains("selected-parkour"))
-			parkour="presse";
-		history.pushState({}, null, "/"+parkour+"?text="+txt);
+		val = map[keys[i]];
+		if(typeof val === 'object')
+		{
+			printKeys(val);
+		}
+		else
+		{
+			console.log(keys[i] + '|' + map[keys[i]]);
+		}
 	}
-	var uri = "searchNotices.php?"+((parkour=="") ? "" : ("parkour="+parkour+"&"))+"text="+txt;
+}
+
+function keysToParams(map)
+{
+	var result = "";
+	for (var i = 0, keys = Object.keys(map), ii = keys.length; i < ii; i++)
+	{
+		val = map[keys[i]];
+		if(typeof val === 'object')
+			result += keysToParams(val);
+		else if(map[keys[i]]!=null && map[keys[i]]!='')
+			result+=('&' + keys[i] + '=' + encodeURIComponent(map[keys[i]]));
+	}
+	return result;
+}
+
+function getParkour()
+{
+	var parkour = "";
+	var parkourAutoformation = document.getElementById("parkourAutoformation");
+	var parkourCinema = document.getElementById("parkourCinema");
+	var parkourMusique = document.getElementById("parkourMusique");
+	var parkourPresse = document.getElementById("parkourPresse");
+	if(parkourAutoformation.classList.contains("selected-parkour"))
+		parkour="autoformation";
+	if(parkourCinema.classList.contains("selected-parkour"))
+		parkour="cinema";
+	if(parkourMusique.classList.contains("selected-parkour"))
+		parkour="musique";
+	if(parkourPresse.classList.contains("selected-parkour"))
+		parkour="presse";
+	return parkour;
+}
+
+function getSearchCriterias()
+{
+	var searchCriterias = {};
+	var buttonValue=document.getElementById("advancedSearchButton").value;
+	searchCriterias["general"] = document.getElementById("searchbar").value;
+	if(true)//buttonValue=='-')
+	{
+		searchCriterias["titre"] = document.getElementById("advancedsearch-titre").value;
+		searchCriterias["auteur"] = document.getElementById("advancedsearch-auteur").value;
+		searchCriterias["sujet"] = document.getElementById("advancedsearch-sujet").value;
+		searchCriterias["isbnissncommercial"] = document.getElementById("advancedsearch-isbnissncommercial").value;
+		searchCriterias["indicecote"] = document.getElementById("advancedsearch-indicecote").value;
+		searchCriterias["datepublication"] = document.getElementById("advancedsearch-datepublication").value;
+		searchCriterias["realisateur"] = document.getElementById("advancedsearch-realisateur").value;
+		searchCriterias["theme"] = document.getElementById("advancedsearch-theme").value;
+		searchCriterias["baserecherche"] = document.getElementById("advancedsearch-baserecherche").value;
+		searchCriterias["editeur"] = document.getElementById("advancedsearch-editeur").value;
+		searchCriterias["collection"] = document.getElementById("advancedsearch-collection").value;
+		searchCriterias["datepublicationstart"] = document.getElementById("advancedsearch-datepublicationstart").value;
+		searchCriterias["datepublicationend"] = document.getElementById("advancedsearch-datepublicationend").value;
+		searchCriterias["langue"] = document.getElementById("advancedsearch-langue").value;
+		searchCriterias["type"] = document.getElementById("advancedsearch-type").value;
+		searchCriterias["support"] = document.getElementById("advancedsearch-support").value;
+		searchCriterias["genremusic"] = document.getElementById("advancedsearch-genremusic").value;
+		searchCriterias["genrefilm"] = document.getElementById("advancedsearch-genrefilm").value;
+		searchCriterias["genrelitt"] = document.getElementById("advancedsearch-genrelitt").value;
+		searchCriterias["secteur"] = document.getElementById("advancedsearch-secteur").value;
+		searchCriterias["audience"] = document.getElementById("advancedsearch-audience").value;
+	}
+	printKeys(searchCriterias);
+	//alert(searchCriterias.toString());
+	return searchCriterias;
+}
+
+function searchNotices(uriParams)
+{
+	var uri = "searchNotices.php?"+uriParams;
 	var url = encodeURI(uri);
 	$("#notices").load(url);
-	//alert(url);
+}
 
-	var txt = document.getElementById("searchbar").value;
-	//alert(txt);
-	var uri = "searchNoticesOnline.php?"+((parkour=="") ? "" : ("parkour="+parkour+"&"))+"text="+txt;
+function searchNoticesOnline(uriParams)
+{
+	var uri = "searchNoticesOnline.php?"+uriParams;
 	var url = encodeURI(uri);
 	$("#notices-online").load(url);
+}
+
+function searchNoticesNoticesOnline()
+{
+	var searchCriterias = getSearchCriterias();
+	var parkour = getParkour();
+	history.pushState({}, null, "/"+parkour+"?"+encodeURI(keysToParams(searchCriterias)));
+	searchCriterias["parkour"]=parkour;
+
+	var uriParams = encodeURI(keysToParams(searchCriterias));
+	console.log(uriParams);
+
+	searchNotices(uriParams);
+	searchNoticesOnline(uriParams);
+}
+
+function search()
+{
+//	searchadvanced();
+	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
+	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
+	searchNoticesNoticesOnline();
 }
 
 function changeNoticesRows(currentPage, currentRows)
@@ -49,7 +132,7 @@ function changeNoticesOnlineRows(currentPage, currentRows)
 
 function changeNoticesPage(page)
 {
-	var rows=document.getElementById("notices-rows").value;
+	/*var rows=document.getElementById("notices-rows").value;
 	var txt = document.getElementById("searchbar").value;
 	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	if(document.getElementById("searchbar").value!="")
@@ -69,14 +152,25 @@ function changeNoticesPage(page)
 			parkour="presse";
 		history.pushState({}, null, "/"+parkour+"?text="+txt);
 	}
-	var uri = "searchNotices.php?"+((parkour=="") ? "" : ("parkour="+parkour+"&"))+"page="+page+"&rows="+rows+"&text="+txt;
+	var uri = "searchNotices.php?"+((parkour=="") ? "" : ("parkour="+parkour+"&"))+"page="+page+"&rows="+rows+"&general="+encodeURIComponent(txt);
+	var url = encodeURI(uri);
+	$("#notices").load(url);*/
+
+	var rows=document.getElementById("notices-rows").value;
+	var searchCriterias = getSearchCriterias();
+	var parkour = getParkour();
+	searchCriterias["parkour"]=parkour;
+	var uriParams = encodeURI(keysToParams(searchCriterias));
+	console.log(uriParams);
+
+	var uri = "searchNotices.php?"+uriParams+"&page="+page+"&rows="+rows
 	var url = encodeURI(uri);
 	$("#notices").load(url);
 }
 
 function changeNoticesOnlinePage(page)
 {
-	var rows=document.getElementById("notices-online-rows").value;
+	/*var rows=document.getElementById("notices-online-rows").value;
 	var txt = document.getElementById('searchbar').value;
 	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	if(document.getElementById("searchbar").value!="")
@@ -96,7 +190,18 @@ function changeNoticesOnlinePage(page)
 			parkour="presse";
 		history.pushState({}, null, "/"+parkour+"?text="+txt);
 	}
-	var uri = "searchNoticesOnline.php?"+((parkour=="") ? "" : ("parkour="+parkour+"&"))+"page="+page+"&rows="+rows+"&text="+txt;
+	var uri = "searchNoticesOnline.php?"+((parkour=="") ? "" : ("parkour="+parkour+"&"))+"page="+page+"&rows="+rows+"&general="+encodeURIComponent(txt);
+	var url = encodeURI(uri);
+	$("#notices-online").load(url);*/
+
+	var rows=document.getElementById("notices-rows").value;
+	var searchCriterias = getSearchCriterias();
+	var parkour = getParkour();
+	searchCriterias["parkour"]=parkour;
+	var uriParams = encodeURI(keysToParams(searchCriterias));
+	console.log(uriParams);
+
+	var uri = "searchNoticesOnline.php?"+uriParams+"&page="+page+"&rows="+rows
 	var url = encodeURI(uri);
 	$("#notices-online").load(url);
 }

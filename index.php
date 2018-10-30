@@ -1,11 +1,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
+	include "php/phpUtils.php";
+
 	ini_set("display_errors",1);
-	$defaultSearchText=null;
-	if(isset($_GET['text']) && $_GET['text']!=null && $_GET['text']!="")
-	{
-		$defaultSearchText=$_GET['text'];
-	}
+	$defaultSearchText           = urldecode(isGetOk("general"));
+	$defaultTitre                = urldecode(isGetOk("titre"));
+	$defaultAuteur               = urldecode(isGetOk("auteur"));
+	$defaultSujet                = urldecode(isGetOk("sujet"));
+	$defaultIsbnIssnCommercial   = urldecode(isGetOk("isbnissncommercial"));
+	$defaultIndiceCote           = urldecode(isGetOk("indicecote"));
+	$defaultDatePublication      = urldecode(isGetOk("datepublication"));
+	$defaultRealisateur          = urldecode(isGetOk("realisateur"));
+	$defaultTheme                = urldecode(isGetOk("theme"));
+	$defaultBaseRecherche        = urldecode(isGetOk("baserecherche"));
+	$defaultEditeur              = urldecode(isGetOk("editeur"));
+	$defaultCollection           = urldecode(isGetOk("collection"));
+	$defaultDatePublicationStart = urldecode(isGetOk("datepublicationstart"));
+	$defaultDatePublicationEnd   = urldecode(isGetOk("datepublicationend"));
+	$defaultLangue               = urldecode(isGetOk("langue"));
+	$defaultType                 = urldecode(isGetOk("type"));
+	$defaultSupport              = urldecode(isGetOk("support"));
+	$defaultGenreMusic           = urldecode(isGetOk("genremusic"));
+	$defaultGenreFilm            = urldecode(isGetOk("genrefilm"));
+	$defaultGenreLitt            = urldecode(isGetOk("genrelitt"));
+	$defaultSecteur              = urldecode(isGetOk("secteur"));
+	$defaultAudience             = urldecode(isGetOk("audience"));
+	
 	$ini_array = parse_ini_file("etc/configuration.ini");
 	if(!$ini_array)
 		$ini_array = parse_ini_file("etc/default.ini");
@@ -61,9 +81,7 @@
 		?>
 		</div>
 		<div class="pageMid">
-		<?php
-			include('searchbar.php');
-		?>
+		 <?php include('searchbar.php'); ?>
 		</div>
 	</body>
 </html>

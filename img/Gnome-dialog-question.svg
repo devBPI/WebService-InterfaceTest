@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+<defs>
+<linearGradient id="c" y2="67.3" gradientUnits="userSpaceOnUse" y1="20.51" x2="-23.86" x1="-3.88">
+<stop stop-color="#729fcf" offset="0"/>
+<stop stop-color="#3465a4" offset="1"/>
+</linearGradient>
+<radialGradient id="a" gradientUnits="userSpaceOnUse" cy="17.44" cx="10.84" gradientTransform="matrix(1 0 0 0.338 0 11.54)" r="10.72">
+<stop offset="0"/>
+<stop stop-opacity="0" offset="1"/>
+</radialGradient>
+<radialGradient id="b" gradientUnits="userSpaceOnUse" cy="44.53" cx="79.4" gradientTransform="matrix(0.511 0 0 0.492 -19.1 -12.45)" r="50.67">
+<stop stop-color="#fff" offset="0"/>
+<stop stop-color="#fff" stop-opacity="0" offset="1"/>
+</radialGradient>
+</defs>
+<g fill="url(#a)">
+<ellipse opacity="0.2" rx="10.72" transform="matrix(1.726 0 0 2 5.28 2.88)" ry="3.63" cy="17.44" cx="10.84"/>
+<ellipse opacity="0.25" rx="10.72" transform="matrix(0.467 0 0 0.572 18.94 33)" ry="3.63" cy="17.44" cx="10.84"/>
+</g>
+<g stroke-linecap="round" stroke-dashoffset="0.7">
+<rect fill="url(#c)" rx="3.08" transform="rotate(-45)" width="30.8" stroke="#3465a4" y="17.84" x="-14.7" height="30.8"/>
+<path d="m-11.59 19.3c-0.9337 0-1.637 0.6896-1.637 1.605v24.66c0 0.9159 0.703 1.605 1.637 1.605h24.62c0.9337 0 1.605-0.6718 1.605-1.605v-24.66c0-0.9337-0.6718-1.605-1.605-1.605h-24.62z" transform="matrix(0.707 -0.707 0.707 0.707 0 0)" stroke="#fff" stroke-width="2" fill="none"/>
+</g>
+<path d="m 26.1 26.1 l -3.95 0 l 0 -0.54 c 0 -0.6 0.12 -1.13 0.36 -1.59 0.24 -0.47 0.75 -1.06 1.52 -1.77 l 0.7 -0.63 c 0.42 -0.38 0.72 -0.74 0.91 -1.07 0.2 -0.34 0.3 -0.67 0.3 -1 0 -0.51 -0.18 -0.91 -0.53 -1.19 -0.35 -0.29 -0.84 -0.44 -1.47 -0.44 -0.59 0 -1.23 0.12 -1.91 0.37 -0.69 0.24 -1.4 0.6 -2.14 1.08 l 0 -3.44 c 0.88 -0.31 1.69 -0.53 2.42 -0.68 0.73 -0.15 1.43 -0.22 2.11 -0.22 1.78 0 3.14 0.36 4.07 1.09 0.93 0.72 1.4 1.78 1.4 3.17 0 0.71 -0.14 1.36 -0.43 1.93 -0.28 0.56 -0.77 1.17 -1.46 1.82 l -0.7 0.62 c -0.5 0.45 -0.82 0.82 -0.97 1.09 -0.15 0.27 -0.23 0.57 -0.23 0.9 l 0 0.49 m -4 1.99 l 3.95 0 l 0 3.89 l -3.95 0 l 0 -3.89" fill="#fff"/>
+<path opacity="0.47" d="m 23.37 4.3 c -1 0 -1.9 0.6 -2.4 1.5 l -16.97 16.2 8 8 32 -8 -18.24 -16.3 c -0.5 -0.9 -1.39 -1.4 -2.39 -1.4 z" fill="url(#b)"/>
+</svg>

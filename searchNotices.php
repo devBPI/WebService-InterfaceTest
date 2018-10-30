@@ -1,11 +1,14 @@
 <?php
+	include "php/phpUtils.php";
+	include "php/postXML.php";
+
 	$errorText="";
-	if(!isset($_GET['text']) || $_GET['text']=='' || $_GET['text']==null)
+	/*if(!isset($_GET['general']) || $_GET['general']=='' || $_GET['general']==null)
 	{
 		$errorText.=('&#x26a0 Missing text. &#x26a0<br />');
 		echo($errorText);
 		exit(500);
-	}
+	}*/
 	$page=1;
 	if(isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page']>=1)
 	{
@@ -32,6 +35,29 @@
 		}
 	}
 
+	$defaultGeneral              = urldecode(isGetOk("general"));
+	$defaultTitre                = urldecode(isGetOk("titre"));
+	$defaultAuteur               = urldecode(isGetOk("auteur"));
+	$defaultSujet                = urldecode(isGetOk("sujet"));
+	$defaultIsbnIssnCommercial   = urldecode(isGetOk("isbnissncommercial"));
+	$defaultIndiceCote           = urldecode(isGetOk("indicecote"));
+	$defaultDatePublication      = urldecode(isGetOk("datepublication"));
+	$defaultRealisateur          = urldecode(isGetOk("realisateur"));
+	$defaultTheme                = urldecode(isGetOk("theme"));
+	$defaultBaseRecherche        = urldecode(isGetOk("baserecherche"));
+	$defaultEditeur              = urldecode(isGetOk("editeur"));
+	$defaultCollection           = urldecode(isGetOk("collection"));
+	$defaultDatePublicationStart = urldecode(isGetOk("datepublicationstart"));
+	$defaultDatePublicationEnd   = urldecode(isGetOk("datepublicationend"));
+	$defaultLangue               = urldecode(isGetOk("langue"));
+	$defaultType                 = urldecode(isGetOk("type"));
+	$defaultSupport              = urldecode(isGetOk("support"));
+	$defaultGenreMusic           = urldecode(isGetOk("genremusic"));
+	$defaultGenreFilm            = urldecode(isGetOk("genrefilm"));
+	$defaultGenreLitt            = urldecode(isGetOk("genrelitt"));
+	$defaultSecteur              = urldecode(isGetOk("secteur"));
+	$defaultAudience             = urldecode(isGetOk("audience"));
+
 	$ini_array = parse_ini_file("etc/configuration.ini");
 	if(!$ini_array)
 		$ini_array = parse_ini_file("etc/default.ini");
@@ -45,29 +71,49 @@
 	ini_set("display_errors",1);
 	error_reporting(E_ALL);
 
-	include "php/postXML.php";
-
 	header("Content-Type: text/xml");
 	header("Content-Type: text/html;charset=utf-8");
 
-	$data = array('parcours' => $parkour, 'page' => $page, 'rows' => $rows, 'general' => $_GET['text']);
+	$data = array('parcours' => $parkour, 'page' => $page, 'rows' => $rows);
+	if($defaultGeneral!=null)              $data["general"]                 = $defaultGeneral;
+	if($defaultTitre!=null)                $data["titre"]                   = $defaultTitre;
+	if($defaultAuteur!=null)               $data["auteur"]                  = $defaultAuteur;
+	if($defaultSujet!=null)                $data["sujet"]                   = $defaultSujet;
+	if($defaultIsbnIssnCommercial!=null)   $data["isbn-issn-numcommercial"] = $defaultIsbnIssnCommercial;
+	if($defaultIndiceCote!=null)           $data["indice-cote"]             = $defaultIndiceCote;
+	if($defaultDatePublication!=null)      $data["date-publication"]        = $defaultDatePublication;
+	if($defaultRealisateur!=null)          $data["realisateur"]             = $defaultRealisateur;
+	if($defaultTheme!=null)                $data["theme"]                   = $defaultTheme;
+	if($defaultBaseRecherche!=null)        $data["baserecherche"]           = $defaultBaseRecherche;
+	if($defaultEditeur!=null)              $data["editeur"]                 = $defaultEditeur;
+	if($defaultCollection!=null)           $data["collection"]              = $defaultCollection;
+	if($defaultDatePublicationStart!=null) $data["date-publication-debut"]  = $defaultDatePublicationStart;
+	if($defaultDatePublicationEnd!=null)   $data["date-publication-fin"]    = $defaultDatePublicationEnd;
+	if($defaultLangue!=null)               $data["langue"]                  = $defaultLangue;
+	if($defaultType!=null)                 $data["type"]                    = $defaultType;
+	if($defaultSupport!=null)              $data["support"]                 = $defaultSupport;
+	if($defaultGenreMusic!=null)           $data["genre-musical"]           = $defaultGenreMusic;
+	if($defaultGenreFilm!=null)            $data["genre-cinematographique"] = $defaultGenreFilm;
+	if($defaultGenreLitt!=null)            $data["genre-literraire"]        = $defaultGenreLitt;
+	if($defaultSecteur!=null)              $data["secteur"]                 = $defaultSecteur;
+	if($defaultAudience!=null)             $data["audience"]                = $defaultAudience;
+
 	$xmlData = array_to_xml_main("search-criterias", $data);
 	//$url = $ini_array["CatalogueWebServiceUrl"].'search/notices?parcours='.$parkour.'&page='.$page.'&rows='.$rows.'&general='.urlencode($_GET['text']);
-	$url = $ini_array["CatalogueWebServiceUrl"]."search/notices"."?criters=".urlencode($xmlData->asXML());;
+	$url = $ini_array["CatalogueWebServiceUrl"]."search/notices"."?criters=".urlencode($xmlData->asXML())."&rows=".$rows."&page=".$page;
 	//$result = getArrayToXmlIntoUrl($url, "search-criterias", $data);
-
 	$xslUrl = "xslt/searchResultsNotices.xsl";
 
 	echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";
 	echo "<br />";
-	echo "<a href=\"".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
+	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
 
 	$searchPage;
 	if(FALSE !== ($searchPage = file_get_contents($url)))
 	{
 		$simpleXml = new SimpleXMLElement($searchPage);
 		$xmlTxt =  $simpleXml->asXML();
-		$xml = new DOMDocument();
+		$xml = new DOMDocument('1.0', 'utf-8');
 		$xml->loadXML($xmlTxt);
 
 		$xsl = new DOMDocument;

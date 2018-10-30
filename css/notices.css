@@ -13,15 +13,30 @@ a.notice-online-link
 }
 
 .notice .auteurs,
-.notice-online .auteurs
+.notice-online .auteurs,
+.notice .auteurscompositeursinterpretes,
+.notice-online .auteurscompositeursinterpretes,
+.notice .realisateurs,
+.notice-online .realisateurs,
+.notice .permalinks a,
+.notice-online .permalinks a,
+.notice .editeurs,
+.notice-online .editeurs
 {
 	font : 12px Arial;
 }
 
-.notice .permalinks a,
-.notice-online .permalinks a
+.notice .dates,
+.notice-online .dates
 {
-	font : 12px Arial;
+	font : 11px Arial;
+	margin-left: 5px;
+}
+
+.notice .editeurs,
+.notice-online .editeurs
+{
+	margin-top: 7px;
 }
 
 #result-lists

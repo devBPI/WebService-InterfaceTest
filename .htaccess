@@ -14,4 +14,5 @@ RewriteRule "^(autoformation|cinema|musique|presse)$" "/?parkour=$1" [L,QSA]
 RewriteRule ^(autoformation|cinema|musique|presse)/{0,1}$ /?parkour=$1 [L]
 #RewriteRule . /index.php [R]
 
-#RewriteRule ^ark:/34201/([a-zA-Z0-9\-]+)$ /notice.php?text=$1 [L]
+#RewriteRule ^ark:/34201/([a-zA-Z0-9\-]+)$ /notice.php?permalink=$1 [L]
+RewriteRule ^notice/(.+)$ /notice.php?permalink=$1 [L]
