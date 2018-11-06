@@ -9,7 +9,7 @@
 				{
 					case "autoformation":
 					case "cinema":
-					case "musique":
+					//case "musique":
 					case "presse":
 						$parkour=$_GET['parkour'];
 					break;
@@ -26,7 +26,7 @@
 		<a onclick="window.location='/'+window.location.search;" <?php if($parkour=="general"){echo "class=\"selected-parkour\"";}?>>General</a>
 		<a id="parkourAutoformation" onclick="window.location='/autoformation'+window.location.search;" <?php if($parkour=="autoformation"){echo "class=\"selected-parkour\"";}?>>Autoformation</a>
 		<a id="parkourCinema" onclick="window.location='/cinema'+window.location.search;" <?php if($parkour=="cinema"){echo "class=\"selected-parkour\"";}?>>Cinema</a>
-		<a id="parkourMusique" onclick="window.location='/musique'+window.location.search;" <?php if($parkour=="musique"){echo "class=\"selected-parkour\"";}?>>Musique</a>
+		<!--<a id="parkourMusique" onclick="window.location='/musique'+window.location.search;" <?php /*if($parkour=="musique"){echo "class=\"selected-parkour\"";}*/?>>Musique</a>-->
 		<a id="parkourPresse" onclick="window.location='/presse'+window.location.search;" <?php if($parkour=="presse"){echo "class=\"selected-parkour\"";}?>>Presse</a>
 	</div>
 	<div class="autocomplete">

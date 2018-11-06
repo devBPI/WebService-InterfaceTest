@@ -33,14 +33,14 @@ function getParkour()
 	var parkour = "";
 	var parkourAutoformation = document.getElementById("parkourAutoformation");
 	var parkourCinema = document.getElementById("parkourCinema");
-	var parkourMusique = document.getElementById("parkourMusique");
+	//var parkourMusique = document.getElementById("parkourMusique");
 	var parkourPresse = document.getElementById("parkourPresse");
 	if(parkourAutoformation.classList.contains("selected-parkour"))
 		parkour="autoformation";
 	if(parkourCinema.classList.contains("selected-parkour"))
 		parkour="cinema";
-	if(parkourMusique.classList.contains("selected-parkour"))
-		parkour="musique";
+	/*if(parkourMusique.classList.contains("selected-parkour"))
+		parkour="musique";*/
 	if(parkourPresse.classList.contains("selected-parkour"))
 		parkour="presse";
 	return parkour;
