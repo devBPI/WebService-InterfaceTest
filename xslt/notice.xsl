@@ -4,8 +4,10 @@
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 	<xsl:template match="/notice">
+		<div style="font-weight: bold;" id="collection_id">configuration_id : <xsl:value-of select="resultatDe"/></div>
+		<div style="font-weight: bold;" id="source_id">source_id : <xsl:value-of select="sourceId"/></div>
+		<br />
 		<div id="types"><xsl:value-of select="type"/></div>
-		<div id="collection_id"><xsl:value-of select="resultatDe"/></div>
 		<div id="titres">
 			<xsl:for-each select="titres/titre">
 				<div>Titre: <xsl:value-of select="."/></div>
@@ -246,6 +248,41 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				<div><xsl:value-of select="."/></div>
 			</xsl:for-each>
 		</div>-->
+
+		<br />
+
+		<xsl:for-each select="exemplaires/exemplaire">
+			<div class="exemplaire">
+				Disponibilité, Cote, Support :
+				<div style="margin-left: 1em;"><xsl:value-of select="disponibilite"/></div>
+				<div style="margin-left: 1em;"><xsl:value-of select="cote"/></div>
+				<xsl:for-each select="supports/support">
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+				</xsl:for-each>
+				<div><xsl:value-of select="localisation"/> <xsl:value-of select="categorie"/></div>
+			</div>
+		</xsl:for-each>
+		<br />
+		<xsl:for-each select="seriels/seriel">
+			<div class="seriel">
+				Disponibilité, Cote, Support :
+				<div style="margin-left: 1em;"><xsl:value-of select="disponibilite"/></div>
+				<div style="margin-left: 1em;"><xsl:value-of select="cote"/></div>
+				<xsl:for-each select="supports/support">
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+				</xsl:for-each>
+				<div><xsl:value-of select="localisation"/> <xsl:value-of select="categorie"/></div>
+				<div><xsl:value-of select="description"/></div>
+			</div>
+		</xsl:for-each>
+		<br />
+		<xsl:for-each select="liens/lien">
+			<div class="lien">
+				<div><xsl:value-of select="url"/></div>
+				<div><xsl:value-of select="cote"/></div>
+				<div><xsl:value-of select="localisation"/> <xsl:value-of select="categorie"/></div>
+			</div>
+		</xsl:for-each>
 	</xsl:template>
 
 </xsl:stylesheet>
