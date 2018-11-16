@@ -278,7 +278,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		<br />
 		<xsl:for-each select="liens/lien">
 			<div class="lien">
-				<div><xsl:value-of select="url"/></div>
+				<div><a href="{url}"><xsl:value-of select="url"/></a></div>
 				<div><xsl:value-of select="cote"/></div>
 				<div><xsl:value-of select="localisation"/> <xsl:value-of select="categorie"/></div>
 			</div>
