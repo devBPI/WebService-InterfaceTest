@@ -96,3 +96,22 @@ a.notice-online-link
 {
 	font: 16px Arial;
 }
+
+.exemplaire-name
+{
+	float: left;
+	margin-right: 5px;
+	text-decoration: underline;
+}
+
+.exemplaire-desc
+{
+	overflow-x:hidden;;
+}
+
+.exemplaire,
+.lien
+{
+	margin: 5px;
+	border: 1px solid black;
+}

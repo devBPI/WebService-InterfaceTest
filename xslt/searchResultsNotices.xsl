@@ -109,16 +109,18 @@
 								<div class="exemplaires">
 									<xsl:for-each select="./exemplaires/exemplaire">
 										<div class="exemplaire">
-											<div>Exemplaire <xsl:value-of select="position()"/>:</div>
-											<div><xsl:value-of select="./availability"/>, <xsl:value-of select="./call_num"/>
-											<xsl:if test="(./material_support)">
-												, <xsl:value-of select="./material_support"/>
-											</xsl:if>
-											</div>
-											<div><xsl:value-of select="./location"/>
-											<xsl:if test="(./category)">
-												 - <xsl:value-of select="./category"/>
-											</xsl:if>
+											<div class="exemplaire-name">Exemplaire <xsl:value-of select="position()"/>:</div>
+											<div class="exemplaire-desc">
+												<div><xsl:value-of select="./availability"/>, <xsl:value-of select="./call_num"/>
+													<xsl:if test="(./material_support)">
+														, <xsl:value-of select="./material_support"/>
+													</xsl:if>
+												</div>
+												<div><xsl:value-of select="./location"/>
+													<xsl:if test="(./category)">
+														 - <xsl:value-of select="./category"/>
+													</xsl:if>
+												</div>
 											</div>
 										</div>
 									</xsl:for-each>

@@ -110,23 +110,38 @@
 									<xsl:for-each select="./exemplaires/exemplaire">
 										<div class="exemplaire">
 											<div class="exemplaire-name">Exemplaire <xsl:value-of select="position()"/>:</div>
-											<div><xsl:value-of select="./availability"/>, <xsl:value-of select="./call_num"/>
-											<xsl:if test="(./material_support)">
-												, <xsl:value-of select="./material_support"/>
-											</xsl:if>
+											<div class="exemplaire-desc">
+												<div>
+													<xsl:value-of select="./availability"/>, <xsl:value-of select="./call_num"/>
+													<xsl:if test="(./material_support)">
+														, <xsl:value-of select="./material_support"/>
+													</xsl:if>
+												</div>
+												<div>
+													<xsl:value-of select="./location"/>
+													<xsl:if test="(./category)">
+														 - <xsl:value-of select="./category"/>
+													</xsl:if>
+												</div>
+												<div><a href="{./url}"><xsl:value-of select="./url"/></a></div>
 											</div>
-											<div><xsl:value-of select="./location"/>
-											<xsl:if test="(./category)">
-												 - <xsl:value-of select="./category"/>
-											</xsl:if>
-											</div>
-											<div><a href="{./url}"><xsl:value-of select="./url"/></a></div>
 										</div>
 									</xsl:for-each>
 								</div>
 							</xsl:if>
-							<div class="liens">
-							</div>
+							<xsl:if test="(./liens)">
+								<div class="liens">
+									<xsl:for-each select="./liens/lien">
+										<div class="lien">
+											Lien <xsl:value-of select="position()"/>: 
+											<a href="{./url}"><xsl:value-of select="./url"/></a>
+											<xsl:if test="(./right)">
+												 - <xsl:value-of select="./right"/>
+											</xsl:if>
+										</div>
+									</xsl:for-each>
+								</div>
+							</xsl:if>
 							<div class="permalinks">
 								<xsl:for-each select="./permalink">
 									<div><a href="./notice/{.}"><xsl:value-of select="."/></a></div>
