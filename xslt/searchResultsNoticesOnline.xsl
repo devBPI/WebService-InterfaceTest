@@ -73,7 +73,7 @@
 			</div>
 			<div>
 				<xsl:for-each select="notices-online/noticesOnlineList/notice-online">
-					<a class="notice-online-link" href="./notice/{./permalink}">
+<!--					<a class="notice-online-link" href="./notice/{./permalink}">-->
 						<div class="notice-online" style="overflow:hidden;">
 							<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="./row"/></div>
 							<div class="" style="display: inline-block; float:right; margin-right: 4px; text-align: right;">
@@ -105,8 +105,26 @@
 									<div><xsl:value-of select="."/></div>
 								</xsl:for-each>
 							</div>
-							<div class="exemplaires">
-							</div>
+							<xsl:if test="(./exemplaires)">
+								<div class="exemplaires">
+									<xsl:for-each select="./exemplaires/exemplaire">
+										<div class="exemplaire">
+											<div class="exemplaire-name">Exemplaire <xsl:value-of select="position()"/>:</div>
+											<div><xsl:value-of select="./availability"/>, <xsl:value-of select="./call_num"/>
+											<xsl:if test="(./material_support)">
+												, <xsl:value-of select="./material_support"/>
+											</xsl:if>
+											</div>
+											<div><xsl:value-of select="./location"/>
+											<xsl:if test="(./category)">
+												 - <xsl:value-of select="./category"/>
+											</xsl:if>
+											</div>
+											<div><a href="{./url}"><xsl:value-of select="./url"/></a></div>
+										</div>
+									</xsl:for-each>
+								</div>
+							</xsl:if>
 							<div class="liens">
 							</div>
 							<div class="permalinks">
@@ -116,7 +134,7 @@
 							</div>
 							<div style="clear:both"></div>
 						</div>
-					</a>
+<!--					</a>-->
 				</xsl:for-each>
 			</div>
 		</div>

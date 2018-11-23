@@ -73,7 +73,7 @@
 			</div>
 			<div>
 				<xsl:for-each select="notices/noticesList/notice">
-					<a class="notice-link" href="./notice/{./permalink}">
+<!--					<a class="notice-link" href="./notice/{./permalink}">-->
 						<div class="notice" style="overflow:hidden;">
 							<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="./row"/></div>
 							<div class="" style="display: inline-block; float:right; margin-right: 4px; text-align: right;">
@@ -109,6 +109,7 @@
 								<div class="exemplaires">
 									<xsl:for-each select="./exemplaires/exemplaire">
 										<div class="exemplaire">
+											<div>Exemplaire <xsl:value-of select="position()"/>:</div>
 											<div><xsl:value-of select="./availability"/>, <xsl:value-of select="./call_num"/>
 											<xsl:if test="(./material_support)">
 												, <xsl:value-of select="./material_support"/>
@@ -123,8 +124,6 @@
 									</xsl:for-each>
 								</div>
 							</xsl:if>
-							<div class="liens">
-							</div>
 							<div class="permalinks">
 								<xsl:for-each select="./permalink">
 									<div><a href="./notice/{.}"><xsl:value-of select="."/></a></div>
@@ -132,7 +131,7 @@
 							</div>
 							<div style="clear:both"></div>
 						</div>
-					</a>
+<!--					</a>-->
 				</xsl:for-each>
 			</div>
 		</div>
