@@ -105,8 +105,24 @@
 									<div><xsl:value-of select="."/></div>
 								</xsl:for-each>
 							</div>
-							<div class="exemplaires">
-							</div>
+							<xsl:if test="(./exemplaires)">
+								<div class="exemplaires">
+									<xsl:for-each select="./exemplaires/exemplaire">
+										<div class="exemplaire">
+											<div><xsl:value-of select="./availability"/>, <xsl:value-of select="./call_num"/>
+											<xsl:if test="(./material_support)">
+												, <xsl:value-of select="./material_support"/>
+											</xsl:if>
+											</div>
+											<div><xsl:value-of select="./location"/>
+											<xsl:if test="(./category)">
+												 - <xsl:value-of select="./category"/>
+											</xsl:if>
+											</div>
+										</div>
+									</xsl:for-each>
+								</div>
+							</xsl:if>
 							<div class="liens">
 							</div>
 							<div class="permalinks">
