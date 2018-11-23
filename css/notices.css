@@ -18,18 +18,22 @@ a.notice-online-link
 .notice-online .auteurscompositeursinterpretes,
 .notice .realisateurs,
 .notice-online .realisateurs,
-.notice .permalinks a,
-.notice-online .permalinks a,
 .notice .editeurs,
 .notice-online .editeurs
 {
 	font : 12px Arial;
 }
 
+.notice .permalinks a,
+.notice-online .permalinks a,
+{
+	font : 14px Arial;
+}
+
 .notice .dates,
 .notice-online .dates
 {
-	font : 11px Arial;
+	font : 12px Arial;
 	margin-left: 5px;
 }
 
@@ -101,6 +105,7 @@ a.notice-online-link
 {
 	float: left;
 	margin-right: 5px;
+	font : 14px Arial;
 	text-decoration: underline;
 }
 
@@ -114,4 +119,5 @@ a.notice-online-link
 {
 	margin: 5px;
 	border: 1px solid black;
+	font : 13px Arial;
 }
