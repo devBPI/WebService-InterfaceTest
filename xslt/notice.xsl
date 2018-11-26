@@ -86,7 +86,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		</xsl:if>
 		<xsl:if test="auteursSecondaires">
 			<div id="auteursSecondaires">
-				Auteur(s)
+				Autre(s) auteur(s)
 				<xsl:if test="(type='Musique')">
 					, Compositeur(s), Interprète(s)
 				</xsl:if>
