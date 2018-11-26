@@ -118,6 +118,7 @@ function search()
 
 function changeNoticesRows(currentPage, currentRows)
 {
+	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	var rows=document.getElementById("notices-rows").value;
 
 	changeNoticesPage(Math.ceil(((currentPage-1)*currentRows+1)/rows));
@@ -125,6 +126,7 @@ function changeNoticesRows(currentPage, currentRows)
 
 function changeNoticesOnlineRows(currentPage, currentRows)
 {
+	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	var rows=document.getElementById("notices-online-rows").value;
 
 	changeNoticesOnlinePage(Math.ceil(((currentPage-1)*currentRows+1)/rows));
@@ -155,6 +157,8 @@ function changeNoticesPage(page)
 	var uri = "searchNotices.php?"+((parkour=="") ? "" : ("parkour="+parkour+"&"))+"page="+page+"&rows="+rows+"&general="+encodeURIComponent(txt);
 	var url = encodeURI(uri);
 	$("#notices").load(url);*/
+
+	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 
 	var rows=document.getElementById("notices-rows").value;
 	var searchCriterias = getSearchCriterias();
@@ -193,6 +197,8 @@ function changeNoticesOnlinePage(page)
 	var uri = "searchNoticesOnline.php?"+((parkour=="") ? "" : ("parkour="+parkour+"&"))+"page="+page+"&rows="+rows+"&general="+encodeURIComponent(txt);
 	var url = encodeURI(uri);
 	$("#notices-online").load(url);*/
+
+	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 
 	var rows=document.getElementById("notices-rows").value;
 	var searchCriterias = getSearchCriterias();
