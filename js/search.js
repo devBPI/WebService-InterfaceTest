@@ -118,16 +118,16 @@ function search()
 
 function changeNoticesRows(currentPage, currentRows)
 {
-	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	var rows=document.getElementById("notices-rows").value;
+	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 
 	changeNoticesPage(Math.ceil(((currentPage-1)*currentRows+1)/rows));
 }
 
 function changeNoticesOnlineRows(currentPage, currentRows)
 {
-	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	var rows=document.getElementById("notices-online-rows").value;
+	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 
 	changeNoticesOnlinePage(Math.ceil(((currentPage-1)*currentRows+1)/rows));
 }
@@ -158,14 +158,14 @@ function changeNoticesPage(page)
 	var url = encodeURI(uri);
 	$("#notices").load(url);*/
 
-	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
-
 	var rows=document.getElementById("notices-rows").value;
 	var searchCriterias = getSearchCriterias();
 	var parkour = getParkour();
 	searchCriterias["parkour"]=parkour;
 	var uriParams = encodeURI(keysToParams(searchCriterias));
 	console.log(uriParams);
+
+	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 
 	var uri = "searchNotices.php?"+uriParams+"&page="+page+"&rows="+rows
 	var url = encodeURI(uri);
@@ -194,18 +194,18 @@ function changeNoticesOnlinePage(page)
 			parkour="presse";
 		history.pushState({}, null, "/"+parkour+"?text="+txt);
 	}
+
 	var uri = "searchNoticesOnline.php?"+((parkour=="") ? "" : ("parkour="+parkour+"&"))+"page="+page+"&rows="+rows+"&general="+encodeURIComponent(txt);
 	var url = encodeURI(uri);
 	$("#notices-online").load(url);*/
-
-	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
-
 	var rows=document.getElementById("notices-rows").value;
 	var searchCriterias = getSearchCriterias();
 	var parkour = getParkour();
 	searchCriterias["parkour"]=parkour;
 	var uriParams = encodeURI(keysToParams(searchCriterias));
 	console.log(uriParams);
+
+	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 
 	var uri = "searchNoticesOnline.php?"+uriParams+"&page="+page+"&rows="+rows
 	var url = encodeURI(uri);
