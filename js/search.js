@@ -75,7 +75,7 @@ function getSearchCriterias()
 		searchCriterias["secteur"] = document.getElementById("advancedsearch-secteur").value;
 		searchCriterias["audience"] = document.getElementById("advancedsearch-audience").value;
 	}
-	printKeys(searchCriterias);
+	//printKeys(searchCriterias);
 	//alert(searchCriterias.toString());
 	return searchCriterias;
 }
