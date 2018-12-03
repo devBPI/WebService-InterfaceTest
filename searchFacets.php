@@ -129,16 +129,24 @@
 			$dom2 = new DomDocument();
 			$dom1->loadXML($xml1->asXML());
 			$dom2->loadXML($xml2->asXML());
+			$dom = new DomDocument();
+			$headNode = $dom->createElement("merged");
+			$dom->appendChild($headNode);
 
-			// pull all child elements of second XML
+
+			$xpath = new domXPath($dom1);
+			$xpathQuery = $xpath->query('/*');
+			for($i = 0; $i < $xpathQuery->length; $i++)
+			{
+				$headNode->appendChild($dom->importNode($xpathQuery->item($i), true));
+			}
 			$xpath = new domXPath($dom2);
 			$xpathQuery = $xpath->query('/*');
 			for($i = 0; $i < $xpathQuery->length; $i++)
 			{
-				// and pump them into first one
-				$dom1->appendChild($dom1->importNode($xpathQuery->item($i), true));
-			} // for($i = 0; $i < $xpathQuery->length; $i++)
-			$xml = simplexml_import_dom($dom1);
+				$headNode->appendChild($dom->importNode($xpathQuery->item($i), true));
+			}
+			$xml = simplexml_import_dom($dom);
 			return $xml;
 		}
 
@@ -147,7 +155,7 @@
 		$simpleXml1 = new SimpleXMLElement($searchPage1);
 		$simpleXml2 = new SimpleXMLElement($searchPage2);
 		$xmlTxt =  simplexml_merge($simpleXml1, $simpleXml2)->asXML();
-		//echo $xmlTxt;
+		//echo '<br/><br/><br/>'.$xmlTxt.'<br/><br/><br/>';
 		$xml = new DOMDocument('1.0', 'utf-8');
 		$xml->loadXML($xmlTxt);
 
