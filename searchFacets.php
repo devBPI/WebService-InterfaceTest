@@ -99,21 +99,16 @@
 	if($defaultAudience!=null)             $data["audience"]                = $defaultAudience;
 
 	$xmlData = array_to_xml_main("search-criterias", $data);
-	//$url = $ini_array["CatalogueWebServiceUrl"].'search/notices?parcours='.$parkour.'&page='.$page.'&rows='.$rows.'&general='.urlencode($_GET['text']);
-	$url1 = $ini_array["CatalogueWebServiceUrl"]."facets/notices"."?criters=".urlencode($xmlData->asXML())."&rows=0&page=1";
-	$url2 = $ini_array["CatalogueWebServiceUrl"]."facets/notices-online"."?criters=".urlencode($xmlData->asXML())."&rows=0&page=1";
+	$url = $ini_array["CatalogueWebServiceUrl"]."facets"."?criters=".urlencode($xmlData->asXML())."&rows=0&page=1";
 	//$result = getArrayToXmlIntoUrl($url, "search-criterias", $data);
 	$xslUrl = "xslt/searchFacets.xsl";
 
-	echo "<a href=\"".$url1."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";
-	echo "<br />";
-	echo "<a href=\"".$url2."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";
+	echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";
 	echo "<br />";
 	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
 
-	$searchPage1 = file_get_contents($url1);
-	$searchPage2 = file_get_contents($url2);
-	if(FALSE == $searchPage1 || FALSE == $searchPage2)
+	$searchPage = file_get_contents($url);
+	if(FALSE == $searchPage)
 	{
 		trigger_error("It's all messed up");
 		throw new Exception("This is nice error handling");
@@ -122,39 +117,9 @@
 	}
 	else
 	{
-		function simplexml_merge(SimpleXMLElement &$xml1, SimpleXMLElement $xml2)
-		{
-			// convert SimpleXML objects into DOM ones
-			$dom1 = new DomDocument();
-			$dom2 = new DomDocument();
-			$dom1->loadXML($xml1->asXML());
-			$dom2->loadXML($xml2->asXML());
-			$dom = new DomDocument();
-			$headNode = $dom->createElement("merged");
-			$dom->appendChild($headNode);
 
-
-			$xpath = new domXPath($dom1);
-			$xpathQuery = $xpath->query('/*');
-			for($i = 0; $i < $xpathQuery->length; $i++)
-			{
-				$headNode->appendChild($dom->importNode($xpathQuery->item($i), true));
-			}
-			$xpath = new domXPath($dom2);
-			$xpathQuery = $xpath->query('/*');
-			for($i = 0; $i < $xpathQuery->length; $i++)
-			{
-				$headNode->appendChild($dom->importNode($xpathQuery->item($i), true));
-			}
-			$xml = simplexml_import_dom($dom);
-			return $xml;
-		}
-
-		$searchPage = $searchPage1.$searchPage2;
-		//echo $searchPage;
-		$simpleXml1 = new SimpleXMLElement($searchPage1);
-		$simpleXml2 = new SimpleXMLElement($searchPage2);
-		$xmlTxt =  simplexml_merge($simpleXml1, $simpleXml2)->asXML();
+		$simpleXml = new SimpleXMLElement($searchPage);
+		$xmlTxt =  $simpleXml->asXML();
 		//echo '<br/><br/><br/>'.$xmlTxt.'<br/><br/><br/>';
 		$xml = new DOMDocument('1.0', 'utf-8');
 		$xml->loadXML($xmlTxt);

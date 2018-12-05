@@ -14,18 +14,16 @@
 		<xsl:copy-of select="/merged/notices/facets/facetsList"/>
 		<xsl:copy-of select="/merged/notices-online/facets/facetsList"/>
 	</xsl:template>-->
-	<xsl:template match="/">
-		<xsl:for-each select="/merged/notices/facets/facetsList/facet">
-			<div>
-				<xsl:value-of select="name"/>
-				notices
-				<xsl:if test="contains(../../../merged/notices-online/facets/facetsList/facet/name, '{./name}')">
-					and online
-				</xsl:if>
+	<xsl:template match="facets/facetsList">
+		<xsl:for-each select="facet">
+			<div id="facet{position()}">
+				<xsl:value-of select="name"/> (<xsl:value-of select="count-offline"/>) (<xsl:value-of select="count-online"/>)
+				<xsl:for-each select="valuesCounts/value">
+					<div>
+						- <xsl:value-of select="name"/> (<xsl:value-of select="count-offline"/>) (<xsl:value-of select="count-online"/>)
+					</div>
+				</xsl:for-each>
 			</div>
-		</xsl:for-each>
-		<xsl:for-each select="/merged/notices-online/facets/facetsList/facet">
-			<div><xsl:value-of select="name"/></div>
 		</xsl:for-each>
 	</xsl:template>
 </xsl:stylesheet>

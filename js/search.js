@@ -80,6 +80,13 @@ function getSearchCriterias()
 	return searchCriterias;
 }
 
+function searchFacets(uriParams)
+{
+	var uri = "searchFacets.php?"+uriParams;
+	var url = encodeURI(uri);
+	$("#facets").load(url);
+}
+
 function searchNotices(uriParams)
 {
 	var uri = "searchNotices.php?"+uriParams;
@@ -106,6 +113,7 @@ function searchNoticesNoticesOnline()
 
 	searchNotices(uriParams);
 	searchNoticesOnline(uriParams);
+	searchFacets(uriParams);
 }
 
 function search()
@@ -225,6 +233,18 @@ function advancedSearch()
 		document.getElementById("advancedSearchButton").value = '+';
 		document.getElementById("advancedSearchDiv").style.display = 'none';
 	}
+}
+
+function hideFacets()
+{
+	document.getElementById("facetsContainer").style.display = 'none';
+	document.getElementById("facetsShowButton").style.display = 'block';
+}
+
+function displayFacets()
+{
+	document.getElementById("facetsContainer").style.display = 'block';
+	document.getElementById("facetsShowButton").style.display = 'none';
 }
 
 function autocomplete(inp, arr)
