@@ -235,6 +235,11 @@ function advancedSearch()
 	}
 }
 
+function displayHideFacet(facetDiv)
+{
+	facetDiv.style.display = ((facetDiv.style.display == 'none') ? 'block' : 'none');
+}
+
 function hideFacets()
 {
 	document.getElementById("facetsContainer").style.display = 'none';
