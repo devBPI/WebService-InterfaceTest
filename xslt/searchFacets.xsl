@@ -17,11 +17,11 @@
 	<xsl:template match="facets/facetsList">
 		<xsl:for-each select="facet">
 			<div>
-				<span onclick="displayHideFacet(facet{position()});" style="cursor: pointer;"><xsl:value-of select="name"/> (<xsl:value-of select="count-offline"/>) (<xsl:value-of select="count-online"/>)</span>
+				<span onclick="displayHideFacet(facet{position()});" style="cursor: pointer;"><xsl:value-of select="name"/> <span style="font-weight: bold; color: #0055AA;">(<xsl:value-of select="count-offline"/>)</span> <span style="font-weight: bold; color: #007700;">(<xsl:value-of select="count-online"/>)</span></span>
 				<div id="facet{position()}" style="display: none;">
 					<xsl:for-each select="valuesCounts/value">
 						<div>
-							- <xsl:value-of select="name"/> (<xsl:value-of select="count-offline"/>) (<xsl:value-of select="count-online"/>)
+							- <xsl:value-of select="name"/> <span style="font-weight: bold; color: #0055AA;">(<xsl:value-of select="count-offline"/>)</span> <span style="font-weight: bold; color:#007700;">(<xsl:value-of select="count-online"/>)</span>
 						</div>
 					</xsl:for-each>
 				</div>
