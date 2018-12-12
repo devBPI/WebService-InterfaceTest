@@ -49,35 +49,59 @@ function getParkour()
 function getSearchCriterias()
 {
 	var searchCriterias = {};
-	var buttonValue=document.getElementById("advancedSearchButton").value;
-	searchCriterias["general"] = document.getElementById("searchbar").value;
-	if(true)//buttonValue=='-')
-	{
-		searchCriterias["titre"] = document.getElementById("advancedsearch-titre").value;
-		searchCriterias["auteur"] = document.getElementById("advancedsearch-auteur").value;
-		searchCriterias["sujet"] = document.getElementById("advancedsearch-sujet").value;
-		searchCriterias["isbnissncommercial"] = document.getElementById("advancedsearch-isbnissncommercial").value;
-		searchCriterias["indicecote"] = document.getElementById("advancedsearch-indicecote").value;
-		searchCriterias["datepublication"] = document.getElementById("advancedsearch-datepublication").value;
-		searchCriterias["realisateur"] = document.getElementById("advancedsearch-realisateur").value;
-		searchCriterias["theme"] = document.getElementById("advancedsearch-theme").value;
-		searchCriterias["baserecherche"] = document.getElementById("advancedsearch-baserecherche").value;
-		searchCriterias["editeur"] = document.getElementById("advancedsearch-editeur").value;
-		searchCriterias["collection"] = document.getElementById("advancedsearch-collection").value;
-		searchCriterias["datepublicationstart"] = document.getElementById("advancedsearch-datepublicationstart").value;
-		searchCriterias["datepublicationend"] = document.getElementById("advancedsearch-datepublicationend").value;
-		searchCriterias["langue"] = document.getElementById("advancedsearch-langue").value;
-		searchCriterias["type"] = document.getElementById("advancedsearch-type").value;
-		searchCriterias["support"] = document.getElementById("advancedsearch-support").value;
-		searchCriterias["genremusic"] = document.getElementById("advancedsearch-genremusic").value;
-		searchCriterias["genrefilm"] = document.getElementById("advancedsearch-genrefilm").value;
-		searchCriterias["genrelitt"] = document.getElementById("advancedsearch-genrelitt").value;
-		searchCriterias["secteur"] = document.getElementById("advancedsearch-secteur").value;
-		searchCriterias["audience"] = document.getElementById("advancedsearch-audience").value;
-	}
+	//var buttonValue=document.getElementById("advancedSearchButton").value;
+	/*searchCriterias["general"] = document.getElementById("searchbar").value;
+	searchCriterias["titre"] = document.getElementById("advancedsearch-titre").value;
+	searchCriterias["auteur"] = document.getElementById("advancedsearch-auteur").value;
+	searchCriterias["sujet"] = document.getElementById("advancedsearch-sujet").value;
+	searchCriterias["isbnissncommercial"] = document.getElementById("advancedsearch-isbnissncommercial").value;
+	searchCriterias["indicecote"] = document.getElementById("advancedsearch-indicecote").value;
+	searchCriterias["datepublication"] = document.getElementById("advancedsearch-datepublication").value;
+	searchCriterias["realisateur"] = document.getElementById("advancedsearch-realisateur").value;
+	searchCriterias["theme"] = document.getElementById("advancedsearch-theme").value;
+	searchCriterias["baserecherche"] = document.getElementById("advancedsearch-baserecherche").value;
+	searchCriterias["editeur"] = document.getElementById("advancedsearch-editeur").value;
+	searchCriterias["collection"] = document.getElementById("advancedsearch-collection").value;
+	searchCriterias["datepublicationstart"] = document.getElementById("advancedsearch-datepublicationstart").value;
+	searchCriterias["datepublicationend"] = document.getElementById("advancedsearch-datepublicationend").value;
+	searchCriterias["langue"] = document.getElementById("advancedsearch-langue").value;
+	searchCriterias["type"] = document.getElementById("advancedsearch-type").value;
+	searchCriterias["support"] = document.getElementById("advancedsearch-support").value;
+	searchCriterias["genremusic"] = document.getElementById("advancedsearch-genremusic").value;
+	searchCriterias["genrefilm"] = document.getElementById("advancedsearch-genrefilm").value;
+	searchCriterias["genrelitt"] = document.getElementById("advancedsearch-genrelitt").value;
+	searchCriterias["secteur"] = document.getElementById("advancedsearch-secteur").value;
+	searchCriterias["audience"] = document.getElementById("advancedsearch-audience").value;*/
 	//printKeys(searchCriterias);
 	//alert(searchCriterias.toString());
-	return searchCriterias;
+
+	//return searchCriterias;
+
+	var urlParams = new URLSearchParams();
+	urlParams.set("general", document.getElementById("searchbar").value);
+	urlParams.set("titre", document.getElementById("advancedsearch-titre").value);
+	urlParams.set("auteur", document.getElementById("advancedsearch-auteur").value);
+	urlParams.set("sujet", document.getElementById("advancedsearch-sujet").value);
+	urlParams.set("isbnissncommercial", document.getElementById("advancedsearch-isbnissncommercial").value);
+	urlParams.set("indicecote", document.getElementById("advancedsearch-indicecote").value);
+	urlParams.set("datepublication", document.getElementById("advancedsearch-datepublication").value);
+	urlParams.set("realisateur", document.getElementById("advancedsearch-realisateur").value);
+	urlParams.set("theme", document.getElementById("advancedsearch-theme").value);
+	urlParams.set("baserecherche", document.getElementById("advancedsearch-baserecherche").value);
+	urlParams.set("editeur", document.getElementById("advancedsearch-editeur").value);
+	urlParams.set("collection", document.getElementById("advancedsearch-collection").value);
+	urlParams.set("datepublicationstart", document.getElementById("advancedsearch-datepublicationstart").value);
+	urlParams.set("datepublicationend", document.getElementById("advancedsearch-datepublicationend").value);
+	urlParams.set("langue", document.getElementById("advancedsearch-langue").value);
+	urlParams.set("type", document.getElementById("advancedsearch-type").value);
+	urlParams.set("support", document.getElementById("advancedsearch-support").value);
+	urlParams.set("genremusic", document.getElementById("advancedsearch-genremusic").value);
+	urlParams.set("genrefilm", document.getElementById("advancedsearch-genrefilm").value);
+	urlParams.set("genrelitt", document.getElementById("advancedsearch-genrelitt").value);
+	urlParams.set("secteur", document.getElementById("advancedsearch-secteur").value);
+	urlParams.set("audience", document.getElementById("advancedsearch-audience").value);
+
+	return urlParams;
 }
 
 function searchFacets(uriParams)
@@ -105,11 +129,17 @@ function searchNoticesNoticesOnline()
 {
 	var searchCriterias = getSearchCriterias();
 	var parkour = getParkour();
-	history.pushState({}, null, "/"+parkour+"?"+encodeURI(keysToParams(searchCriterias)));
-	searchCriterias["parkour"]=parkour;
+	var urlParams = new URLSearchParams(window.location.search);
+	var curFacets = urlParams.get('facets');
+	if(curFacets!=null)
+		searchCriterias.set("facets", curFacets);
+	var uriParams = searchCriterias.toString();
+	//console.log("/"+parkour+"?"+uriParams);
+	history.pushState({}, null, "/"+parkour+"?"+uriParams);
 
-	var uriParams = encodeURI(keysToParams(searchCriterias));
-	console.log(uriParams);
+	searchCriterias.set("parkour", parkour);
+	uriParams = searchCriterias.toString();
+	//console.log(uriParams);
 
 	searchNotices(uriParams);
 	searchNoticesOnline(uriParams);
@@ -118,7 +148,7 @@ function searchNoticesNoticesOnline()
 
 function search()
 {
-//	searchadvanced();
+	//searchadvanced();
 	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	searchNoticesNoticesOnline();
@@ -127,7 +157,6 @@ function search()
 function changeNoticesRows(currentPage, currentRows)
 {
 	var rows=document.getElementById("notices-rows").value;
-	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 
 	changeNoticesPage(Math.ceil(((currentPage-1)*currentRows+1)/rows));
 }
@@ -135,43 +164,19 @@ function changeNoticesRows(currentPage, currentRows)
 function changeNoticesOnlineRows(currentPage, currentRows)
 {
 	var rows=document.getElementById("notices-online-rows").value;
-	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 
 	changeNoticesOnlinePage(Math.ceil(((currentPage-1)*currentRows+1)/rows));
 }
 
 function changeNoticesPage(page)
 {
-	/*var rows=document.getElementById("notices-rows").value;
-	var txt = document.getElementById("searchbar").value;
-	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
-	if(document.getElementById("searchbar").value!="")
-	{
-		var parkour = "";
-		var parkourAutoformation = document.getElementById("parkourAutoformation");
-		var parkourCinema = document.getElementById("parkourCinema");
-		var parkourMusique = document.getElementById("parkourMusique");
-		var parkourPresse = document.getElementById("parkourPresse");
-		if(parkourAutoformation.classList.contains("selected-parkour"))
-			parkour="autoformation";
-		if(parkourCinema.classList.contains("selected-parkour"))
-			parkour="cinema";
-		if(parkourMusique.classList.contains("selected-parkour"))
-			parkour="musique";
-		if(parkourPresse.classList.contains("selected-parkour"))
-			parkour="presse";
-		history.pushState({}, null, "/"+parkour+"?text="+txt);
-	}
-	var uri = "searchNotices.php?"+((parkour=="") ? "" : ("parkour="+parkour+"&"))+"page="+page+"&rows="+rows+"&general="+encodeURIComponent(txt);
-	var url = encodeURI(uri);
-	$("#notices").load(url);*/
-
 	var rows=document.getElementById("notices-rows").value;
+	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	var searchCriterias = getSearchCriterias();
 	var parkour = getParkour();
-	searchCriterias["parkour"]=parkour;
-	var uriParams = encodeURI(keysToParams(searchCriterias));
-	console.log(uriParams);
+	searchCriterias.set("parkour", parkour);
+	var uriParams = searchCriterias.toString();
+	//console.log(uriParams);
 
 	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 
@@ -182,36 +187,13 @@ function changeNoticesPage(page)
 
 function changeNoticesOnlinePage(page)
 {
-	/*var rows=document.getElementById("notices-online-rows").value;
-	var txt = document.getElementById('searchbar').value;
+	var rows=document.getElementById("notices-online-rows").value;
 	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
-	if(document.getElementById("searchbar").value!="")
-	{
-		var parkour = "";
-		var parkourAutoformation = document.getElementById("parkourAutoformation");
-		var parkourCinema = document.getElementById("parkourCinema");
-		var parkourMusique = document.getElementById("parkourMusique");
-		var parkourPresse = document.getElementById("parkourPresse");
-		if(parkourAutoformation.classList.contains("selected-parkour"))
-			parkour="autoformation";
-		if(parkourCinema.classList.contains("selected-parkour"))
-			parkour="cinema";
-		if(parkourMusique.classList.contains("selected-parkour"))
-			parkour="musique";
-		if(parkourPresse.classList.contains("selected-parkour"))
-			parkour="presse";
-		history.pushState({}, null, "/"+parkour+"?text="+txt);
-	}
-
-	var uri = "searchNoticesOnline.php?"+((parkour=="") ? "" : ("parkour="+parkour+"&"))+"page="+page+"&rows="+rows+"&general="+encodeURIComponent(txt);
-	var url = encodeURI(uri);
-	$("#notices-online").load(url);*/
-	var rows=document.getElementById("notices-rows").value;
 	var searchCriterias = getSearchCriterias();
 	var parkour = getParkour();
-	searchCriterias["parkour"]=parkour;
-	var uriParams = encodeURI(keysToParams(searchCriterias));
-	console.log(uriParams);
+	searchCriterias.set("parkour", parkour);
+	var uriParams = searchCriterias.toString();
+	//console.log(uriParams);
 
 	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 

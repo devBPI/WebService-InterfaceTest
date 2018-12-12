@@ -1,0 +1,10 @@
+.facet
+{
+	cursor: pointer;
+}
+
+.facet:hover
+{
+	background: #CCCCCC;
+}
+

@@ -25,6 +25,7 @@
 	$defaultGenreLitt            = urldecode(isGetOk("genrelitt"));
 	$defaultSecteur              = urldecode(isGetOk("secteur"));
 	$defaultAudience             = urldecode(isGetOk("audience"));
+	$defaultFacets               = urldecode(isGetOk("facets"));
 	
 	$ini_array = parse_ini_file("etc/configuration.ini");
 	if(!$ini_array)
@@ -51,10 +52,12 @@
 		<link rel="stylesheet" type="text/css" href="/css/table.css" />
 		<link rel="stylesheet" type="text/css" href="/css/searchbar.css" />
 		<link rel="stylesheet" type="text/css" href="/css/notices.css" />
+		<link rel="stylesheet" type="text/css" href="/css/facets.css" />
 		<style type="text/css" media="screen"></style>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript" language="javascript"></script>
 		<script src="/js/search.js" type="text/javascript" language="javascript"></script>
+		<script src="/js/facets.js" type="text/javascript" language="javascript"></script>
 
 		<script type="text/javascript" language="javascript">
 		</script>
