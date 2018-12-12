@@ -21,7 +21,7 @@
 				<xsl:variable name="facetName" select="name" />
 				<div id="facet{position()}" style="display: none;">
 					<xsl:for-each select="valuesCounts/value">
-						<div class="facet" onclick="addFacet('{$facetName}', '{name}');">- <xsl:value-of select="name"/> <span style="font-weight: bold; color: #0055AA;">(<xsl:value-of select="count-offline"/>)</span> <span style="font-weight: bold; color:#007700;">(<xsl:value-of select="count-online"/>)</span></div>
+						<div class="facet" onclick='addFacet("{$facetName}", "{name}");'>- <xsl:value-of select="name"/> <span style="font-weight: bold; color: #0055AA;">(<xsl:value-of select="count-offline"/>)</span> <span style="font-weight: bold; color:#007700;">(<xsl:value-of select="count-online"/>)</span></div>
 					</xsl:for-each>
 				</div>
 			</div>

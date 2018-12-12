@@ -1,4 +1,5 @@
-.facet
+.facet,
+.facetCross
 {
 	cursor: pointer;
 }
@@ -6,5 +7,34 @@
 .facet:hover
 {
 	background: #CCCCCC;
+}
+
+.selectedFacet,
+.facetCross
+{
+	margin: 5px;
+	margin-right:0px;
+	padding: 2px;
+	padding-left: 6px;
+	padding-right: 6px;
+	line-height: 22px;
+	border: 1px solid #FFC060;
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+	background-color: #FFE090;
+}
+.facetCross
+{	
+	margin-left:0px;
+	border-left: none;
+	border-radius: 0px;
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 12px;
+}
+
+.selectedFacet:hover,
+.facetCross:hover
+{
+	background-color: #FFC070;
 }
 

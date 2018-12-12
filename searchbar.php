@@ -68,12 +68,13 @@
 </div>
 <div id="result-lists" style="width: 100%;">
 	<div id="facetsdiv" style="margin: 3px; grid-column: 1 / span 2;">
-		<a id="facetsShowButton" onclick="displayFacets(); return false;">Dérouler facettes</a>
+		<div id="facets"></div>
+		<!--<a id="facetsShowButton" onclick="displayFacets(); return false;">Dérouler facettes</a>
 		<div id="facetsContainer" style="display:none;">
 			<a onclick="hideFacets(); return false;">Enrouler facettes</a>
 			<div id="facets"></div>
 			<a onclick="hideFacets(); return false;">Enrouler facettes</a>
-		</div>
+		</div>-->
 	</div>
 	<div id="notices" style="margin: 3px; grid-column: 1;"></div>
 	<div id="notices-online" style="margin: 3px; grid-column: 2;"></div>

@@ -57,6 +57,7 @@
 	$defaultGenreLitt            = urldecode(isGetOk("genrelitt"));
 	$defaultSecteur              = urldecode(isGetOk("secteur"));
 	$defaultAudience             = urldecode(isGetOk("audience"));
+	$defaultFacets               = urldecode(isGetOk("facets"));
 
 	$ini_array = parse_ini_file("etc/configuration.ini");
 	if(!$ini_array)
@@ -97,38 +98,68 @@
 	if($defaultGenreLitt!=null)            $data["genre-literraire"]        = $defaultGenreLitt;
 	if($defaultSecteur!=null)              $data["secteur"]                 = $defaultSecteur;
 	if($defaultAudience!=null)             $data["audience"]                = $defaultAudience;
+	if($defaultFacets!=null)               $data["facets"]                  = $defaultFacets;
 
 	$xmlData = array_to_xml_main("search-criterias", $data);
 	$url = $ini_array["CatalogueWebServiceUrl"]."facets"."?criters=".urlencode($xmlData->asXML())."&rows=0&page=1";
 	//$result = getArrayToXmlIntoUrl($url, "search-criterias", $data);
 	$xslUrl = "xslt/searchFacets.xsl";
+	$xslFacetsDisplay = "xslt/selectedFacets.xsl";
 
-	echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";
-	echo "<br />";
-	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
 
-	$searchPage = file_get_contents($url);
-	if(FALSE == $searchPage)
-	{
-		trigger_error("It's all messed up");
-		throw new Exception("This is nice error handling");
-		exit("Could not continue");
-		die("it is over");
-	}
-	else
-	{
 
-		$simpleXml = new SimpleXMLElement($searchPage);
-		$xmlTxt =  $simpleXml->asXML();
-		//echo '<br/><br/><br/>'.$xmlTxt.'<br/><br/><br/>';
-		$xml = new DOMDocument('1.0', 'utf-8');
-		$xml->loadXML($xmlTxt);
+	$simpleXml = new SimpleXMLElement($defaultFacets);
+	$xmlTxt =  $simpleXml->asXML();
+	$xml = new DOMDocument('1.0', 'utf-8');
+	$xml->loadXML($xmlTxt);
 
-		$xsl = new DOMDocument;
-		$xsl->load($xslUrl);
+	$xsl = new DOMDocument;
+	$xsl->load($xslFacetsDisplay);
 
-		$proc = new XSLTProcessor();
-		$proc->importStyleSheet($xsl);
-	 
-		echo $proc->transformToXML($xml);
-	}
+	$proc = new XSLTProcessor();
+	$proc->importStyleSheet($xsl);
+
+	echo $proc->transformToXML($xml);
+
+
+
+	//echo "<p><xmp>".$defaultFacets."</xmp></p>";
+?>
+<br />
+<a id="facetsShowButton" onclick="displayFacets(); return false;">Dérouler facettes</a>
+<div id="facetsContainer" style="display:none;">
+	<a onclick="hideFacets(); return false;">Enrouler facettes</a>
+	<br />
+	<?php
+		echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";
+		echo "<br />";
+		echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
+
+		$searchPage = file_get_contents($url);
+		if(FALSE == $searchPage)
+		{
+			trigger_error("It's all messed up");
+			throw new Exception("This is nice error handling");
+			exit("Could not continue");
+			die("it is over");
+		}
+		else
+		{
+			$simpleXml = new SimpleXMLElement($searchPage);
+			$xmlTxt =  $simpleXml->asXML();
+			//echo '<br/><br/><br/>'.$xmlTxt.'<br/><br/><br/>';
+			$xml = new DOMDocument('1.0', 'utf-8');
+			$xml->loadXML($xmlTxt);
+
+			$xsl = new DOMDocument;
+			$xsl->load($xslUrl);
+
+			$proc = new XSLTProcessor();
+			$proc->importStyleSheet($xsl);
+
+			echo $proc->transformToXML($xml);
+		}
+	?>
+	<a onclick="hideFacets(); return false;">Enrouler facettes</a>
+</div>
+<br />

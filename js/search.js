@@ -108,6 +108,7 @@ function searchFacets(uriParams)
 {
 	var uri = "searchFacets.php?"+uriParams;
 	var url = encodeURI(uri);
+	console.log(url);
 	$("#facets").load(url);
 }
 
