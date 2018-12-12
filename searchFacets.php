@@ -107,20 +107,21 @@
 	$xslFacetsDisplay = "xslt/selectedFacets.xsl";
 
 
+	if($defaultFacets!=null)
+	{
+		$simpleXml = new SimpleXMLElement($defaultFacets);
+		$xmlTxt =  $simpleXml->asXML();
+		$xml = new DOMDocument('1.0', 'utf-8');
+		$xml->loadXML($xmlTxt);
 
-	$simpleXml = new SimpleXMLElement($defaultFacets);
-	$xmlTxt =  $simpleXml->asXML();
-	$xml = new DOMDocument('1.0', 'utf-8');
-	$xml->loadXML($xmlTxt);
+		$xsl = new DOMDocument;
+		$xsl->load($xslFacetsDisplay);
 
-	$xsl = new DOMDocument;
-	$xsl->load($xslFacetsDisplay);
+		$proc = new XSLTProcessor();
+		$proc->importStyleSheet($xsl);
 
-	$proc = new XSLTProcessor();
-	$proc->importStyleSheet($xsl);
-
-	echo $proc->transformToXML($xml);
-
+		echo $proc->transformToXML($xml);
+	}
 
 
 	//echo "<p><xmp>".$defaultFacets."</xmp></p>";
