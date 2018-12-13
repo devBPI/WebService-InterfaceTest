@@ -72,7 +72,7 @@ function addFacet(facetName, value)
 							if(valuesArray[k].nodeName == "value" && valuesArray[k].childNodes[0].nodeValue==value)
 							{
 								console.log(facetName + " - " + value + " already exists");
-								break;
+								return;
 							}
 						}
 						if(k >= valuesArray.length)
@@ -134,6 +134,92 @@ function addFacet(facetName, value)
 	//console.log(newFacets);
 	//console.log(new XMLSerializer().serializeToString(xmlDoc.documentElement));
 	//console.log(xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue);
+	window.location.search = urlParams.toString();
+}
+
+function removeFacet(facetName, value)
+{
+	var parser = new DOMParser();
+	console.log("Adding facet " + facet + " with value " + value);
+	var urlParams = new URLSearchParams(window.location.search);
+	console.log(window.location.search);
+	var curFacets = urlParams.get('facets');
+	console.log("Current facets: " + curFacets);
+	var newFacets = curFacets;
+	if(curFacets==null)
+	{
+		console.log("Current facets null.");
+		return;
+	}
+	else
+	{
+		var xmlDocument = parser.parseFromString(newFacets, "text/xml");
+		var documentRoot = xmlDocument.documentElement;
+		var facets = documentRoot.childNodes;
+		var i = 0;
+		var len = facets.length;
+		for(i = 0; i < len; i++)
+		{
+			var facet = facets[i];
+			if(facet.hasChildNodes())
+			{
+				var childNodesLen = facet.childNodes.length;
+				var j = 0;
+				for(j = 0; j < childNodesLen; j++)
+				{
+					if(facet.childNodes[j].nodeName == "name" && facet.childNodes[j].childNodes[0].nodeValue==facetName)
+					{
+						console.log(facetName + " found");
+						break;
+					}
+				}
+				if(j >= childNodesLen) // NOT FOUND
+					continue;
+				//ELSE
+				for(j = 0; j < childNodesLen; j++)
+				{
+					if(facet.childNodes[j].nodeName == "values")
+					{
+						var valuesArray = facet.childNodes[j].childNodes;
+						var len = valuesArray.length;
+						var k = 0;
+						for(k = 0; k < len; k++)
+						{
+							console.log("=> " + valuesArray[k].nodeName);
+							console.log("=> " + valuesArray[k].childNodes[0].nodeValue);
+							if(valuesArray[k].nodeName == "value" && valuesArray[k].childNodes[0].nodeValue==value)
+							{
+								console.log("Removing node: " + facetName + " - " + value);
+								var removedNode = documentRoot.childNodes[i].childNodes[j].childNodes[k];
+								documentRoot.childNodes[i].childNodes[j].removeChild(removedNode);
+								break;
+							}
+						}
+						if(valuesArray.length <= 0)
+						{
+							var removedNode = documentRoot.childNodes[i];
+							documentRoot.removeChild(removedNode);
+							break;
+						}
+						if(k >= len)
+						{
+							console.log(facetName + " - " + value + " don't exists");
+							return;
+						}
+						else
+							break;
+					}
+				}
+				break;
+				
+			}
+		}
+		newFacets=new XMLSerializer().serializeToString(documentRoot);
+		console.log(newFacets);
+	}
+	urlParams.set('facets', newFacets);
+	console.log(urlParams.toString());
+	var xmlDoc = parser.parseFromString(newFacets, "text/xml");
 	window.location.search = urlParams.toString();
 }
 

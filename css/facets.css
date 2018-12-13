@@ -1,5 +1,5 @@
 .facet,
-.facetCross
+.selectedFacet
 {
 	cursor: pointer;
 }
@@ -9,8 +9,7 @@
 	background: #CCCCCC;
 }
 
-.selectedFacet,
-.facetCross
+.selectedFacet
 {
 	margin: 5px;
 	margin-right:0px;
@@ -18,23 +17,15 @@
 	padding-left: 6px;
 	padding-right: 6px;
 	line-height: 22px;
-	border: 1px solid #FFC060;
-	border-top-left-radius: 12px;
-	border-bottom-left-radius: 12px;
-	background-color: #FFE090;
-}
-.facetCross
-{	
-	margin-left:0px;
-	border-left: none;
-	border-radius: 0px;
-	border-top-right-radius: 12px;
-	border-bottom-right-radius: 12px;
+	border: 1px solid #FFC070;
+	border-radius: 12px;
+	background-color: #FFC070;
 }
 
-.selectedFacet:hover,
-.facetCross:hover
+.selectedFacet:hover
 {
-	background-color: #FFC070;
+	background-color: #FFE090;
+	text-decoration: line-through;
+	color: #555555;
 }
 
