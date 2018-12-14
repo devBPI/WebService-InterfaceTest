@@ -30,14 +30,14 @@
 		<a id="parkourPresse" onclick="window.location='/presse'+window.location.search;" <?php if($parkour=="presse"){echo "class=\"selected-parkour\"";}?>>Presse</a>
 	</div>
 	<div class="autocomplete">
-		<input type="text" id="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13)search();" <?php if($defaultSearchText!=null){echo "value=\"".$defaultSearchText."\"";} ?> />
+		<input type="text" id="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();cleanFacets();}" <?php if($defaultSearchText!=null){echo "value=\"".$defaultSearchText."\"";} ?> />
 	</div>
 	<select id="searchBarSelection">
 		<option value="Generale">Générale</option>
 		<option value="Titre" disabled="true">Titre</option>
 		<option value="Auteur" disabled="true">Auteur</option>
 	</select>
-	<input id="loupe" type="submit" value=" " onclick="search();" />
+	<input id="loupe" type="submit" value=" " onclick="search();cleanFacets();" />
 	<input id="advancedSearchButton" type="submit" value="+" onclick="advancedSearch();" />
 </div>
 <div id="advancedSearchDiv" style="display:none;">

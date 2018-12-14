@@ -223,3 +223,14 @@ function removeFacet(facetName, value)
 	window.location.search = urlParams.toString();
 }
 
+function cleanFacets()
+{
+	var urlParams = new URLSearchParams(window.location.search);
+	var curFacets = urlParams.get('facets');
+	if(curFacets != null)
+	{
+		urlParams.delete('facets');
+	}
+	window.location.search = urlParams.toString();
+}
+

@@ -58,6 +58,8 @@
 	$defaultSecteur              = urldecode(isGetOk("secteur"));
 	$defaultAudience             = urldecode(isGetOk("audience"));
 
+	$defaultFacets               = urldecode(isGetOk("facets"));
+
 	$ini_array = parse_ini_file("etc/configuration.ini");
 	if(!$ini_array)
 		$ini_array = parse_ini_file("etc/default.ini");
@@ -97,10 +99,14 @@
 	if($defaultGenreLitt!=null)            $data["genre-literraire"]        = $defaultGenreLitt;
 	if($defaultSecteur!=null)              $data["secteur"]                 = $defaultSecteur;
 	if($defaultAudience!=null)             $data["audience"]                = $defaultAudience;
+	//if($defaultFacets!=null)               $data["facets"]                  = $defaultFacets;
 
 	$xmlData = array_to_xml_main("search-criterias", $data);
 	//$url = $ini_array["CatalogueWebServiceUrl"].'search/notices-online?parcours='.$parkour.'&page='.$page.'&rows='.$rows.'&general='.urlencode($_GET['text']);
-	$url = $ini_array["CatalogueWebServiceUrl"]."search/notices-online"."?criters=".urlencode($xmlData->asXML())."&rows=".$rows."&page=".$page;
+	$url = $ini_array["CatalogueWebServiceUrl"]."search/notices-online"."?criters=".urlencode($xmlData->asXML());
+	if($defaultFacets!=null)
+		$url.=("&facets=".urlencode("<facets-wrap>".$defaultFacets."</facets-wrap>"));
+	$url=$url."&rows=".$rows."&page=".$page;
 	//$result = getArrayToXmlIntoUrl($url, "search-criterias", $data);
 	$xslUrl = "xslt/searchResultsNoticesOnline.xsl";
 
