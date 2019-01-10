@@ -43,7 +43,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>RFHarvester V2</title>
+		<title>Interface WebService Test</title>
 		<link rel="stylesheet" type="text/css" href="/css/body.css" />
 		<link rel="stylesheet" type="text/css" href="/css/head.css" />
 		<link rel="stylesheet" type="text/css" href="/css/middle.css" />
