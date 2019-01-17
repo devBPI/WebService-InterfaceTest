@@ -7,8 +7,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		<div style="font-weight: bold;" id="collection_id">configuration_id : <xsl:value-of select="resultatDe"/></div>
 		<div style="font-weight: bold;" id="source_id">source_id : <xsl:value-of select="sourceId"/></div>
 		<br />
-		<xsl:if test="types">
-			<div id="types"><xsl:value-of select="type"/></div>
+		<xsl:if test="type">
+			<div id="types">Type : <xsl:value-of select="type"/></div>
 		</xsl:if>
 		<xsl:if test="titres">
 			<div id="titres">
@@ -31,9 +31,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="traductionDes">
+		<xsl:if test="traductionsDe">
 			<div id="traductionsDe">
-				<xsl:for-each select="traductionDes/traductionsDe">
+				<xsl:for-each select="traductionsDe/traductionDe">
 					<div>Traduction de <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
@@ -179,10 +179,19 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="titresEnsembles">
+		<xsl:if test="titresEnsemble">
 			<div id="titresEnsemble">
 				Titre(s) d'ensemble: 
-				<xsl:for-each select="titresEnsembles/titreEnsemble">
+				<xsl:for-each select="titresEnsemble/titreEnsemble">
+					<xsl:if test="position() > 1">, </xsl:if>
+					<xsl:value-of select="."/>
+				</xsl:for-each>
+			</div>
+		</xsl:if>
+		<xsl:if test="titresEnRelation">
+			<div id="titresEnRelation">
+				Titre(s) en relation: 
+				<xsl:for-each select="titresEnRelation/titreEnRelation">
 					<xsl:if test="position() > 1">, </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
