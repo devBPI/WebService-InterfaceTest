@@ -38,7 +38,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="(type='Revue') and (type='Numrev - Article')">
+		<xsl:if test="(type='Revue, journal') or (type='Revue numérique') or (type='Article')">
 			<div id="titresAnalytic">
 				<xsl:for-each select="titresAnalytic/titreAnalytic">
 					<div class="titreForm">Dans <xsl:value-of select="."/></div>
