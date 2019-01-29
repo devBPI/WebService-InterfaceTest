@@ -64,8 +64,11 @@
 	</head>
 	<body>
 		<div class="pageHead" style="margin-bottom:6px;">
-			<div style="float:right;">
+			<div style="float:right; text-align:right;">
 				<?php
+					echo "<p>Catalog Webservice version : ";
+					include('getWebServiceVersion.php');
+					echo "</p>";
 					echo "<a target=\"_blank\" href=\"".$ini_array["CatalogueWebServiceUrl"]."\">WebService Doc</a>";
 					echo "<br />";
 					echo "<a target=\"_blank\" href=\"".$ini_array["CatalogueWebServiceUrl"]."application.wadl\">WADL File</a>";
