@@ -105,7 +105,7 @@
 									<div><xsl:value-of select="."/></div>
 								</xsl:for-each>
 							</div>
-							<xsl:if test="(./exemplaires)">
+							<!--<xsl:if test="(./exemplaires)">
 								<div class="exemplaires">
 									<xsl:for-each select="./exemplaires/exemplaire">
 										<div class="exemplaire">
@@ -128,7 +128,7 @@
 										</div>
 									</xsl:for-each>
 								</div>
-							</xsl:if>
+							</xsl:if>-->
 							<xsl:if test="(./liens)">
 								<div class="liens">
 									<xsl:for-each select="./liens/lien">
