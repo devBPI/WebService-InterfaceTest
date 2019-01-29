@@ -72,7 +72,7 @@
 					echo "<br />";
 					echo "<a target=\"_blank\" href=\"".$ini_array["CatalogueWebServiceUrl"]."api/swagger.json\">swagger.json</a>";
 					echo "<br />";
-					echo "<a target=\"_blank\" href=\"".$ini_array["CatalogueWebServiceUrl"]."/webjars/swagger-ui/3.17.6/index.html?url=".$ini_array["CatalogueWebServiceUrl"]."api/swagger.json\">SWAGGER</a>";
+					echo "<a target=\"_blank\" href=\"".$ini_array["CatalogueWebServiceUrl"]."webjars/swagger-ui/3.17.6/index.html?url=".$ini_array["CatalogueWebServiceUrl"]."api/swagger.json\">SWAGGER</a>";
 				?>
 			</div>
 		<?php
