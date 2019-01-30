@@ -76,37 +76,41 @@
 <!--					<a class="notice-link" href="./notice/{./permalink}">-->
 						<div class="notice" style="overflow:hidden;">
 							<xsl:if test="./isbn">
-								<img class="couverture" style="float:left; margin-left: 4px; margin-right: 4px;" src="{$imgUrl}{./isbn}"/>
+								<div>
+									<img class="couverture" style="float:left; margin-left: 4px; margin-right: 4px;" src="{$imgUrl}{./isbn}"/>
+								</div>
 							</xsl:if>
-							<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="./row"/></div>
-							<div class="" style="display: inline-block; float:right; margin-right: 4px; text-align: right;">
-								<xsl:value-of select="./type"/><br />
-								<xsl:if test="./resumes">
-									<span title="Résumé: {./resumes}"><img src="/img/Gnome-dialog-question.svg" style="width: 24px; height: 24px; cursor: help;" /></span>
-								</xsl:if>
-								<xsl:if test="(./type='Musique' or ./type='Docelec') and ./contenus">
-									<span title="Contenu: {./contenus}"><img src="/img/Gnome-dialog-question.svg" style="width: 24px; height: 24px; cursor: help;" /></span>
-								</xsl:if>
-							</div>
-							<div class="titres">
-								<xsl:for-each select="./titres/titre">
-									<div><xsl:value-of select="."/></div>
-								</xsl:for-each>
-							</div>
-							<div class="auteurs">
-								<xsl:for-each select="./auteurs/auteur">
-									<div>par <xsl:value-of select="."/></div>
-								</xsl:for-each>
-							</div>
-							<div class="editeurs">
-								<xsl:for-each select="./editeurs/editeur">
-									<div><xsl:value-of select="."/></div>
-								</xsl:for-each>
-							</div>
-							<div class="dates">
-								<xsl:for-each select="./dates/date">
-									<div><xsl:value-of select="."/></div>
-								</xsl:for-each>
+							<div>
+								<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="./row"/></div>
+								<div class="" style="display: inline-block; float:right; margin-right: 4px; text-align: right;">
+									<xsl:value-of select="./type"/><br />
+									<xsl:if test="./resumes">
+										<span title="Résumé: {./resumes}"><img src="/img/Gnome-dialog-question.svg" style="width: 24px; height: 24px; cursor: help;" /></span>
+									</xsl:if>
+									<xsl:if test="(./type='Musique' or ./type='Docelec') and ./contenus">
+										<span title="Contenu: {./contenus}"><img src="/img/Gnome-dialog-question.svg" style="width: 24px; height: 24px; cursor: help;" /></span>
+									</xsl:if>
+								</div>
+								<div class="titres">
+									<xsl:for-each select="./titres/titre">
+										<div><xsl:value-of select="."/></div>
+									</xsl:for-each>
+								</div>
+								<div class="auteurs">
+									<xsl:for-each select="./auteurs/auteur">
+										<div>par <xsl:value-of select="."/></div>
+									</xsl:for-each>
+								</div>
+								<div class="editeurs">
+									<xsl:for-each select="./editeurs/editeur">
+										<div><xsl:value-of select="."/></div>
+									</xsl:for-each>
+								</div>
+								<div class="dates">
+									<xsl:for-each select="./dates/date">
+										<div><xsl:value-of select="."/></div>
+									</xsl:for-each>
+								</div>
 							</div>
 							<xsl:if test="(./exemplaires)">
 								<div class="exemplaires">
