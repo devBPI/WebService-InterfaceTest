@@ -76,8 +76,8 @@
 <!--					<a class="notice-link" href="./notice/{./permalink}">-->
 						<div class="notice" style="overflow:hidden;">
 							<xsl:if test="./isbn">
-								<div>
-									<img class="couverture" style="float:left; margin-left: 4px; margin-right: 4px;" src="{$imgUrl}{./isbn}"/>
+								<div style="float:left; margin-left: 4px; margin-right: 4px;" >
+									<img class="couverture" src="{$imgUrl}{./isbn}"/>
 								</div>
 							</xsl:if>
 							<div>
