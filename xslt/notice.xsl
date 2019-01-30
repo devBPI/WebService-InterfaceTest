@@ -7,9 +7,17 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		<div style="font-weight: bold;" id="collection_id">configuration_id : <xsl:value-of select="resultatDe"/></div>
 		<div style="font-weight: bold;" id="source_id">source_id : <xsl:value-of select="sourceId"/></div>
 		<br />
+		<xsl:if test="isbns">
+			<div id="couverture">
+				<img class="couverture" src="{$couvUrl}{isbns/isbn}"/>
+			</div>
+		</xsl:if>
 		<xsl:if test="type">
 			<div id="types">Type : <xsl:value-of select="type"/></div>
 		</xsl:if>
+		<!--<xsl:if test="./isbn">
+			<img class="couverture" style="float:left; margin-left: 4px; margin-right: 4px;" src="{$imgUrl}{./isbn}"/>
+		</xsl:if>-->
 		<xsl:if test="titres">
 			<div id="titres">
 				<xsl:for-each select="titres/titre">
@@ -325,6 +333,15 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		</div>-->
 
 		<br />
+
+		<xsl:if test="isbns">
+			<div id="quatrieme">
+				<xsl:value-of select="$quatrUrl"/><xsl:value-of select="isbns/isbn"/>
+			</div>
+			<div id="tableDesMatieres">
+				<xsl:value-of select="$tabMatUrl"/><xsl:value-of select="isbns/isbn"/>
+			</div>
+		</xsl:if>
 
 		<xsl:for-each select="exemplaires/exemplaire">
 			<div class="exemplaire">

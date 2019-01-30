@@ -59,6 +59,11 @@
 
 		$proc = new XSLTProcessor;
 		$proc->importStyleSheet($xsl);
+
+		$proc->setParameter('', 'couvUrl', $ini_array["CatalogueWebServiceUrl"]."electre/couverture/");
+		$proc->setParameter('', 'quatrUrl', $ini_array["CatalogueWebServiceUrl"]."electre/quatrieme/");
+		$proc->setParameter('', 'tabMatUrl', $ini_array["CatalogueWebServiceUrl"]."electre/tabledesmatieres/");
+
 		echo $proc->transformToXML($xml);
 	}
 	else

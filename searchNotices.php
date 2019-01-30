@@ -127,6 +127,8 @@
 
 		$proc = new XSLTProcessor();
 		$proc->importStyleSheet($xsl);
+		
+		$proc->setParameter('', 'imgUrl', $ini_array["CatalogueWebServiceUrl"]."electre/imagette/");
 	 
 		echo $proc->transformToXML($xml);
 	}

@@ -75,6 +75,9 @@
 				<xsl:for-each select="notices-online/noticesOnlineList/notice-online">
 <!--					<a class="notice-online-link" href="./notice/{./permalink}">-->
 						<div class="notice-online" style="overflow:hidden;">
+							<xsl:if test="./isbn">
+								<img class="couverture" style="float:left; margin-left: 4px; margin-right: 4px;" src="{$imgUrl}{./isbn}"/>
+							</xsl:if>
 							<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="./row"/></div>
 							<div class="" style="display: inline-block; float:right; margin-right: 4px; text-align: right;">
 								<xsl:value-of select="./type"/><br />
