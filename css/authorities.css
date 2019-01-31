@@ -1,0 +1,16 @@
+#mostRelevantAuthority
+{
+	padding: 3px;
+	border: 1px solid black;
+	cursor: default;
+}
+
+#mostRelevantAuthority:hover
+{
+	background: #CCCCCC;
+}
+
+.authorithy a
+{
+	cursor: pointer;
+}

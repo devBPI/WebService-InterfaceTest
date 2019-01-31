@@ -30,11 +30,6 @@ function addFacet(facetName, value)
 	}
 	else
 	{
-		console.log("###");
-		console.log("###");
-		console.log("###");
-		console.log("###");
-		console.log("###");
 		var xmlDocument = parser.parseFromString(newFacets, "text/xml");
 		var documentRoot = xmlDocument.documentElement;
 		var facets = documentRoot.childNodes;
@@ -95,11 +90,6 @@ function addFacet(facetName, value)
 			var xmlElement = parser.parseFromString("<facet>"+"<name>"+facetName+"</name>"+"<values>"+"<value>"+value+"</value>"+"</values>"+"</facet>", "text/xml").documentElement;
 			documentRoot.appendChild(xmlElement);
 		}
-		console.log("###");
-		console.log("###");
-		console.log("###");
-		console.log("###");
-		console.log("###");
 		newFacets=new XMLSerializer().serializeToString(documentRoot);
 		//console.log(new XMLSerializer().serializeToString(documentRoot));
 		//console.log("###");

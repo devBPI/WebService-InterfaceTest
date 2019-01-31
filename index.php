@@ -53,6 +53,7 @@
 		<link rel="stylesheet" type="text/css" href="/css/searchbar.css" />
 		<link rel="stylesheet" type="text/css" href="/css/notices.css" />
 		<link rel="stylesheet" type="text/css" href="/css/facets.css" />
+		<link rel="stylesheet" type="text/css" href="/css/authorities.css" />
 		<style type="text/css" media="screen"></style>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript" language="javascript"></script>

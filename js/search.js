@@ -126,7 +126,7 @@ function searchNoticesOnline(uriParams)
 	$("#notices-online").load(url);
 }
 
-function searchNoticesNoticesOnline()
+function getUriParams()
 {
 	var searchCriterias = getSearchCriterias();
 	var parkour = getParkour();
@@ -140,11 +140,35 @@ function searchNoticesNoticesOnline()
 
 	searchCriterias.set("parkour", parkour);
 	uriParams = searchCriterias.toString();
-	//console.log(uriParams);
 
+	//console.log(uriParams);
+	return uriParams;
+}
+
+function searchNoticesNoticesOnline(uriParams)
+{
+	var searchCriterias = getSearchCriterias();
+	var parkour = getParkour();
+	var urlParams = new URLSearchParams(window.location.search);
+	var curFacets = urlParams.get('facets');
+	if(curFacets!=null)
+		searchCriterias.set("facets", curFacets);
+	var uriParams = searchCriterias.toString();
+	//console.log("/"+parkour+"?"+uriParams);
+	history.pushState({}, null, "/"+parkour+"?"+uriParams);
+
+	searchCriterias.set("parkour", parkour);
+	uriParams = searchCriterias.toString();
 	searchNotices(uriParams);
 	searchNoticesOnline(uriParams);
 	searchFacets(uriParams);
+}
+
+function searchMostRelevantAuthority(uriParams)
+{
+	var uri = "searchMostRelevantAuthority.php?"+uriParams;
+	var url = encodeURI(uri);
+	$("#mostRelevantAuthority").load(url);
 }
 
 function search()
@@ -152,7 +176,9 @@ function search()
 	//searchadvanced();
 	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
-	searchNoticesNoticesOnline();
+	var uriParams = getUriParams();
+	searchNoticesNoticesOnline(uriParams);
+	searchMostRelevantAuthority(uriParams);
 }
 
 function changeNoticesRows(currentPage, currentRows)
