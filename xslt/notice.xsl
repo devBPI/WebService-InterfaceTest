@@ -76,18 +76,10 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</div>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:if test="resumes">
+		<xsl:if test="resumes/resume">
 			<div id="resume">
 				Résumé : 
 				<xsl:for-each select="resumes/resume">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
-				</xsl:for-each>
-			</div>
-		</xsl:if>
-		<xsl:if test="pistes">
-			<div id="pistes">
-				Pistes : 
-				<xsl:for-each select="pistes/piste">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
@@ -152,10 +144,16 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="contenus">
+		<xsl:if test="contenus/contenu">
+			<xsl:if test="(type='Musique')">
+				Pistes : 
+			</xsl:if>
+			<xsl:if test="(type!='Musique')">
+				Contenu : 
+			</xsl:if>
 			<div id="contenus">
 				<xsl:for-each select="contenus/contenu">
-					<div>Contenu : <xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
