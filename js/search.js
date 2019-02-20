@@ -79,7 +79,9 @@ function getSearchCriterias()
 
 	var urlParams = new URLSearchParams();
 	urlParams.set("general", document.getElementById("searchbar").value);
+	console.log(document.getElementById("advancedsearch-titre").value);
 	urlParams.set("titre", document.getElementById("advancedsearch-titre").value);
+	console.log(urlParams.get("titre"));
 	urlParams.set("auteur", document.getElementById("advancedsearch-auteur").value);
 	urlParams.set("sujet", document.getElementById("advancedsearch-sujet").value);
 	urlParams.set("isbnissncommercial", document.getElementById("advancedsearch-isbnissncommercial").value);
@@ -102,7 +104,8 @@ function getSearchCriterias()
 	urlParams.set("audience", document.getElementById("advancedsearch-audience").value);
 
 	console.log(urlParams);
-
+	console.log(urlParams.toString());
+alert(urlParams.toString());
 	return urlParams;
 }
 
@@ -424,8 +427,12 @@ function autocomplete(inp, arr)
 window.onload = function(e)
 {
 	autocomplete(document.getElementById("searchbar"), []);
-	//var searchCriterias = getSearchCriterias();
-	search();
+	var urlParams = new URLSearchParams(window.location.search);
+	if(urlParams.toString()!=null && urlParams.toString()!="")
+	{
+		console.log("UrlParams found");
+		search();
+	}
 	//if(searchCriterias.getAll()!=null)
 	//	search();
 }
