@@ -105,7 +105,7 @@ function getSearchCriterias()
 
 	console.log(urlParams);
 	console.log(urlParams.toString());
-alert(urlParams.toString());
+//alert(urlParams.toString());
 	return urlParams;
 }
 

@@ -89,6 +89,7 @@
 			$url .= "?" . implode("&", $parts);
 			$url = "{$_SERVER['HTTP_HOST']}{$url}";
 			echo "<a href=\"//{$url}\">{$url}</a>";*/
+			echo "Titre default : " . $defaultTitre;
 		?>
 		</div>
 		<div class="pageMid">
