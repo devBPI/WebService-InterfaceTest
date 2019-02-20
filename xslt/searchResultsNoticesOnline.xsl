@@ -92,6 +92,11 @@
 								<xsl:for-each select="./titres/titre">
 									<div><xsl:value-of select="."/></div>
 								</xsl:for-each>
+								<div class="analytiques">
+									<xsl:for-each select="./titresAnalytiques/titreAnalytique">
+										<div>Dans <xsl:value-of select="."/></div>
+									</xsl:for-each>
+								</div>
 							</div>
 							<div class="auteurs">
 								<xsl:for-each select="./auteurs/auteur">

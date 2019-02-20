@@ -58,7 +58,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				Realisateur(s) : 
 				<div id="realisateurs">
 					<xsl:for-each select="realisateurs/realisateur">
-						<div style="margin-left: 1em;">Par <xsl:value-of select="."/></div>
+						<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 					</xsl:for-each>
 				</div>
 			</xsl:when>
