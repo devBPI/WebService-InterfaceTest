@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template match="/authority">
 		<div class="authority" style="margin-left: 2px;">
-			<div>Notice d'Autorité la plus relevante trouvée:</div>
+			<br />
 			<div><span style="margin-right: 4px; text-decoration: underline;">Type:</span><xsl:value-of select="type"/></div>
 			<div><span style="margin-right: 4px; text-decoration: underline;">Nom:</span><xsl:value-of select="formeRetenue"/></div>
 			<xsl:if test="formesParalleles/formeParallele">

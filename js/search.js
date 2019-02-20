@@ -101,6 +101,8 @@ function getSearchCriterias()
 	urlParams.set("secteur", document.getElementById("advancedsearch-secteur").value);
 	urlParams.set("audience", document.getElementById("advancedsearch-audience").value);
 
+	console.log(urlParams);
+
 	return urlParams;
 }
 
@@ -116,6 +118,7 @@ function searchNotices(uriParams)
 {
 	var uri = "searchNotices.php?"+uriParams;
 	var url = encodeURI(uri);
+	console.log(url);
 	$("#notices").load(url);
 }
 
@@ -123,6 +126,7 @@ function searchNoticesOnline(uriParams)
 {
 	var uri = "searchNoticesOnline.php?"+uriParams;
 	var url = encodeURI(uri);
+	console.log(url);
 	$("#notices-online").load(url);
 }
 
@@ -174,6 +178,7 @@ function searchMostRelevantAuthority(uriParams)
 function search()
 {
 	//searchadvanced();
+	console.log("documents getted");
 	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	var uriParams = getUriParams();
@@ -418,7 +423,9 @@ function autocomplete(inp, arr)
 
 window.onload = function(e)
 {
-	autocomplete(document.getElementById("searchbar"), []);;
-	if(document.getElementById("searchbar").value!="")
-		search();
+	autocomplete(document.getElementById("searchbar"), []);
+	//var searchCriterias = getSearchCriterias();
+	search();
+	//if(searchCriterias.getAll()!=null)
+	//	search();
 }
