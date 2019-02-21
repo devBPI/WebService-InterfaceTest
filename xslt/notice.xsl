@@ -76,14 +76,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</div>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:if test="resumes/resume">
-			<div id="resume">
-				Résumé : 
-				<xsl:for-each select="resumes/resume">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
-				</xsl:for-each>
-			</div>
-		</xsl:if>
 		<xsl:if test="auteursSecondaires">
 			<div id="auteursSecondaires">
 				Autre(s) auteur(s)
@@ -140,6 +132,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			<div id="titresAutresFormes">
 				Autre(s) forme(s) de titre : 
 				<xsl:for-each select="titresAlternatifs/titreAlternatif">
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+				</xsl:for-each>
+			</div>
+		</xsl:if>
+		<xsl:if test="(type!='Musique') and (resumes/resume)">
+			<div id="resume">
+				Résumé : 
+				<xsl:for-each select="resumes/resume">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
