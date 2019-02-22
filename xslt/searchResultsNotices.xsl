@@ -84,6 +84,12 @@
 								<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="./row"/></div>
 								<div class="" style="display: inline-block; float:right; margin-right: 4px; text-align: right;">
 									<xsl:value-of select="./type"/><br />
+									<xsl:if test="(./type='Vidéo') and ./formats/format">
+										<xsl:for-each select="./formats/format">
+											<div class="format"><xsl:value-of select="."/></div>
+										</xsl:for-each>
+									</xsl:if>
+
 									<xsl:if test="(./type!='Musique' and ./type!='Docelec') and ./resumes">
 										<span title="Résumé: {./resumes}"><img src="/img/Gnome-dialog-question.svg" style="width: 24px; height: 24px; cursor: help;" /></span>
 									</xsl:if>
