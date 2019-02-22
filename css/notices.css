@@ -101,6 +101,12 @@ a.notice-online-link
 	font: 16px Arial;
 }
 
+.format
+{
+	font-size: small;
+	font-style: italic;
+}
+
 .exemplaire-name
 {
 	float: left;
