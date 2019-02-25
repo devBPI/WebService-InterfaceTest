@@ -165,7 +165,7 @@
 							<div class="configurationOrigin">
 								<div>Resultat de <xsl:value-of select="./configurationName"/>
 								<xsl:if test="(./configurationPublicUrl)">
-									<a href="./configurationPublicUrl"><xsl:value-of select="./configurationPublicUrl"/></a>
+									<a href="{./configurationPublicUrl}"><xsl:value-of select="./configurationPublicUrl"/></a>
 								</xsl:if>
 								</div>
 							</div>

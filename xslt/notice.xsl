@@ -7,7 +7,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		<div style="font-weight: bold;" id="collection_id">configuration_id : <xsl:value-of select="resultatDe"/></div>
 		<div style="font-weight: bold;" id="source_id">source_id : <xsl:value-of select="sourceId"/></div>
 		<br />
-		<xsl:if test="isbns">
+		<xsl:if test="isbns/isbn">
 			<div id="couverture">
 				<img class="couverture" src="{$couvUrl}{isbns/isbn}"/>
 			</div>
@@ -18,14 +18,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		<!--<xsl:if test="./isbn">
 			<img class="couverture" style="float:left; margin-left: 4px; margin-right: 4px;" src="{$imgUrl}{./isbn}"/>
 		</xsl:if>-->
-		<xsl:if test="titres">
+		<xsl:if test="titres/titre">
 			<div id="titres">
 				<xsl:for-each select="titres/titre">
 					<div>Titre: <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="titresForm">
+		<xsl:if test="titresForm/titreForm">
 			<div id="titresForm">
 				<xsl:for-each select="titresForm/titreForm">
 					<div style="font-style: italic; font-size: small;" class="titreForm"><xsl:value-of select="."/></div>
@@ -39,7 +39,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="traductionsDe">
+		<xsl:if test="traductionsDe/traductionDe">
 			<div id="traductionsDe">
 				<xsl:for-each select="traductionsDe/traductionDe">
 					<div>Traduction de <xsl:value-of select="."/></div>
@@ -76,7 +76,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</div>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:if test="auteursSecondaires">
+		<xsl:if test="auteursSecondaires/auteurSecondaire">
 			<div id="auteursSecondaires">
 				Autre(s) auteur(s)
 				<xsl:if test="(type='Musique')">
@@ -89,7 +89,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="contributeurs">
+		<xsl:if test="contributeurs/contributeur">
 			<div id="contributeurs">
 				Contributeur(s) : 
 				<xsl:for-each select="contributeurs/contributeur">
@@ -97,7 +97,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="editeurs">
+		<xsl:if test="editeurs/editeur">
 			<div id="editeurs">
 				Editeur(s) : 
 				<xsl:for-each select="editeurs/editeur">
@@ -121,14 +121,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="titresUniform">
+		<xsl:if test="titresUniform/titreUniforme">
 			<div id="oeuvres">
 				<xsl:for-each select="titresUniform/titreUniform">
 					<div>Oeuvre : <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="titresAlternatifs">
+		<xsl:if test="titresAlternatifs/titreAlternatif">
 			<div id="titresAutresFormes">
 				Autre(s) forme(s) de titre : 
 				<xsl:for-each select="titresAlternatifs/titreAlternatif">
@@ -157,7 +157,15 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="langues">
+		<xsl:if test="notes/note">
+			Notes : 
+			<div id="notes">
+				<xsl:for-each select="notes/note">
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+				</xsl:for-each>
+			</div>
+		</xsl:if>
+		<xsl:if test="langues/langue">
 			<div id="langues">
 				Langue(s) :
 				<xsl:for-each select="langues/langue">
@@ -171,21 +179,21 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="descriptionsMaterielle">
+		<xsl:if test="descriptionsMaterielle/descriptionMaterielle">
 			<div id="descriptionsMaterielle">
 				<xsl:for-each select="descriptionsMaterielle/descriptionMaterielle">
 					<div>Description matérielle : <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="seriesCollection">
+		<xsl:if test="seriesCollection/serieCollection">
 			<div id="seriesCollection">
 				<xsl:for-each select="seriesCollection/serieCollection">
 					<div>Série / Collection : <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="titresEnsemble">
+		<xsl:if test="titresEnsemble/titreEnsemble">
 			<div id="titresEnsemble">
 				Titre(s) d'ensemble: 
 				<xsl:for-each select="titresEnsemble/titreEnsemble">
@@ -194,7 +202,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="titresEnRelation">
+		<xsl:if test="titresEnRelation/titreEnRelation">
 			<div id="titresEnRelation">
 				Titre(s) en relation: 
 				<xsl:for-each select="titresEnRelation/titreEnRelation">
@@ -203,7 +211,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="reunits">
+		<xsl:if test="reunits/reunit">
 			<div id="reunits">
 				Reunit : 
 				<xsl:for-each select="reunits/reunit">
@@ -221,14 +229,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="conservations">
+		<xsl:if test="conservations/conservation">
 			<div id="conservations">
 				<xsl:for-each select="conservations/conservation">
 					<div>Conservation : <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="sujets">
+		<xsl:if test="sujets/sujet">
 			<div id="sujets">
 				Sujet(s) :
 				<xsl:for-each select="sujets/sujet">
@@ -236,28 +244,28 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="epoques">
+		<xsl:if test="epoques/epoque">
 			<div id="epoques">
 				<xsl:for-each select="epoques/epoque">
 					<div>Epoque : <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="lieux">
+		<xsl:if test="lieux/lieu">
 			<div id="lieux">
 				<xsl:for-each select="lieux/lieu">
 					<div>Lieu : <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="genres">
+		<xsl:if test="genres/genre">
 			<div id="genres">
 				<xsl:for-each select="genres/genre">
 					<div>Genre : <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="themes">
+		<xsl:if test="themes/theme">
 			<div id="themes">
 				Thème(s) :
 				<xsl:for-each select="themes/theme">
@@ -265,14 +273,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="isbns">
+		<xsl:if test="isbns/isbn">
 			<div id="isbns">
 				<xsl:for-each select="isbns/isbn">
 					<div>ISBN : <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="issns">
+		<xsl:if test="issns/issn">
 			<div id="issns">
 				<xsl:for-each select="issns/issn">
 					<div>ISSN : <xsl:value-of select="."/></div>
@@ -287,21 +295,21 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="indices">
+		<xsl:if test="indices/indice">
 			<div id="indices">
 				<xsl:for-each select="indices/indice">
 					<div>Indice : <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="publiques">
+		<xsl:if test="publiques/publique">
 			<div id="publiques">
 				<xsl:for-each select="publiques/publique">
 					<div>Public : <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="droits">
+		<xsl:if test="droits/droit">
 			<div id="droits">
 				Droit(s) :
 				<xsl:for-each select="droits/droit">
@@ -309,17 +317,17 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="lieuxManifestations">
+		<xsl:if test="lieuxManifestations/lieuManifestation">
 			<div id="lieuxManifestations">
 				<xsl:for-each select="lieuxManifestations/lieuManifestation">
 					<div>Lieu de la manifestation : <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="origines">
+		<xsl:if test="origines/origine">
 			<div id="origines">
 				<xsl:for-each select="origines/origine">
-					<div style="font-size: smaller; color: grey; margin-left: 2em;">Origine : <xsl:value-of select="."/></div>
+					<div style="font-size: smaller; color: grey;">Origine : <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -332,7 +340,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 		<br />
 
-		<xsl:if test="isbns">
+		<xsl:if test="isbns/isbn">
 			<div id="quatrieme">
 				<xsl:value-of select="$quatrUrl"/><xsl:value-of select="isbns/isbn"/>
 			</div>
