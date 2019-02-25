@@ -128,7 +128,8 @@ a.notice-online-link
 	font : 13px Arial;
 }
 
-.titres .analytiques
+.titres .analytiques,
+.configurationOrigin
 {
 	font-size: small;
 }

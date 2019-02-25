@@ -149,6 +149,13 @@
 									<div><a href="./notice/{.}"><xsl:value-of select="."/></a></div>
 								</xsl:for-each>
 							</div>
+							<div class="configurationOrigin">
+								<div>Resultat de <xsl:value-of select="./configurationName"/>
+								<xsl:if test="(./configurationPublicUrl)">
+									<a href="./configurationPublicUrl"><xsl:value-of select="./configurationPublicUrl"/></a>
+								</xsl:if>
+								</div>
+							</div>
 							<div style="clear:both"></div>
 						</div>
 <!--					</a>-->
