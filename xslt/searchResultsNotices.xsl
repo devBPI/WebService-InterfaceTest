@@ -111,6 +111,9 @@
 									<xsl:for-each select="./auteurs/auteur">
 										<div>par <xsl:value-of select="."/></div>
 									</xsl:for-each>
+									<xsl:for-each select="./realisateurs/realisateur">
+										<div>par <xsl:value-of select="."/></div>
+									</xsl:for-each>
 								</div>
 								<div class="editeurs">
 									<xsl:for-each select="./editeurs/editeur">
