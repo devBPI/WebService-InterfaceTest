@@ -88,11 +88,11 @@
 								</xsl:if>
 
 
-								<xsl:if test="(./type!='Musique' and ./type!='Docelec') and ./resumes">
-									<span title="Résumé: {./resumes}"><img src="/img/Gnome-dialog-question.svg" style="width: 24px; height: 24px; cursor: help;" /></span>
+								<xsl:if test="(./type!='Musique' and ./type!='Docelec' and ./type!='Site et base') and ./resumes">
+									<span title="Résumé : {./resumes}"><img src="/img/Gnome-dialog-question.svg" style="width: 24px; height: 24px; cursor: help;" /></span>
 								</xsl:if>
-								<xsl:if test="(./type='Musique' or ./type='Docelec') and ./contenus">
-									<span title="Contenu: {./contenus}"><img src="/img/Gnome-dialog-question.svg" style="width: 24px; height: 24px; cursor: help;" /></span>
+								<xsl:if test="(./type='Musique' or ./type='Docelec' or ./type='Site et base') and ./contenus">
+									<span title="Contenu : {./contenus}"><img src="/img/Gnome-dialog-question.svg" style="width: 24px; height: 24px; cursor: help;" /></span>
 								</xsl:if>
 							</div>
 							<div class="titres">
