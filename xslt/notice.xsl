@@ -71,7 +71,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					: 
 					<xsl:for-each select="auteurs/auteur">
 						<xsl:if test="position() > 1">, </xsl:if>
-						<xsl:value-of select="."/>
+						<xsl:value-of select="value"/>
+						<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
 					</xsl:for-each>
 				</div>
 			</xsl:otherwise>
@@ -85,15 +86,23 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				: 
 				<xsl:for-each select="auteursSecondaires/auteurSecondaire">
 					<xsl:if test="position() > 1">, </xsl:if>
-					<xsl:value-of select="."/>
+					<xsl:value-of select="value"/>
+					<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="contributeurs/contributeur">
 			<div id="contributeurs">
 				Contributeur(s) : 
+				<xsl:if test="type='Vidéo'">
+					<xsl:for-each select="auteurs/auteur">
+						<div style="margin-left: 1em;"><xsl:value-of select="value"/></div>
+						<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+					</xsl:for-each>
+				</xsl:if>
 				<xsl:for-each select="contributeurs/contributeur">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;"><xsl:value-of select="value"/></div>
+					<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -189,7 +198,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		<xsl:if test="seriesCollection/serieCollection">
 			<div id="seriesCollection">
 				<xsl:for-each select="seriesCollection/serieCollection">
-					<div>Série / Collection : <xsl:value-of select="."/></div>
+					<div>Série / Collection : <xsl:value-of select="value"/></div>
+					<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -240,7 +250,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			<div id="sujets">
 				Sujet(s) :
 				<xsl:for-each select="sujets/sujet">
-					<div><xsl:value-of select="."/></div>
+					<div><xsl:value-of select="value"/></div>
+					<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
