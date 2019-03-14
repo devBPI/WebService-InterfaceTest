@@ -71,7 +71,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					: 
 					<xsl:for-each select="auteurs/auteur">
 						<xsl:if test="position() > 1">, </xsl:if>
-						<xsl:value-of select="value"/>
+						<xsl:value-of select="./value"/>
 						<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
 					</xsl:for-each>
 				</div>
@@ -86,7 +86,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				: 
 				<xsl:for-each select="auteursSecondaires/auteurSecondaire">
 					<xsl:if test="position() > 1">, </xsl:if>
-					<xsl:value-of select="value"/>
+					<xsl:value-of select="./value"/>
 					<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
 				</xsl:for-each>
 			</div>
@@ -96,12 +96,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				Contributeur(s) : 
 				<xsl:if test="type='Vidéo'">
 					<xsl:for-each select="auteurs/auteur">
-						<div style="margin-left: 1em;"><xsl:value-of select="value"/></div>
+						<div style="margin-left: 1em;"><xsl:value-of select="./value"/></div>
 						<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
 					</xsl:for-each>
 				</xsl:if>
 				<xsl:for-each select="contributeurs/contributeur">
-					<div style="margin-left: 1em;"><xsl:value-of select="value"/></div>
+					<div style="margin-left: 1em;"><xsl:value-of select="./value"/></div>
 					<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
 				</xsl:for-each>
 			</div>
@@ -114,13 +114,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="datesPublication">
-			<div id="datesPublication">
+		<xsl:if test="datesTextuelles/dateTextuelle">
+			<div id="dates">
 				Date(s) :
-				<!--TODO
-				<xsl:for-each select="notice/s/">
-					<div><xsl:value-of select="."/></div>
-				</xsl:for-each>-->
+				<xsl:for-each select="datesTextuelles/dateTextuelle">
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="(type='Revue')">
@@ -198,7 +197,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		<xsl:if test="seriesCollection/serieCollection">
 			<div id="seriesCollection">
 				<xsl:for-each select="seriesCollection/serieCollection">
-					<div>Série / Collection : <xsl:value-of select="value"/></div>
+					<div>Série / Collection : <xsl:value-of select="./value"/></div>
 					<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
 				</xsl:for-each>
 			</div>
@@ -250,7 +249,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			<div id="sujets">
 				Sujet(s) :
 				<xsl:for-each select="sujets/sujet">
-					<div><xsl:value-of select="value"/></div>
+					<div style="margin-left: 1em;"><xsl:value-of select="./value"/></div>
 					<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
 				</xsl:for-each>
 			</div>
@@ -320,10 +319,10 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="droits/droit">
+		<xsl:if test="droits-infos/droits/droit">
 			<div id="droits">
 				Droit(s) :
-				<xsl:for-each select="droits/droit">
+				<xsl:for-each select="droits-infos/droits/droit">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>

@@ -121,7 +121,7 @@
 									</xsl:for-each>
 								</div>
 								<div class="dates">
-									<xsl:for-each select="./dates/date">
+									<xsl:for-each select="./datesTextuelles/dateTextuelle">
 										<div><xsl:value-of select="."/></div>
 									</xsl:for-each>
 								</div>
