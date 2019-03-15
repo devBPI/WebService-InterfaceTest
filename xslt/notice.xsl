@@ -348,7 +348,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			</div>
 		</xsl:if>
 		<xsl:if test="urlPubliqueConfiguration">
-			<div id="urlPubliqueConfiguration"  style="font-size: smaller; color: grey;">Public Url de configuration : <xsl:value-of select="urlPubliqueConfiguration"/></div>
+			<div id="urlPubliqueConfiguration" >Public Url de configuration : <a href="{urlPubliqueConfiguration}"><xsl:value-of select="urlPubliqueConfiguration"/></a></div>
 		</xsl:if>
 
 		<!--<div id="s">
