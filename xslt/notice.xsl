@@ -325,6 +325,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				<xsl:for-each select="droits-infos/droits/droit">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
+				<xsl:for-each select="droits-infos/licences/licence">
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+				</xsl:for-each>
+				<xsl:for-each select="droits-infos/copyrights/copyright">
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="lieuxManifestations/lieuManifestation">
@@ -340,6 +346,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					<div style="font-size: smaller; color: grey;">Origine : <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
+		</xsl:if>
+		<xsl:if test="urlPubliqueConfiguration">
+			<div id="urlPubliqueConfiguration"  style="font-size: smaller; color: grey;">Public Url de configuration : <xsl:value-of select="urlPubliqueConfiguration"/></div>
 		</xsl:if>
 
 		<!--<div id="s">
