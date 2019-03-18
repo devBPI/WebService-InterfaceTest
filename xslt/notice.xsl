@@ -34,8 +34,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		</xsl:if>
 		<xsl:if test="type='Numrev - Article'">
 			<div id="dansJournals">
-				<xsl:for-each select="dansJournals/dansJournal">
-					<div>dans <xsl:value-of select="."/></div>
+				<xsl:for-each select="journal-infos">
+					<div>dans <xsl:value-of select="titresJournal/titreJournal"/>, n <xsl:value-of select="issues/issue"/>, <xsl:value-of select="volumes/volume"/>, <xsl:value-of select="datesTextuelles/dateTextuelle">, pp <xsl:value-of select="premieresPages/premierePage"/> - <xsl:value-of select="dernieresPages/dernierePage"/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
