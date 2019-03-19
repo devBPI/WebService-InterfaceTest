@@ -122,7 +122,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="(type='Revue')">
+		<xsl:if test="periodicites/periodicite">
 			<div id="periodicites">
 				<xsl:for-each select="periodicites/periodicite">
 					<div>Périodicité : <xsl:value-of select="."/></div>
