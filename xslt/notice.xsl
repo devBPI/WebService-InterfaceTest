@@ -122,6 +122,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				</xsl:for-each>
 			</div>
 		</xsl:if>
+		<xsl:if test="autresDates/autreDate">
+			<div id="dates">
+				 Date d'édition papier :
+				<xsl:for-each select="autresDates/autreDate">
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+				</xsl:for-each>
+			</div>
+		</xsl:if>
 		<xsl:if test="periodicites/periodicite">
 			<div id="periodicites">
 				<xsl:for-each select="periodicites/periodicite">
