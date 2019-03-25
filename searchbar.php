@@ -76,8 +76,8 @@
 			<a onclick="hideFacets(); return false;">Enrouler facettes</a>
 		</div>-->
 	</div>
-	<div id="authoritydiv" style="margin: 3px; grid-column: 1 / span 2;">
-		<div id="mostRelevantAuthority"></div>
+	<div id="authoritiesdiv" style="margin: 3px; grid-column: 1 / span 2;">
+		<div id="mostRelevantAuthorities"></div>
 	</div>
 	<div id="notices" style="margin: 3px; grid-column: 1;"></div>
 	<div id="notices-online" style="margin: 3px; grid-column: 2;"></div>

@@ -171,11 +171,11 @@ function searchNoticesNoticesOnline(uriParams)
 	searchFacets(uriParams);
 }
 
-function searchMostRelevantAuthority(uriParams)
+function searchMostRelevantAuthorities(uriParams)
 {
-	var uri = "searchMostRelevantAuthority.php?"+uriParams;
+	var uri = "searchMostRelevantAuthorities.php?"+uriParams;
 	var url = encodeURI(uri);
-	$("#mostRelevantAuthority").load(url);
+	$("#mostRelevantAuthorities").load(url);
 }
 
 function search()
@@ -186,7 +186,7 @@ function search()
 	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	var uriParams = getUriParams();
 	searchNoticesNoticesOnline(uriParams);
-	searchMostRelevantAuthority(uriParams);
+	searchMostRelevantAuthorities(uriParams);
 }
 
 function changeNoticesRows(currentPage, currentRows)

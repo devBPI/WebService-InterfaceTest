@@ -57,8 +57,9 @@
 		<style type="text/css" media="screen"></style>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript" language="javascript"></script>
-		<script src="/js/search.js" type="text/javascript" language="javascript"></script>
-		<script src="/js/facets.js" type="text/javascript" language="javascript"></script>
+		<script src="/js/search.js"      type="text/javascript" language="javascript"></script>
+		<script src="/js/authorities.js" type="text/javascript" language="javascript"></script>
+		<script src="/js/facets.js"      type="text/javascript" language="javascript"></script>
 
 		<script type="text/javascript" language="javascript">
 		</script>
