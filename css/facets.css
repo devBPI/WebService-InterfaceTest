@@ -4,9 +4,14 @@
 	cursor: pointer;
 }
 
+#facets
+{
+	background: #FFF0D0;
+}
+
 .facet:hover
 {
-	background: #CCCCCC;
+	background: #FFD080;
 }
 
 .selectedFacet
@@ -24,7 +29,7 @@
 
 .selectedFacet:hover
 {
-	background-color: #FFE090;
+	background-color: #FFD080;
 	text-decoration: line-through;
 	color: #555555;
 }

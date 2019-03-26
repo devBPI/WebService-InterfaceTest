@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template match="authorities-list">
-		<div style="color: #0044BB; font-weight: bold; text-decoration: underline;">Notices d'Autorités les plus relevantes trouvées:</div>
+		<div style="margin-bottom: 0.5em; font-weight: bold; text-decoration: underline;">Notices d'Autorités les plus relevantes trouvées:</div>
+		<div id="authorities">
 		<xsl:for-each select="authority">
 			<!--<xsl:value-of select="position()"/> | Last: <xsl:value-of select="last()"/>-->
 			<xsl:variable name="authorityDisplay">
@@ -25,6 +26,7 @@
 				</xsl:choose>
 			</xsl:variable>
 			<div class="{$authorityClass}" style="display: {$authorityDisplay};">
+				<!--<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="{$position()}"/></div>-->
 				<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;">Type:</span><xsl:value-of select="type"/></div>
 				<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;">Nom:</span><xsl:value-of select="formeRetenue"/></div>
 				<xsl:if test="autresNoms/autreNom">
@@ -65,6 +67,7 @@
 				<div><a href="authority/{permalink}"><xsl:value-of select="permalink"/></a></div>
 			</div>
 		</xsl:for-each>
+		</div>
 		<xsl:if test="count(authority) > 1">
 			<input id="displaySupplAuthorities" class="bigButton" type="submit" value="+ Afficher plus d'autorités" onclick="displaySupplAuthorities();" />
 			<input id="hideSupplAuthorities"    class="bigButton" style="display:none;" type="submit" value="- Masquer les autorités supplémentaires" onclick="hideSupplAuthorities();" />

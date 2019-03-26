@@ -1,20 +1,25 @@
-#mostRelevantAuthority,
-#mostRelevantAuthorities
+#authorities
 {
 	padding: 3px;
+	background: #EEEECC;
 	border: 1px solid black;
 	cursor: default;
 }
 
-#mostRelevantAuthority:hover,
+/*#mostRelevantAuthority:hover,
 #mostRelevantAuthorities:hover
 {
 	background: #CCCCCC;
-}
+}*/
 
 .authority
 {
 	border-bottom: 1px solid black;
+}
+
+.authority:hover
+{
+	background: #EEEE88;
 }
 
 .authority a,
@@ -26,5 +31,7 @@
 #displaySupplAuthorities,
 #hideSupplAuthorities
 {
-	background: #0088EE;
+	color: #000000;
+	font-weight: bold;
+	background: #EEEE55;
 }
