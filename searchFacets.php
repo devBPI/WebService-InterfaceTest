@@ -132,9 +132,9 @@
 	//echo "<p><xmp>".$defaultFacets."</xmp></p>";
 ?>
 <br />
-<a id="facetsShowButton" onclick="displayFacets(); return false;">Dérouler facettes</a>
-<div id="facetsContainer" style="display:none;">
-	<a onclick="hideFacets(); return false;">Enrouler facettes</a>
+<a class="facet facets" id="facetsShowButton" style="display: block;" onclick="displayFacets(); return false;">Dérouler facettes</a>
+<div class="facets" id="facetsContainer" style="display:none;">
+	<a class="facet" style="display: block;" onclick="hideFacets(); return false;">Enrouler facettes</a>
 	<br />
 	<?php
 		echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";
@@ -166,6 +166,7 @@
 			echo $proc->transformToXML($xml);
 		}
 	?>
-	<a onclick="hideFacets(); return false;">Enrouler facettes</a>
+	<br />
+	<a class="facet" style="display: block;" onclick="hideFacets(); return false;">Enrouler facettes</a>
 </div>
 <br />
