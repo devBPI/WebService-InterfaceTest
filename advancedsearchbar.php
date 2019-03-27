@@ -1,4 +1,4 @@
-
+<!--
 <select id="lstFruits" multiple="multiple">
     <option value="1">Mango</option>
     <option value="2">Apple</option>
@@ -7,7 +7,7 @@
     <option value="5">Orange</option>
 </select>
 <input type="button" id="btnSelected" value="Get Selected" />
-
+-->
 
 <div class="autocomplete-title">
 	<input type="text" id="advancedsearch-titre"                name="advancedsearch-titre"                 autocomplete="off" size=50 placeholder="Titre…"                         onkeyup="if(event.keyCode==13)search();" <?php if($defaultTitre!=null){echo "value=\"".encodeStringForInput($defaultTitre)."\"";} ?> /><br />
