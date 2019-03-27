@@ -77,6 +77,9 @@
 		<div class="pageHead" style="margin-bottom:6px;">
 			<div style="float:right; text-align:right;">
 				<?php
+					echo "<p>Interface version : ";
+					echo "Version de l'interface : " . $ini_array["InterfaceVersion"];
+					echo "</p>";
 					echo "<p>Catalog Webservice version : ";
 					include('getWebServiceVersion.php');
 					echo "</p>";
