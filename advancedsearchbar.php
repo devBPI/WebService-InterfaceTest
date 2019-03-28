@@ -9,9 +9,122 @@
 <input type="button" id="btnSelected" value="Get Selected" />
 -->
 
+
+
+
+
 <div class="autocomplete-title">
 	<input type="text" id="advancedsearch-titre"                name="advancedsearch-titre"                 autocomplete="off" size=50 placeholder="Titre…"                         onkeyup="if(event.keyCode==13)search();" <?php if($defaultTitre!=null){echo "value=\"".encodeStringForInput($defaultTitre)."\"";} ?> /><br />
 </div>
+
+
+<div class="dd-mask"></div>
+
+<div id="testList" class="btn-group">
+	<button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="Fruits" onclick="displayBtnGrp(this);">
+		<span class="multiselect-selected-text">Fruits</span><b class="caret"></b>
+	</button>
+	<ul id="testListUl" class="multiselect-container dropdown-menu">
+		<!--<li class="multiselect-item multiselect-all">
+			<a tabindex="0" class="multiselect-all">
+				<label class="checkbox">
+				<input value="multiselect-all" type="checkbox">
+				Select all
+				</label>
+			</a>
+		</li>-->
+		<li class="">
+			<a tabindex="0">
+				<label class="checkbox" title="Mango">
+					<input class="checkboxinput" value="1" type="checkbox" onchange="checkElement(this);">
+					Mango
+				</label>
+			</a>
+		</li>
+		<li class="">
+			<a tabindex="0">
+				<label class="checkbox" title="Apple">
+					<input class="checkboxinput" value="2" type="checkbox" onchange="checkElement(this);">
+					Apple
+				</label>
+			</a>
+		</li>
+		<li class="">
+			<a tabindex="0">
+				<label class="checkbox" title="Banana">
+					<input class="checkboxinput" value="3" type="checkbox" onchange="checkElement(this);">
+					Banana
+				</label>
+			</a>
+		</li>
+		<li class="">
+			<a tabindex="0">
+				<label class="checkbox" title="Guava">
+					<input class="checkboxinput" value="4" type="checkbox" onchange="checkElement(this);">
+					Guava
+				</label>
+			</a>
+		</li>
+		<li>
+			<a tabindex="0">
+				<label class="checkbox" title="Orange">
+					<input class="checkboxinput" value="5" type="checkbox" onchange="checkElement(this);">
+					Orange
+				</label>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<div id="vehiculeList" class="btn-group">
+	<button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="Vehicules" onclick="displayBtnGrp(this);">
+		<span class="multiselect-selected-text">Vehicules</span><b class="caret"></b>
+	</button>
+	<ul id="testListUl" class="multiselect-container dropdown-menu">
+		<!--<li class="multiselect-item multiselect-all">
+			<a tabindex="0" class="multiselect-all">
+				<label class="checkbox">
+				<input value="multiselect-all" type="checkbox">
+				Select all
+				</label>
+			</a>
+		</li>-->
+		<li class="">
+			<a tabindex="0">
+				<label class="checkbox" title="Bateau">
+					<input class="checkboxinput" value="2" type="checkbox" onchange="checkElement(this);">
+					Bateau
+				</label>
+			</a>
+		</li>
+		<li class="">
+			<a tabindex="0">
+				<label class="checkbox" title="Train">
+					<input class="checkboxinput" value="3" type="checkbox" onchange="checkElement(this);">
+					Train
+				</label>
+			</a>
+		</li>
+		<li class="">
+			<a tabindex="0">
+				<label class="checkbox" title="Voiture">
+					<input class="checkboxinput" value="4" type="checkbox" onchange="checkElement(this);">
+					Voiture
+				</label>
+			</a>
+		</li>
+		<li>
+			<a tabindex="0">
+				<label class="checkbox" title="Avion">
+					<input class="checkboxinput" value="5" type="checkbox" onchange="checkElement(this);">
+					Avion
+				</label>
+			</a>
+		</li>
+	</ul>
+</div>
+
+
 <div class="autocomplete-unk">
 	<input type="text" id="advancedsearch-auteur"               name="advancedsearch-auteur"                autocomplete="off" size=50 placeholder="Auteur…"                        onkeyup="if(event.keyCode==13)search();" <?php if($defaultAuteur!=null){echo "value=\"".encodeStringForInput($defaultAuteur)."\"";} ?> /><br />
 </div>
