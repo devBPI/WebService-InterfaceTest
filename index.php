@@ -1,8 +1,36 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 	include "php/phpUtils.php";
+	include "php/postXML.php";
+
+	$page=1;
+	if(isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page']>=1)
+	{
+		$page=$_GET['page'];
+	}
+	$rows=20;
+	if(isset($_GET['rows']) && is_numeric($_GET['rows']) && ($_GET['rows']==20 || $_GET['rows']==40 || $_GET['rows']==100))
+	{
+		$rows=$_GET['rows'];
+	}
+	$parkour="general";
+	if(isset($_GET['parkour']) && $_GET['parkour']!=null && $_GET['parkour']!="")
+	{
+		switch($_GET['parkour'])
+		{
+			case "autoformation":
+			case "cinema":
+			case "musique":
+			case "presse":
+			$parkour=$_GET['parkour'];
+			break;
+			default:
+			break;
+		}
+	}
 
 	ini_set("display_errors",1);
+	$defaultGeneral              = urldecode(isGetOk("general"));
 	$defaultSearchText           = urldecode(isGetOk("general"));
 	$defaultTitre                = urldecode(isGetOk("titre"));
 	$defaultAuteur               = urldecode(isGetOk("auteur"));
@@ -70,10 +98,24 @@
 		<script src="/js/facets.js"         type="text/javascript" language="javascript"></script>
 
 		<script type="text/javascript" language="javascript">
+			window.onload = function(e)
+			{
+				//advancedSearchBar();
+				autocomplete(document.getElementById("searchbar"), []);
+				var urlParams = new URLSearchParams(window.location.search);
+				if(urlParams.toString()!=null && urlParams.toString()!="")
+				{
+					//console.log("UrlParams found");
+					search();
+				}
+				//if(searchCriterias.getAll()!=null)
+				//	search();
+			}
 		</script>
 
 	</head>
 	<body>
+		<div class="dd-mask"></div>
 		<div class="pageHead" style="margin-bottom:6px;">
 			<div style="float:right; text-align:right;">
 				<?php

@@ -7,10 +7,10 @@ function printKeys(map)
 		{
 			printKeys(val);
 		}
-		else
+		/*else
 		{
 			console.log(keys[i] + '|' + map[keys[i]]);
-		}
+		}*/
 	}
 }
 
@@ -49,39 +49,12 @@ function getParkour()
 function getSearchCriterias()
 {
 	var searchCriterias = {};
-	//var buttonValue=document.getElementById("advancedSearchButton").value;
-	/*searchCriterias["general"] = document.getElementById("searchbar").value;
-	searchCriterias["titre"] = document.getElementById("advancedsearch-titre").value;
-	searchCriterias["auteur"] = document.getElementById("advancedsearch-auteur").value;
-	searchCriterias["sujet"] = document.getElementById("advancedsearch-sujet").value;
-	searchCriterias["isbnissncommercial"] = document.getElementById("advancedsearch-isbnissncommercial").value;
-	searchCriterias["indicecote"] = document.getElementById("advancedsearch-indicecote").value;
-	searchCriterias["datepublication"] = document.getElementById("advancedsearch-datepublication").value;
-	searchCriterias["realisateur"] = document.getElementById("advancedsearch-realisateur").value;
-	searchCriterias["theme"] = document.getElementById("advancedsearch-theme").value;
-	searchCriterias["baserecherche"] = document.getElementById("advancedsearch-baserecherche").value;
-	searchCriterias["editeur"] = document.getElementById("advancedsearch-editeur").value;
-	searchCriterias["collection"] = document.getElementById("advancedsearch-collection").value;
-	searchCriterias["datepublicationstart"] = document.getElementById("advancedsearch-datepublicationstart").value;
-	searchCriterias["datepublicationend"] = document.getElementById("advancedsearch-datepublicationend").value;
-	searchCriterias["langue"] = document.getElementById("advancedsearch-langue").value;
-	searchCriterias["type"] = document.getElementById("advancedsearch-type").value;
-	searchCriterias["support"] = document.getElementById("advancedsearch-support").value;
-	searchCriterias["genremusic"] = document.getElementById("advancedsearch-genremusic").value;
-	searchCriterias["genrefilm"] = document.getElementById("advancedsearch-genrefilm").value;
-	searchCriterias["genrelitt"] = document.getElementById("advancedsearch-genrelitt").value;
-	searchCriterias["secteur"] = document.getElementById("advancedsearch-secteur").value;
-	searchCriterias["audience"] = document.getElementById("advancedsearch-audience").value;*/
-	//printKeys(searchCriterias);
-	//alert(searchCriterias.toString());
-
-	//return searchCriterias;
 
 	var urlParams = new URLSearchParams();
 	urlParams.set("general", document.getElementById("searchbar").value);
-	console.log(document.getElementById("advancedsearch-titre").value);
+	//console.log(document.getElementById("advancedsearch-titre").value);
 	urlParams.set("titre", document.getElementById("advancedsearch-titre").value);
-	console.log(urlParams.get("titre"));
+	//console.log(urlParams.get("titre"));
 	urlParams.set("auteur", document.getElementById("advancedsearch-auteur").value);
 	urlParams.set("sujet", document.getElementById("advancedsearch-sujet").value);
 	urlParams.set("isbnissncommercial", document.getElementById("advancedsearch-isbnissncommercial").value);
@@ -103,9 +76,8 @@ function getSearchCriterias()
 	urlParams.set("secteur", document.getElementById("advancedsearch-secteur").value);
 	urlParams.set("audience", document.getElementById("advancedsearch-audience").value);
 
-	console.log(urlParams);
-	console.log(urlParams.toString());
-//alert(urlParams.toString());
+	//console.log(urlParams);
+	//console.log(urlParams.toString());
 	return urlParams;
 }
 
@@ -113,7 +85,7 @@ function searchFacets(uriParams)
 {
 	var uri = "searchFacets.php?"+uriParams;
 	var url = encodeURI(uri);
-	console.log(url);
+	//console.log(url);
 	$("#facets").load(url);
 }
 
@@ -121,7 +93,7 @@ function searchNotices(uriParams)
 {
 	var uri = "searchNotices.php?"+uriParams;
 	var url = encodeURI(uri);
-	console.log(url);
+	//console.log(url);
 	$("#notices").load(url);
 }
 
@@ -129,7 +101,7 @@ function searchNoticesOnline(uriParams)
 {
 	var uri = "searchNoticesOnline.php?"+uriParams;
 	var url = encodeURI(uri);
-	console.log(url);
+	//console.log(url);
 	$("#notices-online").load(url);
 }
 
@@ -181,7 +153,7 @@ function searchMostRelevantAuthorities(uriParams)
 function search()
 {
 	//searchadvanced();
-	console.log("documents getted");
+	//console.log("documents getted");
 	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	var uriParams = getUriParams();
@@ -422,17 +394,4 @@ function autocomplete(inp, arr)
 	{
 		closeAllLists(e.target);
 	});
-}
-
-window.onload = function(e)
-{
-	autocomplete(document.getElementById("searchbar"), []);
-	var urlParams = new URLSearchParams(window.location.search);
-	if(urlParams.toString()!=null && urlParams.toString()!="")
-	{
-		console.log("UrlParams found");
-		search();
-	}
-	//if(searchCriterias.getAll()!=null)
-	//	search();
 }

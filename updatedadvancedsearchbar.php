@@ -1,4 +1,102 @@
-<!--<div id="testList" class="btn-group">
+<?php
+	include "php/phpUtils.php";
+	include "php/postXML.php";
+	
+	$errorText="";
+
+	$parkour="general";
+	if(isset($_GET['parkour']) && $_GET['parkour']!=null && $_GET['parkour']!="")
+	{
+		switch($_GET['parkour'])
+		{
+			case "autoformation":
+			case "cinema":
+			case "musique":
+			case "presse":
+			$parkour=$_GET['parkour'];
+			break;
+			default:
+			break;
+		}
+	}
+
+	$defaultGeneral              = urldecode(isGetOk("general"));
+	$defaultTitre                = urldecode(isGetOk("titre"));
+	$defaultAuteur               = urldecode(isGetOk("auteur"));
+	$defaultSujet                = urldecode(isGetOk("sujet"));
+	$defaultIsbnIssnCommercial   = urldecode(isGetOk("isbnissncommercial"));
+	$defaultIndiceCote           = urldecode(isGetOk("indicecote"));
+	$defaultDatePublication      = urldecode(isGetOk("datepublication"));
+	$defaultRealisateur          = urldecode(isGetOk("realisateur"));
+	$defaultTheme                = urldecode(isGetOk("theme"));
+	$defaultBaseRecherche        = urldecode(isGetOk("baserecherche"));
+	$defaultEditeur              = urldecode(isGetOk("editeur"));
+	$defaultCollection           = urldecode(isGetOk("collection"));
+	$defaultDatePublicationStart = urldecode(isGetOk("datepublicationstart"));
+	$defaultDatePublicationEnd   = urldecode(isGetOk("datepublicationend"));
+	$defaultLangue               = urldecode(isGetOk("langue"));
+	$defaultType                 = urldecode(isGetOk("type"));
+	$defaultSupport              = urldecode(isGetOk("support"));
+	$defaultGenreMusic           = urldecode(isGetOk("genremusic"));
+	$defaultGenreFilm            = urldecode(isGetOk("genrefilm"));
+	$defaultGenreLitt            = urldecode(isGetOk("genrelitt"));
+	$defaultSecteur              = urldecode(isGetOk("secteur"));
+	$defaultAudience             = urldecode(isGetOk("audience"));
+
+	$defaultFacets               = urldecode(isGetOk("facets"));
+
+	$ini_array = parse_ini_file("etc/configuration.ini");
+	if(!$ini_array)
+		$ini_array = parse_ini_file("etc/default.ini");
+	if(!$ini_array)
+	{
+		$errorText.=('&#x26a0 Unable to open configuration file. &#x26a0<br />');
+		echo($errorText);
+		exit(500);
+	}
+
+	ini_set("display_errors",1);
+	error_reporting(E_ALL);
+
+	header("Content-Type: text/xml");
+	header("Content-Type: text/html;charset=utf-8");
+
+	$data = array();//'parcours' => $parkour, 'page' => $page, 'rows' => $rows);
+	if($defaultGeneral!=null)              $data["general"]                 = $defaultGeneral;
+	if($defaultTitre!=null)                $data["titre"]                   = $defaultTitre;
+	if($defaultAuteur!=null)               $data["auteur"]                  = $defaultAuteur;
+	if($defaultSujet!=null)                $data["sujet"]                   = $defaultSujet;
+	if($defaultIsbnIssnCommercial!=null)   $data["isbn-issn-numcommercial"] = $defaultIsbnIssnCommercial;
+	if($defaultIndiceCote!=null)           $data["indice-cote"]             = $defaultIndiceCote;
+	if($defaultDatePublication!=null)      $data["date-publication"]        = $defaultDatePublication;
+	if($defaultRealisateur!=null)          $data["realisateur"]             = $defaultRealisateur;
+	if($defaultTheme!=null)                $data["theme"]                   = $defaultTheme;
+	if($defaultBaseRecherche!=null)        $data["baserecherche"]           = $defaultBaseRecherche;
+	if($defaultEditeur!=null)              $data["editeur"]                 = $defaultEditeur;
+	if($defaultCollection!=null)           $data["collection"]              = $defaultCollection;
+	if($defaultDatePublicationStart!=null) $data["date-publication-debut"]  = $defaultDatePublicationStart;
+	if($defaultDatePublicationEnd!=null)   $data["date-publication-fin"]    = $defaultDatePublicationEnd;
+	if($defaultLangue!=null)               $data["langue"]                  = $defaultLangue;
+	if($defaultType!=null)                 $data["type"]                    = $defaultType;
+	if($defaultSupport!=null)              $data["support"]                 = $defaultSupport;
+	if($defaultGenreMusic!=null)           $data["genre-musical"]           = $defaultGenreMusic;
+	if($defaultGenreFilm!=null)            $data["genre-cinematographique"] = $defaultGenreFilm;
+	if($defaultGenreLitt!=null)            $data["genre-literraire"]        = $defaultGenreLitt;
+	if($defaultSecteur!=null)              $data["secteur"]                 = $defaultSecteur;
+	if($defaultAudience!=null)             $data["audience"]                = $defaultAudience;
+	//if($defaultFacets!=null)               $data["facets"]                  = $defaultFacets;
+
+	$xmlData = array_to_xml_main("search-criterias", $data);
+?>
+
+
+
+
+
+
+
+
+<div id="testList" class="btn-group">
 	<button type="button" class="btn btn-default" data-toggle="dropdown" title="Fruits" onclick="displayBtnGrp(this);">
 		<span class="multiselect-selected-text">Fruits</span><b class="caret"></b>
 	</button>
@@ -84,7 +182,7 @@
 			</div>
 		</li>
 	</ul>
-</div>-->
+</div>
 
 
 <div class="autocomplete-title">
@@ -151,79 +249,8 @@
 	<input type="text" id="advancedsearch-audience"             name="advancedsearch-audience"              autocomplete="off" size=50 placeholder="Public Destinataire…"           onkeyup="if(event.keyCode==13)search();" <?php if($defaultAudience!=null){echo "value=\"".encodeStringForInput($defaultAudience)."\"";} ?> disabled="true" />
 </div>
 
-<?php
-	$data = array('parcours' => $parkour, 'page' => $page, 'rows' => $rows);
-	if($defaultGeneral!=null)              $data["general"]                 = $defaultGeneral;
-	if($defaultTitre!=null)                $data["titre"]                   = $defaultTitre;
-	if($defaultAuteur!=null)               $data["auteur"]                  = $defaultAuteur;
-	if($defaultSujet!=null)                $data["sujet"]                   = $defaultSujet;
-	if($defaultIsbnIssnCommercial!=null)   $data["isbn-issn-numcommercial"] = $defaultIsbnIssnCommercial;
-	if($defaultIndiceCote!=null)           $data["indice-cote"]             = $defaultIndiceCote;
-	if($defaultDatePublication!=null)      $data["date-publication"]        = $defaultDatePublication;
-	if($defaultRealisateur!=null)          $data["realisateur"]             = $defaultRealisateur;
-	if($defaultTheme!=null)                $data["theme"]                   = $defaultTheme;
-	if($defaultBaseRecherche!=null)        $data["baserecherche"]           = $defaultBaseRecherche;
-	if($defaultEditeur!=null)              $data["editeur"]                 = $defaultEditeur;
-	if($defaultCollection!=null)           $data["collection"]              = $defaultCollection;
-	if($defaultDatePublicationStart!=null) $data["date-publication-debut"]  = $defaultDatePublicationStart;
-	if($defaultDatePublicationEnd!=null)   $data["date-publication-fin"]    = $defaultDatePublicationEnd;
-	if($defaultLangue!=null)               $data["langue"]                  = $defaultLangue;
-	if($defaultType!=null)                 $data["type"]                    = $defaultType;
-	if($defaultSupport!=null)              $data["support"]                 = $defaultSupport;
-	if($defaultGenreMusic!=null)           $data["genre-musical"]           = $defaultGenreMusic;
-	if($defaultGenreFilm!=null)            $data["genre-cinematographique"] = $defaultGenreFilm;
-	if($defaultGenreLitt!=null)            $data["genre-literraire"]        = $defaultGenreLitt;
-	if($defaultSecteur!=null)              $data["secteur"]                 = $defaultSecteur;
-	if($defaultAudience!=null)             $data["audience"]                = $defaultAudience;
-	$xmlData = array_to_xml_main("search-criterias", $data);
-	//$url = $ini_array["CatalogueWebServiceUrl"]."facets"."?criters=".urlencode($xmlData->asXML())."&rows=0&page=1";
 
 
-	$url = $ini_array["CatalogueWebServiceUrl"]."advanced-search/list-elements";
-	$advancedSearchElements = file_get_contents($url);
-	$xslUrl = "xslt/advancedSearchBar.xsl";
-
-	$simpleXml = new SimpleXMLElement($advancedSearchElements);
-	$xmlTxt =  $simpleXml->asXML();
-	$xml = new DOMDocument('1.0', 'utf-8');
-	$xml->loadXML($xmlTxt);
-
-	$xsl = new DOMDocument;
-	$xsl->load($xslUrl);
-
-	$proc = new XSLTProcessor();
-	$proc->importStyleSheet($xsl);
-
-	echo $proc->transformToXML($xml);
-	echo "<br /> aaaa <br />";
-
-
-
-
-/*	$url = $ini_array["CatalogueWebServiceUrl"]."facets"."?criters=".urlencode($xmlData->asXML());
-	if($defaultFacets!=null)
-		$url.=("&facets=".urlencode("<facets-wrap>".$defaultFacets."</facets-wrap>"));
-	$url.=("&rows=".$rows."&page=".$page);
-	//$result = getArrayToXmlIntoUrl($url, "search-criterias", $data);
-	$xslUrl = "xslt/searchFacets.xsl";
-	$xslFacetsDisplay = "xslt/selectedFacets.xsl";
-
-	if($defaultFacets!=null)
-	{
-		$simpleXml = new SimpleXMLElement($defaultFacets);
-		$xmlTxt =  $simpleXml->asXML();
-		$xml = new DOMDocument('1.0', 'utf-8');
-		$xml->loadXML($xmlTxt);
-
-		$xsl = new DOMDocument;
-		$xsl->load($xslFacetsDisplay);
-
-		$proc = new XSLTProcessor();
-		$proc->importStyleSheet($xsl);
-
-		echo $proc->transformToXML($xml);
-	}
-*/
 
 
 

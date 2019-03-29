@@ -125,7 +125,8 @@
 .dd-mask {position: fixed; z-index: 1; left: 0; top: 0; bottom: 0; right: 0; display: none;}
 .dd-mask .dd-open {display: block;}
 
-.btn {
+.btn
+{
 	display: inline-block;
 	padding: 6px 12px;
 	margin-bottom: 0;
@@ -137,12 +138,7 @@
 	vertical-align: middle;
 	cursor: pointer;
 	background-image: none;
-	border: 1px solid transparent;
-        border-top-color: transparent;
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-        border-left-color: transparent;
-	border-radius: 4px;
+	border: 1px grey solid;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -150,11 +146,12 @@
 	user-select: none;
 }
 
-.caret {
+.caret
+{
     display: inline-block;
     width: 0;
     height: 0;
-    margin-left: 2px;
+    margin-left: 6px;
     vertical-align: middle;
     border-top: 4px solid;
     border-right: 4px solid transparent;
@@ -170,7 +167,8 @@
 	padding: 0;*/
 }
 
-.dropdown-menu {
+.dropdown-menu
+{
 	background-color: #fff;
 	border: 1px solid #ccc;
 	border: 1px solid rgba(0,0,0,0.15);
@@ -180,7 +178,8 @@
 	z-index: 2;
 }
 
-.dropdown-menu > li > a {
+.dropdown-menu > li > div
+{
 	width: 100%;
 	margin: 0;
 	padding: 0px;
@@ -188,28 +187,18 @@
 	white-space: nowrap;
 	outline: none !important;
 }
-.dropdown-menu > li > a > label {
+
+.dropdown-menu > li > div > label
+{
 	display: block;
 	padding: 3px 20px;
 	width: 100%;
 	line-height: 1.428571429;
 }
 
-.dropdown-menu > li > a :hover
+.dropdown-menu > li > div :hover
 {
 	background-color: #C00;
 	color: white;
 	cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
-
-
