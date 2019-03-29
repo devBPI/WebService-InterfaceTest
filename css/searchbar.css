@@ -181,6 +181,9 @@
 	box-shadow: 0 6px 12px rgba(0,0,0,0.175);
 	background-clip: padding-box;
 	z-index: 2;
+
+	max-height: 200px;
+	overflow: auto;
 }
 
 .dropdown-menu > li > div
@@ -198,7 +201,10 @@
 	display: block;
 	padding: 3px 20px;
 	width: 100%;
-	line-height: 1.428571429;
+	line-height: 1.5;
+	max-width: 500px;
+	text-overflow: ellipsis;
+	overflow-x: hidden;
 }
 
 .dropdown-menu > li > div :hover
