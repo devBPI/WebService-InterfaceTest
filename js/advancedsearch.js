@@ -14,7 +14,7 @@ function displayBtnGrp(obj)
 		var lstClassList = lst.classList;
 		if(null != lstClassList && lstClassList.contains("dropdown-menu"))
 		{
-			lst.style.display="block";
+			lst.style.display="inline-block";
 			addDDmask(lst);
 		}
 	}

@@ -62,19 +62,19 @@ function getSearchCriterias()
 	urlParams.set("datepublication", document.getElementById("advancedsearch-datepublication").value);
 	urlParams.set("realisateur", document.getElementById("advancedsearch-realisateur").value);
 	urlParams.set("theme", document.getElementById("advancedsearch-theme").value);
-	urlParams.set("baserecherche", document.getElementById("advancedsearch-baserecherche").value);
+	//urlParams.set("baserecherche", document.getElementById("advancedsearch-baserecherche").value);
 	urlParams.set("editeur", document.getElementById("advancedsearch-editeur").value);
 	urlParams.set("collection", document.getElementById("advancedsearch-collection").value);
 	urlParams.set("datepublicationstart", document.getElementById("advancedsearch-datepublicationstart").value);
 	urlParams.set("datepublicationend", document.getElementById("advancedsearch-datepublicationend").value);
-	urlParams.set("langue", document.getElementById("advancedsearch-langue").value);
+	/*urlParams.set("langue", document.getElementById("advancedsearch-langue").value);
 	urlParams.set("type", document.getElementById("advancedsearch-type").value);
 	urlParams.set("support", document.getElementById("advancedsearch-support").value);
 	urlParams.set("genremusic", document.getElementById("advancedsearch-genremusic").value);
 	urlParams.set("genrefilm", document.getElementById("advancedsearch-genrefilm").value);
 	urlParams.set("genrelitt", document.getElementById("advancedsearch-genrelitt").value);
 	urlParams.set("secteur", document.getElementById("advancedsearch-secteur").value);
-	urlParams.set("audience", document.getElementById("advancedsearch-audience").value);
+	urlParams.set("audience", document.getElementById("advancedsearch-audience").value);*/
 
 	//console.log(urlParams);
 	//console.log(urlParams.toString());

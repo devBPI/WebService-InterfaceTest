@@ -125,20 +125,25 @@
 .dd-mask {position: fixed; z-index: 1; left: 0; top: 0; bottom: 0; right: 0; display: none;}
 .dd-mask .dd-open {display: block;}
 
+.btn-group
+{
+	margin-bottom: 5px;
+}
+
 .btn
 {
 	display: inline-block;
 	padding: 6px 12px;
-	margin-bottom: 0;
-	font-size: 14px;
+	margin-bottom: 0px;
+	font-size: 15px;
 	font-weight: normal;
-	line-height: 1.428571429;
+	line-height: 1.5em;
 	text-align: center;
 	white-space: nowrap;
 	vertical-align: middle;
 	cursor: pointer;
 	background-image: none;
-	border: 1px grey solid;
+	border: 1px #DDDDDD solid;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -169,8 +174,8 @@
 
 .dropdown-menu
 {
-	background-color: #fff;
-	border: 1px solid #ccc;
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
 	border: 1px solid rgba(0,0,0,0.15);
 	-webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
 	box-shadow: 0 6px 12px rgba(0,0,0,0.175);
@@ -183,7 +188,7 @@
 	width: 100%;
 	margin: 0;
 	padding: 0px;
-	color: #333;
+	color: #333333;
 	white-space: nowrap;
 	outline: none !important;
 }
@@ -198,7 +203,7 @@
 
 .dropdown-menu > li > div :hover
 {
-	background-color: #C00;
+	background-color: #CC0000;
 	color: white;
 	cursor: pointer;
 }

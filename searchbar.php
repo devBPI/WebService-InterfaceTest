@@ -40,7 +40,7 @@
 	<input id="loupe" type="submit" value=" " onclick="search();cleanFacets();" />
 	<input id="advancedSearchButton" type="submit" value="+" onclick="advancedSearch();" />
 </div>
-<div id="advancedSearchDiv" style="display:none;">
+<div id="advancedSearchDiv" style="margin-top: 10px; display:none;">
 	<?php include('advancedsearchbar.php'); ?>
 	<!--<div class="autocomplete-title">
 	<input type="text" id="advancedsearch-titre"                name="advancedsearch-titre"                 autocomplete="off" size=50 placeholder="Titre…"                         onkeyup="if(event.keyCode==13)search();" <?php if($defaultTitre!=null){echo "value=\"".encodeStringForInput($defaultTitre)."\"";} ?> /><br />
