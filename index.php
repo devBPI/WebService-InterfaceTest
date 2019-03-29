@@ -92,8 +92,8 @@
 		<!-- BOOTSTRAP -->
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript" language="javascript"></script>
-		<script src="/js/search.js"         type="text/javascript" language="javascript"></script>
 		<script src="/js/advancedsearch.js" type="text/javascript" language="javascript"></script>
+		<script src="/js/search.js"         type="text/javascript" language="javascript"></script>
 		<script src="/js/authorities.js"    type="text/javascript" language="javascript"></script>
 		<script src="/js/facets.js"         type="text/javascript" language="javascript"></script>
 

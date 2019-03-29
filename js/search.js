@@ -76,6 +76,12 @@ function getSearchCriterias()
 	urlParams.set("secteur", document.getElementById("advancedsearch-secteur").value);
 	urlParams.set("audience", document.getElementById("advancedsearch-audience").value);*/
 
+
+	var params = getAdvancedSearchDropdownParams();
+	//JSONObject jsonObj = new JSONObject(params);
+	//alert(jsonObj.toString());
+
+
 	//console.log(urlParams);
 	//console.log(urlParams.toString());
 	return urlParams;

@@ -51,3 +51,26 @@ function advancedSearchBar()
 	console.log(url);
 	$("#advancedSearchDiv").load(url);
 }
+
+function getAdvancedSearchDropdownParams()
+{
+	var result = new Map();
+	var txt = "";
+	var advancedSearchLists = document.getElementById("advancedSearchLists");
+	for(var i = 0; i < advancedSearchLists.getElementsByClassName("btn-group").length; i++)
+	{
+		var btnGroup = advancedSearchLists.getElementsByClassName("btn-group")[i];
+		var title = btnGroup.getElementsByClassName("btn-default")[0].title;
+		txt+=title + ", ";
+		var checkedElements = [];
+		for(var j = 0; j < btnGroup.getElementsByClassName("checkbox").length; j++)
+		{
+			var checkbox = btnGroup.getElementsByClassName("checkbox")[j];
+			if(checkbox.getElementsByClassName("checkboxinput")[0].checked)
+				checkedElements.push(checkbox.title);
+		}
+		result.set(title, checkedElements);
+	}
+	//console.log(txt);
+	return result;
+}
