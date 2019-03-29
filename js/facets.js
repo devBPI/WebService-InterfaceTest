@@ -119,7 +119,7 @@ function addFacet(facetName, value)
 		}*/
 	}
 	urlParams.set('facets', newFacets);
-	console.log(urlParams.toString());
+	//console.log(urlParams.toString());
 	var xmlDoc = parser.parseFromString(newFacets, "text/xml");
 	//console.log(newFacets);
 	//console.log(new XMLSerializer().serializeToString(xmlDoc.documentElement));
@@ -219,7 +219,7 @@ function cleanFacets()
 	var curFacets = urlParams.get('facets');
 	if(curFacets != null)
 	{
-		urlParams.delete('facets');
+		//urlParams.delete('facets');
 	}
 	window.location.search = urlParams.toString();
 }

@@ -24,7 +24,7 @@
 		</xsl:if>
 		<xsl:if test="langues/langue">
 			<div id="languesList" class="btn-group">
-				<button type="button" class="btn btn-default" data-toggle="dropdown" title="Langues" onclick="displayBtnGrp(this);">
+				<button type="button" class="btn btn-default" data-toggle="dropdown" title="language" onclick="displayBtnGrp(this);">
 					<span class="multiselect-selected-text">Langues</span><div class="caret"></div>
 				</button><br />
 				<ul id="languesUl" class="multiselect-container dropdown-menu">
@@ -43,7 +43,7 @@
 		</xsl:if>
 		<xsl:if test="types/type">
 			<div id="typesList" class="btn-group">
-				<button type="button" class="btn btn-default" data-toggle="dropdown" title="Types" onclick="displayBtnGrp(this);">
+				<button type="button" class="btn btn-default" data-toggle="dropdown" title="type" onclick="displayBtnGrp(this);">
 					<span class="multiselect-selected-text">Types</span><div class="caret"></div>
 				</button><br />
 				<ul id="languesUl" class="multiselect-container dropdown-menu">
@@ -62,7 +62,7 @@
 		</xsl:if>
 		<xsl:if test="supports/support">
 			<div id="supportsList" class="btn-group">
-				<button type="button" class="btn btn-default" data-toggle="dropdown" title="Supports" onclick="displayBtnGrp(this);">
+				<button type="button" class="btn btn-default" data-toggle="dropdown" title="material_support" onclick="displayBtnGrp(this);">
 					<span class="multiselect-selected-text">Supports</span><div class="caret"></div>
 				</button><br />
 				<ul id="supportsUl" class="multiselect-container dropdown-menu">
@@ -81,7 +81,7 @@
 		</xsl:if>
 		<xsl:if test="genres-musicaux/genre-musical">
 			<div id="genresMusicauxList" class="btn-group">
-				<button type="button" class="btn btn-default" data-toggle="dropdown" title="Genres musicaux" onclick="displayBtnGrp(this);">
+				<button type="button" class="btn btn-default" data-toggle="dropdown" title="genre_musical" onclick="displayBtnGrp(this);">
 					<span class="multiselect-selected-text">Genres musicaux</span><div class="caret"></div>
 				</button><br />
 				<ul id="genresMusicauxUl" class="multiselect-container dropdown-menu">
@@ -100,7 +100,7 @@
 		</xsl:if>
 		<xsl:if test="genres-films/genre-film">
 			<div id="genresFilmsList" class="btn-group">
-				<button type="button" class="btn btn-default" data-toggle="dropdown" title="Genres films" onclick="displayBtnGrp(this);">
+				<button type="button" class="btn btn-default" data-toggle="dropdown" title="genre_film" onclick="displayBtnGrp(this);">
 					<span class="multiselect-selected-text">Genres films</span><div class="caret"></div>
 				</button><br />
 				<ul id="genresFilmsUl" class="multiselect-container dropdown-menu">
@@ -119,7 +119,7 @@
 		</xsl:if>
 		<xsl:if test="genres-litteraires/genre-litteraire">
 			<div id="genresLitterairesList" class="btn-group">
-				<button type="button" class="btn btn-default" data-toggle="dropdown" title="Genres litteraires" onclick="displayBtnGrp(this);">
+				<button type="button" class="btn btn-default" data-toggle="dropdown" title="genre_litteraire" onclick="displayBtnGrp(this);">
 					<span class="multiselect-selected-text">Genres litteraires</span><div class="caret"></div>
 				</button><br />
 				<ul id="genresLitterairesUl" class="multiselect-container dropdown-menu">
@@ -174,13 +174,13 @@
 				</ul>
 			</div>
 		</xsl:if>
-		<xsl:if test="supports/support">
-			<div id="languesList" class="btn-group">
-				<button type="button" class="btn btn-default" data-toggle="dropdown" title="Supports" onclick="displayBtnGrp(this);">
-					<span class="multiselect-selected-text">Supports</span><div class="caret"></div>
+		<xsl:if test="contenus/contenu">
+			<div id="contenusList" class="btn-group">
+				<button type="button" class="btn btn-default" data-toggle="dropdown" title="contenu" onclick="displayBtnGrp(this);">
+					<span class="multiselect-selected-text">Contenus</span><div class="caret"></div>
 				</button><br />
-				<ul id="supportsUl" class="multiselect-container dropdown-menu">
-					<xsl:for-each select="supports/support">
+				<ul id="contenusUl" class="multiselect-container dropdown-menu">
+					<xsl:for-each select="contenus/contenu">
 						<li class="">
 							<div tabindex="0">
 								<label class="checkbox" title="{.}">

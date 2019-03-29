@@ -77,13 +77,15 @@ function getSearchCriterias()
 	urlParams.set("audience", document.getElementById("advancedsearch-audience").value);*/
 
 
-	var params = getAdvancedSearchDropdownParams();
+	var advancedSearchFacets = getAdvancedSearchDropdownParams();
+	if(null != advancedSearchFacets)
+		urlParams.set("facets", advancedSearchFacets);
 	//JSONObject jsonObj = new JSONObject(params);
 	//alert(jsonObj.toString());
 
 
-	//console.log(urlParams);
-	//console.log(urlParams.toString());
+	console.log(urlParams);
+	console.log(urlParams.toString());
 	return urlParams;
 }
 
@@ -117,7 +119,9 @@ function getUriParams()
 	var parkour = getParkour();
 	var urlParams = new URLSearchParams(window.location.search);
 	var curFacets = urlParams.get('facets');
-	if(curFacets!=null)
+	var searchFacets = searchCriterias.get('facets');
+	var hasAlreadyFacets = searchCriterias.has("facets");
+	if(curFacets!=null && !searchCriterias.has("facets"))
 		searchCriterias.set("facets", curFacets);
 	var uriParams = searchCriterias.toString();
 	//console.log("/"+parkour+"?"+uriParams);

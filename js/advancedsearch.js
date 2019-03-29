@@ -54,23 +54,36 @@ function advancedSearchBar()
 
 function getAdvancedSearchDropdownParams()
 {
-	var result = new Map();
-	var txt = "";
+	var result = null;
+	var newFacets = "";
+	//newFacets = "<facets>"+"<facet>"+"<name>"+facetName+"</name>"+"<values>"+"<value>"+value+"</value>"+"</values>"+"</facet>"+"</facets>";
 	var advancedSearchLists = document.getElementById("advancedSearchLists");
 	for(var i = 0; i < advancedSearchLists.getElementsByClassName("btn-group").length; i++)
 	{
+		var newFacet = "";
 		var btnGroup = advancedSearchLists.getElementsByClassName("btn-group")[i];
 		var title = btnGroup.getElementsByClassName("btn-default")[0].title;
-		txt+=title + ", ";
 		var checkedElements = [];
 		for(var j = 0; j < btnGroup.getElementsByClassName("checkbox").length; j++)
 		{
 			var checkbox = btnGroup.getElementsByClassName("checkbox")[j];
 			if(checkbox.getElementsByClassName("checkboxinput")[0].checked)
+			{
 				checkedElements.push(checkbox.title);
+				newFacet += "<value>"+checkbox.title+"</value>";
+			}
 		}
-		result.set(title, checkedElements);
+		//result.set(title, checkedElements);
+		if(null != newFacet && "" != newFacet)
+			newFacets += "<facet>"+"<name>"+title+"</name>"+"<values>"+newFacet+"</values>"+"</facet>";
 	}
-	//console.log(txt);
+	if(null != newFacets && "" != newFacets)
+	{
+		result = "<facets>"+newFacets+"</facets>";
+	}
+	//console.log(result);
+
+	//$("#advancedSezefezfdechDiv").load(url);
+
 	return result;
 }
