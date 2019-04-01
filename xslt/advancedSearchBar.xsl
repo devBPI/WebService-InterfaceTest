@@ -161,7 +161,7 @@
 					<span class="multiselect-selected-text">Publiques</span><div class="caret"></div>
 				</button><br />
 				<ul id="publiquesUl" class="multiselect-container dropdown-menu">
-					<xsl:for-each select="langues/langue">
+					<xsl:for-each select="publiques/publique">
 						<li class="">
 							<div tabindex="0">
 								<label class="checkbox" title="{.}">
