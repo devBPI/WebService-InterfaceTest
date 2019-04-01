@@ -384,7 +384,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				<div style="margin-left: 1em;"><xsl:value-of select="cote"/></div>
 				<div style="margin-left: 1em;">
 				<xsl:for-each select="supports/support">
-					<xsl:if test="position()&gt;0">, </xsl:if>
+					<xsl:if test="position()&gt;1">, </xsl:if>
 					<xsl:value-of select="."/>
 					
 				</xsl:for-each>
