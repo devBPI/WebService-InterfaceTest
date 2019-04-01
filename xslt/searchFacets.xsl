@@ -4,6 +4,7 @@
 		<xsl:for-each select="facet">
 			<xsl:sort select="."/>
 			<div>
+				<!--<xsl:if test="(count-offline&gt;0) or (count-online&gt;0)">-->
 				<div class="facet" onclick="displayHideFacet(facet{position()});"><xsl:value-of select="name"/> <span style="font-weight: bold; color: #0055AA;">[<xsl:value-of select="count-offline"/>]</span> <span style="font-weight: bold; color: #007700;">[<xsl:value-of select="count-online"/>]</span></div>
 				<xsl:variable name="facetName" select="name"/>
 				<xsl:variable name="slash">\</xsl:variable>
@@ -30,6 +31,7 @@
 						<div class="facet" onclick="addFacet('{$facetName}', '{$replacedQuoteString}');">- <xsl:value-of select="name"/> <span style="font-weight: bold; color: #0055AA;">(<xsl:value-of select="count-offline"/>)</span> <span style="font-weight: bold; color:#007700;">(<xsl:value-of select="count-online"/>)</span></div>
 					</xsl:for-each>
 				</div>
+				<!--</xsl:if>-->
 			</div>
 		</xsl:for-each>
 	</xsl:template>
