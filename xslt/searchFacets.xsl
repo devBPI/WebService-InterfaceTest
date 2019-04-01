@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template match="facets/facetsList">
 		<xsl:for-each select="facet">
-			<xsl:sort select="."/>
+			<xsl:sort select="name"/>
 			<div>
 				<!--<xsl:if test="(count-offline&gt;0) or (count-online&gt;0)">-->
 				<div class="facet" onclick="displayHideFacet(facet{position()});"><xsl:value-of select="name"/> <span style="font-weight: bold; color: #0055AA;">[<xsl:value-of select="count-offline"/>]</span> <span style="font-weight: bold; color: #007700;">[<xsl:value-of select="count-online"/>]</span></div>
