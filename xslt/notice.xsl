@@ -382,9 +382,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				Disponibilité, Cote, Support(s) :
 				<div style="margin-left: 1em;"><xsl:value-of select="disponibilite"/></div>
 				<div style="margin-left: 1em;"><xsl:value-of select="cote"/></div>
+				<div style="margin-left: 1em;">
 				<xsl:for-each select="supports/support">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<xsl:if test="position()&gt;0">, </xsl:if>
+					<xsl:value-of select="."/>
+					
 				</xsl:for-each>
+				</div>
 				Note(s):
 				<xsl:for-each select="notes/note">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
