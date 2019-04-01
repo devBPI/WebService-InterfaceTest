@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-
 	<xsl:template match="/advanced-search-elements">
 		<xsl:if test="bases-recherche/base-recherche">
 			<div id="basesRechercheList" class="btn-group">
@@ -10,6 +8,7 @@
 				</button><br />
 				<ul id="basesRechercheUl" class="multiselect-container dropdown-menu">
 					<xsl:for-each select="bases-recherche/base-recherche">
+						<xsl:sort select="."/>
 						<li class="">
 							<div tabindex="0">
 								<label class="checkbox" title="{.}">
@@ -29,6 +28,7 @@
 				</button><br />
 				<ul id="languesUl" class="multiselect-container dropdown-menu">
 					<xsl:for-each select="langues/langue">
+						<xsl:sort select="."/>
 						<li class="">
 							<div tabindex="0">
 								<label class="checkbox" title="{.}">
@@ -48,6 +48,7 @@
 				</button><br />
 				<ul id="languesUl" class="multiselect-container dropdown-menu">
 					<xsl:for-each select="types/type">
+						<xsl:sort select="."/>
 						<li class="">
 							<div tabindex="0">
 								<label class="checkbox" title="{.}">
@@ -67,6 +68,7 @@
 				</button><br />
 				<ul id="supportsUl" class="multiselect-container dropdown-menu">
 					<xsl:for-each select="supports/support">
+						<xsl:sort select="."/>
 						<li class="">
 							<div tabindex="0">
 								<label class="checkbox" title="{.}">
@@ -86,6 +88,7 @@
 				</button><br />
 				<ul id="genresMusicauxUl" class="multiselect-container dropdown-menu">
 					<xsl:for-each select="genres-musicaux/genre-musical">
+						<xsl:sort select="."/>
 						<li class="">
 							<div tabindex="0">
 								<label class="checkbox" title="{.}">
@@ -105,6 +108,7 @@
 				</button><br />
 				<ul id="genresFilmsUl" class="multiselect-container dropdown-menu">
 					<xsl:for-each select="genres-films/genre-film">
+						<xsl:sort select="."/>
 						<li class="">
 							<div tabindex="0">
 								<label class="checkbox" title="{.}">
@@ -124,6 +128,7 @@
 				</button><br />
 				<ul id="genresLitterairesUl" class="multiselect-container dropdown-menu">
 					<xsl:for-each select="genres-litteraires/genre-litteraire">
+						<xsl:sort select="."/>
 						<li class="">
 							<div tabindex="0">
 								<label class="checkbox" title="{.}">
@@ -143,6 +148,7 @@
 				</button><br />
 				<ul id="secteursUl" class="multiselect-container dropdown-menu">
 					<xsl:for-each select="secteurs/secteur">
+						<xsl:sort select="."/>
 						<li class="">
 							<div tabindex="0">
 								<label class="checkbox" title="{.}">
@@ -181,6 +187,7 @@
 				</button><br />
 				<ul id="contenusUl" class="multiselect-container dropdown-menu">
 					<xsl:for-each select="contenus/contenu">
+						<xsl:sort select="."/>
 						<li class="">
 							<div tabindex="0">
 								<label class="checkbox" title="{.}">
