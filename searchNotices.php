@@ -44,11 +44,11 @@
 	$defaultDatePublication      = urldecode(isGetOk("datepublication"));
 	$defaultRealisateur          = urldecode(isGetOk("realisateur"));
 	$defaultTheme                = urldecode(isGetOk("theme"));
-	$defaultBaseRecherche        = urldecode(isGetOk("baserecherche"));
 	$defaultEditeur              = urldecode(isGetOk("editeur"));
 	$defaultCollection           = urldecode(isGetOk("collection"));
 	$defaultDatePublicationStart = urldecode(isGetOk("datepublicationstart"));
 	$defaultDatePublicationEnd   = urldecode(isGetOk("datepublicationend"));
+	/*$defaultBaseRecherche        = urldecode(isGetOk("baserecherche"));
 	$defaultLangue               = urldecode(isGetOk("langue"));
 	$defaultType                 = urldecode(isGetOk("type"));
 	$defaultSupport              = urldecode(isGetOk("support"));
@@ -56,7 +56,7 @@
 	$defaultGenreFilm            = urldecode(isGetOk("genrefilm"));
 	$defaultGenreLitt            = urldecode(isGetOk("genrelitt"));
 	$defaultSecteur              = urldecode(isGetOk("secteur"));
-	$defaultAudience             = urldecode(isGetOk("audience"));
+	$defaultAudience             = urldecode(isGetOk("audience"));*/
 
 	$defaultFacets               = urldecode(isGetOk("facets"));
 
@@ -86,19 +86,19 @@
 	if($defaultDatePublication!=null)      $data["date-publication"]        = $defaultDatePublication;
 	if($defaultRealisateur!=null)          $data["realisateur"]             = $defaultRealisateur;
 	if($defaultTheme!=null)                $data["theme"]                   = $defaultTheme;
-	if($defaultBaseRecherche!=null)        $data["baserecherche"]           = $defaultBaseRecherche;
 	if($defaultEditeur!=null)              $data["editeur"]                 = $defaultEditeur;
 	if($defaultCollection!=null)           $data["collection"]              = $defaultCollection;
 	if($defaultDatePublicationStart!=null) $data["date-publication-debut"]  = $defaultDatePublicationStart;
 	if($defaultDatePublicationEnd!=null)   $data["date-publication-fin"]    = $defaultDatePublicationEnd;
-	if($defaultLangue!=null)               $data["langue"]                  = $defaultLangue;
+	/*if($defaultBaseRecherche!=null)        $data["baserecherche"]           = $defaultBaseRecherche;
+	/if($defaultLangue!=null)               $data["langue"]                  = $defaultLangue;
 	if($defaultType!=null)                 $data["type"]                    = $defaultType;
 	if($defaultSupport!=null)              $data["support"]                 = $defaultSupport;
 	if($defaultGenreMusic!=null)           $data["genre-musical"]           = $defaultGenreMusic;
 	if($defaultGenreFilm!=null)            $data["genre-cinematographique"] = $defaultGenreFilm;
 	if($defaultGenreLitt!=null)            $data["genre-literraire"]        = $defaultGenreLitt;
 	if($defaultSecteur!=null)              $data["secteur"]                 = $defaultSecteur;
-	if($defaultAudience!=null)             $data["audience"]                = $defaultAudience;
+	if($defaultAudience!=null)             $data["audience"]                = $defaultAudience;*/
 	//if($defaultFacets!=null)               $data["facets"]                  = $defaultFacets;
 
 	$xmlData = array_to_xml_main("search-criterias", $data);

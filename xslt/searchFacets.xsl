@@ -2,6 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template match="facets/facetsList">
 		<xsl:for-each select="facet">
+			<xsl:sort select="."/>
 			<div>
 				<div class="facet" onclick="displayHideFacet(facet{position()});"><xsl:value-of select="name"/> <span style="font-weight: bold; color: #0055AA;">[<xsl:value-of select="count-offline"/>]</span> <span style="font-weight: bold; color: #007700;">[<xsl:value-of select="count-online"/>]</span></div>
 				<xsl:variable name="facetName" select="name"/>
@@ -11,6 +12,7 @@
 				<xsl:variable name="slashQuote">\'</xsl:variable>
 				<div id="facet{position()}" style="display: none;">
 					<xsl:for-each select="valuesCounts/value">
+						<xsl:sort select="name"/>
 						<xsl:variable name="replacedSlashString">
 							<xsl:call-template name="replace_single_quote">
 								<xsl:with-param name="string" select="name" />
