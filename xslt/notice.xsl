@@ -377,18 +377,24 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		</xsl:if>
 
 		<xsl:for-each select="exemplaires/exemplaire">
+			<hr />
 			<div class="exemplaire">
-				Disponibilité, Cote, Support :
+				Disponibilité, Cote, Support(s) :
 				<div style="margin-left: 1em;"><xsl:value-of select="disponibilite"/></div>
 				<div style="margin-left: 1em;"><xsl:value-of select="cote"/></div>
 				<xsl:for-each select="supports/support">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
-				<div><xsl:value-of select="localisation"/> <xsl:value-of select="categorie"/></div>
+				Note(s):
+				<xsl:for-each select="notes/note">
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+				</xsl:for-each>
+				<div><xsl:value-of select="localisation"/> - <xsl:value-of select="categorie"/></div>
 			</div>
 		</xsl:for-each>
 		<br />
 		<xsl:for-each select="seriels/seriel">
+			<hr />
 			<div class="seriel">
 				Disponibilité, Cote, Support :
 				<div style="margin-left: 1em;"><xsl:value-of select="disponibilite"/></div>
@@ -402,6 +408,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		</xsl:for-each>
 		<br />
 		<xsl:for-each select="liens/lien">
+			<hr />
 			<div class="lien">
 				<div><a href="{url}"><xsl:value-of select="url"/></a></div>
 				<div><xsl:value-of select="cote"/></div>
