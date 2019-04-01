@@ -168,6 +168,7 @@
 				</button><br />
 				<ul id="publiquesUl" class="multiselect-container dropdown-menu">
 					<xsl:for-each select="publiques/publique">
+						<xsl:sort select="."/>
 						<li class="">
 							<div tabindex="0">
 								<label class="checkbox" title="{.}">
