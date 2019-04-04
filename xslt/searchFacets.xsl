@@ -2,83 +2,85 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template match="facets/facetsList">
 		<xsl:for-each select="facet">
-			<!--<xsl:sort select="label"/>-->
-			<div>
-				<xsl:variable name="facetLabel">
-					<xsl:choose>
-						<xsl:when test="name='disponibilite'">
-							Disponibilité
-						</xsl:when>
-						<xsl:when test="name='type'">
-							Type de document
-						</xsl:when>
-						<xsl:when test="name='creator'">
-							Auteurs, Contributeurs
-						</xsl:when>
-						<xsl:when test="name='publishing_date'">
-							Date de publication
-						</xsl:when>
-						<xsl:when test="name='language'">
-							Langues
-						</xsl:when>
-						<xsl:when test="name='subject'">
-							Sujet
-						</xsl:when>
-						<xsl:when test="name='genre_musical'">
-							Genre musical
-						</xsl:when>
-						<xsl:when test="name='genre_film'">
-							Genre film
-						</xsl:when>
-						<xsl:when test="name='genre_litteraire'">
-							Genre littéraire
-						</xsl:when>
-						<xsl:when test="name='configuration_name'">
-							Base de recherche
-						</xsl:when>
-						<xsl:when test="name='secteur'">
-							Secteur
-						</xsl:when>
-						<xsl:when test="name='material_support'">
-							Support
-						</xsl:when>
-						<xsl:when test="name='audience'">
-							Public destinataire
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:value-of select="name"/>
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:variable>
-				<!--<xsl:if test="(count-offline&gt;0) or (count-online&gt;0)">-->
-				<div class="facet" onclick="displayHideFacet(facet{position()});"><xsl:value-of select="$facetLabel"/> <span style="font-weight: bold; color: #0055AA;">[<xsl:value-of select="count-offline"/>]</span> <span style="font-weight: bold; color: #007700;">[<xsl:value-of select="count-online"/>]</span></div>
-				<xsl:variable name="facetName" select="name"/>
-				<xsl:variable name="slash">\</xsl:variable>
-				<xsl:variable name="doubleSlash">\\</xsl:variable>
-				<xsl:variable name="quote">'</xsl:variable>
-				<xsl:variable name="slashQuote">\'</xsl:variable>
-				<div id="facet{position()}" style="display: none;">
-					<xsl:for-each select="valuesCounts/value">
-						<xsl:sort select="name"/>
-						<xsl:variable name="replacedSlashString">
-							<xsl:call-template name="replace_single_quote">
-								<xsl:with-param name="string" select="name" />
-								<xsl:with-param name="find" select="$slash" />
-								<xsl:with-param name="replace" select="$doubleSlash" />
-							</xsl:call-template>
-						</xsl:variable>
-						<xsl:variable name="replacedQuoteString">
-							<xsl:call-template name="replace_single_quote">
-								<xsl:with-param name="string" select="$replacedSlashString" />
-								<xsl:with-param name="find" select="$quote" />
-								<xsl:with-param name="replace" select="$slashQuote" />
-							</xsl:call-template>
-						</xsl:variable>
-						<div class="facet" onclick="addFacet('{$facetName}', '{$replacedQuoteString}');">- <xsl:value-of select="name"/> <span style="font-weight: bold; color: #0055AA;">(<xsl:value-of select="count-offline"/>)</span> <span style="font-weight: bold; color:#007700;">(<xsl:value-of select="count-online"/>)</span></div>
-					</xsl:for-each>
+			<xsl:if test="name='disponibilite' or name='type' or name='creator' or name='publishing_date' or name='language' or name='subject' or name='genre_musical' or name='genre_film' or name='genre_litteraire' or name='configuration_name' or name='secteur' or name='material_support' or name='audience'">
+				<!--<xsl:sort select="label"/>-->
+				<div>
+					<xsl:variable name="facetLabel">
+						<xsl:choose>
+							<xsl:when test="name='disponibilite'">
+								Disponibilité
+							</xsl:when>
+							<xsl:when test="name='type'">
+								Type de document
+							</xsl:when>
+							<xsl:when test="name='creator'">
+								Auteurs, Contributeurs
+							</xsl:when>
+							<xsl:when test="name='publishing_date'">
+								Date de publication
+							</xsl:when>
+							<xsl:when test="name='language'">
+								Langues
+							</xsl:when>
+							<xsl:when test="name='subject'">
+								Sujet
+							</xsl:when>
+							<xsl:when test="name='genre_musical'">
+								Genre musical
+							</xsl:when>
+							<xsl:when test="name='genre_film'">
+								Genre film
+							</xsl:when>
+							<xsl:when test="name='genre_litteraire'">
+								Genre littéraire
+							</xsl:when>
+							<xsl:when test="name='configuration_name'">
+								Base de recherche
+							</xsl:when>
+							<xsl:when test="name='secteur'">
+								Secteur
+							</xsl:when>
+							<xsl:when test="name='material_support'">
+								Support
+							</xsl:when>
+							<xsl:when test="name='audience'">
+								Public destinataire
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="name"/>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:variable>
+					<!--<xsl:if test="(count-offline&gt;0) or (count-online&gt;0)">-->
+					<div class="facet" onclick="displayHideFacet(facet{position()});"><xsl:value-of select="$facetLabel"/> <span style="font-weight: bold; color: #0055AA;">[<xsl:value-of select="count-offline"/>]</span> <span style="font-weight: bold; color: #007700;">[<xsl:value-of select="count-online"/>]</span></div>
+					<xsl:variable name="facetName" select="name"/>
+					<xsl:variable name="slash">\</xsl:variable>
+					<xsl:variable name="doubleSlash">\\</xsl:variable>
+					<xsl:variable name="quote">'</xsl:variable>
+					<xsl:variable name="slashQuote">\'</xsl:variable>
+					<div id="facet{position()}" style="display: none;">
+						<xsl:for-each select="valuesCounts/value">
+							<xsl:sort select="name"/>
+							<xsl:variable name="replacedSlashString">
+								<xsl:call-template name="replace_single_quote">
+									<xsl:with-param name="string" select="name" />
+									<xsl:with-param name="find" select="$slash" />
+									<xsl:with-param name="replace" select="$doubleSlash" />
+								</xsl:call-template>
+							</xsl:variable>
+							<xsl:variable name="replacedQuoteString">
+								<xsl:call-template name="replace_single_quote">
+									<xsl:with-param name="string" select="$replacedSlashString" />
+									<xsl:with-param name="find" select="$quote" />
+									<xsl:with-param name="replace" select="$slashQuote" />
+								</xsl:call-template>
+							</xsl:variable>
+							<div class="facet" onclick="addFacet('{$facetName}', '{$replacedQuoteString}');">- <xsl:value-of select="name"/> <span style="font-weight: bold; color: #0055AA;">(<xsl:value-of select="count-offline"/>)</span> <span style="font-weight: bold; color:#007700;">(<xsl:value-of select="count-online"/>)</span></div>
+						</xsl:for-each>
+					</div>
+					<!--</xsl:if>-->
 				</div>
-				<!--</xsl:if>-->
-			</div>
+			</xsl:if>
 		</xsl:for-each>
 	</xsl:template>
 	<xsl:template name="replace_single_quote">
