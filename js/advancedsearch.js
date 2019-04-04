@@ -62,7 +62,8 @@ function getAdvancedSearchDropdownParams()
 	{
 		var newFacet = "";
 		var btnGroup = advancedSearchLists.getElementsByClassName("btn-group")[i];
-		var title = btnGroup.getElementsByClassName("btn-default")[0].title;
+		var title = btnGroup.title;
+		//var title = btnGroup.getElementsByClassName("btn-default")[0].title;
 		var checkedElements = [];
 		for(var j = 0; j < btnGroup.getElementsByClassName("checkbox").length; j++)
 		{

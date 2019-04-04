@@ -55,7 +55,8 @@
 	$defaultAudience             = urldecode(isGetOk("audience"));
 	$defaultFacets               = urldecode(isGetOk("facets"));
 	
-	$ini_array = parse_ini_file("etc/configuration.ini");
+	$inter_array = parse_ini_file("etc/interface.ini");
+	$ini_array   = parse_ini_file("etc/configuration.ini");
 	if(!$ini_array)
 		$ini_array = parse_ini_file("etc/default.ini");
 	if(!$ini_array)
@@ -120,7 +121,7 @@
 			<div style="float:right; text-align:right;">
 				<?php
 					echo "<p>Interface version : ";
-					echo "Version de l'interface : " . $ini_array["InterfaceVersion"];
+					echo "Version de l'interface : " . $inter_array["InterfaceVersion"];
 					echo "</p>";
 					echo "<p>Catalog Webservice version : ";
 					include('getWebServiceVersion.php');

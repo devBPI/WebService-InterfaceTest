@@ -2,8 +2,49 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template match="facets">
 		<xsl:for-each select="facet">
+			<!--<xsl:sort select="name"/>-->
 			<div id="selectedFacets">
-				Facettes <xsl:value-of select="name"/>:
+				<xsl:variable name="facetLabel">
+					<xsl:choose>
+						<xsl:when test="name='configuration_name'">
+							Base de recherche
+						</xsl:when>
+						<xsl:when test="name='language'">
+							Langues
+						</xsl:when>
+						<xsl:when test="name='type'">
+							Type de document
+						</xsl:when>
+						<xsl:when test="name='material_support'">
+							Support
+						</xsl:when>
+						<xsl:when test="name='genre_musical'">
+							Genre musical
+						</xsl:when>
+						<xsl:when test="name='genre_film'">
+							Genre film
+						</xsl:when>
+						<xsl:when test="name='genre_litteraire'">
+							Genre littéraire
+						</xsl:when>
+						<xsl:when test="name='secteur'">
+							Secteur
+						</xsl:when>
+						<xsl:when test="name='audience'">
+							Public destinataire
+						</xsl:when>
+						<xsl:when test="name='mediation'">
+							Mediation
+						</xsl:when>
+						<xsl:when test="name='contenu'">
+							Contenu
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="name"/>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				Facettes <xsl:value-of select="$facetLabel"/> :
 				<xsl:variable name="facetName" select="name" />
 				<xsl:variable name="slash">\</xsl:variable>
 				<xsl:variable name="doubleSlash">\\</xsl:variable>
