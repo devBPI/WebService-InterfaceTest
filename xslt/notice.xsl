@@ -134,15 +134,18 @@
 		</xsl:if>
 		<xsl:if test="periodicites/periodicite">
 			<div id="periodicites">
+				Périodicité 
 				<xsl:for-each select="periodicites/periodicite">
-					<div>Périodicité  <xsl:value-of select="."/></div>
+					<xsl:if test="position() > 1">. </xsl:if>
+					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="titresUniform/titreUniforme">
 			<div id="oeuvres">
+			Oeuvre(s) 
 				<xsl:for-each select="titresUniform/titreUniform">
-					<div>Oeuvre(s)  <xsl:value-of select="."/></div>
+					<<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
