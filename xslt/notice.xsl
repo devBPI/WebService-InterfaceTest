@@ -108,9 +108,9 @@
 		</xsl:if>
 		<xsl:if test="editeurs/editeur">
 			<div id="editeurs">
-				Editeur(s)  
+				Editeur(s)   
 				<xsl:for-each select="editeurs/editeur">
-					<div style="margin-left: 1em;"><xsl:value-of select="./value"/></div>
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
