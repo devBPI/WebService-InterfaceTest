@@ -106,46 +106,47 @@
 		</xsl:if>
 		<xsl:if test="editeurs/editeur">
 			<div id="editeurs">
-				Editeur(s) : 
+				Editeur(s)  
 				<xsl:for-each select="editeurs/editeur">
-					<xsl:if test="position() > 1">, </xsl:if>
-					<xsl:value-of select="."/>
+					<div style="margin-left: 1em;"><xsl:value-of select="./value"/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="datesTextuelles/dateTextuelle">
 			<div id="dates">
-				Date(s) :
+				Date(s) 
 				<xsl:for-each select="datesTextuelles/dateTextuelle">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<xsl:if test="position() > 1">- </xsl:if>
+					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="autresDates/autreDate">
 			<div id="dates">
-				 Date d'édition papier :
+				 Date d'édition papier 
 				<xsl:for-each select="autresDates/autreDate">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<xsl:if test="position() > 1">. </xsl:if>
+					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="periodicites/periodicite">
 			<div id="periodicites">
 				<xsl:for-each select="periodicites/periodicite">
-					<div>Périodicité : <xsl:value-of select="."/></div>
+					<div>Périodicité  <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="titresUniform/titreUniforme">
 			<div id="oeuvres">
 				<xsl:for-each select="titresUniform/titreUniform">
-					<div>Oeuvre : <xsl:value-of select="."/></div>
+					<div>Oeuvre(s)  <xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="titresAlternatifs/titreAlternatif">
 			<div id="titresAutresFormes">
-				Autre(s) forme(s) de titre : 
+				Autre(s) forme(s) de titre  
 				<xsl:for-each select="titresAlternatifs/titreAlternatif">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
@@ -153,18 +154,19 @@
 		</xsl:if>
 		<xsl:if test="(type!='Musique') and (resumes/resume)">
 			<div id="resume">
-				Résumé : 
+				Résumé  
 				<xsl:for-each select="resumes/resume">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="contenus/contenu">
 			<xsl:if test="(type='Musique')">
-				Pistes : 
+				Pistes  
 			</xsl:if>
 			<xsl:if test="(type!='Musique')">
-				Contenu : 
+				Contenu  
 			</xsl:if>
 			<div id="contenus">
 				<xsl:for-each select="contenus/contenu">
@@ -173,7 +175,7 @@
 			</div>
 		</xsl:if>
 		<xsl:if test="notes/note">
-			Notes : 
+			Notes  
 			<div id="notes">
 				<xsl:for-each select="notes/note">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
@@ -182,7 +184,7 @@
 		</xsl:if>
 		<xsl:if test="langues/langue">
 			<div id="langues">
-				Langue(s) :
+				Langue(s) 
 				<xsl:for-each select="langues/langue">
 					<xsl:if test="position() > 1">, </xsl:if>
 					<xsl:value-of select="."/>
@@ -190,31 +192,31 @@
 				<xsl:if test="(langues) and (languesOriginal)">, </xsl:if>
 				<xsl:for-each select="languesOriginales/langueOriginale">
 					<xsl:if test="position() > 1">, </xsl:if>
-					Traduit de <xsl:value-of select="."/>
+					, traduit de : <xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="descriptionsMaterielle/descriptionMaterielle">
 			<div id="descriptionsMaterielle">
+			Description matérielle 
 				<xsl:for-each select="descriptionsMaterielle/descriptionMaterielle">
-					<div>Description matérielle : <xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="seriesCollection/serieCollection">
 			<div id="seriesCollection">
+			Série / Collection 
 				<xsl:for-each select="seriesCollection/serieCollection">
-					<div>Série / Collection : <xsl:value-of select="./value"/></div>
-					<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="titresEnsemble/titreEnsemble">
 			<div id="titresEnsemble">
-				Titre(s) d'ensemble: 
+				Titre(s) d'ensemble 
 				<xsl:for-each select="titresEnsemble/titreEnsemble">
-					<xsl:if test="position() > 1">, </xsl:if>
-					<xsl:value-of select="."/>
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -222,39 +224,38 @@
 			<div id="titresEnRelation">
 				Titre(s) en relation 
 				<xsl:for-each select="titresEnRelation/titreEnRelation">
-					<xsl:if test="position() > 1">, </xsl:if>
-					<xsl:value-of select="."/>
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="reunits/reunit">
 			<div id="reunits">
-				Réunit : 
+				Réunit  
 				<xsl:for-each select="reunits/reunit">
-					<xsl:if test="position() > 1">, </xsl:if>
-					<xsl:value-of select="."/>
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="autresEditions">
 			<div id="autresEditions">
-				Autre(s) éditions : 
+				Autre(s) édition(s)  
 				<xsl:for-each select="autresEditions/autreEdition">
-					<xsl:if test="position() > 1">, </xsl:if>
+					<xsl:if test="position() > 1">; </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="conservations/conservation">
 			<div id="conservations">
+				Conservation 
 				<xsl:for-each select="conservations/conservation">
-					<div>Conservation : <xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="sujets/sujet">
 			<div id="sujets">
-				Sujet(s) :
+				Sujet(s) 
 				<xsl:for-each select="sujets/sujet">
 					<div style="margin-left: 1em;"><xsl:value-of select="./value"/></div>
 					<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
@@ -263,28 +264,31 @@
 		</xsl:if>
 		<xsl:if test="epoques/epoque">
 			<div id="epoques">
+				Epoque
 				<xsl:for-each select="epoques/epoque">
-					<div>Epoque : <xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="lieux/lieu">
 			<div id="lieux">
+				Lieu
 				<xsl:for-each select="lieux/lieu">
-					<div>Lieu : <xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="genres/genre">
 			<div id="genres">
+				Genre
 				<xsl:for-each select="genres/genre">
-					<div>Genre : <xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="themes/theme">
 			<div id="themes">
-				Thème(s) :
+				Thème(s) 
 				<xsl:for-each select="themes/theme">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
@@ -292,66 +296,79 @@
 		</xsl:if>
 		<xsl:if test="isbns/isbn">
 			<div id="isbns">
+			ISBN
 				<xsl:for-each select="isbns/isbn">
-					<div>ISBN : <xsl:value-of select="."/></div>
+					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="issns/issn">
-			<div id="issns">ISSN
+			<div id="issns">
+			ISSN
 				<xsl:for-each select="issns/issn">
+					<xsl:if test="position() > 1">; </xsl:if>
 					<xsl:value-of select="."/>
-					;
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="numerosCommerciaux">
 			<div id="numerosCommerciaux">
-				Numéros commerciaux : 
+			Numéros commerciaux  
 				<xsl:for-each select="numerosCommerciaux/numeroCommercial">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="indices/indice">
+			Indice
 			<div id="indices">
 				<xsl:for-each select="indices/indice">
-					<div>Indice : <xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="publiques/publique">
 			<div id="publiques">
+			Public
 				<xsl:for-each select="publiques/publique">
-					<div>Public : <xsl:value-of select="."/></div>
+					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="droits-infos/droits/droit">
 			<div id="droits">
-				Droit(s) :
+			Droit(s) 
 				<xsl:for-each select="droits-infos/droits/droit">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:value-of select="."/>
 				</xsl:for-each>
 				<xsl:for-each select="droits-infos/licences/licence">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:value-of select="."/>
 				</xsl:for-each>
 				<xsl:for-each select="droits-infos/copyrights/copyright">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="lieuxManifestations/lieuManifestation">
 			<div id="lieuxManifestations">
+			Lieu de la manifestation
 				<xsl:for-each select="lieuxManifestations/lieuManifestation">
-					<div>Lieu de la manifestation : <xsl:value-of select="."/></div>
+					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
 		<xsl:if test="origines/origine">
-			<div id="origines">
+			<div id="origines" style="font-size: smaller; color: grey;">
+				Origine
 				<xsl:for-each select="origines/origine">
-					<div style="font-size: smaller; color: grey;">Origine : <xsl:value-of select="."/></div>
+					<div style="font-size: smaller; color: grey;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
