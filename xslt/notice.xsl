@@ -62,18 +62,20 @@
 				</div>
 			</xsl:when>
 			<xsl:otherwise>
-				<div id="auteurs">
-					Auteur(s)
-					<xsl:if test="(type='Musique')">
-						, compositeur(s), interprète(s)
-					</xsl:if>
-					: 
-					<xsl:for-each select="auteurs/auteur">
-						<xsl:if test="position() > 1">, </xsl:if> <!-- Separateur virgule entre chaque auteur -->
-						<xsl:value-of select="./value"/>
-						<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
-					</xsl:for-each>
-				</div>
+				<xsl:if test="auteurs/auteur">
+					<div id="auteurs">
+						Auteur(s)
+						<xsl:if test="(type='Musique')">
+							, compositeur(s), interprète(s)
+						</xsl:if>
+						: 
+						<xsl:for-each select="auteurs/auteur">
+							<xsl:if test="position() > 1">, </xsl:if> <!-- Separateur virgule entre chaque auteur -->
+							<xsl:value-of select="./value"/>
+							<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+						</xsl:for-each>
+					</div>
+				</xsl:if>
 			</xsl:otherwise>
 		</xsl:choose>
 		<xsl:if test="auteursSecondaires/auteurSecondaire">
@@ -236,7 +238,7 @@
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="autresEditions">
+		<xsl:if test="autresEditions/autreEdition">
 			<div id="autresEditions">
 				Autre(s) édition(s)  
 				<xsl:for-each select="autresEditions/autreEdition">
@@ -368,7 +370,8 @@
 			<div id="origines" style="font-size: smaller; color: grey;">
 				Origine
 				<xsl:for-each select="origines/origine">
-					<div style="font-size: smaller; color: grey;"><xsl:value-of select="."/></div>
+					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
