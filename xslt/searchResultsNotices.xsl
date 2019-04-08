@@ -108,16 +108,20 @@
 									</div>
 								</div>
 								<div class="auteurs">
+								par 
 									<xsl:for-each select="./auteurs/auteur">
-										<div>par <xsl:value-of select="."/></div>
+										<xsl:if test="position() > 1">; </xsl:if>
+										<xsl:value-of select="."/>	
 									</xsl:for-each>
 									<xsl:for-each select="./realisateurs/realisateur">
-										<div>par <xsl:value-of select="."/></div>
-									</xsl:for-each>
+										<xsl:if test="position() > 1">; </xsl:if>
+										<xsl:value-of select="."/>	
+									</xsl:for-each>	
 								</div>
 								<div class="editeurs">
 									<xsl:for-each select="./editeurs/editeur">
-										<div><xsl:value-of select="."/></div>
+										<xsl:if test="position() > 1">; </xsl:if>
+										<xsl:value-of select="."/>	
 									</xsl:for-each>
 								</div>
 								<div class="dates">
