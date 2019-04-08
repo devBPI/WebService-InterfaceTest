@@ -145,7 +145,7 @@
 			<div id="oeuvres">
 			Oeuvre(s) 
 				<xsl:for-each select="titresUniform/titreUniform">
-					<<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
