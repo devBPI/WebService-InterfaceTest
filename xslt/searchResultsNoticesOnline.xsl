@@ -119,7 +119,7 @@
 										</xsl:for-each>
 									</xsl:if>
 								</div>
-								</xsl:if>
+							</xsl:if>
 							<div class="editeurs">
 								<xsl:for-each select="./editeurs/editeur">
 									<div><xsl:value-of select="."/></div>
