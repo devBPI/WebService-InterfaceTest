@@ -86,11 +86,11 @@
 	if($defaultDatePublication!=null)      $data["date-publication"]        = $defaultDatePublication;
 	if($defaultRealisateur!=null)          $data["realisateur"]             = $defaultRealisateur;
 	if($defaultTheme!=null)                $data["theme"]                   = $defaultTheme;
-	if($defaultBaseRecherche!=null)        $data["baserecherche"]           = $defaultBaseRecherche;
 	if($defaultEditeur!=null)              $data["editeur"]                 = $defaultEditeur;
-	if($defaultCollection!=null)           $data["collection"]              = $defaultCollection;
+	if($defaultCollection!=null)           $data["collectionName"]          = $defaultCollection;
 	if($defaultDatePublicationStart!=null) $data["date-publication-debut"]  = $defaultDatePublicationStart;
 	if($defaultDatePublicationEnd!=null)   $data["date-publication-fin"]    = $defaultDatePublicationEnd;
+	/*if($defaultBaseRecherche!=null)        $data["baserecherche"]           = $defaultBaseRecherche;
 	if($defaultLangue!=null)               $data["langue"]                  = $defaultLangue;
 	if($defaultType!=null)                 $data["type"]                    = $defaultType;
 	if($defaultSupport!=null)              $data["support"]                 = $defaultSupport;
@@ -98,7 +98,7 @@
 	if($defaultGenreFilm!=null)            $data["genre-cinematographique"] = $defaultGenreFilm;
 	if($defaultGenreLitt!=null)            $data["genre-literraire"]        = $defaultGenreLitt;
 	if($defaultSecteur!=null)              $data["secteur"]                 = $defaultSecteur;
-	if($defaultAudience!=null)             $data["audience"]                = $defaultAudience;
+	if($defaultAudience!=null)             $data["audience"]                = $defaultAudience;*/
 	//if($defaultFacets!=null)               $data["facets"]                  = $defaultFacets;
 
 	$xmlData = array_to_xml_main("search-criterias", $data);

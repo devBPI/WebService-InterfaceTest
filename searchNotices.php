@@ -87,7 +87,7 @@
 	if($defaultRealisateur!=null)          $data["realisateur"]             = $defaultRealisateur;
 	if($defaultTheme!=null)                $data["theme"]                   = $defaultTheme;
 	if($defaultEditeur!=null)              $data["editeur"]                 = $defaultEditeur;
-	if($defaultCollection!=null)           $data["collection"]              = $defaultCollection;
+	if($defaultCollection!=null)           $data["collectionName"]          = $defaultCollection;
 	if($defaultDatePublicationStart!=null) $data["date-publication-debut"]  = $defaultDatePublicationStart;
 	if($defaultDatePublicationEnd!=null)   $data["date-publication-fin"]    = $defaultDatePublicationEnd;
 	/*if($defaultBaseRecherche!=null)        $data["baserecherche"]           = $defaultBaseRecherche;
