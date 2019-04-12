@@ -33,9 +33,16 @@
 		<input type="text" id="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();cleanFacets();}" <?php if($defaultSearchText!=null){echo "value=\"".$defaultSearchText."\"";} ?> />
 	</div>
 	<select id="searchBarSelection">
-		<option value="Generale">Générale</option>
-		<option value="Titre" disabled="true">Titre</option>
-		<option value="Auteur" disabled="true">Auteur</option>
+		<option id="searchBarSelectionGenerale" <?php if($defaultGeneralSignification=="generale") echo "selected"; ?> value="generale">Générale</option>
+		<option id="searchBarSelectionAuteur" <?php if($defaultGeneralSignification=="auteur") echo "selected"; ?> value="auteur">Auteur</option>
+		<option id="searchBarSelectionTitre" <?php if($defaultGeneralSignification=="titre") echo "selected"; ?> value="titre">Titre</option>
+		<option id="searchBarSelectionSujet" <?php if($defaultGeneralSignification=="sujet") echo "selected"; ?> value="sujet">Sujet</option>
+		<option id="searchBarSelectionIssnIsbnCom" <?php if($defaultGeneralSignification=="isbnissncommercial") echo "selected"; ?> value="isbnissncommercial">ISBN, ISSN, numéros commerciaux</option>
+		<option id="searchBarSelectionIndiceCote" <?php if($defaultGeneralSignification=="indicecote") echo "selected"; ?> value="indicecote">Indice / Cote</option>
+		<option id="searchBarSelectionDatePublication" <?php if($defaultGeneralSignification=="datepublication") echo "selected"; ?> value="datepublication" disabled>Date de publication (précise)</option>
+		<option id="searchBarSelectionEdition" <?php if($defaultGeneralSignification=="editeur") echo "selected"; ?> value="editeur">Éditeur</option>
+		<option id="searchBarSelectionRealisateur" <?php if($defaultGeneralSignification=="realisateur") echo "selected"; ?> value="realisateur">Réalisateur</option>
+		<option id="searchBarSelectionTheme" <?php if($defaultGeneralSignification=="theme") echo "selected"; ?> value="theme">Thème</option>
 	</select>
 	<input id="loupe" type="submit" value=" " onclick="search();cleanFacets();" />
 	<input id="advancedSearchButton" type="submit" value="+" onclick="advancedSearch();" />

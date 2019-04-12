@@ -34,3 +34,87 @@
 	color: #555555;
 }
 
+#facetsFlex
+{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: column;
+}
+
+#facetsFlex #disponibilite
+{
+	WebkitOrder: 1;
+	order: 1;
+}
+
+#facetsFlex #type
+{
+	WebkitOrder: 2;
+	order: 2;
+}
+
+#facetsFlex #creator
+{
+	WebkitOrder: 3;
+	order: 3;
+}
+
+#facetsFlex #publishing_date
+{
+	WebkitOrder: 4;
+	order: 4;
+}
+
+#facetsFlex #language
+{
+	WebkitOrder: 5;
+	order: 5;
+}
+
+#facetsFlex #subject
+{
+	WebkitOrder: 6;
+	order: 6;
+}
+
+#facetsFlex #genre_litteraire
+{
+	WebkitOrder: 7;
+	order: 7;
+}
+
+#facetsFlex #genre_film
+{
+	WebkitOrder: 8;
+	order: 8;
+}
+
+#facetsFlex #genre_musical
+{
+	WebkitOrder: 9;
+	order: 9;
+}
+
+#facetsFlex #configuration_name
+{
+	WebkitOrder: 10;
+	order: 10;
+}
+
+#facetsFlex #secteur
+{
+	WebkitOrder: 11;
+	order: 11;
+}
+
+#facetsFlex #material_support
+{
+	WebkitOrder: 12;
+	order: 12;
+}
+
+#facetsFlex #audience
+{
+	WebkitOrder: 13;
+	order: 13;
+}

@@ -1,0 +1,15 @@
+/**********************/
+/* Advanced SearchBar */
+/**********************/
+
+#searchBarSelectionTheme
+{
+	display: block;
+}
+
+#genresMusicauxList,
+#genresFilmsList,
+#genresLitterairesList
+{
+	display: none;
+}

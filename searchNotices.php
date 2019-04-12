@@ -35,6 +35,7 @@
 		}
 	}
 
+	$defaultGeneralSignification = urldecode(isGetOk("generalSignification"));
 	$defaultGeneral              = urldecode(isGetOk("general"));
 	$defaultTitre                = urldecode(isGetOk("titre"));
 	$defaultAuteur               = urldecode(isGetOk("auteur"));
@@ -77,7 +78,43 @@
 	header("Content-Type: text/html;charset=utf-8");
 
 	$data = array('parcours' => $parkour, 'page' => $page, 'rows' => $rows);
-	if($defaultGeneral!=null)              $data["general"]                 = $defaultGeneral;
+
+	if($defaultGeneral!=null)
+	{
+		switch($defaultGeneralSignification)
+		{
+			case "auteur":
+				$data["auteur"] = $defaultGeneral;
+			break;
+			case "titre":
+				$data["titre"] = $defaultGeneral;
+			break;
+			case "sujet":
+				$data["sujet"] = $defaultGeneral;
+			break;
+			case "isbnissncommercial":
+				$data["isbn-issn-numcommercial"] = $defaultGeneral;
+			break;
+			case "indicecote":
+				$data["indice-cote"] = $defaultGeneral;
+			break;
+			case "datepublication":
+				$data["date-publication"] = $defaultGeneral;
+			break;
+			case "editeur":
+				$data["editeur"] = $defaultGeneral;
+			break;
+			case "realisateur":
+				$data["realisateur"] = $defaultGeneral;
+			break;
+			case "theme":
+				$data["theme"] = $defaultGeneral;
+			break;
+			default:
+				$data["general"] = $defaultGeneral;
+		}
+	}
+
 	if($defaultTitre!=null)                $data["titre"]                   = $defaultTitre;
 	if($defaultAuteur!=null)               $data["auteur"]                  = $defaultAuteur;
 	if($defaultSujet!=null)                $data["sujet"]                   = $defaultSujet;
@@ -87,7 +124,7 @@
 	if($defaultRealisateur!=null)          $data["realisateur"]             = $defaultRealisateur;
 	if($defaultTheme!=null)                $data["theme"]                   = $defaultTheme;
 	if($defaultEditeur!=null)              $data["editeur"]                 = $defaultEditeur;
-	if($defaultCollection!=null)           $data["collectionName"]          = $defaultCollection;
+	if($defaultCollection!=null)           $data["collection-name"]         = $defaultCollection;
 	if($defaultDatePublicationStart!=null) $data["date-publication-debut"]  = $defaultDatePublicationStart;
 	if($defaultDatePublicationEnd!=null)   $data["date-publication-fin"]    = $defaultDatePublicationEnd;
 	/*if($defaultBaseRecherche!=null)        $data["baserecherche"]           = $defaultBaseRecherche;

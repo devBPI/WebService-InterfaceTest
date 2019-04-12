@@ -46,28 +46,83 @@ function getParkour()
 	return parkour;
 }
 
+function getGeneralSearchBar()
+{
+	var searchBarSelectionValue = document.getElementById("searchBarSelection").value;
+	switch(searchBarSelectionValue)
+	{
+		case "auteur":
+			return "auteur";
+		break;
+		case "titre":
+			return "titre";
+		break;
+		case "sujet":
+			return "sujet";
+		break;
+		case "isbnissncommercial":
+			return "isbnissncommercial";
+		break;
+		case "indicecote":
+			return "indicecote";
+		break;
+		case "datepublication":
+			return "datepublication";
+		break;
+		case "editeur":
+			return "editeur";
+		break;
+		case "realisateur":
+			return "realisateur";
+		break;
+		case "theme":
+			return "theme";
+		break;
+		default:
+			return "general";
+		break;
+	}
+	return "general";
+}
+
 function getSearchCriterias()
 {
 	var searchCriterias = {};
 
 	var urlParams = new URLSearchParams();
-	urlParams.set("general", document.getElementById("searchbar").value);
+	//urlParams.set("general", document.getElementById("searchbar").value);
+
+	//alert(getGeneralSearchBar());
+	urlParams.set("generalSignification", getGeneralSearchBar());
+	if(document.getElementById("searchbar").value)
+		urlParams.set("general", document.getElementById("searchbar").value);
 	//console.log(document.getElementById("advancedsearch-titre").value);
-	urlParams.set("titre", document.getElementById("advancedsearch-titre").value);
+		urlParams.set("titre", document.getElementById("advancedsearch-titre").value);
 	//console.log(urlParams.get("titre"));
-	urlParams.set("auteur", document.getElementById("advancedsearch-auteur").value);
-	urlParams.set("sujet", document.getElementById("advancedsearch-sujet").value);
-	urlParams.set("isbnissncommercial", document.getElementById("advancedsearch-isbnissncommercial").value);
-	urlParams.set("indicecote", document.getElementById("advancedsearch-indicecote").value);
-	urlParams.set("datepublication", document.getElementById("advancedsearch-datepublication").value);
-	urlParams.set("realisateur", document.getElementById("advancedsearch-realisateur").value);
-	urlParams.set("theme", document.getElementById("advancedsearch-theme").value);
-	//urlParams.set("baserecherche", document.getElementById("advancedsearch-baserecherche").value);
-	urlParams.set("editeur", document.getElementById("advancedsearch-editeur").value);
-	urlParams.set("collection", document.getElementById("advancedsearch-collection").value);
-	urlParams.set("datepublicationstart", document.getElementById("advancedsearch-datepublicationstart").value);
-	urlParams.set("datepublicationend", document.getElementById("advancedsearch-datepublicationend").value);
-	/*urlParams.set("langue", document.getElementById("advancedsearch-langue").value);
+	if(document.getElementById("advancedsearch-auteur").value)
+		urlParams.set("auteur", document.getElementById("advancedsearch-auteur").value);
+	if(document.getElementById("advancedsearch-sujet").value)
+		urlParams.set("sujet", document.getElementById("advancedsearch-sujet").value);
+	if(document.getElementById("advancedsearch-isbnissncommercial").value)
+		urlParams.set("isbnissncommercial", document.getElementById("advancedsearch-isbnissncommercial").value);
+	if(document.getElementById("advancedsearch-indicecote").value)
+		urlParams.set("indicecote", document.getElementById("advancedsearch-indicecote").value);
+	if(document.getElementById("advancedsearch-datepublication").value)
+		urlParams.set("datepublication", document.getElementById("advancedsearch-datepublication").value);
+	if(document.getElementById("advancedsearch-realisateur").value)
+		urlParams.set("realisateur", document.getElementById("advancedsearch-realisateur").value);
+	if(document.getElementById("advancedsearch-theme").value)
+		urlParams.set("theme", document.getElementById("advancedsearch-theme").value);
+	if(document.getElementById("advancedsearch-editeur").value)
+		urlParams.set("editeur", document.getElementById("advancedsearch-editeur").value);
+	if(document.getElementById("advancedsearch-collection").value)
+		urlParams.set("collection", document.getElementById("advancedsearch-collection").value);
+	if(document.getElementById("advancedsearch-datepublicationstart").value)
+		urlParams.set("datepublicationstart", document.getElementById("advancedsearch-datepublicationstart").value);
+	if(document.getElementById("advancedsearch-datepublicationend").value)
+		urlParams.set("datepublicationend", document.getElementById("advancedsearch-datepublicationend").value);
+	/*urlParams.set("baserecherche", document.getElementById("advancedsearch-baserecherche").value);
+	urlParams.set("langue", document.getElementById("advancedsearch-langue").value);
 	urlParams.set("type", document.getElementById("advancedsearch-type").value);
 	urlParams.set("support", document.getElementById("advancedsearch-support").value);
 	urlParams.set("genremusic", document.getElementById("advancedsearch-genremusic").value);

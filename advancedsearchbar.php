@@ -1,38 +1,38 @@
 <div id="advancedSearchTyping" style="float: left; margin-right: 10px;">
-	<div class="autocomplete-title">
+	<div id="advancedsearch-titre-div" class="autocomplete-title">
 		<input type="text" id="advancedsearch-titre"                name="advancedsearch-titre"                 autocomplete="off" size=50 placeholder="Titre…"                         onkeyup="if(event.keyCode==13)search();" <?php if($defaultTitre!=null){echo "value=\"".encodeStringForInput($defaultTitre)."\"";} ?> /><br />
 	</div>
-	<div class="autocomplete-unk">
+	<div id="advancedsearch-auteur-div" class="autocomplete-unk">
 		<input type="text" id="advancedsearch-auteur"               name="advancedsearch-auteur"                autocomplete="off" size=50 placeholder="Auteur…"                        onkeyup="if(event.keyCode==13)search();" <?php if($defaultAuteur!=null){echo "value=\"".encodeStringForInput($defaultAuteur)."\"";} ?> /><br />
 	</div>
-	<div class="autocomplete-unk">
+	<div id="advancedsearch-realisateur-div" class="autocomplete-unk">
 		<input type="text" id="advancedsearch-realisateur"          name="advancedsearch-realisateur"           autocomplete="off" size=50 placeholder="Réalisateurs…"                  onkeyup="if(event.keyCode==13)search();" <?php if($defaultRealisateur!=null){echo "value=\"".encodeStringForInput($defaultRealisateur)."\"";} ?> /><br />
 	</div>
-	<div class="autocomplete-unk">
-		<input type="text" id="advancedsearch-editeur"              name="advancedsearch-Editeur"               autocomplete="off" size=50 placeholder="Éditeur…"                       onkeyup="if(event.keyCode==13)search();" <?php if($defaultEditeur!=null){echo "value=\"".encodeStringForInput($defaultEditeur)."\"";} ?> /><br />
+	<div id="advancedsearch-editeur-div" class="autocomplete-unk">
+		<input type="text" id="advancedsearch-editeur"              name="advancedsearch-editeur"               autocomplete="off" size=50 placeholder="Éditeur…"                       onkeyup="if(event.keyCode==13)search();" <?php if($defaultEditeur!=null){echo "value=\"".encodeStringForInput($defaultEditeur)."\"";} ?> /><br />
 	</div>
-	<div class="autocomplete-unk">
+	<div id="advancedsearch-sujet-div" class="autocomplete-unk">
 		<input type="text" id="advancedsearch-sujet"                name="advancedsearch-sujet"                 autocomplete="off" size=50 placeholder="Sujet…"                         onkeyup="if(event.keyCode==13)search();" <?php if($defaultSujet!=null){echo "value=\"".encodeStringForInput($defaultSujet)."\"";} ?> /><br />
 	</div>
-	<div class="autocomplete-unk">
+	<div id="advancedsearch-theme-div" class="autocomplete-unk">
 		<input type="text" id="advancedsearch-theme"                name="advancedsearch-theme"                 autocomplete="off" size=50 placeholder="Theme…"                         onkeyup="if(event.keyCode==13)search();" <?php if($defaultTheme!=null){echo "value=\"".encodeStringForInput($defaultTheme)."\"";} ?> /><br />
 	</div>
-	<div class="autocomplete-unk">
+	<div id="advancedsearch-collection-div" class="autocomplete-unk">
 		<input type="text" id="advancedsearch-collection"           name="advancedsearch-collection"            autocomplete="off" size=50 placeholder="Collection…"                    onkeyup="if(event.keyCode==13)search();" <?php if($defaultCollection!=null){echo "value=\"".encodeStringForInput($defaultCollection)."\"";} ?> /><br />
 	</div>
-	<div class="autocomplete-unk">
+	<div id="advancedsearch-isbnissncommercial-div" class="autocomplete-unk">
 		<input type="text" id="advancedsearch-isbnissncommercial"   name="advancedsearch-isbnissncommercial"    autocomplete="off" size=50 placeholder="ISBN/ISSN/Numéros commerciaux…" onkeyup="if(event.keyCode==13)search();" <?php if($defaultIsbnIssnCommercial!=null){echo "value=\"".encodeStringForInput($defaultIsbnIssnCommercial)."\"";} ?> /><br />
 	</div>
-	<div class="autocomplete-unk">
+	<div id="advancedsearch-indicecote-div" class="autocomplete-unk">
 		<input type="text" id="advancedsearch-indicecote"           name="advancedsearch-indicecote"            autocomplete="off" size=50 placeholder="Indice/Cote…"                   onkeyup="if(event.keyCode==13)search();" <?php if($defaultIndiceCote!=null){echo "value=\"".encodeStringForInput($defaultIndiceCote)."\"";} ?> /><br />
 	</div>
-	<div class="autocomplete-unk">
+	<div id="advancedsearch-datepublication-div" class="autocomplete-unk">
 		<input type="text" id="advancedsearch-datepublication"      name="advancedsearch-datepublication"       autocomplete="off" size=50 placeholder="Date de Publication…"           onkeyup="if(event.keyCode==13)search();" <?php if($defaultDatePublication!=null){echo "value=\"".encodeStringForInput($defaultDatePublication)."\"";} ?> disabled="true" /><br />
 	</div>
-	<div class="autocomplete-unk">
+	<div id="advancedsearch-datepublicationstart-div" class="autocomplete-unk">
 		<input type="text" id="advancedsearch-datepublicationstart" name="advancedsearch-date-publicationstart" autocomplete="off" size=50 placeholder="Date de Publication (Début)…"   onkeyup="if(event.keyCode==13)search();" <?php if($defaultDatePublicationStart!=null){echo "value=\"".encodeStringForInput($defaultDatePublicationStart)."\"";} ?> disabled="true" /><br />
 	</div>
-	<div class="autocomplete-unk">
+	<div id="advancedsearch-datepublicationend-div" class="autocomplete-unk">
 		<input type="text" id="advancedsearch-datepublicationend"   name="advancedsearch-date publicationend"   autocomplete="off" size=50 placeholder="Date de Publication (Fin)…"     onkeyup="if(event.keyCode==13)search();" <?php if($defaultDatePublicationEnd!=null){echo "value=\"".encodeStringForInput($defaultDatePublicationEnd)."\"";} ?> disabled="true" /><br />
 	</div>
 </div>

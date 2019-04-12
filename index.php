@@ -30,6 +30,7 @@
 	}
 
 	ini_set("display_errors",1);
+	$defaultGeneralSignification = urldecode(isGetOk("generalSignification"));
 	$defaultGeneral              = urldecode(isGetOk("general"));
 	$defaultSearchText           = urldecode(isGetOk("general"));
 	$defaultTitre                = urldecode(isGetOk("titre"));
@@ -83,6 +84,22 @@
 		<link rel="stylesheet" type="text/css" href="/css/notices.css" />
 		<link rel="stylesheet" type="text/css" href="/css/facets.css" />
 		<link rel="stylesheet" type="text/css" href="/css/authorities.css" />
+		<?php
+			switch($parkour)
+			{
+				case "autoformation":
+					echo '<link rel="stylesheet" type="text/css" href="css/parcours/autoformation.css" />';
+				break;
+				case "cinema":
+					echo '<link rel="stylesheet" type="text/css" href="css/parcours/cinema.css" />';
+				break;
+				case "presse":
+					echo '<link rel="stylesheet" type="text/css" href="css/parcours/presse.css" />';
+				break;
+				default:
+				break;
+			}
+		?>
 		<style type="text/css" media="screen"></style>
 
 		<!-- BOOTSTRAP -->

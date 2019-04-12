@@ -1,0 +1,15 @@
+/**********************/
+/* Advanced SearchBar */
+/**********************/
+
+#searchBarSelectionRealisateur,
+#advancedsearch-realisateur-div
+{
+	display: block;
+}
+
+#genresMusicauxList,
+#genresLitterairesList
+{
+	display: none;
+}

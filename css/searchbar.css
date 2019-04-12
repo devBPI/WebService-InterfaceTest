@@ -216,3 +216,12 @@
 	color: white;
 	cursor: pointer;
 }
+
+#searchBarSelectionEdition,
+#searchBarSelectionRealisateur,
+#searchBarSelectionTheme,
+#advancedsearch-realisateur-div,
+#publiquesList
+{
+	display: none;
+}
