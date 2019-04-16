@@ -24,7 +24,7 @@
 									Langues
 								</xsl:when>
 								<xsl:when test="name='subject'">
-									Sujet
+									Sujets
 								</xsl:when>
 								<xsl:when test="name='genre_musical'">
 									Genre musical

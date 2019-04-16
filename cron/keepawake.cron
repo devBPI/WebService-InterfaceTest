@@ -1,0 +1,1 @@
+0 * * * * (/var/www/php/cron/testWebServices.sh)
