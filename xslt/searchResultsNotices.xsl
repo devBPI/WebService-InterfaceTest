@@ -99,7 +99,8 @@
 								</div>
 								<div class="titres">
 									<xsl:for-each select="./titres/titre">
-										<div><xsl:value-of select="."/></div>
+										<xsl:if test="position() > 1">; </xsl:if>
+										<xsl:value-of select="."/>
 									</xsl:for-each>
 									<div class="analytiques">
 										<xsl:for-each select="./titresAnalytiques/titreAnalytique">
@@ -114,6 +115,12 @@
 										<xsl:if test="position() > 1">; </xsl:if>
 										<xsl:value-of select="."/>	
 									</xsl:for-each>
+									<xsl:if test="auteursSecondaires/auteurSecondaire">
+										<xsl:for-each select="auteursSecondaires/auteurSecondaire">
+											<xsl:if test="position() > 1"> ; </xsl:if>
+											<xsl:value-of select="."/>	
+										</xsl:for-each>
+									</xsl:if>
 									<xsl:if test="./realisateurs/realisateur">
 										<xsl:for-each select="./realisateurs/realisateur">
 											<xsl:if test="position() > 1">; </xsl:if>
@@ -124,7 +131,7 @@
 								</xsl:if>
 								<div class="editeurs">
 									<xsl:for-each select="./editeurs/editeur">
-										<xsl:if test="position() > 1">; </xsl:if>
+										<xsl:if test="position() > 1"> ; </xsl:if>
 										<xsl:value-of select="."/>	
 									</xsl:for-each>
 								</div>

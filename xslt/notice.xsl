@@ -40,8 +40,9 @@
 		</xsl:if>
 		<xsl:if test="traductionsDe/traductionDe">
 			<div id="traductionsDe">
+				Traduction de :
 				<xsl:for-each select="traductionsDe/traductionDe">
-					<div>Traduction de :<xsl:value-of select="."/></div>
+					<div><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -66,13 +67,12 @@
 					<div id="auteurs">
 						Auteur(s)
 						<xsl:if test="(type='Musique')">
-							, compositeur(s), interprète(s)
+						, compositeur(s), interprète(s)
 						</xsl:if>
 						: 
 						<xsl:for-each select="auteurs/auteur">
-							<xsl:if test="position() > 1">, </xsl:if> <!-- Separateur virgule entre chaque auteur -->
-							<xsl:value-of select="./value"/>
-							<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+							<div><xsl:value-of select="."/></div>
+							<xsl:if test="complement"> , <xsl:value-of select="complement"/></xsl:if>
 						</xsl:for-each>
 					</div>
 				</xsl:if>
@@ -82,11 +82,10 @@
 			<div id="auteursSecondaires">
 				Autre(s) auteur(s)
 				<xsl:if test="(type='Musique')">
-					, compositeur(s), interprète(s)
+				, compositeur(s), interprète(s)
 				</xsl:if>
 				<xsl:for-each select="auteursSecondaires/auteurSecondaire">
-					<xsl:if test="position() > 1">, </xsl:if>
-					<xsl:value-of select="./value"/>
+					<div><xsl:value-of select="."/></div>
 					<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
 				</xsl:for-each>
 			</div>
@@ -161,8 +160,7 @@
 			<div id="resume">
 				Résumé  
 				<xsl:for-each select="resumes/resume">
-					<xsl:if test="position() > 1">; </xsl:if>
-					<xsl:value-of select="."/>
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -189,7 +187,7 @@
 		</xsl:if>
 		<xsl:if test="langues/langue">
 			<div id="langues">
-				Langue(s) 
+				Langue(s)
 				<xsl:for-each select="langues/langue">
 					<xsl:if test="position() > 1">, </xsl:if>
 					<xsl:value-of select="."/>
@@ -197,7 +195,7 @@
 				<xsl:if test="(langues) and (languesOriginal)">, </xsl:if>
 				<xsl:for-each select="languesOriginales/langueOriginale">
 					<xsl:if test="position() > 1">, </xsl:if>
-					, traduit de : <xsl:value-of select="."/>
+				, traduit de : <xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -245,7 +243,7 @@
 			<div id="autresEditions">
 				Autre(s) édition(s)  
 				<xsl:for-each select="autresEditions/autreEdition">
-					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
@@ -254,7 +252,8 @@
 			<div id="conservations">
 				Conservation 
 				<xsl:for-each select="conservations/conservation">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<xsl:if test="position() > 1"> ; </xsl:if>
+					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -303,7 +302,7 @@
 			<div id="isbns">
 			ISBN
 				<xsl:for-each select="isbns/isbn">
-					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
@@ -312,7 +311,7 @@
 			<div id="issns">
 			ISSN
 				<xsl:for-each select="issns/issn">
-					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
@@ -321,7 +320,7 @@
 			<div id="numerosCommerciaux">
 			Numéros commerciaux  
 				<xsl:for-each select="numerosCommerciaux/numeroCommercial">
-					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
@@ -364,7 +363,7 @@
 			<div id="lieuxManifestations">
 			Lieu de la manifestation
 				<xsl:for-each select="lieuxManifestations/lieuManifestation">
-					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
@@ -373,7 +372,7 @@
 			<div id="origines" style="font-size: smaller; color: grey;">
 				Origine
 				<xsl:for-each select="origines/origine">
-					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
@@ -392,9 +391,11 @@
 
 		<xsl:if test="isbns/isbn">
 			<div id="quatrieme">
+			 Quatrième de couverture  
 				<xsl:value-of select="$quatrUrl"/><xsl:value-of select="isbns/isbn"/>
 			</div>
 			<div id="tableDesMatieres">
+			Table des matières 
 				<xsl:value-of select="$tabMatUrl"/><xsl:value-of select="isbns/isbn"/>
 			</div>
 		</xsl:if>
@@ -402,34 +403,31 @@
 		<xsl:for-each select="exemplaires/exemplaire">
 			<hr />
 			<div class="exemplaire">
-				Disponibilité, Cote, Support(s) :
-				<div style="margin-left: 1em;"><xsl:value-of select="disponibilite"/></div>
-				<div style="margin-left: 1em;"><xsl:value-of select="cote"/></div>
-				<div style="margin-left: 1em;">
+				<xsl:value-of select="disponibilite"/> - 
+				<xsl:value-of select="cote"/> - 
 				<xsl:for-each select="supports/support">
-					<xsl:if test="position()&gt;1">, </xsl:if>
+					<xsl:if test="position()&gt;1"> - </xsl:if>
 					<xsl:value-of select="."/>
-					
 				</xsl:for-each>
-				</div>
 				Note(s):
 				<xsl:for-each select="notes/note">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
-				<div><xsl:value-of select="localisation"/> - <xsl:value-of select="categorie"/></div>
+				<xsl:value-of select="localisation"/> - <xsl:value-of select="categorie"/>
 			</div>
 		</xsl:for-each>
 		<br />
 		<xsl:for-each select="seriels/seriel">
 			<hr />
 			<div class="seriel">
-				Disponibilité, Cote, Support :
-				<div style="margin-left: 1em;"><xsl:value-of select="disponibilite"/></div>
-				<div style="margin-left: 1em;"><xsl:value-of select="cote"/></div>
+			<xsl:value-of select="disponibilite"/>
+			<xsl:value-of select="cote"/>
 				<xsl:for-each select="supports/support">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<xsl:if test="position()&gt;1"> - </xsl:if>
+					<xsl:value-of select="."/>
 				</xsl:for-each>
 				<div><xsl:value-of select="localisation"/> <xsl:value-of select="categorie"/></div>
+				Dernier numéro reçu :
 				<div><xsl:value-of select="description"/></div>
 			</div>
 		</xsl:for-each>
