@@ -97,6 +97,7 @@ function getSearchCriterias()
 	if(document.getElementById("searchbar").value)
 		urlParams.set("general", document.getElementById("searchbar").value);
 	//console.log(document.getElementById("advancedsearch-titre").value);
+	if(document.getElementById("advancedsearch-titre").value)
 		urlParams.set("titre", document.getElementById("advancedsearch-titre").value);
 	//console.log(urlParams.get("titre"));
 	if(document.getElementById("advancedsearch-auteur").value)

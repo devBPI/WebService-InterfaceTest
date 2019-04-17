@@ -89,7 +89,7 @@
 						<div style="margin-left: 4px;"><xsl:value-of select="."/></div>
 					</xsl:for-each>
 			</xsl:if>
-			<xsl:if test="((type='Personne') or (type='Collectivité')) and 'isni'">
+			<xsl:if test="((type='Personne') or (type='Collectivité')) and isni">
 				<div id="isni">ISNI<xsl:value-of select="isni"/></div>
 			</xsl:if>
 			<xsl:if test="origines/origine">
