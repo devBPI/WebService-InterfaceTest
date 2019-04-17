@@ -145,7 +145,7 @@
 								<div class="exemplaires">
 									<xsl:for-each select="./exemplaires/exemplaire">
 										<div class="exemplaire">
-											<div class="exemplaire-name">Exemplaire <xsl:value-of select="position()"/>:</div>
+											<!--<div class="exemplaire-name">Exemplaire <xsl:value-of select="position()"/>:</div>-->
 											<div class="exemplaire-desc">
 												<div>
 													<xsl:value-of select="./availability"/>, <xsl:value-of select="./call_num"/>

@@ -1,0 +1,100 @@
+/**********************/
+/* Advanced SearchBar */
+/**********************/
+
+#searchBarSelectionEdition,
+#publiquesList
+{
+	display: block;
+}
+
+#advancedsearch-editeur-div,
+#advancedsearch-theme-div,
+#genresMusicauxList,
+#genresLitterairesList,
+#advancedsearch-theme-div
+{
+	display: none;
+}
+
+/************/
+/* Facettes */
+/************/
+
+#facetsFlex #disponibilite
+{
+	WebkitOrder: 1;
+	order: 1;
+}
+
+#facetsFlex #type
+{
+	WebkitOrder: 13;
+	order: 13;
+}
+
+#facetsFlex #creator
+{
+	WebkitOrder: 6;
+	order: 6;
+}
+
+#facetsFlex #publishing_date
+{
+	WebkitOrder: 3;
+	order: 3;
+}
+
+#facetsFlex #language
+{
+	WebkitOrder: 4;
+	order: 4;
+}
+
+#facetsFlex #subject
+{
+	WebkitOrder: 7;
+	order: 7;
+}
+
+#facetsFlex #genre_litteraire
+{
+	WebkitOrder: 8;
+	order: 8;
+}
+
+#facetsFlex #genre_film
+{
+	WebkitOrder: 9;
+	order: 9;
+}
+
+#facetsFlex #genre_musical
+{
+	WebkitOrder: 10;
+	order: 10;
+}
+
+#facetsFlex #configuration_name
+{
+	WebkitOrder: 11;
+	order: 11;
+}
+
+#facetsFlex #secteur
+{
+	WebkitOrder: 12;
+	order: 12;
+}
+
+#facetsFlex #material_support
+{
+	WebkitOrder: 5;
+	order: 5;
+}
+
+#facetsFlex #audience
+{
+	WebkitOrder: 2;
+	order: 2;
+}
