@@ -409,11 +409,10 @@
 					<xsl:if test="position()&gt;1"> - </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
-				Note(s):
-				<xsl:for-each select="notes/note">
+				<div><xsl:for-each select="notes/note">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
-				</xsl:for-each>
-				<xsl:value-of select="localisation"/> - <xsl:value-of select="categorie"/>
+				</xsl:for-each></div>
+				<div><xsl:value-of select="localisation"/> - <xsl:value-of select="categorie"/></div>
 			</div>
 		</xsl:for-each>
 		<br />

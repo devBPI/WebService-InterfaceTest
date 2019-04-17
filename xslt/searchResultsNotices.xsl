@@ -145,12 +145,12 @@
 								<div class="exemplaires">
 									<xsl:for-each select="./exemplaires/exemplaire">
 										<div class="exemplaire">
-											<!--<div class="exemplaire-name">Exemplaire <xsl:value-of select="position()"/>:</div>-->
+											<div class="exemplaire-name"><xsl:value-of select="position()"/></div>
 											<div class="exemplaire-desc">
 												<div>
-													<xsl:value-of select="./availability"/>, <xsl:value-of select="./call_num"/>
+													<xsl:value-of select="./availability"/> - <xsl:value-of select="./call_num"/>
 													<xsl:if test="(./material_support)">
-														, <xsl:value-of select="./material_support"/>
+														- <xsl:value-of select="./material_support"/>
 													</xsl:if>
 												</div>
 												<xsl:if test="(./note)">
