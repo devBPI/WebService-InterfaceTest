@@ -1,5 +1,5 @@
 <?php
-include "php/xmlUtils.php";
+include "utils/xmlUtils.php";
 
 function postSimpleXML($url, $xmlData)
 {

@@ -1,6 +1,6 @@
 <?php
-	include "php/phpUtils.php";
-	include "php/postXML.php";
+	include "utils/phpUtils.php";
+	include "utils/postXML.php";
 	
 	$errorText="";
 

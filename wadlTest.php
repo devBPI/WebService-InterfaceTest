@@ -12,7 +12,7 @@
 	ini_set("display_errors",1);
 	error_reporting(E_ALL);
 
-	include "php/postXML.php";
+	include "utils/postXML.php";
 
 	header("Content-Type: text/xml");
 	header("Content-Type: text/html;charset=utf-8");

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
-	include "php/phpUtils.php";
-	include "php/postXML.php";
+	include "utils/phpUtils.php";
+	include "utils/postXML.php";
 
 	$page=1;
 	if(isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page']>=1)
