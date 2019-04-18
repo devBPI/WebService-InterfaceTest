@@ -171,7 +171,7 @@
 							</xsl:if>
 							<div class="permalinks">
 								<xsl:for-each select="./permalink">
-									<div><a href="./notice/{.}"><xsl:value-of select="."/></a></div>
+									<div><a href="/notice/{.}"><xsl:value-of select="."/></a></div>
 								</xsl:for-each>
 							</div>
 							<xsl:if test="(./configurationName) and (./configurationId!=1)">

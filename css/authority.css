@@ -1,0 +1,43 @@
+#noticesMappees
+{
+	display: flex;
+	flex-wrap: wrap;
+	/*background-color: DodgerBlue;*/
+}
+
+.noticeMappee
+{
+	margin: 10px;
+	text-align: center;
+}
+
+/*.noticeMappee:hover
+{
+	background: #CCCCDD;
+}*/
+
+.pageButton
+{
+	background-color: rgba(140, 110, 254, 0.6);
+}
+
+.clickablePageButton:hover
+{
+	background-color: rgba(140, 110, 254, 1);
+}
+
+.notice, .notice-online
+{
+	display: block;
+	border-bottom : 1px solid black;
+}
+
+#notices
+{
+	background: #BDB5D1;
+}
+
+.notice:hover
+{
+	background: #937BD1;
+}

@@ -45,28 +45,34 @@
 	#var_dump($http_response_header);
 
 	$returnCode = getHttpCode($http_response_header);
+
 	if($returnCode == "200")
 	{
 		$simpleXml = new SimpleXMLElement($detailsPage);
 		$xmlTxt =  $simpleXml->asXML();
 		$xml = new DOMDocument('1.0', 'utf-8');
 		$xml->loadXML($xmlTxt);
-	?>
+?>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<?php
-			$xsl = new DOMDocument;
-			$xsl->load($xslHeadUrl);
+<?php
+		$xsl = new DOMDocument;
+		$xsl->load($xslHeadUrl);
 
-			$proc = new XSLTProcessor;
-			$proc->importStyleSheet($xsl);
+		$proc = new XSLTProcessor;
+		$proc->importStyleSheet($xsl);
 
-			echo $proc->transformToXML($xml);
-		?>
+		echo $proc->transformToXML($xml);
+?>
 		<link rel="stylesheet" type="text/css" href="/css/body.css" />
+		<link rel="stylesheet" type="text/css" href="/css/accessories.css" />
+		<link rel="stylesheet" type="text/css" href="/css/authority.css" />
+		<link rel="stylesheet" type="text/css" href="/css/fieldset.css" />
+		<link rel="stylesheet" type="text/css" href="/css/table.css" />
 		<style type="text/css" media="screen"></style>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript" language="javascript"></script>
+		<script src="/js/authority.js" type="text/javascript" language="javascript"></script>
 		<script type="text/javascript" language="javascript">
 		</script>
 	</head>
@@ -74,22 +80,22 @@
 		<a href="<?php echo $url; ?>" target="_blank" style="font-size: 12px;">URL du WebService</a>
 		<br />
 		<a href="/<?php echo $xslBodyUrl; ?>" target="_blank" style="font-size: 12px;">XSLT utilisée</a>
-		<?php
-			$xsl = new DOMDocument;
-			$xsl->load($xslBodyUrl);
+<?php
+		$xsl = new DOMDocument;
+		$xsl->load($xslBodyUrl);
 
-			$proc = new XSLTProcessor;
-			$proc->importStyleSheet($xsl);
+		$proc = new XSLTProcessor;
+		$proc->importStyleSheet($xsl);
 
-			$proc->setParameter('', 'mappedNoticesUrl', $ini_array["CatalogueWebServiceUrl"]."details/authority/");
+		$proc->setParameter('', 'mappedNoticesUrl', $ini_array["CatalogueWebServiceUrl"]."details/authority/");
 
-			echo $proc->transformToXML($xml);
-		}
-		else
-		{
-			echo $returnCode;
-			exit($returnCode);
-		}
-		?>
+		echo $proc->transformToXML($xml);
+	}
+	else
+	{
+		echo $returnCode;
+		exit($returnCode);
+	}
+	?>
 	</body>
 </html>

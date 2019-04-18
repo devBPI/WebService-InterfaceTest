@@ -98,16 +98,23 @@
 						<div style="margin-left: 4px;"><xsl:value-of select="."/></div>
 					</xsl:for-each>
 			</xsl:if>
-			<div id="urlOrigin"><a href="{urlOrigine}"><xsl:value-of select="urlOrigine"/></a></div>
+			<xsl:if test="urlOrigine">
+				<div id="urlOrigin"><a href="{urlOrigine}"><xsl:value-of select="urlOrigine"/></a></div>
+			</xsl:if>
 
 			<br />
-			<xsl:for-each select="linkingTypesWithNotices/entry">
-				<div class="noticeMappee">
-					<a href="{$mappedNoticesUrl}{../../id}/notices/{key}?page=1">
-						<xsl:value-of select="value"/> notices liées de type <xsl:value-of select="key"/>
-					</a>
-				</div>
-			</xsl:for-each>
+			<div id="noticesMappees">
+				<xsl:for-each select="linkingTypesWithNotices/entry">
+					<div class="noticeMappee">
+						<!--<a href="{$mappedNoticesUrl}{../../id}/notices/{key}?page=1" target="_blank"><xsl:value-of select="value"/> notices liées de type <xsl:value-of select="key"/></a>-->
+						<!--<div class="noticeMappee-tab" onload="loadMappedNotices(this, '{key}', {../../id});" />-->
+						<div class="key" style="display:none;"><xsl:value-of select="key"/></div>
+						<div class="count" style="display:none;"><xsl:value-of select="value"/></div>
+						<div class="id" style="display:none;"><xsl:value-of select="../../id"/></div>
+						<div class="noticeMappee-tab">EMPTY TAB!!!</div>
+					</div>
+				</xsl:for-each>
+			</div>
 		</div>
 	</xsl:template>
 </xsl:stylesheet>
