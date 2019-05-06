@@ -181,7 +181,7 @@ function getUriParams()
 		searchCriterias.set("facets", curFacets);
 	var uriParams = searchCriterias.toString();
 	//console.log("/"+parkour+"?"+uriParams);
-	history.pushState({}, null, "/"+parkour+"?"+uriParams);
+	//history.pushState({}, null, "./"+parkour+"?"+uriParams);
 
 	searchCriterias.set("parkour", parkour);
 	uriParams = searchCriterias.toString();
@@ -200,7 +200,8 @@ function searchNoticesNoticesOnline(uriParams)
 		searchCriterias.set("facets", curFacets);
 	var uriParams = searchCriterias.toString();
 	//console.log("/"+parkour+"?"+uriParams);
-	history.pushState({}, null, "/"+parkour+"?"+uriParams);
+	//history.pushState({}, null, "/"+parkour+"?"+uriParams);
+	history.pushState({}, null, "./"+parkour+"?"+uriParams);
 
 	searchCriterias.set("parkour", parkour);
 	uriParams = searchCriterias.toString();
