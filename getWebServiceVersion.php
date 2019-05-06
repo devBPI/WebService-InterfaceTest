@@ -1,7 +1,7 @@
 <?php
 	$errorText="";
 
-	$ini_array = parse_ini_file("etc/configuration.ini");
+	$ini_array = @parse_ini_file("etc/configuration.ini");
 	if(!$ini_array)
 		$ini_array = parse_ini_file("etc/default.ini");
 	if(!$ini_array)

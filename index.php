@@ -57,7 +57,7 @@
 	$defaultFacets               = urldecode(isGetOk("facets"));
 	
 	$inter_array = parse_ini_file("etc/interface.ini");
-	$ini_array   = parse_ini_file("etc/configuration.ini");
+	$ini_array   = @parse_ini_file("etc/configuration.ini");
 	if(!$ini_array)
 		$ini_array = parse_ini_file("etc/default.ini");
 	if(!$ini_array)
