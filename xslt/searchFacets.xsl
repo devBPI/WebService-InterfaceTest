@@ -47,6 +47,9 @@
 								<xsl:when test="name='audience'">
 									Public destinataire
 								</xsl:when>
+								<xsl:when test="name='contenu'">
+									Contenu
+								</xsl:when>
 								<xsl:otherwise>
 									<xsl:value-of select="name"/>
 								</xsl:otherwise>

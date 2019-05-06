@@ -31,13 +31,6 @@
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="type='Numrev - Article'">
-			<div id="dansJournals">
-				<xsl:for-each select="journal-infos">
-					<div>Dans <xsl:value-of select="titresJournal/titreJournal"/>, n <xsl:value-of select="issues/issue"/>, <xsl:value-of select="volumes/volume"/>, <xsl:value-of select="datesTextuelles/dateTextuelle"/>, pp <xsl:value-of select="premieresPages/premierePage"/> - <xsl:value-of select="dernieresPages/dernierePage"/></div>
-				</xsl:for-each>
-			</div>
-		</xsl:if>
 		<xsl:if test="traductionsDe/traductionDe">
 			<div id="traductionsDe">
 				Traduction de :
@@ -47,6 +40,13 @@
 			</div>
 		</xsl:if>
 		<xsl:if test="(type='Revue, journal') or (type='Revue numérique') or (type='Article')">
+		<xsl:if test="type='Numrev - Article'">
+			<div id="dansJournals">
+				<xsl:for-each select="journal-infos">
+					<div>Dans <xsl:value-of select="titresJournal/titreJournal"/>, n <xsl:value-of select="issues/issue"/>, <xsl:value-of select="volumes/volume"/>, <xsl:value-of select="datesTextuelles/dateTextuelle"/>, pp <xsl:value-of select="premieresPages/premierePage"/> - <xsl:value-of select="dernieresPages/dernierePage"/></div>
+				</xsl:for-each>
+			</div>
+		</xsl:if>
 			<div id="titresAnalytic">
 				<xsl:for-each select="titresAnalytic/titreAnalytic">
 					<div class="titreForm">Dans <xsl:value-of select="."/></div>
@@ -71,13 +71,31 @@
 						</xsl:if>
 						: 
 						<xsl:for-each select="auteurs/auteur">
-							<div><xsl:value-of select="."/></div>
-							<xsl:if test="complement"> , <xsl:value-of select="complement"/></xsl:if>
+							<div>
+								<xsl:value-of select="value"/>
+								<xsl:if test="complement"> , <xsl:value-of select="complement"/></xsl:if>
+							</div>
 						</xsl:for-each>
 					</div>
 				</xsl:if>
 			</xsl:otherwise>
 		</xsl:choose>
+		<xsl:if test="(resumes/resume)">
+			<div id="resume">
+				Résumé  
+				<xsl:for-each select="resumes/resume">
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+				</xsl:for-each>
+			</div>
+		</xsl:if>
+		<xsl:if test="(contenus/contenu) and (type='Musique')">
+			Pistes  
+			<div id="contenus">
+				<xsl:for-each select="contenus/contenu">
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+				</xsl:for-each>
+			</div>
+		</xsl:if>
 		<xsl:if test="auteursSecondaires/auteurSecondaire">
 			<div id="auteursSecondaires">
 				Autre(s) auteur(s)
@@ -85,8 +103,10 @@
 				, compositeur(s), interprète(s)
 				</xsl:if>
 				<xsl:for-each select="auteursSecondaires/auteurSecondaire">
-					<div><xsl:value-of select="."/></div>
-					<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+					<div>
+						<xsl:value-of select="value"/>
+						<xsl:if test="complement"> , <xsl:value-of select="complement"/></xsl:if>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -95,13 +115,17 @@
 				Contributeur(s) 
 				<xsl:if test="type='Vidéo'">
 					<xsl:for-each select="auteurs/auteur">
-						<div style="margin-left: 1em;"><xsl:value-of select="./value"/></div>
-						<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+						<div style="margin-left: 1em;">
+							<xsl:value-of select="./value"/>
+							<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+						</div>
 					</xsl:for-each>
 				</xsl:if>
 				<xsl:for-each select="contributeurs/contributeur">
-					<div style="margin-left: 1em;"><xsl:value-of select="./value"/></div>
-					<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+					<div style="margin-left: 1em;">
+						<xsl:value-of select="./value"/>
+						<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -140,9 +164,9 @@
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="titresUniform/titreUniforme">
+		<xsl:if test="titresUniform/titreUniform">
 			<div id="oeuvres">
-			Oeuvre(s) 
+				Oeuvre(s) 
 				<xsl:for-each select="titresUniform/titreUniform">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
@@ -156,21 +180,8 @@
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="(type!='Musique') and (resumes/resume)">
-			<div id="resume">
-				Résumé  
-				<xsl:for-each select="resumes/resume">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
-				</xsl:for-each>
-			</div>
-		</xsl:if>
-		<xsl:if test="contenus/contenu">
-			<xsl:if test="(type='Musique')">
-				Pistes  
-			</xsl:if>
-			<xsl:if test="(type!='Musique')">
-				Contenu  
-			</xsl:if>
+		<xsl:if test="(contenus/contenu) and (type!='Musique')">
+			Contenu  
 			<div id="contenus">
 				<xsl:for-each select="contenus/contenu">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
@@ -181,6 +192,14 @@
 			Notes  
 			<div id="notes">
 				<xsl:for-each select="notes/note">
+					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+				</xsl:for-each>
+			</div>
+		</xsl:if>
+		<xsl:if test="(resumes/resume) and (type='Musique')">
+			<div id="resume">
+				Résumé  
+				<xsl:for-each select="resumes/resume">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
 			</div>
@@ -201,7 +220,7 @@
 		</xsl:if>
 		<xsl:if test="descriptionsMaterielle/descriptionMaterielle">
 			<div id="descriptionsMaterielle">
-			Description matérielle 
+				Description matérielle 
 				<xsl:for-each select="descriptionsMaterielle/descriptionMaterielle">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
@@ -300,7 +319,7 @@
 		</xsl:if>
 		<xsl:if test="isbns/isbn">
 			<div id="isbns">
-			ISBN
+				ISBN
 				<xsl:for-each select="isbns/isbn">
 					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
@@ -309,7 +328,7 @@
 		</xsl:if>
 		<xsl:if test="issns/issn">
 			<div id="issns">
-			ISSN
+				ISSN
 				<xsl:for-each select="issns/issn">
 					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
@@ -318,7 +337,7 @@
 		</xsl:if>
 		<xsl:if test="numerosCommerciaux">
 			<div id="numerosCommerciaux">
-			Numéros commerciaux  
+				Numéros commerciaux  
 				<xsl:for-each select="numerosCommerciaux/numeroCommercial">
 					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
@@ -326,8 +345,8 @@
 			</div>
 		</xsl:if>
 		<xsl:if test="indices/indice">
-			Indice
 			<div id="indices">
+				Indice
 				<xsl:for-each select="indices/indice">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
@@ -335,16 +354,16 @@
 		</xsl:if>
 		<xsl:if test="publiques/publique">
 			<div id="publiques">
-			Public
+				Public
 				<xsl:for-each select="publiques/publique">
 					<xsl:if test="position() > 1">; </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="droits-infos/droits/droit">
+		<xsl:if test="(droits-infos/droits/droit) or (droits-infos/licences/licence) or (droits-infos/copyrights/copyright)">
 			<div id="droits">
-			Droit(s) 
+				Droit(s) 
 				<xsl:for-each select="droits-infos/droits/droit">
 					<xsl:if test="position() > 1">; </xsl:if>
 					<xsl:value-of select="."/>
@@ -361,7 +380,7 @@
 		</xsl:if>
 		<xsl:if test="lieuxManifestations/lieuManifestation">
 			<div id="lieuxManifestations">
-			Lieu de la manifestation
+				Lieu de la manifestation
 				<xsl:for-each select="lieuxManifestations/lieuManifestation">
 					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
@@ -391,11 +410,11 @@
 
 		<xsl:if test="isbns/isbn">
 			<div id="quatrieme">
-			 Quatrième de couverture  
+				 Quatrième de couverture  
 				<xsl:value-of select="$quatrUrl"/><xsl:value-of select="isbns/isbn"/>
 			</div>
 			<div id="tableDesMatieres">
-			Table des matières 
+				Table des matières 
 				<xsl:value-of select="$tabMatUrl"/><xsl:value-of select="isbns/isbn"/>
 			</div>
 		</xsl:if>
