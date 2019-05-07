@@ -191,7 +191,6 @@
 							</xsl:if>
 							<div style="clear:both"></div>
 						</div>
-<!--					</a>-->
 				</xsl:for-each>
 			</div>
 		</div>
