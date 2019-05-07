@@ -30,7 +30,7 @@
 		<a id="parkourPresse" onclick="window.location='/presse'+window.location.search;" <?php if($parkour=="presse"){echo "class=\"selected-parkour\"";}?>>Presse</a>
 	</div>
 	<div class="autocomplete">
-		<input type="text" id="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();cleanFacets();}" <?php if($defaultSearchText!=null){echo "value=\"".$defaultSearchText."\"";} ?> />
+		<input type="text" id="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();}" <?php if($defaultSearchText!=null){echo "value=\"".$defaultSearchText."\"";} ?> />
 	</div>
 	<select id="searchBarSelection">
 		<option id="searchBarSelectionGenerale" <?php if($defaultGeneralSignification=="generale") echo "selected"; ?> value="generale">Tous les mots</option>
@@ -44,7 +44,7 @@
 		<option id="searchBarSelectionRealisateur" <?php if($defaultGeneralSignification=="realisateur") echo "selected"; ?> value="realisateur">Réalisateur</option>
 		<option id="searchBarSelectionTheme" <?php if($defaultGeneralSignification=="theme") echo "selected"; ?> value="theme">Thème</option>
 	</select>
-	<input id="loupe" type="submit" value=" " onclick="search();cleanFacets();" />
+	<input id="loupe" type="submit" value=" " onclick="search();" />
 	<input id="advancedSearchButton" type="submit" value="+" onclick="advancedSearch();" />
 </div>
 <div id="advancedSearchDiv" style="margin-top: 10px; display:none;">

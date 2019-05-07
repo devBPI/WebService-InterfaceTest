@@ -2,6 +2,8 @@
 
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+	<xsl:include href="lib/url-encode.xsl"/>
+
 	<xsl:template match="/notice">
 		<div style="font-weight: bold;" id="collection_id">configuration_id : <xsl:value-of select="resultatDe"/></div>
 		<div style="font-weight: bold;" id="source_id">source_id : <xsl:value-of select="sourceId"/></div>
@@ -72,8 +74,15 @@
 						: 
 						<xsl:for-each select="auteurs/auteur">
 							<div>
-								<xsl:value-of select="value"/>
-								<xsl:if test="complement"> , <xsl:value-of select="complement"/></xsl:if>
+								<xsl:variable name="auteurUrlValue">
+									<xsl:call-template name="url-encode">
+										<xsl:with-param name="str" select="value"/>
+									</xsl:call-template>
+								</xsl:variable>
+								<a href='{$rebondUrl}/?auteur={$auteurUrlValue}'>
+									<xsl:value-of select="value"/>
+									<xsl:if test="complement"> , <xsl:value-of select="complement"/></xsl:if>
+								</a>
 							</div>
 						</xsl:for-each>
 					</div>
@@ -104,8 +113,15 @@
 				</xsl:if>
 				<xsl:for-each select="auteursSecondaires/auteurSecondaire">
 					<div>
-						<xsl:value-of select="value"/>
-						<xsl:if test="complement"> , <xsl:value-of select="complement"/></xsl:if>
+						<xsl:variable name="auteurSecondaireUrlValue">
+							<xsl:call-template name="url-encode">
+								<xsl:with-param name="str" select="value"/>
+							</xsl:call-template>
+						</xsl:variable>
+						<a href='{$rebondUrl}/?auteur={$auteurSecondaireUrlValue}'>
+							<xsl:value-of select="value"/>
+							<xsl:if test="complement"> , <xsl:value-of select="complement"/></xsl:if>
+						</a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -115,16 +131,30 @@
 				Contributeur(s) 
 				<xsl:if test="type='Vidéo'">
 					<xsl:for-each select="auteurs/auteur">
-						<div style="margin-left: 1em;">
-							<xsl:value-of select="./value"/>
-							<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+						<div style="margin-left: 1em;">	
+							<xsl:variable name="contributeurUrlValue">
+								<xsl:call-template name="url-encode">
+									<xsl:with-param name="str" select="value"/>
+								</xsl:call-template>
+							</xsl:variable>
+							<a href='{$rebondUrl}/?auteur={$contributeurUrlValue}'>
+								<xsl:value-of select="./value"/>
+								<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+							</a>
 						</div>
 					</xsl:for-each>
 				</xsl:if>
 				<xsl:for-each select="contributeurs/contributeur">
-					<div style="margin-left: 1em;">
-						<xsl:value-of select="./value"/>
-						<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+					<div style="margin-left: 1em;">	
+						<xsl:variable name="contributeurUrlValue">
+							<xsl:call-template name="url-encode">
+								<xsl:with-param name="str" select="value"/>
+							</xsl:call-template>
+						</xsl:variable>
+						<a href='{$rebondUrl}/?auteur={$contributeurUrlValue}'>
+							<xsl:value-of select="./value"/>
+							<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+						</a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -133,7 +163,16 @@
 			<div id="editeurs">
 				Editeur(s)   
 				<xsl:for-each select="editeurs/editeur">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;">	
+						<xsl:variable name="editeurUrlValue">
+							<xsl:call-template name="url-encode">
+								<xsl:with-param name="str" select="."/>
+							</xsl:call-template>
+						</xsl:variable>
+						<a href='{$rebondUrl}/?editeur={$editeurUrlValue}'>
+							<xsl:value-of select="."/>
+						</a>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -280,8 +319,15 @@
 			<div id="sujets">
 				Sujet(s) 
 				<xsl:for-each select="sujets/sujet">
-					<div style="margin-left: 1em;"><xsl:value-of select="./value"/></div>
-					<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+					<xsl:variable name="sujetUrlValue">
+						<xsl:call-template name="url-encode">
+							<xsl:with-param name="str" select="value"/>
+						</xsl:call-template>
+					</xsl:variable>
+					<a href='{$rebondUrl}/?sujet={$sujetUrlValue}'>
+						<div style="margin-left: 1em;"><xsl:value-of select="./value"/></div>
+						<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+					</a>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -348,7 +394,16 @@
 			<div id="indices">
 				Indice
 				<xsl:for-each select="indices/indice">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;">	
+						<xsl:variable name="indiceUrlValue">
+							<xsl:call-template name="url-encode">
+								<xsl:with-param name="str" select="."/>
+							</xsl:call-template>
+						</xsl:variable>
+						<a href='{$rebondUrl}/?indicecote={$indiceUrlValue}'>
+							<xsl:value-of select="."/>
+						</a>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>

@@ -17,15 +17,15 @@ function printXmlNode(node, depth)
 function addFacet(facetName, value)
 {
 	var parser = new DOMParser();
-	console.log("Adding facet " + facet + " with value " + value);
+	//console.log("Adding facet " + facet + " with value " + value);
 	var urlParams = new URLSearchParams(window.location.search);
-	console.log(window.location.search);
+	//console.log(window.location.search);
 	var curFacets = urlParams.get('facets');
-	console.log("Current facets: " + curFacets);
+	//console.log("Current facets: " + curFacets);
 	var newFacets = curFacets;
 	if(curFacets==null)
 	{
-		console.log("Current facets null. Creating them.");
+		//console.log("Current facets null. Creating them.");
 		newFacets = "<facets>"+"<facet>"+"<name>"+facetName+"</name>"+"<values>"+"<value>"+value+"</value>"+"</values>"+"</facet>"+"</facets>";
 	}
 	else
@@ -124,17 +124,21 @@ function addFacet(facetName, value)
 	//console.log(newFacets);
 	//console.log(new XMLSerializer().serializeToString(xmlDoc.documentElement));
 	//console.log(xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue);
+	/*var parkour = getParkour();
+	history.pushState({}, null, "./"+parkour+"?"+urlParams);
+	location.reload();
+	//window.location = window.location;//*/
 	window.location.search = urlParams.toString();
 }
 
 function removeFacet(facetName, value)
 {
 	var parser = new DOMParser();
-	console.log("Adding facet " + facet + " with value " + value);
+	//console.log("Adding facet " + facet + " with value " + value);
 	var urlParams = new URLSearchParams(window.location.search);
 	console.log(window.location.search);
 	var curFacets = urlParams.get('facets');
-	console.log("Current facets: " + curFacets);
+	//console.log("Current facets: " + curFacets);
 	var newFacets = curFacets;
 	if(curFacets==null)
 	{
@@ -208,7 +212,7 @@ function removeFacet(facetName, value)
 		console.log(newFacets);
 	}
 	urlParams.set('facets', newFacets);
-	console.log(urlParams.toString());
+	//console.log(urlParams.toString());
 	var xmlDoc = parser.parseFromString(newFacets, "text/xml");
 	window.location.search = urlParams.toString();
 }

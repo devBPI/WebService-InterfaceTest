@@ -102,6 +102,7 @@ function getSearchCriterias()
 	//console.log(urlParams.get("titre"));
 	if(document.getElementById("advancedsearch-auteur").value)
 		urlParams.set("auteur", document.getElementById("advancedsearch-auteur").value);
+		//urlParams.set("auteur", encodeURIComponent(document.getElementById("advancedsearch-auteur").value));
 	if(document.getElementById("advancedsearch-sujet").value)
 		urlParams.set("sujet", document.getElementById("advancedsearch-sujet").value);
 	if(document.getElementById("advancedsearch-isbnissncommercial").value)
@@ -140,8 +141,8 @@ function getSearchCriterias()
 	//alert(jsonObj.toString());
 
 
-	console.log(urlParams);
-	console.log(urlParams.toString());
+	//console.log(urlParams);
+	//console.log(urlParams.toString());
 	return urlParams;
 }
 
@@ -183,8 +184,8 @@ function getUriParams()
 	//console.log("/"+parkour+"?"+uriParams);
 	//history.pushState({}, null, "./"+parkour+"?"+uriParams);
 
-	searchCriterias.set("parkour", parkour);
-	uriParams = searchCriterias.toString();
+	//searchCriterias.set("parkour", parkour);
+	//uriParams = searchCriterias.toString();
 
 	//console.log(uriParams);
 	return uriParams;
@@ -199,11 +200,10 @@ function searchNoticesNoticesOnline(uriParams)
 	if(curFacets!=null)
 		searchCriterias.set("facets", curFacets);
 	var uriParams = searchCriterias.toString();
-	//console.log("/"+parkour+"?"+uriParams);
 	//history.pushState({}, null, "/"+parkour+"?"+uriParams);
-	history.pushState({}, null, "./"+parkour+"?"+uriParams);
+	//history.pushState({}, null, "./"+parkour+"?"+uriParams);
 
-	searchCriterias.set("parkour", parkour);
+	//searchCriterias.set("parkour", parkour);
 	uriParams = searchCriterias.toString();
 	searchNotices(uriParams);
 	searchNoticesOnline(uriParams);
@@ -223,7 +223,12 @@ function search()
 	//console.log("documents getted");
 	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
+	var parkour = getParkour();
 	var uriParams = getUriParams();
+	//alert(parkour);
+	console.log("search():\n\t/"+parkour+"?"+uriParams);
+	history.pushState({}, null, "./"+parkour+"?"+uriParams);
+	//window.location = "#./"+parkour+"?"+uriParams
 	searchNoticesNoticesOnline(uriParams);
 	searchMostRelevantAuthorities(uriParams);
 }

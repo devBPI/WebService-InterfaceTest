@@ -35,7 +35,21 @@
 		}
 	}
 
-	$defaultGeneralSignification = urldecode(isGetOk("generalSignification"));
+	$defaultGeneralSignification = isGetOk("generalSignification");
+	$defaultGeneral              = isGetOk("general");
+	$defaultTitre                = isGetOk("titre");
+	$defaultAuteur               = isGetOk("auteur");
+	$defaultSujet                = isGetOk("sujet");
+	$defaultIsbnIssnCommercial   = isGetOk("isbnissncommercial");
+	$defaultIndiceCote           = isGetOk("indicecote");
+	$defaultDatePublication      = isGetOk("datepublication");
+	$defaultRealisateur          = isGetOk("realisateur");
+	$defaultTheme                = isGetOk("theme");
+	$defaultEditeur              = isGetOk("editeur");
+	$defaultCollection           = isGetOk("collection");
+	$defaultDatePublicationStart = isGetOk("datepublicationstart");
+	$defaultDatePublicationEnd   = isGetOk("datepublicationend");
+	/*$defaultGeneralSignification = urldecode(isGetOk("generalSignification"));
 	$defaultGeneral              = urldecode(isGetOk("general"));
 	$defaultTitre                = urldecode(isGetOk("titre"));
 	$defaultAuteur               = urldecode(isGetOk("auteur"));
@@ -48,7 +62,17 @@
 	$defaultEditeur              = urldecode(isGetOk("editeur"));
 	$defaultCollection           = urldecode(isGetOk("collection"));
 	$defaultDatePublicationStart = urldecode(isGetOk("datepublicationstart"));
-	$defaultDatePublicationEnd   = urldecode(isGetOk("datepublicationend"));
+	$defaultDatePublicationEnd   = urldecode(isGetOk("datepublicationend"));//*/
+	/*$defaultBaseRecherche        = urldecode(isGetOk("baserecherche"));
+	$defaultLangue               = urldecode(isGetOk("langue"));
+	$defaultType                 = urldecode(isGetOk("type"));
+	$defaultSupport              = urldecode(isGetOk("support"));
+	$defaultGenreMusic           = urldecode(isGetOk("genremusic"));
+	$defaultGenreFilm            = urldecode(isGetOk("genrefilm"));
+	$defaultGenreLitt            = urldecode(isGetOk("genrelitt"));
+	$defaultSecteur              = urldecode(isGetOk("secteur"));
+	$defaultAudience             = urldecode(isGetOk("audience"));*/
+
 	/*$defaultBaseRecherche        = urldecode(isGetOk("baserecherche"));
 	$defaultLangue               = urldecode(isGetOk("langue"));
 	$defaultType                 = urldecode(isGetOk("type"));

@@ -9,7 +9,9 @@ function isGetOk($txt)
 
 function encodeStringForInput($s)
 {
-	return htmlentities($s, ENT_COMPAT|ENT_QUOTES,'ISO-8859-1', true); 
+	//return $s;
+	//return htmlentities($s, ENT_COMPAT|ENT_QUOTES|ENT_HTML5,'ISO-8859-1', true);
+	return htmlspecialchars($s, ENT_COMPAT|ENT_QUOTES|ENT_HTML5);
 }
 
 function getHttpCode($http_response_header)

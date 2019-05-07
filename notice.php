@@ -63,7 +63,7 @@
 
 			echo $proc->transformToXML($xml);
 		?>
-		<link rel="stylesheet" type="text/css" href="css/body.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../css/body.css" />
 		<style type="text/css" media="screen"></style>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript" language="javascript"></script>
@@ -80,6 +80,8 @@
 
 			$proc = new XSLTProcessor;
 			$proc->importStyleSheet($xsl);
+
+			$proc->setParameter('', 'rebondUrl', "");
 
 			$proc->setParameter('', 'couvUrl', $ini_array["CatalogueWebServiceUrl"]."electre/couverture/");
 			$proc->setParameter('', 'quatrUrl', $ini_array["CatalogueWebServiceUrl"]."electre/quatrieme/");
