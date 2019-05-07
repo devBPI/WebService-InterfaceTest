@@ -2,7 +2,7 @@
 
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-	<xsl:include href="lib/url-encode.xsl"/>
+	<!-- <xsl:include href="lib/url-encode.xsl"/> -->
 
 	<xsl:template match="/notice">
 		<div style="font-weight: bold;" id="collection_id">configuration_id : <xsl:value-of select="resultatDe"/></div>
@@ -74,12 +74,7 @@
 						: 
 						<xsl:for-each select="auteurs/auteur">
 							<div>
-								<xsl:variable name="auteurUrlValue">
-									<xsl:call-template name="url-encode">
-										<xsl:with-param name="str" select="value"/>
-									</xsl:call-template>
-								</xsl:variable>
-								<a href='{$rebondUrl}/?auteur={$auteurUrlValue}'>
+								<a href='{$rebondUrl}/?auteur={value}'>
 									<xsl:value-of select="value"/>
 									<xsl:if test="complement"> , <xsl:value-of select="complement"/></xsl:if>
 								</a>
@@ -113,12 +108,7 @@
 				</xsl:if>
 				<xsl:for-each select="auteursSecondaires/auteurSecondaire">
 					<div>
-						<xsl:variable name="auteurSecondaireUrlValue">
-							<xsl:call-template name="url-encode">
-								<xsl:with-param name="str" select="value"/>
-							</xsl:call-template>
-						</xsl:variable>
-						<a href='{$rebondUrl}/?auteur={$auteurSecondaireUrlValue}'>
+						<a href='{$rebondUrl}/?auteur={value}'>
 							<xsl:value-of select="value"/>
 							<xsl:if test="complement"> , <xsl:value-of select="complement"/></xsl:if>
 						</a>
@@ -132,12 +122,7 @@
 				<xsl:if test="type='Vidéo'">
 					<xsl:for-each select="auteurs/auteur">
 						<div style="margin-left: 1em;">	
-							<xsl:variable name="contributeurUrlValue">
-								<xsl:call-template name="url-encode">
-									<xsl:with-param name="str" select="value"/>
-								</xsl:call-template>
-							</xsl:variable>
-							<a href='{$rebondUrl}/?auteur={$contributeurUrlValue}'>
+							<a href='{$rebondUrl}/?auteur={value}'>
 								<xsl:value-of select="./value"/>
 								<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
 							</a>
@@ -146,12 +131,7 @@
 				</xsl:if>
 				<xsl:for-each select="contributeurs/contributeur">
 					<div style="margin-left: 1em;">	
-						<xsl:variable name="contributeurUrlValue">
-							<xsl:call-template name="url-encode">
-								<xsl:with-param name="str" select="value"/>
-							</xsl:call-template>
-						</xsl:variable>
-						<a href='{$rebondUrl}/?auteur={$contributeurUrlValue}'>
+						<a href='{$rebondUrl}/?auteur={value}'>
 							<xsl:value-of select="./value"/>
 							<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
 						</a>
@@ -164,12 +144,7 @@
 				Editeur(s)   
 				<xsl:for-each select="editeurs/editeur">
 					<div style="margin-left: 1em;">	
-						<xsl:variable name="editeurUrlValue">
-							<xsl:call-template name="url-encode">
-								<xsl:with-param name="str" select="."/>
-							</xsl:call-template>
-						</xsl:variable>
-						<a href='{$rebondUrl}/?editeur={$editeurUrlValue}'>
+						<a href='{$rebondUrl}/?editeur={.}'>
 							<xsl:value-of select="."/>
 						</a>
 					</div>
@@ -319,12 +294,7 @@
 			<div id="sujets">
 				Sujet(s) 
 				<xsl:for-each select="sujets/sujet">
-					<xsl:variable name="sujetUrlValue">
-						<xsl:call-template name="url-encode">
-							<xsl:with-param name="str" select="value"/>
-						</xsl:call-template>
-					</xsl:variable>
-					<a href='{$rebondUrl}/?sujet={$sujetUrlValue}'>
+					<a href='{$rebondUrl}/?sujet={value}'>
 						<div style="margin-left: 1em;"><xsl:value-of select="./value"/></div>
 						<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
 					</a>
@@ -395,12 +365,7 @@
 				Indice
 				<xsl:for-each select="indices/indice">
 					<div style="margin-left: 1em;">	
-						<xsl:variable name="indiceUrlValue">
-							<xsl:call-template name="url-encode">
-								<xsl:with-param name="str" select="."/>
-							</xsl:call-template>
-						</xsl:variable>
-						<a href='{$rebondUrl}/?indicecote={$indiceUrlValue}'>
+						<a href='{$rebondUrl}/?indicecote={value}'>
 							<xsl:value-of select="."/>
 						</a>
 					</div>
