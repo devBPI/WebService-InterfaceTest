@@ -416,8 +416,16 @@
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="urlPubliqueConfiguration">
-			<div id="urlPubliqueConfiguration" >Public Url de configuration : <a href="{urlPubliqueConfiguration}"><xsl:value-of select="urlPubliqueConfiguration"/></a></div>
+		<xsl:if test="nomPubliqueConfiguration">
+			<div id="resultatDe">
+				Résultat de
+				<xsl:if test="(urlPubliqueConfiguration)">
+					<a href="{urlPubliqueConfiguration}"><xsl:value-of select="nomPubliqueConfiguration"/></a>
+				</xsl:if>
+				<xsl:if test="not(urlPubliqueConfiguration)">
+					<xsl:value-of select="nomPubliqueConfiguration"/>
+				</xsl:if>
+			</div>
 		</xsl:if>
 
 		<!--<div id="s">
