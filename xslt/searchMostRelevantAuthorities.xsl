@@ -4,6 +4,7 @@
 		<div style="margin-bottom: 0.5em; font-weight: bold; text-decoration: underline;">Notices d'Autorités les plus relevantes trouvées:</div>
 		<div id="authorities">
 		<xsl:for-each select="authority">
+			<xsl:sort select="rank"/>
 			<!--<xsl:value-of select="position()"/> | Last: <xsl:value-of select="last()"/>-->
 			<xsl:variable name="authorityDisplay">
 				<xsl:choose>
