@@ -29,7 +29,7 @@
 	echo('<br />');*/
 	//echo $autocomplete_page;
 	$xml = new SimpleXMLElement($autocomplete_page);
-	$result = $xml->xpath("/autocomplete/suggestions/suggestion");
+	$result = $xml->xpath("/suggestions-list/suggestions/suggestion");
 	echo "<results>";
 	while(list( , $node) = each($result))
 	{

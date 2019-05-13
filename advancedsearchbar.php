@@ -53,14 +53,14 @@
 	if($defaultCollection!=null)           $data["collection"]              = $defaultCollection;
 	if($defaultDatePublicationStart!=null) $data["date-publication-debut"]  = $defaultDatePublicationStart;
 	if($defaultDatePublicationEnd!=null)   $data["date-publication-fin"]    = $defaultDatePublicationEnd;
-	if($defaultLangue!=null)               $data["langue"]                  = $defaultLangue;
+	/*if($defaultLangue!=null)               $data["langue"]                  = $defaultLangue;
 	if($defaultType!=null)                 $data["type"]                    = $defaultType;
 	if($defaultSupport!=null)              $data["support"]                 = $defaultSupport;
 	if($defaultGenreMusic!=null)           $data["genre-musical"]           = $defaultGenreMusic;
 	if($defaultGenreFilm!=null)            $data["genre-cinematographique"] = $defaultGenreFilm;
 	if($defaultGenreLitt!=null)            $data["genre-literraire"]        = $defaultGenreLitt;
 	if($defaultSecteur!=null)              $data["secteur"]                 = $defaultSecteur;
-	if($defaultAudience!=null)             $data["audience"]                = $defaultAudience;
+	if($defaultAudience!=null)             $data["audience"]                = $defaultAudience;*/
 	$xmlData = array_to_xml_main("search-criterias", $data);
 	//$url = $ini_array["CatalogueWebServiceUrl"]."facets"."?criters=".urlencode($xmlData->asXML())."&rows=0&page=1";
 

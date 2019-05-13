@@ -49,39 +49,6 @@
 	$defaultCollection           = isGetOk("collection");
 	$defaultDatePublicationStart = isGetOk("datepublicationstart");
 	$defaultDatePublicationEnd   = isGetOk("datepublicationend");
-	/*$defaultGeneralSignification = urldecode(isGetOk("generalSignification"));
-	$defaultGeneral              = urldecode(isGetOk("general"));
-	$defaultTitre                = urldecode(isGetOk("titre"));
-	$defaultAuteur               = urldecode(isGetOk("auteur"));
-	$defaultSujet                = urldecode(isGetOk("sujet"));
-	$defaultIsbnIssnCommercial   = urldecode(isGetOk("isbnissncommercial"));
-	$defaultIndiceCote           = urldecode(isGetOk("indicecote"));
-	$defaultDatePublication      = urldecode(isGetOk("datepublication"));
-	$defaultRealisateur          = urldecode(isGetOk("realisateur"));
-	$defaultTheme                = urldecode(isGetOk("theme"));
-	$defaultEditeur              = urldecode(isGetOk("editeur"));
-	$defaultCollection           = urldecode(isGetOk("collection"));
-	$defaultDatePublicationStart = urldecode(isGetOk("datepublicationstart"));
-	$defaultDatePublicationEnd   = urldecode(isGetOk("datepublicationend"));//*/
-	/*$defaultBaseRecherche        = urldecode(isGetOk("baserecherche"));
-	$defaultLangue               = urldecode(isGetOk("langue"));
-	$defaultType                 = urldecode(isGetOk("type"));
-	$defaultSupport              = urldecode(isGetOk("support"));
-	$defaultGenreMusic           = urldecode(isGetOk("genremusic"));
-	$defaultGenreFilm            = urldecode(isGetOk("genrefilm"));
-	$defaultGenreLitt            = urldecode(isGetOk("genrelitt"));
-	$defaultSecteur              = urldecode(isGetOk("secteur"));
-	$defaultAudience             = urldecode(isGetOk("audience"));*/
-
-	/*$defaultBaseRecherche        = urldecode(isGetOk("baserecherche"));
-	$defaultLangue               = urldecode(isGetOk("langue"));
-	$defaultType                 = urldecode(isGetOk("type"));
-	$defaultSupport              = urldecode(isGetOk("support"));
-	$defaultGenreMusic           = urldecode(isGetOk("genremusic"));
-	$defaultGenreFilm            = urldecode(isGetOk("genrefilm"));
-	$defaultGenreLitt            = urldecode(isGetOk("genrelitt"));
-	$defaultSecteur              = urldecode(isGetOk("secteur"));
-	$defaultAudience             = urldecode(isGetOk("audience"));*/
 
 	$defaultFacets               = urldecode(isGetOk("facets"));
 
@@ -151,16 +118,40 @@
 	if($defaultCollection!=null)           $data["collection-name"]         = $defaultCollection;
 	if($defaultDatePublicationStart!=null) $data["date-publication-debut"]  = $defaultDatePublicationStart;
 	if($defaultDatePublicationEnd!=null)   $data["date-publication-fin"]    = $defaultDatePublicationEnd;
-	/*if($defaultBaseRecherche!=null)        $data["baserecherche"]           = $defaultBaseRecherche;
-	/if($defaultLangue!=null)               $data["langue"]                  = $defaultLangue;
-	if($defaultType!=null)                 $data["type"]                    = $defaultType;
-	if($defaultSupport!=null)              $data["support"]                 = $defaultSupport;
-	if($defaultGenreMusic!=null)           $data["genre-musical"]           = $defaultGenreMusic;
-	if($defaultGenreFilm!=null)            $data["genre-cinematographique"] = $defaultGenreFilm;
-	if($defaultGenreLitt!=null)            $data["genre-literraire"]        = $defaultGenreLitt;
-	if($defaultSecteur!=null)              $data["secteur"]                 = $defaultSecteur;
-	if($defaultAudience!=null)             $data["audience"]                = $defaultAudience;*/
-	//if($defaultFacets!=null)               $data["facets"]                  = $defaultFacets;
+
+	if($data["general"] != null)
+	{
+		$url = $ini_array["CatalogueWebServiceUrl"]."spell/notices"."?word=".urlencode($data["general"]);
+		$xslUrl = "xslt/orthographicSuggestions.xsl";
+
+		echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";
+		echo "<br />";
+		echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
+
+		$searchPage;
+		if(FALSE !== ($searchPage = file_get_contents($url)))
+		{
+			$simpleXml = new SimpleXMLElement($searchPage);
+			$xmlTxt =  $simpleXml->asXML();
+			$xml = new DOMDocument('1.0', 'utf-8');
+			$xml->loadXML($xmlTxt);
+
+			$xsl = new DOMDocument;
+			$xsl->load($xslUrl);
+
+			$proc = new XSLTProcessor();
+			$proc->importStyleSheet($xsl);
+
+			$proc->setParameter('', 'rebondUrl', "");
+
+			echo $proc->transformToXML($xml);
+		}
+		else
+		{
+			trigger_error("It's all messed up");
+			throw new Exception("This is nice error handling");
+		}
+	}
 
 	$xmlData = array_to_xml_main("search-criterias", $data);
 	//$url = $ini_array["CatalogueWebServiceUrl"].'search/notices?parcours='.$parkour.'&page='.$page.'&rows='.$rows.'&general='.urlencode($_GET['text']);
@@ -190,6 +181,7 @@
 		$proc->importStyleSheet($xsl);
 		
 		$proc->setParameter("", "imgUrl", $ini_array["CatalogueWebServiceUrl"]."electre/vignette/");
+		$proc->setParameter("", "biblioMondoImgUrl", "https://dev-bpi-musique.bibliomondo.com/in/rest/Thumb/image?id=");
 	 
 		echo $proc->transformToXML($xml);
 	}
