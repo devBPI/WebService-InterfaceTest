@@ -365,7 +365,7 @@
 				Indice
 				<xsl:for-each select="indices/indice">
 					<div style="margin-left: 1em;">	
-						<a href='{$rebondUrl}/?indicecote={value}'>
+						<a href='{$rebondUrl}/?indicecote={.}'>
 							<xsl:value-of select="."/>
 						</a>
 					</div>
