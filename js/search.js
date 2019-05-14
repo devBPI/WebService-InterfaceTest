@@ -271,6 +271,11 @@ function changeNoticesOnlinePage(page)
 	var searchCriterias = getSearchCriterias();
 	var parkour = getParkour();
 	searchCriterias.set("parkour", parkour);
+
+	var urlParams = new URLSearchParams(window.location.search);
+	var curFacets = urlParams.get('facets');
+	searchCriterias.set('facets', curFacets);
+
 	var uriParams = searchCriterias.toString();
 	//console.log(uriParams);
 
