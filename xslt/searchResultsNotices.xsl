@@ -98,7 +98,7 @@
 							</div>
 							<div class="titres">
 								<xsl:for-each select="./titres/titre">
-									<xsl:if test="position() > 1">; </xsl:if>
+									<xsl:if test="position() > 1"> ; </xsl:if>
 									<xsl:value-of select="."/>
 								</xsl:for-each>
 								<div class="analytiques">
