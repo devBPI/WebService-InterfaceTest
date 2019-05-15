@@ -41,8 +41,8 @@
 			</xsl:variable>
 			<div class="{$authorityClass}" style="display: {$authorityDisplay};">
 				<!--<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="{$position()}"/></div>-->
-				<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;">Type d'autorité :</span><xsl:value-of select="type"/></div>
 				<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;"></span><xsl:value-of select="formeRetenue"/></div>
+				<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;">Type d'autorité :</span><xsl:value-of select="type"/></div>
 				<xsl:if test="autresNoms/autreNom">
 					<div id="autresNoms">
 						<div style="margin-right: 4px; text-decoration: underline;">Autre(s) nom(s) :</div>

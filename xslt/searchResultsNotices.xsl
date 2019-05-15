@@ -122,7 +122,7 @@
 								</xsl:if>
 								<xsl:if test="./realisateurs/realisateur">
 									<xsl:for-each select="./realisateurs/realisateur">
-										<xsl:if test="position() > 1">; </xsl:if>
+										<xsl:if test="position() > 1"> ; </xsl:if>
 										<xsl:value-of select="."/>	
 									</xsl:for-each>
 								</xsl:if>

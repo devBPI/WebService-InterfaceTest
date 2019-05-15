@@ -149,7 +149,7 @@
 			<div id="dates">
 				Date(s) 
 				<xsl:for-each select="datesTextuelles/dateTextuelle">
-					<xsl:if test="position() > 1">- </xsl:if>
+					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
@@ -220,9 +220,10 @@
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 				<xsl:if test="(langues) and (languesOriginal)">, </xsl:if>
+				, traduit de :
 				<xsl:for-each select="languesOriginales/langueOriginale">
 					<xsl:if test="position() > 1">, </xsl:if>
-				, traduit de : <xsl:value-of select="."/>
+				<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -379,15 +380,15 @@
 			<div id="droits">
 				Droit(s) 
 				<xsl:for-each select="droits-infos/droits/droit">
-					<xsl:if test="position() > 1"> . </xsl:if>
+					<xsl:if test="position() > 1">. </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 				<xsl:for-each select="droits-infos/licences/licence">
-					<xsl:if test="position() > 1"> . </xsl:if>
+					<xsl:if test="position() > 1">. </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 				<xsl:for-each select="droits-infos/copyrights/copyright">
-					<xsl:if test="position() > 1"> . </xsl:if>
+					<xsl:if test="position() > 1">. </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
