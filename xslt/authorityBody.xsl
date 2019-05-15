@@ -66,7 +66,7 @@
 			</xsl:if>
 			<xsl:if test="autresNoms/autreNom">
 				<div id="autresNoms">
-					Autre(s) nom(s):
+					Autre(s) nom(s)
 					<xsl:for-each select="autresNoms/autreNom">
 						<div style="margin-left: 4px;"><xsl:value-of select="."/></div>
 					</xsl:for-each>
@@ -77,7 +77,7 @@
 			</xsl:if>
 			<xsl:if test="formesAssociees/formeAssociee">
 				<div id="formesAssociees">
-					<div style="margin-right: 4px; text-decoration: underline;">Nom(s) associé(s) / Nom(s) lié(s):</div>
+					<div style="margin-right: 4px; text-decoration: underline;">Nom(s) associé(s) / Nom(s) lié(s)</div>
 					<xsl:for-each select="formesAssociees/formeAssociee">
 						<div style="margin-left: 4px;"><xsl:value-of select="."/></div>
 					</xsl:for-each>

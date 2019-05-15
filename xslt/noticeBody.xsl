@@ -67,10 +67,7 @@
 			<xsl:otherwise>
 				<xsl:if test="auteurs/auteur">
 					<div id="auteurs">
-						Auteur(s)
-						<xsl:if test="(type='Musique')">
-						, compositeur(s), interprète(s)
-						</xsl:if>
+						Auteur(s)<xsl:if test="(type='Musique')">, compositeur(s), interprète(s)</xsl:if>
 						: 
 						<xsl:for-each select="auteurs/auteur">
 							<div>
@@ -102,10 +99,7 @@
 		</xsl:if>
 		<xsl:if test="auteursSecondaires/auteurSecondaire">
 			<div id="auteursSecondaires">
-				Autre(s) auteur(s)
-				<xsl:if test="(type='Musique')">
-				, compositeur(s), interprète(s)
-				</xsl:if>
+				Autre(s) auteur(s)<xsl:if test="(type='Musique')">, compositeur(s), interprète(s)</xsl:if>
 				<xsl:for-each select="auteursSecondaires/auteurSecondaire">
 					<div>
 						<a href='{$rebondUrl}/?auteur={value}'>
@@ -376,7 +370,7 @@
 			<div id="publiques">
 				Public
 				<xsl:for-each select="publiques/publique">
-					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
@@ -385,15 +379,15 @@
 			<div id="droits">
 				Droit(s) 
 				<xsl:for-each select="droits-infos/droits/droit">
-					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:if test="position() > 1"> . </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 				<xsl:for-each select="droits-infos/licences/licence">
-					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:if test="position() > 1"> . </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 				<xsl:for-each select="droits-infos/copyrights/copyright">
-					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:if test="position() > 1"> . </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 			</div>
@@ -466,8 +460,8 @@
 		<xsl:for-each select="seriels/seriel">
 			<hr />
 			<div class="seriel">
-			<xsl:value-of select="disponibilite"/>
-			<xsl:value-of select="cote"/>
+			<xsl:value-of select="disponibilite"/> -
+			<xsl:value-of select="cote"/> -
 				<xsl:for-each select="supports/support">
 					<xsl:if test="position()&gt;1"> - </xsl:if>
 					<xsl:value-of select="."/>
