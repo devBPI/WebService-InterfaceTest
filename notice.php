@@ -67,6 +67,7 @@
 		<style type="text/css" media="screen"></style>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript" language="javascript"></script>
+		<script src="../../../../js/notice.js" type="text/javascript" language="javascript"></script>
 		<script type="text/javascript" language="javascript">
 		</script>
 	</head>
@@ -95,5 +96,6 @@
 			exit($returnCode);
 		}
 		?>
+		<!--<div id="feuilletageIndexes"></div>-->
 	</body>
 </html>

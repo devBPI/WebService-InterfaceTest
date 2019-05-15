@@ -462,7 +462,6 @@
 				<div><xsl:value-of select="localisation"/> - <xsl:value-of select="categorie"/></div>
 			</div>
 		</xsl:for-each>
-		<br />
 		<xsl:for-each select="seriels/seriel">
 			<hr />
 			<div class="seriel">
@@ -477,7 +476,6 @@
 				<div><xsl:value-of select="description"/></div>
 			</div>
 		</xsl:for-each>
-		<br />
 		<xsl:for-each select="liens/lien">
 			<hr />
 			<div class="lien">
@@ -486,6 +484,11 @@
 				<div><xsl:value-of select="localisation"/> <xsl:value-of select="categorie"/></div>
 			</div>
 		</xsl:for-each>
+		<xsl:if test="indices/indice">
+			<div id="feuilletageIndexes">
+				<div class="indiceCdu" style="display:none;"><xsl:value-of select="indices/indice"/></div>
+				<div class="feuilletageIndexes-tab">EMPTY TAB!!!</div>
+			</div>
+		</xsl:if>
 	</xsl:template>
-
 </xsl:stylesheet>
