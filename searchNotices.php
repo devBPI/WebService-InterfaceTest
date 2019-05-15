@@ -124,6 +124,8 @@
 		$url = $ini_array["CatalogueWebServiceUrl"]."spell/notices"."?word=".urlencode($data["general"]);
 		$xslUrl = "xslt/orthographicSuggestions.xsl";
 
+		echo "<div class=\"suggestions\">";
+
 		echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";
 		echo "<br />";
 		echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
@@ -151,6 +153,7 @@
 			trigger_error("It's all messed up");
 			throw new Exception("This is nice error handling");
 		}
+		echo "</div>";
 	}
 
 	$xmlData = array_to_xml_main("search-criterias", $data);

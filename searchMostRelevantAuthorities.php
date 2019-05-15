@@ -166,6 +166,8 @@
 
 		$proc = new XSLTProcessor();
 		$proc->importStyleSheet($xsl);
+
+		$proc->setParameter('', 'rebondUrl', "");
 	 
 		echo $proc->transformToXML($xml);
 	}

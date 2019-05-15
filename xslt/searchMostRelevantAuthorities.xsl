@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	<xsl:template match="authorities">
+		<xsl:apply-templates select="sujets-liees-list"/>
+		<xsl:apply-templates select="authorities-list"/>
+	</xsl:template>
+	<xsl:template match="sujets-liees-list">
+		<div style="margin-bottom: 0.5em;">
+			<span style="margin-right: 0.5em; font-weight: bold; text-decoration: underline;">Sujet(s) lié(s) :</span>
+			<xsl:for-each select="sujet-liee">
+				<xsl:if test="position() > 1">, </xsl:if>
+				<a href="{$rebondUrl}/?general={.}"><xsl:value-of select="."/></a>
+			</xsl:for-each>
+		</div>
+	</xsl:template>
 	<xsl:template match="authorities-list">
 		<div style="margin-bottom: 0.5em; font-weight: bold; text-decoration: underline;">Notices d'Autorités les plus relevantes trouvées:</div>
 		<div id="authorities">
