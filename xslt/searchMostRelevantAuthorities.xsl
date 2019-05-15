@@ -41,11 +41,11 @@
 			</xsl:variable>
 			<div class="{$authorityClass}" style="display: {$authorityDisplay};">
 				<!--<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="{$position()}"/></div>-->
-				<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;">Type d'autorité :</span><xsl:value-of select="type"/></div>
 				<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;"></span><xsl:value-of select="formeRetenue"/></div>
+				<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;">Type d'autorité :</span><xsl:value-of select="type"/></div>
 				<xsl:if test="autresNoms/autreNom">
 					<div id="autresNoms">
-						<div style="margin-right: 4px; text-decoration: underline;">Autre(s) nom(s):</div>
+						<div style="margin-right: 4px; text-decoration: underline;">Autre(s) nom(s) :</div>
 						<xsl:for-each select="autresNoms/autreNom">
 							<xsl:if test="position() > 1">; </xsl:if>
 							<xsl:value-of select="."/>
@@ -74,7 +74,7 @@
 					</div>
 				</xsl:if>
 				<xsl:if test="(type='Personne') or (type='Collectivité') and (activitesPrincipales/activitePrincipale)">
-					<div>Activité(s) principale(s):</div>
+					<div>Activité(s) principale(s) :</div>
 					<div id="activiteesPrincipales">
 						<xsl:for-each select="activitesPrincipales/activitePrincipale">
 							<xsl:if test="position() > 1">; </xsl:if>
