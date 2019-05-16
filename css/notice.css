@@ -1,0 +1,17 @@
+#feuilletageIndexes
+{
+	display: table;
+	width: auto;
+	border: 1px solid black;
+}
+
+#feuilletageIndexes-title
+{
+	padding: 0.25em;
+	border: 1px solid black;
+}
+
+.feuilletageIndexes-tab>div
+{
+	border: 1px solid black;
+}

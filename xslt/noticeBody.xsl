@@ -237,7 +237,7 @@
 		</xsl:if>
 		<xsl:if test="seriesCollection/serieCollection">
 			<div id="seriesCollection">
-			Série / Collection 
+				Série / Collection 
 				<xsl:for-each select="seriesCollection/serieCollection">
 					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
 				</xsl:for-each>
@@ -287,12 +287,11 @@
 		</xsl:if>
 		<xsl:if test="sujets/sujet">
 			<div id="sujets">
-				Sujet(s) 
+				Sujet(s)
 				<xsl:for-each select="sujets/sujet">
-					<a href='{$rebondUrl}/?sujet={value}'>
-						<div style="margin-left: 1em;"><xsl:value-of select="./value"/></div>
-						<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
-					</a>
+					<div style="margin-left: 1em;">
+						<a href='{$rebondUrl}/?sujet={value}'><xsl:value-of select="./value"/><xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if></a>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -443,8 +442,8 @@
 		</xsl:if>
 
 		<xsl:for-each select="exemplaires/exemplaire">
-			<hr />
 			<div class="exemplaire">
+				<hr />
 				<xsl:value-of select="disponibilite"/> - 
 				<xsl:value-of select="cote"/> - 
 				<xsl:for-each select="supports/support">
@@ -458,10 +457,10 @@
 			</div>
 		</xsl:for-each>
 		<xsl:for-each select="seriels/seriel">
-			<hr />
 			<div class="seriel">
-			<xsl:value-of select="disponibilite"/> -
-			<xsl:value-of select="cote"/> -
+				<hr />
+				<xsl:value-of select="disponibilite"/> -
+				<xsl:value-of select="cote"/> -
 				<xsl:for-each select="supports/support">
 					<xsl:if test="position()&gt;1"> - </xsl:if>
 					<xsl:value-of select="."/>
@@ -472,16 +471,17 @@
 			</div>
 		</xsl:for-each>
 		<xsl:for-each select="liens/lien">
-			<hr />
 			<div class="lien">
-				<div><a href="{url}"><xsl:value-of select="url"/></a></div>
-				<div><xsl:value-of select="cote"/></div>
-				<div><xsl:value-of select="localisation"/> <xsl:value-of select="categorie"/></div>
+				<hr />
+				<xsl:if test="url"><div><a href="{url}"><xsl:value-of select="url"/></a></div></xsl:if>
+				<xsl:if test="cote"><div><xsl:value-of select="cote"/></div></xsl:if>
+				<xsl:if test="(localisation) and (categorie)"><div><xsl:value-of select="localisation"/> <xsl:value-of select="categorie"/></div></xsl:if>
 			</div>
 		</xsl:for-each>
 		<xsl:if test="indices/indice">
 			<div id="feuilletageIndexes">
-				<div class="indiceCdu" style="display:none;"><xsl:value-of select="indices/indice"/></div>
+				<div id="feuilletageIndexes-title">Feuilletage d'indexes</div>
+				<div class="indiceCduFeuille" style="display:none;"><xsl:value-of select="indices/indice"/></div>
 				<div class="feuilletageIndexes-tab">EMPTY TAB!!!</div>
 			</div>
 		</xsl:if>

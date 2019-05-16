@@ -32,14 +32,11 @@
 		exit(1);
 	}
 
-	echo $indicecdu;
 ?>
 
 
-<fieldset style="/*min-height: 120px;*/">
-	<legend><?php echo $count; ?> notices de type <?php echo $key; ?></legend>
 <?php
-	$url = $ini_array["CatalogueWebServiceUrl"]."cdu-indexes/around?cduindex=".$indicecdu;
+	$url = $ini_array["CatalogueWebServiceUrl"]."cdu-indexes/around?cduindex=".urlencode($indicecdu);
 	$xslUrl = "xslt/feuilletageIndexes.xsl";
 	$detailsPage = file_get_contents($url);
 ?>
@@ -49,43 +46,6 @@
 		<a href="/<?php echo $xslUrl; ?>" target="_blank" style="font-size: 12px;">XSLT utilisée</a>
 	</div>
 <?php
-	if($page>$numPages)
-		$page=$numPages;
-	if($page<=0)
-		$page=1;
-
-	echo '<span style="line-height: 30px;">Page ' . $page . '/' . $numPages.'</span>';
-	echo '<span style="float: right;">';
-	echo '<span onclick="loadMappedNotices(this.parentNode.parentNode.parentNode, \'' . $key . '\', ' . $id . ', ' .$count . ', 1);" class="pageButton clickablePageButton">≪</span>';
-	echo '<span onclick="loadMappedNotices(this.parentNode.parentNode.parentNode, \'' . $key . '\', ' . $id . ', ' .$count . ', ' . ($page-1) . ');" class="pageButton clickablePageButton"><</span>';
-	if($page>3)
-	{
-		echo '<span class="pageButton">...</span>';
-	}
-	if($page>2)
-	{
-		echo '<span onclick="loadMappedNotices(this.parentNode.parentNode.parentNode, \'' . $key . '\', ' . $id . ', ' .$count . ', ' . ($page-2) .');" class="pageButton clickablePageButton">' . ($page-2) . '</span>';
-	}
-	if($page>1)
-	{
-		echo '<span onclick="loadMappedNotices(this.parentNode.parentNode.parentNode, \'' . $key . '\', ' . $id . ', ' .$count . ', ' . ($page-1) .');" class="pageButton clickablePageButton">' . ($page-1) . '</span>';
-	}
-	echo '<span class="pageButton" style="font-size: 115%; font-weight: bold;">' . ($page) . '</span>';
-	if($page<=$numPages-1)
-	{
-		echo '<span onclick="loadMappedNotices(this.parentNode.parentNode.parentNode, \'' . $key . '\', ' . $id . ', ' .$count . ', ' . ($page+1) .');" class="pageButton clickablePageButton">' . ($page+1) . '</span>';
-	}
-	if($page<=$numPages-2)
-	{
-		echo '<span onclick="loadMappedNotices(this.parentNode.parentNode.parentNode, \'' . $key . '\', ' . $id . ', ' .$count . ', ' . ($page+2) .');" class="pageButton clickablePageButton">' . ($page+2) . '</span>';
-	}
-	if($page<=$numPages-3)
-	{
-		echo '<span class="pageButton">...</span>';
-	}
-	echo '<span onclick="loadMappedNotices(this.parentNode.parentNode.parentNode, \'' . $key . '\', ' . $id . ', ' .$count . ', ' . ($page+1) .');" class="pageButton clickablePageButton">></span>';
-	echo '<span onclick="loadMappedNotices(this.parentNode.parentNode.parentNode, \'' . $key . '\', ' . $id . ', ' .$count . ', ' . ($numPages) .');" class="pageButton clickablePageButton">≫</span>';
-	echo '</span>';
 
 	$returnCode = getHttpCode($http_response_header);
 	if($returnCode == "200")
@@ -101,6 +61,8 @@
 		$proc = new XSLTProcessor;
 		$proc->importStyleSheet($xsl);
 
+		$proc->setParameter('', 'rebondUrl', "");
+
 		echo $proc->transformToXML($xml);
 	}
 	else
@@ -109,4 +71,3 @@
 		exit($returnCode);
 	}
 ?>
-</fieldset>

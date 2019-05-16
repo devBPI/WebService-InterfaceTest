@@ -64,6 +64,7 @@
 			echo $proc->transformToXML($xml);
 		?>
 		<link rel="stylesheet" type="text/css" href="../../../../css/body.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../css/notice.css" />
 		<style type="text/css" media="screen"></style>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript" language="javascript"></script>
