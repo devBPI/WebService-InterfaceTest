@@ -14,7 +14,7 @@
 			</div>
 		</xsl:if>
 		<xsl:if test="type">
-			<div id="types">Type : <xsl:value-of select="type"/></div>
+			<div id="types">Type&#160;:&#160;<xsl:value-of select="type"/></div>
 		</xsl:if>
 		<!--<xsl:if test="./isbn">
 			<img class="couverture" style="float:left; margin-left: 4px; margin-right: 4px;" src="{$imgUrl}{./isbn}"/>
@@ -45,7 +45,7 @@
 		<xsl:if test="type='Numrev - Article'">
 			<div id="dansJournals">
 				<xsl:for-each select="journal-infos">
-					<div>Dans <xsl:value-of select="titresJournal/titreJournal"/>, n <xsl:value-of select="issues/issue"/>, <xsl:value-of select="volumes/volume"/>, <xsl:value-of select="datesTextuelles/dateTextuelle"/>, pp <xsl:value-of select="premieresPages/premierePage"/> - <xsl:value-of select="dernieresPages/dernierePage"/></div>
+					<div>Dans <xsl:value-of select="titresJournal/titreJournal"/>,&#160;n&#160;<xsl:value-of select="issues/issue"/>,&#160;<xsl:value-of select="volumes/volume"/>,&#160;<xsl:value-of select="datesTextuelles/dateTextuelle"/>,&#160;pp&#160;<xsl:value-of select="premieresPages/premierePage"/>&#160;-&#160;<xsl:value-of select="dernieresPages/dernierePage"/></div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -67,13 +67,12 @@
 			<xsl:otherwise>
 				<xsl:if test="auteurs/auteur">
 					<div id="auteurs">
-						Auteur(s)<xsl:if test="(type='Musique')">, compositeur(s), interprète(s)</xsl:if>
-						: 
+						Auteur(s)<xsl:if test="(type='Musique')">, compositeur(s), interprète(s)</xsl:if>&#160;:&#160; 
 						<xsl:for-each select="auteurs/auteur">
 							<div>
 								<a href='{$rebondUrl}/?auteur={value}'>
 									<xsl:value-of select="value"/>
-									<xsl:if test="complement"> , <xsl:value-of select="complement"/></xsl:if>
+									<xsl:if test="complement">&#160;,&#160;<xsl:value-of select="complement"/></xsl:if>
 								</a>
 							</div>
 						</xsl:for-each>
@@ -104,7 +103,7 @@
 					<div>
 						<a href='{$rebondUrl}/?auteur={value}'>
 							<xsl:value-of select="value"/>
-							<xsl:if test="complement"> , <xsl:value-of select="complement"/></xsl:if>
+							<xsl:if test="complement">&#160;,&#160;<xsl:value-of select="complement"/></xsl:if>
 						</a>
 					</div>
 				</xsl:for-each>
@@ -118,7 +117,7 @@
 						<div style="margin-left: 1em;">	
 							<a href='{$rebondUrl}/?auteur={value}'>
 								<xsl:value-of select="./value"/>
-								<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+								<xsl:if test="complement">&#160;-&#160;<xsl:value-of select="complement"/></xsl:if>
 							</a>
 						</div>
 					</xsl:for-each>
@@ -127,7 +126,7 @@
 					<div style="margin-left: 1em;">	
 						<a href='{$rebondUrl}/?auteur={value}'>
 							<xsl:value-of select="./value"/>
-							<xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+							<xsl:if test="complement">&#160;-&#160;<xsl:value-of select="complement"/></xsl:if>
 						</a>
 					</div>
 				</xsl:for-each>
@@ -145,9 +144,20 @@
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="datesTextuelles/dateTextuelle">
+		<xsl:if test="(datesPublication/datePublication)">
 			<div id="dates">
-				Date(s) 
+				Date(s)&#160;
+				<xsl:if test="(datesPublication/datePublication)">
+					<xsl:for-each select="datesPublication/datePublication">
+						<xsl:if test="position() > 1">&#160;;&#160;</xsl:if>
+						<xsl:value-of select="."/>
+					</xsl:for-each>
+				</xsl:if>
+			</div>
+		</xsl:if>
+		<xsl:if test="not(datesPublication/datePublication) and (datesTextuelles/dateTextuelle)">
+			<div id="dates">
+				Date(s)&#160;
 				<xsl:for-each select="datesTextuelles/dateTextuelle">
 					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
@@ -359,9 +369,7 @@
 				Indice
 				<xsl:for-each select="indices/indice">
 					<div style="margin-left: 1em;">	
-						<a href='{$rebondUrl}/?indicecote={.}'>
-							<xsl:value-of select="."/>
-						</a>
+						<a href='{$rebondUrl}/?indicecote={cote}'><xsl:value-of select="cote"/>&#160;<xsl:value-of select="libelle"/></a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -478,10 +486,10 @@
 				<xsl:if test="(localisation) and (categorie)"><div><xsl:value-of select="localisation"/> <xsl:value-of select="categorie"/></div></xsl:if>
 			</div>
 		</xsl:for-each>
-		<xsl:if test="indices/indice">
+		<xsl:if test="indices/indice/cote">
 			<div id="feuilletageIndexes">
 				<div id="feuilletageIndexes-title">Feuilletage d'indexes</div>
-				<div class="indiceCduFeuille" style="display:none;"><xsl:value-of select="indices/indice"/></div>
+				<div class="indiceCduFeuille" style="display:none;"><xsl:value-of select="indices/indice/cote"/></div>
 				<div class="feuilletageIndexes-tab">EMPTY TAB!!!</div>
 			</div>
 		</xsl:if>
