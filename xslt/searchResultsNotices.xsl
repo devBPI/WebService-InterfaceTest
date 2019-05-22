@@ -107,26 +107,26 @@
 									</xsl:for-each>
 								</div>
 							</div>
-							<xsl:if test="./auteurs/auteur">
-							<div class="auteurs">
-							par 
-								<xsl:for-each select="./auteurs/auteur">
-									<xsl:if test="position() > 1">; </xsl:if>
-									<xsl:value-of select="."/>	
-								</xsl:for-each>
-								<xsl:if test="auteursSecondaires/auteurSecondaire">
-									<xsl:for-each select="auteursSecondaires/auteurSecondaire">
-										<xsl:if test="position() > 1"> ; </xsl:if>
+							<xsl:if test="(./auteurs/auteur) or (./realisateurs/realisateur)">
+								<div class="auteurs">
+								par 
+									<xsl:for-each select="./auteurs/auteur">
+										<xsl:if test="position() > 1">; </xsl:if>
 										<xsl:value-of select="."/>	
 									</xsl:for-each>
-								</xsl:if>
-								<xsl:if test="./realisateurs/realisateur">
-									<xsl:for-each select="./realisateurs/realisateur">
-										<xsl:if test="position() > 1"> ; </xsl:if>
-										<xsl:value-of select="."/>	
-									</xsl:for-each>
-								</xsl:if>
-							</div>
+									<xsl:if test="auteursSecondaires/auteurSecondaire">
+										<xsl:for-each select="auteursSecondaires/auteurSecondaire">
+											<xsl:if test="position() > 1"> ; </xsl:if>
+											<xsl:value-of select="."/>	
+										</xsl:for-each>
+									</xsl:if>
+									<xsl:if test="./realisateurs/realisateur">
+										<xsl:for-each select="./realisateurs/realisateur">
+											<xsl:if test="position() > 1"> ; </xsl:if>
+											<xsl:value-of select="."/>	
+										</xsl:for-each>
+									</xsl:if>
+								</div>
 							</xsl:if>
 							<div class="editeurs">
 								<xsl:for-each select="./editeurs/editeur">
