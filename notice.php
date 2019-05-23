@@ -72,6 +72,29 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript" language="javascript"></script>
 		<script src="../../../../js/notice.js" type="text/javascript" language="javascript"></script>
 		<script type="text/javascript" language="javascript">
+
+
+//		function notify_complete()
+//		{
+//			console.log('The image has been loaded into the browser cache.');
+//		}
+
+//		setInterval(function() {
+//			console.log("reload");
+//			var images = document.images;
+//			for (var i=0; i<images.length; i++) {
+//				var my_image = new Image();
+//				my_image.src = images[i].src.replace(/\btime=[^&]*/, 'time=' + new Date().getTime());
+//				my_image.onload = notify_complete(my_image);
+//				
+//				images[i].src = images[i].src.replace(/\btime=[^&]*/, 'time=' + new Date().getTime());
+//				console.log(images[i].complete);
+//			}
+//		}, 5000);*/
+
+
+
+
 		</script>
 	</head>
 	<body>
