@@ -1,5 +1,6 @@
 #feuilletageIndexes
 {
+	margin: 0.5em;
 	display: table;
 	width: auto;
 	border: 1px solid black;
@@ -8,10 +9,49 @@
 #feuilletageIndexes-title
 {
 	padding: 0.25em;
-	border: 1px solid black;
 }
 
 .feuilletageIndexes-tab>div
 {
 	border: 1px solid black;
+}
+
+#sameTheme
+{
+	margin: 0.5em;
+	padding: 0.5em;
+}
+
+.pagination
+{
+	display: none;
+}
+
+.pageButton
+{
+	background-color: rgba(89, 224, 145, 0.6);
+}
+
+.noticesContainer
+{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.notice, .notice-online
+{
+	margin-right: 0.5em;
+	margin-bottom: 0.5em;
+	display: block;
+	border: 1px solid #59E091;
+}
+
+.notice, .notice-online
+{
+	background: #88E2AD;
+}
+
+.notice:hover, .notice-online:hover
+{
+	background: #59E091;
 }

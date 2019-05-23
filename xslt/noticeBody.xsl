@@ -153,6 +153,9 @@
 						<xsl:value-of select="."/>
 					</xsl:for-each>
 				</xsl:if>
+				<xsl:if test="(type='Revue, journal') and (anneeMaximaleSeriel)">
+					&#160;-&#160;<xsl:value-of select="anneeMaximaleSeriel"/>
+				</xsl:if>
 			</div>
 		</xsl:if>
 		<xsl:if test="not(datesPublication/datePublication) and (datesTextuelles/dateTextuelle)">
@@ -162,6 +165,9 @@
 					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
+				<xsl:if test="(type='Revue, journal') and (anneeMaximaleSeriel)">
+					&#160;-&#160;<xsl:value-of select="anneeMaximaleSeriel"/>
+				</xsl:if>
 			</div>
 		</xsl:if>
 		<xsl:if test="autresDates/autreDate">
@@ -458,10 +464,16 @@
 					<xsl:if test="position()&gt;1"> - </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
-				<div><xsl:for-each select="notes/note">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
-				</xsl:for-each></div>
-				<div><xsl:value-of select="localisation"/> - <xsl:value-of select="categorie"/></div>
+				<xsl:if test="notes/note">
+				<div>
+					<xsl:for-each select="notes/note">
+						<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					</xsl:for-each>
+				</div>
+				</xsl:if>
+				<xsl:if test="(localisation) and (categorie)">
+					<div><xsl:value-of select="localisation"/> - <xsl:value-of select="categorie"/></div>
+				</xsl:if>
 			</div>
 		</xsl:for-each>
 		<xsl:for-each select="seriels/seriel">
@@ -487,8 +499,7 @@
 			</div>
 		</xsl:for-each>
 		<xsl:if test="indices/indice/cote">
-			<div id="feuilletageIndexes">
-				<div id="feuilletageIndexes-title">Feuilletage d'indexes</div>
+			<div id="datasIndexes">
 				<div class="indiceCduFeuille" style="display:none;"><xsl:value-of select="indices/indice/cote"/></div>
 				<div class="feuilletageIndexes-tab">EMPTY TAB!!!</div>
 			</div>

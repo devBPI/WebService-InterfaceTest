@@ -64,7 +64,9 @@
 			echo $proc->transformToXML($xml);
 		?>
 		<link rel="stylesheet" type="text/css" href="../../../../css/body.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../css/accessories.css" />
 		<link rel="stylesheet" type="text/css" href="../../../../css/notice.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../css/notices.css" />
 		<style type="text/css" media="screen"></style>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript" language="javascript"></script>
@@ -90,6 +92,15 @@
 			$proc->setParameter('', 'tabMatUrl', $ini_array["CatalogueWebServiceUrl"]."electre/tabledesmatieres/");
 
 			echo $proc->transformToXML($xml);
+
+			/*$indexes = $xml->getElementsByTagName("indice");
+			if($indexes != null)
+			{
+				$cote = $indexes[0]->getElementsByTagName("cote");
+				echo($cote[0]->nodeValue);
+				//include("searchNoticesOnline.php?indicecote=".htmlspecialchars($cote[0]->nodeValue, ENT_COMPAT|ENT_QUOTES|ENT_HTML5));
+				include("searchNoticesOnline.php");
+			}*/
 		}
 		else
 		{

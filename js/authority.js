@@ -12,7 +12,7 @@ function loadMappedNotices(element, key, id, count, page, rows)
 	$(element).load(url);
 }
 
-window.onload = function()
+$(window).load(function()
 {
 	var mappedNoticesLists = document.getElementsByClassName("noticeMappee");
 	for(var i = 0; i < mappedNoticesLists.length; i++)
@@ -27,4 +27,4 @@ window.onload = function()
 	loadReservation(2);
 	loadReservation(3);
 	loadReservation(4);*/
-}
+});

@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template match="/">
 		<div>
-			<div>
+			<div class="pagination">
 				<div style="overflow:hidden;">
 					<div style="float:right;">
 						<span onclick="changeNoticesOnlinePage(1)" class="pageButton clickablePageButton">≪</span>
@@ -71,7 +71,7 @@
 					<div style="clear:both"></div>
 				</div>
 			</div>
-			<div>
+			<div class="noticesContainer">
 				<xsl:for-each select="notices-online/noticesOnlineList/notice-online">
 					<div class="notice-online" style="overflow:hidden;">
 						<!--<xsl:if test="./isbn">

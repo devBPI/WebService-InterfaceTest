@@ -187,6 +187,9 @@
 		$proc->setParameter("", "biblioMondoImgUrl", "https://dev-bpi-musique.bibliomondo.com/in/rest/Thumb/image?id=");
 	 
 		echo $proc->transformToXML($xml);
+
+		//$indexes = $xml->getElementsByTagName("indice");
+
 	}
 	else
 	{

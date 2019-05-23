@@ -1,6 +1,6 @@
 function loadIndexes()
 {
-	var feuilletageIndexesLists = document.getElementById("feuilletageIndexes");
+	var feuilletageIndexesLists = document.getElementById("datasIndexes");
 	var indiceCdu = feuilletageIndexesLists.getElementsByClassName("indiceCduFeuille")[0].innerHTML;
 	var tabDiv = feuilletageIndexesLists.getElementsByClassName("feuilletageIndexes-tab")[0];
 	var url = "/feuilletageIndexes.php?indicecdu="+encodeURIComponent(indiceCdu);
@@ -9,9 +9,9 @@ function loadIndexes()
 	$(tabDiv).load(url);
 }
 
-window.onload = function()
+$(window).load(function()
 {
 	loadIndexes();
 	//loadQuatrieme();
 	//loadTableMatieres();
-}
+});
