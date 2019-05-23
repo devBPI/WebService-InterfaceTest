@@ -443,7 +443,6 @@
 		</div>-->
 
 		<br />
-
 		<xsl:if test="isbns/isbn">
 			<div id="quatrieme">
 				 Quatrième de couverture  
@@ -460,10 +459,12 @@
 				<hr />
 				<xsl:value-of select="disponibilite"/> - 
 				<xsl:value-of select="cote"/> - 
-				<xsl:for-each select="supports/support">
-					<xsl:if test="position()&gt;1"> - </xsl:if>
-					<xsl:value-of select="."/>
-				</xsl:for-each>
+				<xsl:if test="not(supports/support='Papier')"> -
+					<xsl:for-each select="supports/support">
+						<xsl:if test="position()&gt;1"> - </xsl:if>
+						<xsl:value-of select="."/>
+					</xsl:for-each>
+				</xsl:if>
 				<xsl:if test="notes/note">
 				<div>
 					<xsl:for-each select="notes/note">
