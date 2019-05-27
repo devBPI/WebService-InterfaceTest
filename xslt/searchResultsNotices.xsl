@@ -76,7 +76,7 @@
 					<div class="notice" style="overflow:hidden;">
 						<xsl:if test="./isbn">
 							<div style="float:left; margin-left: 4px; margin-right: 4px;" >
-								<img class="couverture" src="{$imgUrl}{./isbn}"/>
+								<img class="couverture lazy" src="{$imgUrl}{./isbn}"/>
 							</div>
 						</xsl:if>
 						<div>

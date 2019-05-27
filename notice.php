@@ -53,7 +53,7 @@
 		$xml->loadXML($xmlTxt);
 	?>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8; no-cache" />
 		<?php
 			$xsl = new DOMDocument;
 			$xsl->load($xslHeadUrl);
@@ -63,14 +63,15 @@
 
 			echo $proc->transformToXML($xml);
 		?>
-		<link rel="stylesheet" type="text/css" href="../../../../css/body.css" />
-		<link rel="stylesheet" type="text/css" href="../../../../css/accessories.css" />
-		<link rel="stylesheet" type="text/css" href="../../../../css/notice.css" />
-		<link rel="stylesheet" type="text/css" href="../../../../css/notices.css" />
+		<link rel="stylesheet" type="text/css" href="/css/body.css" />
+		<link rel="stylesheet" type="text/css" href="/css/accessories.css" />
+		<link rel="stylesheet" type="text/css" href="/css/notice.css" />
+		<link rel="stylesheet" type="text/css" href="/css/notices.css" />
 		<style type="text/css" media="screen"></style>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript" language="javascript"></script>
-		<script src="../../../../js/notice.js" type="text/javascript" language="javascript"></script>
+		<script src="/js/notice.js" type="text/javascript" language="javascript"></script>
+		<script src="/js/images.js" type="text/javascript" language="javascript"></script>
 		<script type="text/javascript" language="javascript">
 
 

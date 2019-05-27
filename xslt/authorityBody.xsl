@@ -16,7 +16,7 @@
 				<div id="pays">
 					Pays
 					<xsl:for-each select="pays/pays">
-					<xsl:if test="position() > 1">; </xsl:if>
+					<xsl:if test="position() > 1">;&#160;</xsl:if>
 					<xsl:value-of select="."/>
 					</xsl:for-each>
 				</div>
@@ -25,7 +25,7 @@
 				<div id="langues">
 					Langue(s)
 					<xsl:for-each select="langues/langue">
-						<xsl:if test="position() > 1">; </xsl:if>
+						<xsl:if test="position() > 1">;&#160;</xsl:if>
 						<xsl:value-of select="."/>
 					</xsl:for-each>
 				</div>
@@ -33,19 +33,19 @@
 
 			<xsl:if test="genresMusicaux/genreMusical">
 				<div id="genresMusicaux">
-					Genre musical
+					Genre musical&#160;:&#160;
 					<xsl:for-each select="genresMusicaux/genreMusical">
-						<xsl:if test="position() > 1">; </xsl:if>
+						<xsl:if test="position() > 1">;&#160;</xsl:if>
 						<xsl:value-of select="."/>
 					</xsl:for-each>
 				</div>
 			</xsl:if>
 			<xsl:if test="(type='Personne') or (type='Collectivité')">
-				<div>Naissance (<xsl:value-of select="dateNaissance"/> - <xsl:value-of select="lieuNaissance"/>)</div>
-				<div>Mort (<xsl:value-of select="dateMort"/> - <xsl:value-of select="lieuMort"/>)</div>
+				<div>Naissance : <xsl:value-of select="dateNaissance"/> - <xsl:value-of select="lieuNaissance"/></div>
+				<div>Mort : <xsl:value-of select="dateMort"/> - <xsl:value-of select="lieuMort"/></div>
 			</xsl:if>
 			<xsl:if test="(type!='Personne') and (type!='Collectivité')">
-				<div>Date(s) (<xsl:value-of select="dateNaissance"/> - <xsl:value-of select="dateMort"/>)</div>
+				<div>Date(s) : <xsl:value-of select="dateNaissance"/> - <xsl:value-of select="dateMort"/></div>
 			</xsl:if>
 			<xsl:if test="(type='Personne') or (type='Collectivité') and (activitesPrincipales/activitePrincipale)">
 				<div>Activité(s) principale(s)</div>
@@ -90,18 +90,19 @@
 					</xsl:for-each>
 			</xsl:if>
 			<xsl:if test="((type='Personne') or (type='Collectivité')) and isni">
-				<div id="isni">ISNI<xsl:value-of select="isni"/></div>
+				<div id="isni">ISNI : <xsl:value-of select="isni"/></div>
 			</xsl:if>
 			<xsl:if test="origines/origine">
-				<div id="origines" style="font-size:small; font color: grey;">Origines :</div>
+				<div id="origines" style="font-size:small; font color: grey;">Origines :
 					<xsl:for-each select="origines/origine">
+						<xsl:if test="position() > 1">; </xsl:if>
 						<div style="margin-left: 4px;"><xsl:value-of select="."/></div>
 					</xsl:for-each>
+				</div>
 			</xsl:if>
 			<xsl:if test="urlOrigine">
 				<div id="urlOrigin"><a href="{urlOrigine}"><xsl:value-of select="urlOrigine"/></a></div>
 			</xsl:if>
-
 			<br />
 			<div id="noticesMappees">
 				<xsl:for-each select="linkingTypesWithNotices/entry">

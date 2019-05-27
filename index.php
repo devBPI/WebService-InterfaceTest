@@ -114,6 +114,7 @@
 		<script src="js/search.js"         type="text/javascript" language="javascript"></script>
 		<script src="js/authorities.js"    type="text/javascript" language="javascript"></script>
 		<script src="js/facets.js"         type="text/javascript" language="javascript"></script>
+		<script src="js/images.js"         type="text/javascript" language="javascript"></script>
 
 		<script type="text/javascript" language="javascript">
 			window.onload = function(e)

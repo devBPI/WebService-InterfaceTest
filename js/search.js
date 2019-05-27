@@ -148,6 +148,7 @@ function getSearchCriterias()
 
 function searchFacets(uriParams)
 {
+	document.getElementById("facets").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	var uri = "searchFacets.php?"+uriParams;
 	var url = encodeURI(uri);
 	//console.log(url);
@@ -212,6 +213,7 @@ function searchNoticesNoticesOnline(uriParams)
 
 function searchMostRelevantAuthorities(uriParams)
 {
+	document.getElementById("mostRelevantAuthorities").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	var uri = "searchMostRelevantAuthorities.php?"+uriParams;
 	var url = encodeURI(uri);
 	$("#mostRelevantAuthorities").load(url);

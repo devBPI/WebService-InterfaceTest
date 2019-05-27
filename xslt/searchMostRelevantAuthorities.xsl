@@ -43,21 +43,21 @@
 				<!--<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="{$position()}"/></div>-->
 				<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;"></span><xsl:value-of select="formeRetenue"/></div>
 				<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;">Type d'autorité :</span><xsl:value-of select="type"/></div>
-				<xsl:if test="autresNoms/autreNom">
+				<xsl:if test="(type='Vedettes matières / noms communs') or (type='Noms géographiques') and (autresNoms/autreNom)">
 					<div id="autresNoms">
-						<div style="margin-right: 4px; text-decoration: underline;">Autre(s) nom(s) :</div>
+						<span style="margin-right: 4px; text-decoration: underline;">Autre(s) nom(s) :</span>
 						<xsl:for-each select="autresNoms/autreNom">
 							<xsl:if test="position() > 1">; </xsl:if>
 							<xsl:value-of select="."/>
 						</xsl:for-each>
 					</div>
 				</xsl:if>
-				<xsl:if test="(type!='Personne') and (type!='Collectivité')">
+				<xsl:if test="(type='Personne') or (type='Collectivité') or (type='Titres uniformes') or (type='Auteurs-titres')">
 					<div><xsl:value-of select="dateNaissance"/> - <xsl:value-of select="dateMort"/></div>
 				</xsl:if>
 				<xsl:if test="pays/pays">
 					<div id="pays">
-						<div style="margin-right: 4px; text-decoration: underline;">Pays:</div>
+						<span style="margin-right: 4px; text-decoration: underline;">Pays:</span>
 						<xsl:for-each select="pays/pays">
 							<xsl:if test="position() > 1">; </xsl:if>
 							<xsl:value-of select="."/>
@@ -66,7 +66,7 @@
 				</xsl:if>
 				<xsl:if test="langues/langue">
 					<div id="langues">
-						<div style="margin-right: 4px; text-decoration: underline;">Langues:</div>
+						<span style="margin-right: 4px; text-decoration: underline;">Langue(s):</span>
 						<xsl:for-each select="langues/langue">
 							<xsl:if test="position() > 1">; </xsl:if>
 							<xsl:value-of select="."/>
@@ -74,8 +74,8 @@
 					</div>
 				</xsl:if>
 				<xsl:if test="(type='Personne') or (type='Collectivité') and (activitesPrincipales/activitePrincipale)">
-					<div>Activité(s) principale(s) :</div>
 					<div id="activiteesPrincipales">
+						<span style="margin-right: 4px; text-decoration: underline;">Activité(s) principale(s) :</span>
 						<xsl:for-each select="activitesPrincipales/activitePrincipale">
 							<xsl:if test="position() > 1">; </xsl:if>
 							<xsl:value-of select="."/>

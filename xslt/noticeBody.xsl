@@ -10,7 +10,7 @@
 		<br />
 		<xsl:if test="isbns/isbn">
 			<div id="couverture">
-				<img class="couverture" src="{$couvUrl}{isbns/isbn}"/>
+				<img class="couverture lazy" src="{$couvUrl}{isbns/isbn}"/>
 			</div>
 		</xsl:if>
 		<xsl:if test="type">
@@ -37,7 +37,9 @@
 			<div id="traductionsDe">
 				Traduction de :
 				<xsl:for-each select="traductionsDe/traductionDe">
-					<div><xsl:value-of select="."/></div>
+					<div>
+						<a href='{$rebondUrl}/?titre={value}'><xsl:value-of select="."/></a>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -60,7 +62,9 @@
 				Réalisateur(s) : 
 				<div id="realisateurs">
 					<xsl:for-each select="realisateurs/realisateur">
-						<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+						<div style="margin-left: 1em;">
+							<a href='{$rebondUrl}/?auteur={value}'><xsl:value-of select="."/></a>
+						</div>
 					</xsl:for-each>
 				</div>
 			</xsl:when>
@@ -192,7 +196,9 @@
 			<div id="oeuvres">
 				Oeuvre(s) 
 				<xsl:for-each select="titresUniform/titreUniform">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;">
+						<a href='{$rebondUrl}/?titre={.}'><xsl:value-of select="."/></a>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -200,7 +206,9 @@
 			<div id="titresAutresFormes">
 				Autre(s) forme(s) de titre  
 				<xsl:for-each select="titresAlternatifs/titreAlternatif">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;">
+						<a href='{$rebondUrl}/?titre={.}'><xsl:value-of select="."/></a>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -263,7 +271,9 @@
 			<div id="titresEnsemble">
 				Titre(s) d'ensemble 
 				<xsl:for-each select="titresEnsemble/titreEnsemble">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;">
+						<a href='{$rebondUrl}/?titre={.}'><xsl:value-of select="."/></a>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -271,7 +281,9 @@
 			<div id="titresEnRelation">
 				Titre(s) en relation 
 				<xsl:for-each select="titresEnRelation/titreEnRelation">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;">
+						<a href='{$rebondUrl}/?titre={.}'><xsl:value-of select="."/></a>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -279,7 +291,9 @@
 			<div id="reunits">
 				Réunit  
 				<xsl:for-each select="reunits/reunit">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;">
+						<a href='{$rebondUrl}/?titre={.}'><xsl:value-of select="."/></a>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -306,7 +320,9 @@
 				Sujet(s)
 				<xsl:for-each select="sujets/sujet">
 					<div style="margin-left: 1em;">
-						<a href='{$rebondUrl}/?sujet={value}'><xsl:value-of select="./value"/><xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if></a>
+						<a href='{$rebondUrl}/?sujet={value}'>
+							<xsl:value-of select="./value"/><xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+						</a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -315,7 +331,9 @@
 			<div id="epoques">
 				Epoque
 				<xsl:for-each select="epoques/epoque">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;">
+						<a href='{$rebondUrl}/?sujet={.}'><xsl:value-of select="."/></a>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -323,7 +341,9 @@
 			<div id="lieux">
 				Lieu
 				<xsl:for-each select="lieux/lieu">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;">
+						<a href='{$rebondUrl}/?sujet={.}'><xsl:value-of select="."/></a>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -331,7 +351,9 @@
 			<div id="genres">
 				Genre
 				<xsl:for-each select="genres/genre">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;">
+						<a href='{$rebondUrl}/?sujet={.}'><xsl:value-of select="."/></a>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -339,7 +361,9 @@
 			<div id="themes">
 				Thème(s) 
 				<xsl:for-each select="themes/theme">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;">
+						<a href='{$rebondUrl}/?sujet={.}'><xsl:value-of select="."/></a>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
