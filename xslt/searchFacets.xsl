@@ -3,7 +3,7 @@
 	<xsl:template match="facets/facetsList">
 		<div id="facetsFlex">
 			<xsl:for-each select="facet">
-				<xsl:if test="name='disponibilite' or name='type' or name='creator' or name='publishing_date' or name='language' or name='subject' or name='genre_musical' or name='genre_film' or name='genre_litteraire' or name='configuration_name' or name='secteur' or name='material_support' or name='audience'">
+				<xsl:if test="name='disponibilite' or name='type' or name='creator' or name='date_publishing' or name='language' or name='subject' or name='genre_musical' or name='genre_film' or name='genre_litteraire' or name='configuration_name' or name='secteur' or name='material_support' or name='audience'">
 					<!--<xsl:sort select="label"/>-->
 					<div id="{name}">
 						<xsl:variable name="facetLabel">
@@ -17,7 +17,7 @@
 								<xsl:when test="name='creator'">
 									Auteurs, Contributeurs
 								</xsl:when>
-								<xsl:when test="name='publishing_date'">
+								<xsl:when test="name='date_publishing'">
 									Date de publication
 								</xsl:when>
 								<xsl:when test="name='language'">
@@ -58,7 +58,8 @@
 						<!--<xsl:if test="(count-offline&gt;0) or (count-online&gt;0)">-->
 						<div class="facet" onclick="displayHideFacet(facet{position()});">
 							<xsl:value-of select="$facetLabel"/>
-							<xsl:if test="(count-offline) and (count-online)">
+							<span style="font-weight: bold;">(<xsl:value-of select="count(valuesCounts/value)"/>)</span>
+							<!--<xsl:if test="(count-offline) and (count-online)">
 								<span style="font-weight: bold;">(<xsl:value-of select="count-offline + count-online"/>)</span>
 							</xsl:if>
 							<xsl:if test="(count-offline) and not(count-online)">
@@ -66,7 +67,7 @@
 							</xsl:if>
 							<xsl:if test="not(count-offline) and (count-online)">
 								<span style="font-weight: bold;">(<xsl:value-of select="count-online"/>)</span>
-							</xsl:if>
+							</xsl:if>-->
 							<!--<span style="font-weight: bold; color: #0055AA;">[<xsl:value-of select="count-offline"/>]</span>
 							<span style="font-weight: bold; color: #007700;">[<xsl:value-of select="count-online"/>]</span>-->
 						</div>
@@ -76,30 +77,55 @@
 						<xsl:variable name="quote">'</xsl:variable>
 						<xsl:variable name="slashQuote">\'</xsl:variable>
 						<div id="facet{position()}" style="display: none;">
-							<xsl:for-each select="valuesCounts/value">
-								<xsl:sort select="count-total" data-type="number" order="descending"/>
-								<!--<xsl:sort select="name"/>-->
-								<xsl:variable name="replacedSlashString">
-									<xsl:call-template name="replace_single_quote">
-											<xsl:with-param name="string" select="name" />
-										<xsl:with-param name="find" select="$slash" />
-										<xsl:with-param name="replace" select="$doubleSlash" />
-									</xsl:call-template>
-								</xsl:variable>
-								<xsl:variable name="replacedQuoteString">
-									<xsl:call-template name="replace_single_quote">
-										<xsl:with-param name="string" select="$replacedSlashString" />
-										<xsl:with-param name="find" select="$quote" />
-										<xsl:with-param name="replace" select="$slashQuote" />
-									</xsl:call-template>
-								</xsl:variable>
-								<div class="facet" onclick="addFacet('{$facetName}', '{$replacedQuoteString}');">
-									- <xsl:value-of select="name"/>
-									<span style="font-weight: bold;">(<xsl:value-of select="count-total"/>)</span>
-									<!--<span style="font-weight: bold; color: #0055AA;">(<xsl:value-of select="count-offline"/>)</span>
-									<span style="font-weight: bold; color:#007700;">(<xsl:value-of select="count-online"/>)</span>-->
-								</div>
-							</xsl:for-each>
+							<xsl:choose>
+								<xsl:when test="name='date_publishing'">
+									<xsl:for-each select="valuesCounts/value">
+										<xsl:sort select="name" data-type="number" order="descending" />
+										<xsl:variable name="replacedSlashString">
+											<xsl:call-template name="replace_single_quote">
+												<xsl:with-param name="string" select="name" />
+												<xsl:with-param name="find" select="$slash" />
+												<xsl:with-param name="replace" select="$doubleSlash" />
+											</xsl:call-template>
+										</xsl:variable>
+										<xsl:variable name="replacedQuoteString">
+											<xsl:call-template name="replace_single_quote">
+												<xsl:with-param name="string" select="$replacedSlashString" />
+												<xsl:with-param name="find" select="$quote" />
+												<xsl:with-param name="replace" select="$slashQuote" />
+											</xsl:call-template>
+										</xsl:variable>
+										<div class="facet" onclick="addFacet('{$facetName}', '{$replacedQuoteString}');">
+											- <xsl:value-of select="name"/>
+											<span style="font-weight: bold;">(<xsl:value-of select="count-total"/>)</span>
+										</div>
+									</xsl:for-each>
+								</xsl:when>
+								<xsl:otherwise>
+									<!--<xsl:sort select="count-total" data-type="number" order="descending"/>-->
+									<xsl:for-each select="valuesCounts/value">
+										<xsl:sort select="count-total" data-type="number" order="descending"/>
+										<xsl:variable name="replacedSlashString">
+											<xsl:call-template name="replace_single_quote">
+												<xsl:with-param name="string" select="name" />
+												<xsl:with-param name="find" select="$slash" />
+												<xsl:with-param name="replace" select="$doubleSlash" />
+											</xsl:call-template>
+										</xsl:variable>
+										<xsl:variable name="replacedQuoteString">
+											<xsl:call-template name="replace_single_quote">
+												<xsl:with-param name="string" select="$replacedSlashString" />
+												<xsl:with-param name="find" select="$quote" />
+												<xsl:with-param name="replace" select="$slashQuote" />
+											</xsl:call-template>
+										</xsl:variable>
+										<div class="facet" onclick="addFacet('{$facetName}', '{$replacedQuoteString}');">
+											- <xsl:value-of select="name"/>
+											<span style="font-weight: bold;">(<xsl:value-of select="count-total"/>)</span>
+										</div>
+									</xsl:for-each>
+								</xsl:otherwise>
+							</xsl:choose>
 						</div>
 						<!--</xsl:if>-->
 					</div>
