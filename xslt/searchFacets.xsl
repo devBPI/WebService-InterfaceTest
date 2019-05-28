@@ -78,7 +78,7 @@
 						<xsl:variable name="slashQuote">\'</xsl:variable>
 						<div id="facet{position()}" style="display: none;">
 							<xsl:choose>
-								<xsl:when test="name='date_publishing'">
+								<xsl:when test="name='date_publishing_UNCOMMENT_IF_USE'">
 									<xsl:for-each select="valuesCounts/value">
 										<xsl:sort select="name" data-type="number" order="descending" />
 										<xsl:variable name="replacedSlashString">
