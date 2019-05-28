@@ -39,7 +39,7 @@
 		<option id="searchBarSelectionSujet" <?php if($defaultGeneralSignification=="sujet") echo "selected"; ?> value="sujet">Sujet</option>
 		<option id="searchBarSelectionIssnIsbnCom" <?php if($defaultGeneralSignification=="isbnissncommercial") echo "selected"; ?> value="isbnissncommercial">ISBN, ISSN, numéros commerciaux</option>
 		<option id="searchBarSelectionIndiceCote" <?php if($defaultGeneralSignification=="indicecote") echo "selected"; ?> value="indicecote">Indice / Cote</option>
-		<option id="searchBarSelectionDatePublication" <?php if($defaultGeneralSignification=="datepublication") echo "selected"; ?> value="datepublication" disabled>Date de publication (précise)</option>
+		<option id="searchBarSelectionDatePublication" <?php if($defaultGeneralSignification=="datepublication") echo "selected"; ?> value="datepublication">Date de publication (précise)</option>
 		<option id="searchBarSelectionEdition" <?php if($defaultGeneralSignification=="editeur") echo "selected"; ?> value="editeur">Éditeur</option>
 		<option id="searchBarSelectionRealisateur" <?php if($defaultGeneralSignification=="realisateur") echo "selected"; ?> value="realisateur">Réalisateur</option>
 		<option id="searchBarSelectionTheme" <?php if($defaultGeneralSignification=="theme") echo "selected"; ?> value="theme">Thème</option>

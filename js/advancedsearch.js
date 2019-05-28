@@ -88,3 +88,20 @@ function getAdvancedSearchDropdownParams()
 
 	return result;
 }
+
+function switchDatesPreciseIntervale(bool)
+{
+	if(bool)
+	{
+		document.getElementById("advancedSearchBarDatePrecise").style.display="none";
+		document.getElementById("advancedSearchBarDateInterval").style.display="inline-block";
+		document.getElementById("advancedsearch-datepublication").value=null;
+	}
+	else
+	{
+		document.getElementById("advancedSearchBarDatePrecise").style.display="inline-block";
+		document.getElementById("advancedSearchBarDateInterval").style.display="none";
+		document.getElementById("advancedsearch-datepublicationstart").value=null;
+		document.getElementById("advancedsearch-datepublicationend").value=null;
+	}
+}
