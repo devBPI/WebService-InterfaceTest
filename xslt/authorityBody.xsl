@@ -3,8 +3,8 @@
 	<xsl:template match="/authority">
 		<div class="authority" style="margin-left: 2px;">
 			<br />
-			<div><span style="margin-right: 4px; text-decoration: underline;">Type d'autorité :</span><xsl:value-of select="type"/></div>
-			<div><span style="margin-right: 4px; text-decoration: underline;"></span><xsl:value-of select="formeRetenue"/></div>
+			<div><span style="margin-right: 0.5em; text-decoration: underline;">Type d'autorité :</span><xsl:value-of select="type"/></div>
+			<div><span style="margin-right: 0.5em; text-decoration: underline;"></span><xsl:value-of select="formeRetenue"/></div>
 			<xsl:if test="formesParalleles/formeParallele">
 				<div id="formesParalelles" style="font-style: italic; font-size: small;">
 					<xsl:for-each select="formesParalleles/formeParallele">
@@ -41,26 +41,27 @@
 				</div>
 			</xsl:if>
 			<xsl:if test="(type='Personne') or (type='Collectivité')">
-				<div>Naissance : <xsl:value-of select="dateNaissance"/> - <xsl:value-of select="lieuNaissance"/></div>
-				<div>Mort : <xsl:value-of select="dateMort"/> - <xsl:value-of select="lieuMort"/></div>
+				<div>Naissance : <xsl:value-of select="dateNaissance"/><xsl:if test="lieuNaissance"> - <xsl:value-of select="lieuNaissance"/></xsl:if></div>
+				<xsl:if test="dateMort"><div>Mort : <xsl:value-of select="dateMort"/><xsl:if test="lieuNaissance"> - <xsl:value-of select="lieuMort"/></xsl:if></div></xsl:if>
 			</xsl:if>
 			<xsl:if test="(type!='Personne') and (type!='Collectivité')">
 				<div>Date(s) : <xsl:value-of select="dateNaissance"/> - <xsl:value-of select="dateMort"/></div>
 			</xsl:if>
 			<xsl:if test="(type='Personne') or (type='Collectivité') and (activitesPrincipales/activitePrincipale)">
-				<div>Activité(s) principale(s)</div>
-				<div id="activiteesPrincipales">
-					<xsl:for-each select="activitesPrincipales/activitePrincipale">
-						<xsl:if test="position() > 1">; </xsl:if>
-						<xsl:value-of select="."/>
-					</xsl:for-each>
+				<div>Activité(s) principale(s) : 
+					<div id="activiteesPrincipales" style="margin-left:0.5em;">
+						<xsl:for-each select="activitesPrincipales/activitePrincipale">
+							<xsl:if test="position() > 1">; </xsl:if>
+							<xsl:value-of select="."/>
+						</xsl:for-each>
+					</div>
 				</div>
 			</xsl:if>
 			<xsl:if test="notes/note">
 				<div id="notes">
-				Notes
+					Notes
 					<xsl:for-each select="notes/note">
-						<div style="margin-left: 4px;"><xsl:value-of select="."/></div>
+						<div style="margin-left: 0.5em;"><xsl:value-of select="."/></div>
 					</xsl:for-each>
 				</div>
 			</xsl:if>
@@ -68,7 +69,7 @@
 				<div id="autresNoms">
 					Autre(s) nom(s)
 					<xsl:for-each select="autresNoms/autreNom">
-						<div style="margin-left: 4px;"><xsl:value-of select="."/></div>
+						<div style="margin-left: 0.5em;"><xsl:value-of select="."/></div>
 					</xsl:for-each>
 				</div>
 			</xsl:if>
@@ -77,16 +78,16 @@
 			</xsl:if>
 			<xsl:if test="formesAssociees/formeAssociee">
 				<div id="formesAssociees">
-					<div style="margin-right: 4px; text-decoration: underline;">Nom(s) associé(s) / Nom(s) lié(s)</div>
+					<div style="margin-right: 0.5em; text-decoration: underline;">Nom(s) associé(s) / Nom(s) lié(s)</div>
 					<xsl:for-each select="formesAssociees/formeAssociee">
-						<div style="margin-left: 4px;"><xsl:value-of select="."/></div>
+						<div style="margin-left: 0.5em;"><xsl:value-of select="."/></div>
 					</xsl:for-each>
 				</div>
 			</xsl:if>
 			<xsl:if test="notesClassement/noteClassement">
 				<div id="employePour">Note(s) sur le classement:</div>
 					<xsl:for-each select="notesClassement/noteClassement">
-						<div style="margin-left: 4px;"><xsl:value-of select="."/></div>
+						<div style="margin-left: 0.5em;"><xsl:value-of select="."/></div>
 					</xsl:for-each>
 			</xsl:if>
 			<xsl:if test="((type='Personne') or (type='Collectivité')) and isni">
@@ -96,7 +97,7 @@
 				<div id="origines" style="font-size:small; font color: grey;">Origines :
 					<xsl:for-each select="origines/origine">
 						<xsl:if test="position() > 1">; </xsl:if>
-						<div style="margin-left: 4px;"><xsl:value-of select="."/></div>
+						<div style="margin-left: 0.5em;"><xsl:value-of select="."/></div>
 					</xsl:for-each>
 				</div>
 			</xsl:if>
