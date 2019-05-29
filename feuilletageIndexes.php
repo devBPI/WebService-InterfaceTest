@@ -5,8 +5,8 @@
 	ini_set('display_errors', 1);
 	error_reporting(E_ALL);
 
-	header("Content-Type: text/xml");
-	header("Content-Type: text/html;charset=utf-8");
+	//header("Content-Type: text/xml");
+	//header("Content-Type: text/html;charset=utf-8");
 
 	$ini_array = @parse_ini_file("etc/configuration.ini");
 	if(!$ini_array)
@@ -40,14 +40,14 @@
 	$xslUrl = "xslt/feuilletageIndexes.xsl";
 	$detailsPage = file_get_contents($url);
 ?>
-<div id="feuilletageIndexes">
+<!--<div id="feuilletageIndexes">
 	<div>
 		<a href="<?php echo $url; ?>" target="_blank" style="font-size: 12px;">URL du WebService</a>
 		<br />
 		<a href="/<?php echo $xslUrl; ?>" target="_blank" style="font-size: 12px;">XSLT utilisée</a>
 		<div id="feuilletageIndexes-title">Feuilletage d'indexes</div>
 		<hr />
-	</div>
+	</div>-->
 <?php
 
 	$returnCode = getHttpCode($http_response_header);
@@ -66,7 +66,7 @@
 
 		$proc->setParameter('', 'rebondUrl', "");
 
-		echo $proc->transformToXML($xml);
+		//echo $proc->transformToXML($xml);
 	}
 	else
 	{
@@ -74,12 +74,12 @@
 		exit($returnCode);
 	}
 ?>
-</div>
+<!--</div>-->
 
 <?php
 	$data["indice-cote"] = $indicecdu;
 	$xmlData = array_to_xml_main("search-criterias", $data);
-	$url = $ini_array["CatalogueWebServiceUrl"]."search/notices"."?criters=".urlencode($xmlData->asXML())."&rows=5";
+	$url = $ini_array["CatalogueWebServiceUrl"]."search/notices"."?criters=".urlencode($xmlData->asXML())."&rows=3";
 	$xslUrl = "xslt/searchResultsNotices.xsl";
 	$detailsPage = file_get_contents($url);
 ?>
@@ -118,7 +118,7 @@
 	}
 ?>
 
-	<hr />
+<!--	<hr />-->
 
 <?php
 	$data["indice-cote"] = $indicecdu;
@@ -127,13 +127,13 @@
 	$xslUrl = "xslt/searchResultsNoticesOnline.xsl";
 	$detailsPage = file_get_contents($url);
 ?>
-	<hr />
+<!--	<hr />
 	<div>
 		<a href="<?php echo $url; ?>" target="_blank" style="font-size: 12px;">URL du WebService</a>
 		<br />
 		<a href="/<?php echo $xslUrl; ?>" target="_blank" style="font-size: 12px;">XSLT utilisée</a>
 	</div>
-	<div>Sur le même thème en ligne :</div>
+	<div>Sur le même thème en ligne :</div>-->
 <?php
 
 	$returnCode = getHttpCode($http_response_header);
@@ -153,7 +153,7 @@
 		$proc->setParameter("", "imgUrl", $ini_array["CatalogueWebServiceUrl"]."electre/vignette/");
 		$proc->setParameter("", "biblioMondoImgUrl", "https://dev-bpi-musique.bibliomondo.com/in/rest/Thumb/image?id=");
 
-		echo $proc->transformToXML($xml);
+		//echo $proc->transformToXML($xml);
 	}
 	else
 	{
@@ -161,7 +161,7 @@
 		exit($returnCode);
 	}
 ?>
-</div>
+<!--</div>-->
 
 <?php
 	print str_pad('',4096)."\n";
