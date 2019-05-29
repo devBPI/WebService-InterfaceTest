@@ -294,7 +294,7 @@ function advancedSearch()
 	if(buttonValue=='+')
 	{
 		document.getElementById("advancedSearchButton").value = '-';
-		document.getElementById("advancedSearchDiv").style.display = 'block';
+		document.getElementById("advancedSearchDiv").style.display = 'flex';
 	}
 	else if(buttonValue=='-')
 	{
