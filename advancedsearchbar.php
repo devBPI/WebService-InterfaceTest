@@ -29,14 +29,14 @@
 	<div id="advancedsearch-datepublication-div" class="date-searchbar-div autocomplete-unk">
 
 		<label id="dateSwitch" class="switch">
-			<input type="checkbox" onclick="switchDatesPreciseIntervale(this.checked);"/>
+			<input type="checkbox" onclick="switchDatesPreciseIntervale(this.checked);" <?php if($defaultDatePublicationStart!=null || $defaultDatePublicationEnd!=null) echo "checked"; ?> />
 			<span class="slider"></span>
 		</label>
 
-		<span id="advancedSearchBarDatePrecise">
+		<span id="advancedSearchBarDatePrecise" <?php if($defaultDatePublicationStart!=null || $defaultDatePublicationEnd!=null) echo 'style="display: none;"'; ?>>
 			<input type="text" id="advancedsearch-datepublication"      name="advancedsearch-datepublication"       autocomplete="off" size=43 placeholder="Date de Publication…"           onkeyup="if(event.keyCode==13)search();" <?php if($defaultDatePublication!=null){echo "value=\"".encodeStringForInput($defaultDatePublication)."\"";} ?> />
 		</span>
-		<span id="advancedSearchBarDateInterval" style="display:none;">
+		<span id="advancedSearchBarDateInterval" <?php if($defaultDatePublicationStart==null && $defaultDatePublicationEnd==null) echo 'style="display: none;"'; ?>>
 			<input type="text" id="advancedsearch-datepublicationstart" name="advancedsearch-date-publicationstart" autocomplete="off" size=17 placeholder="Date de Publication (Début)…"   onkeyup="if(event.keyCode==13)search();" <?php if($defaultDatePublicationStart!=null){echo "value=\"".encodeStringForInput($defaultDatePublicationStart)."\"";} ?> />
 			<span style="display: inline-block; width: 8px; text-align: center;">-</span>
 			<input type="text" id="advancedsearch-datepublicationend"   name="advancedsearch-date publicationend"   autocomplete="off" size=17 placeholder="Date de Publication (Fin)…"     onkeyup="if(event.keyCode==13)search();" <?php if($defaultDatePublicationEnd!=null){echo "value=\"".encodeStringForInput($defaultDatePublicationEnd)."\"";} ?> /><br />
