@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:template match="/">
+	<xsl:template match="notices-online|/results/notices-online">
 		<div>
 			<div class="pagination">
 				<div style="overflow:hidden;">
 					<div style="float:right;">
 						<span onclick="changeNoticesOnlinePage(1)" class="pageButton clickablePageButton">≪</span>
-						<span onclick="changeNoticesOnlinePage({(notices-online/page)-1})" class="pageButton clickablePageButton">&lt;</span>
-						<xsl:if test="notices-online/page&gt;3">
+						<span onclick="changeNoticesOnlinePage({(page)-1})" class="pageButton clickablePageButton">&lt;</span>
+						<xsl:if test="page&gt;3">
 							<span class="pageButton">...</span>
 						</xsl:if>
-						<xsl:if test="notices-online/page&gt;2">
-							<span onclick="changeNoticesOnlinePage({(notices-online/page)-2})" class="pageButton clickablePageButton"><xsl:value-of select="(notices-online/page)-2"/></span>
+						<xsl:if test="page&gt;2">
+							<span onclick="changeNoticesOnlinePage({(page)-2})" class="pageButton clickablePageButton"><xsl:value-of select="(page)-2"/></span>
 						</xsl:if>
-						<xsl:if test="notices-online/page&gt;1">
-							<span onclick="changeNoticesOnlinePage({(notices-online/page)-1})" class="pageButton clickablePageButton"><xsl:value-of select="(notices-online/page)-1"/></span>
+						<xsl:if test="page&gt;1">
+							<span onclick="changeNoticesOnlinePage({(page)-1})" class="pageButton clickablePageButton"><xsl:value-of select="(page)-1"/></span>
 						</xsl:if>
-						<span class="pageButton" style="font-size: 115%; font-weight: bold;"><xsl:value-of select="notices-online/page"/></span>
-						<xsl:if test="notices-online/page&lt;=(notices-online/num-pages)-1">
-							<span onclick="changeNoticesOnlinePage({(notices-online/page)+1})" class="pageButton clickablePageButton"><xsl:value-of select="(notices-online/page)+1"/></span>
+						<span class="pageButton" style="font-size: 115%; font-weight: bold;"><xsl:value-of select="page"/></span>
+						<xsl:if test="page&lt;=(num-pages)-1">
+							<span onclick="changeNoticesOnlinePage({(page)+1})" class="pageButton clickablePageButton"><xsl:value-of select="(page)+1"/></span>
 						</xsl:if>
-						<xsl:if test="notices-online/page&lt;=(notices-online/num-pages)-2">
-							<span onclick="changeNoticesOnlinePage({(notices-online/page)+2})" class="pageButton clickablePageButton"><xsl:value-of select="(notices-online/page)+2"/></span>
+						<xsl:if test="page&lt;=(num-pages)-2">
+							<span onclick="changeNoticesOnlinePage({(page)+2})" class="pageButton clickablePageButton"><xsl:value-of select="(page)+2"/></span>
 						</xsl:if>
-						<xsl:if test="notices-online/page&lt;=(notices-online/num-pages)-3">
+						<xsl:if test="page&lt;=(num-pages)-3">
 							<span class="pageButton">...</span>
 						</xsl:if>
 						<xsl:choose>
-							<xsl:when test="notices-online/page&lt;=(notices-online/num-pages)-1"><span onclick="changeNoticesOnlinePage({(notices-online/page)+1})" class="pageButton clickablePageButton">&gt;</span></xsl:when>
-							<xsl:otherwise><span onclick="changeNoticesOnlinePage({notices-online/page})" class="pageButton clickablePageButton">&gt;</span></xsl:otherwise>
+							<xsl:when test="page&lt;=(num-pages)-1"><span onclick="changeNoticesOnlinePage({(page)+1})" class="pageButton clickablePageButton">&gt;</span></xsl:when>
+							<xsl:otherwise><span onclick="changeNoticesOnlinePage({page})" class="pageButton clickablePageButton">&gt;</span></xsl:otherwise>
 						</xsl:choose>
-						<span onclick="changeNoticesOnlinePage({notices-online/num-pages})" class="pageButton clickablePageButton">≫</span>
+						<span onclick="changeNoticesOnlinePage({num-pages})" class="pageButton clickablePageButton">≫</span>
 					</div>
 					<div style="clear:both"></div>
 				</div>
 				<div style="border-bottom : 2px solid black; overflow:hidden;">
-					<span><xsl:value-of select="notices-online/results"/> notices online found</span>
+					<span><xsl:value-of select="results"/> notices online found</span>
 					<span style="float:right;">
-						<span style="margin-left:2px;">Page <xsl:value-of select="notices-online/page"/> on <xsl:value-of select="notices-online/num-pages"/> - </span>
-						<!--<span style="margin-left:2px;"><xsl:value-of select="notices-online/rows"/> rows</span>-->
+						<span style="margin-left:2px;">Page <xsl:value-of select="page"/> on <xsl:value-of select="num-pages"/> - </span>
+						<!--<span style="margin-left:2px;"><xsl:value-of select="rows"/> rows</span>-->
 						<span style="margin-left:2px;">
-							<select id="notices-online-rows" name="rows" onchange="changeNoticesOnlineRows({notices-online/page}, {notices-online/rows});">
+							<select id="notices-online-rows" name="rows" onchange="changeNoticesOnlineRows({page}, {rows});">
 								<xsl:choose>
-									<xsl:when test="notices-online/rows=20">
+									<xsl:when test="rows=20">
 										<option value="20" selected="true">20</option>
 									</xsl:when>
 									<xsl:otherwise>
@@ -50,7 +50,7 @@
 									</xsl:otherwise>
 								</xsl:choose>
 								<xsl:choose>
-									<xsl:when test="notices-online/rows=40">
+									<xsl:when test="rows=40">
 										<option value="40" selected="true">40</option>
 									</xsl:when>
 									<xsl:otherwise>
@@ -58,7 +58,7 @@
 									</xsl:otherwise>
 								</xsl:choose>
 								<xsl:choose>
-									<xsl:when test="notices-online/rows=100">
+									<xsl:when test="rows=100">
 										<option value="100" selected="true">100</option>
 									</xsl:when>
 									<xsl:otherwise>
@@ -72,7 +72,7 @@
 				</div>
 			</div>
 			<div class="noticesContainer">
-				<xsl:for-each select="notices-online/noticesOnlineList/notice-online">
+				<xsl:for-each select="noticesOnlineList/notice-online">
 					<div class="notice-online" style="overflow:hidden;">
 						<xsl:if test="./isbn">
 							<img class="couverture lazy" style="float:left; margin-left: 4px; margin-right: 4px;" src="{$imgUrl}{./isbn}"/>
@@ -195,4 +195,5 @@
 			</div>
 		</div>
 	</xsl:template>
+	<xsl:template match="text()"/>
 </xsl:stylesheet>

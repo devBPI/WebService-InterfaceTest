@@ -120,74 +120,25 @@
 	if($defaultDatePublicationStart!=null) $data["date-publication-debut"]  = $defaultDatePublicationStart;
 	if($defaultDatePublicationEnd!=null)   $data["date-publication-fin"]    = $defaultDatePublicationEnd;
 
-	if(isset($data["spell"]))
-	{
-		$url = $ini_array["CatalogueWebServiceUrl"]."spell/notices"."?word=".urlencode($data["spell"]);
-		$xslUrl = "xslt/orthographicSuggestions.xsl";
 
-		echo "<div class=\"suggestions\">";
 
-		echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";
-		echo "<br />";
-		echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
-
-		$searchPage;
-		if(FALSE !== ($searchPage = file_get_contents($url)))
-		{
-			$simpleXml = new SimpleXMLElement($searchPage);
-			$xmlTxt =  $simpleXml->asXML();
-			$xml = new DOMDocument('1.0', 'utf-8');
-			$xml->loadXML($xmlTxt);
-
-			$xsl = new DOMDocument;
-			$xsl->load($xslUrl);
-
-			$proc = new XSLTProcessor();
-			$proc->importStyleSheet($xsl);
-
-			$proc->setParameter('', 'rebondUrl', "");
-
-			echo $proc->transformToXML($xml);
-		}
-		else
-		{
-			trigger_error("It's all messed up");
-			throw new Exception("This is nice error handling");
-		}
-		echo "</div>";
-	}
 
 	$xmlData = array_to_xml_main("search-criterias", $data);
 	//$url = $ini_array["CatalogueWebServiceUrl"].'search/notices?parcours='.$parkour.'&page='.$page.'&rows='.$rows.'&general='.urlencode($_GET['text']);
-	$url = $ini_array["CatalogueWebServiceUrl"]."search/notices"."?criters=".urlencode($xmlData->asXML());
+	$url = $ini_array["CatalogueWebServiceUrl"]."search/all"."?criters=".urlencode($xmlData->asXML());
 	if($defaultFacets!=null)
 		$url.=("&facets=".urlencode("<facets-wrap>".$defaultFacets."</facets-wrap>"));
 	$url.=("&rows=".$rows."&page=".$page);
 	//$result = getArrayToXmlIntoUrl($url, "search-criterias", $data);
-	$xslUrl = "xslt/searchResultsNotices.xsl";
 
-	echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";
-	echo "<br />";
-	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
+	echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px; font-style: bold;\">URL du WebService de recherche</a>";
 
-	$searchPage;
+	$xml = new DOMDocument('1.0', 'utf-8');
 	if(FALSE !== ($searchPage = file_get_contents($url)))
 	{
 		$simpleXml = new SimpleXMLElement($searchPage);
 		$xmlTxt =  $simpleXml->asXML();
-		$xml = new DOMDocument('1.0', 'utf-8');
 		$xml->loadXML($xmlTxt);
-
-		$xsl = new DOMDocument;
-		$xsl->load($xslUrl);
-
-		$proc = new XSLTProcessor();
-		$proc->importStyleSheet($xsl);
-		
-		$proc->setParameter("", "imgUrl", $ini_array["CatalogueWebServiceUrl"]."electre/vignette/");
-		$proc->setParameter("", "biblioMondoImgUrl", "https://dev-bpi-musique.bibliomondo.com/in/rest/Thumb/image?id=");
-	 
-		echo $proc->transformToXML($xml);
 	}
 	else
 	{
@@ -196,3 +147,158 @@
 		exit("Could not continue");
 		die("it is over");
 	}
+
+?>
+<div id="facetsdiv" style="margin: 3px; grid-column: 1 / span 2;">
+	<div id="facets">
+<?php
+	if($defaultFacets!=null)
+	{
+		$xslFacetsDisplayUrl = "xslt/selectedFacets.xsl";
+		echo "<a href=\"/".$xslFacetsDisplayUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
+		$simpleDefaultFacetsXml = new SimpleXMLElement($defaultFacets);
+		$simpleDefaultFacetsXmlTxt =  $simpleDefaultFacetsXml->asXML();
+		$simpleDefaultFacetsXml = new DOMDocument('1.0', 'utf-8');
+		$simpleDefaultFacetsXml->loadXML($simpleDefaultFacetsXmlTxt);
+
+		$xsl = new DOMDocument;
+		$xsl->load($xslFacetsDisplayUrl);
+
+		$proc = new XSLTProcessor();
+		$proc->importStyleSheet($xsl);
+
+		echo $proc->transformToXML($simpleDefaultFacetsXml);
+	}
+?>
+		<a class="facet facets" id="facetsShowButton" style="display: block;" onclick="displayFacets(); return false;">Dérouler facettes</a>
+		<div class="facets" id="facetsContainer" style="display:none;">
+			<a class="facet" style="display: block;" onclick="hideFacets(); return false;">Enrouler facettes</a>
+			<br />
+<?php
+	$xslFacetsUrl = "xslt/searchFacets.xsl";
+	echo "<a href=\"/".$xslFacetsUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
+
+	$xsl = new DOMDocument;
+	$xsl->load($xslFacetsUrl);
+
+	$proc = new XSLTProcessor();
+	$proc->importStyleSheet($xsl);
+
+	echo $proc->transformToXML($xml);
+?>
+			<br />
+			<a class="facet" style="display: block;" onclick="hideFacets(); return false;">Enrouler facettes</a>
+		</div>
+		<br />
+	</div>
+</div>
+<div id="authoritiesdiv" style="margin: 3px; grid-column: 1 / span 2;">
+	<div id="mostRelevantAuthorities">
+<?php
+	$xslUrl = "xslt/searchMostRelevantAuthorities.xsl";
+	echo "<div style='float: right; text-align: right;'>";
+	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
+	echo "</div>";
+
+	$xsl = new DOMDocument;
+	$xsl->load($xslUrl);
+
+	$proc = new XSLTProcessor();
+	$proc->importStyleSheet($xsl);
+
+	$proc->setParameter('', 'rebondUrl', "");
+
+	echo $proc->transformToXML($xml);
+?>
+	</div>
+</div>
+<div id="notices" style="margin: 3px; grid-column: 1;">
+<?php
+	$xslUrl = "xslt/orthographicSuggestions.xsl";
+
+	echo "<div class=\"suggestions\">";
+
+	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
+	$searchPage;
+
+	$xsl = new DOMDocument;
+	$xsl->load($xslUrl);
+
+	$proc = new XSLTProcessor();
+	$proc->importStyleSheet($xsl);
+
+	$proc->setParameter('', 'rebondUrl', "");
+
+	echo $proc->transformToXML($xml);
+
+	echo "</div>";
+
+
+
+
+	$xslUrl = "xslt/searchResultsNotices.xsl";
+	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
+	echo "<br />";
+
+	$xsl = new DOMDocument;
+	$xsl->load($xslUrl);
+
+	$proc = new XSLTProcessor();
+	$proc->importStyleSheet($xsl);
+		
+	$proc->setParameter("", "imgUrl", $ini_array["CatalogueWebServiceUrl"]."electre/vignette/");
+	$proc->setParameter("", "biblioMondoImgUrl", "https://dev-bpi-musique.bibliomondo.com/in/rest/Thumb/image?id=");
+ 
+	echo $proc->transformToXML($xml);
+?>
+</div>
+<div id="notices-online" style="margin: 3px; grid-column: 2;">
+<?php
+	$xslUrl = "xslt/orthographicSuggestionsOnline.xsl";
+
+	echo "<div class=\"suggestions\">";
+
+	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
+	$searchPage;
+
+	$xsl = new DOMDocument;
+	$xsl->load($xslUrl);
+
+	$proc = new XSLTProcessor();
+	$proc->importStyleSheet($xsl);
+
+	$proc->setParameter('', 'rebondUrl', "");
+
+	echo $proc->transformToXML($xml);
+
+	echo "</div>";
+
+
+
+
+	$xslUrl = "xslt/searchResultsNoticesOnline.xsl";
+	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
+	echo "<br />";
+
+	$xsl = new DOMDocument;
+	$xsl->load($xslUrl);
+
+	$proc = new XSLTProcessor();
+	$proc->importStyleSheet($xsl);
+		
+	$proc->setParameter("", "imgUrl", $ini_array["CatalogueWebServiceUrl"]."electre/vignette/");
+	$proc->setParameter("", "biblioMondoImgUrl", "https://dev-bpi-musique.bibliomondo.com/in/rest/Thumb/image?id=");
+ 
+	echo $proc->transformToXML($xml);
+?>
+</div>
+
+
+
+
+
+
+
+
+
+

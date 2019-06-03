@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:template match="authorities">
+	<xsl:template match="authorities|/results/relevant-authorities">
 		<xsl:apply-templates select="sujets-liees-list"/>
 		<xsl:apply-templates select="authorities-list"/>
 	</xsl:template>
@@ -91,4 +91,5 @@
 			<input id="hideSupplAuthorities"    class="bigButton" style="display:none;" type="submit" value="- Masquer les autorités supplémentaires" onclick="hideSupplAuthorities();" />
 		</xsl:if>
 	</xsl:template>
+	<xsl:template match="text()"/>
 </xsl:stylesheet>

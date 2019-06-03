@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:template match="facets/facetsList">
+	<xsl:template match="/facets/facetsList|/results/facets/facetsList">
 		<div id="facetsFlex">
 			<xsl:for-each select="facet">
 				<xsl:if test="name='disponibilite' or name='type' or name='creator' or name='date_publishing' or name='language' or name='subject' or name='genre_musical' or name='genre_film' or name='genre_litteraire' or name='configuration_name' or name='secteur' or name='material_support' or name='audience'">
@@ -152,4 +152,5 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
+	<xsl:template match="text()"/>
 </xsl:stylesheet>

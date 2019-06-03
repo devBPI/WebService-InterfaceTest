@@ -219,20 +219,29 @@ function searchMostRelevantAuthorities(uriParams)
 	$("#mostRelevantAuthorities").load(url);
 }
 
+function searchAll(uriParams)
+{
+	document.getElementById("result-lists").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
+	var uri = "searchAll.php?"+uriParams;
+	var url = encodeURI(uri);
+	$("#result-lists").load(url);
+}
+
 function search()
 {
 	//searchadvanced();
 	//console.log("documents getted");
-	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
-	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
+	//document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
+	//document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	var parkour = getParkour();
 	var uriParams = getUriParams();
 	//alert(parkour);
 	console.log("search():\n\t/"+parkour+"?"+uriParams);
 	history.pushState({}, null, "./"+parkour+"?"+uriParams);
 	//window.location = "#./"+parkour+"?"+uriParams
-	searchNoticesNoticesOnline(uriParams);
-	searchMostRelevantAuthorities(uriParams);
+	//searchNoticesNoticesOnline(uriParams);
+	//searchMostRelevantAuthorities(uriParams);
+	searchAll(uriParams);
 }
 
 function changeNoticesRows(currentPage, currentRows)

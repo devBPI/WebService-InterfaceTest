@@ -104,6 +104,7 @@
 			default:
 				$data["general"] = $defaultGeneral;
 		}
+		$data["spell"] = $defaultGeneral;
 	}
 
 	if($defaultTitre!=null)                $data["titre"]                   = $defaultTitre;
@@ -119,9 +120,9 @@
 	if($defaultDatePublicationStart!=null) $data["date-publication-debut"]  = $defaultDatePublicationStart;
 	if($defaultDatePublicationEnd!=null)   $data["date-publication-fin"]    = $defaultDatePublicationEnd;
 
-	if($data["general"] != null)
+	if(isset($data["spell"]))
 	{
-		$url = $ini_array["CatalogueWebServiceUrl"]."spell/notices-online"."?word=".urlencode($data["general"]);
+		$url = $ini_array["CatalogueWebServiceUrl"]."spell/notices-online"."?word=".urlencode($data["spell"]);
 		$xslUrl = "xslt/orthographicSuggestions.xsl";
 
 		echo "<div class=\"suggestions\">";
