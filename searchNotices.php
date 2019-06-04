@@ -164,7 +164,7 @@
 		$url.=("&facets=".urlencode("<facets-wrap>".$defaultFacets."</facets-wrap>"));
 	$url.=("&rows=".$rows."&page=".$page);
 	//$result = getArrayToXmlIntoUrl($url, "search-criterias", $data);
-	$xslUrl = "xslt/searchResultsNotices.xsl";
+	$xslUrl = "xslt/searchResultsNoticesOffline.xsl";
 
 	echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";
 	echo "<br />";

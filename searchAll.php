@@ -236,7 +236,7 @@
 
 
 
-	$xslUrl = "xslt/searchResultsNotices.xsl";
+	$xslUrl = "xslt/searchResultsNoticesOffline.xsl";
 	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
 	echo "<br />";
 
