@@ -18,9 +18,10 @@
 		exit(500);
 	}
 
-	if(isset($_GET['indicecdu']))
+	if(isset($_GET['indicecdu']) && isset($_GET['isOnline']))
 	{
 		$indicecdu = $_GET['indicecdu'];
+		$isOnline = $_GET['isOnline'];
 	}
 	else
 	{
@@ -36,9 +37,9 @@
 ?>
 
 <?php
-	$url = $ini_array["CatalogueWebServiceUrl"]."cdu-indexes/around?cduindex=".urlencode($indicecdu);
+	/*$url = $ini_array["CatalogueWebServiceUrl"]."cdu-indexes/around?cduindex=".urlencode($indicecdu);
 	$xslUrl = "xslt/feuilletageIndexes.xsl";
-	$detailsPage = file_get_contents($url);
+	$detailsPage = file_get_contents($url);*/
 ?>
 <!--<div id="feuilletageIndexes">
 	<div>
@@ -50,7 +51,7 @@
 	</div>-->
 <?php
 
-	$returnCode = getHttpCode($http_response_header);
+	/*$returnCode = getHttpCode($http_response_header);
 	if($returnCode == "200")
 	{
 		$simpleXml = new SimpleXMLElement($detailsPage);
@@ -72,15 +73,24 @@
 	{
 		echo $returnCode;
 		exit($returnCode);
-	}
+	}*/
 ?>
 <!--</div>-->
 
 <?php
 	$data["indice-cote"] = $indicecdu;
 	$xmlData = array_to_xml_main("search-criterias", $data);
-	$url = $ini_array["CatalogueWebServiceUrl"]."search/notices"."?criters=".urlencode($xmlData->asXML())."&rows=3";
-	$xslUrl = "xslt/searchResultsNoticesOffline.xsl";
+
+	if($isOnline=="false")
+	{
+		$url = $ini_array["CatalogueWebServiceUrl"]."search/notices"."?criters=".urlencode($xmlData->asXML())."&rows=3";
+		$xslUrl = "xslt/searchResultsNoticesOffline.xsl";
+	}
+	else
+	{
+		$url = $ini_array["CatalogueWebServiceUrl"]."search/notices-online"."?criters=".urlencode($xmlData->asXML())."&rows=3";
+		$xslUrl = "xslt/searchResultsNoticesOnline.xsl";
+	}
 	$detailsPage = file_get_contents($url);
 ?>
 <div id="sameTheme">
@@ -124,7 +134,7 @@
 	$data["indice-cote"] = $indicecdu;
 	$xmlData = array_to_xml_main("search-criterias", $data);
 	$url = $ini_array["CatalogueWebServiceUrl"]."search/notices-online"."?criters=".urlencode($xmlData->asXML())."&rows=5";
-	$xslUrl = "xslt/searchResultsNoticesOnline.xsl";
+	$xslUrl = "xslt/searchResultsNoticesOffline.xsl";
 	$detailsPage = file_get_contents($url);
 ?>
 <!--	<hr />

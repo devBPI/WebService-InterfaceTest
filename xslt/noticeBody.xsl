@@ -526,6 +526,7 @@
 		<xsl:if test="indices/indice/cote">
 			<div id="datasIndexes">
 				<div class="indiceCduFeuille" style="display:none;"><xsl:value-of select="indices/indice/cote"/></div>
+				<div class="isOnlineFeuille" style="display:none;"><xsl:value-of select="is-online"/></div>
 				<div class="feuilletageIndexes-tab">EMPTY TAB!!!</div>
 			</div>
 		</xsl:if>
