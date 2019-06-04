@@ -80,7 +80,7 @@
 	$data["indice-cote"] = $indicecdu;
 	$xmlData = array_to_xml_main("search-criterias", $data);
 	$url = $ini_array["CatalogueWebServiceUrl"]."search/notices"."?criters=".urlencode($xmlData->asXML())."&rows=3";
-	$xslUrl = "xslt/searchResultsNotices.xsl";
+	$xslUrl = "xslt/searchResultsNoticesOffline.xsl";
 	$detailsPage = file_get_contents($url);
 ?>
 <div id="sameTheme">
