@@ -20,13 +20,7 @@
 										<div class="exemplaire-desc">
 											<div>
 												<xsl:value-of select="./availability"/> - <xsl:value-of select="./call_num"/>
-												<xsl:if test="(./material_support) and (
-														((./material_support) = 'Cassette') or
-														((./material_support) = 'CD') or
-														((./material_support) = 'Microfiches') or
-														((./material_support) = 'Microfilms') or
-														((./material_support) = 'DVD') or
-														((./material_support) = 'Vinyle'))">
+												<xsl:if test="(./material_support) and not((./material_support) = 'Papier')">
 													- <xsl:value-of select="./material_support"/>
 												</xsl:if>
 											</div>
