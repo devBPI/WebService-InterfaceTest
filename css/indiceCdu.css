@@ -1,0 +1,25 @@
+/*#around
+{
+	display: table;
+	border: 1px solid black;
+}
+
+#col
+{
+	display: table-column-group;
+}
+
+#title
+{
+	display: table-cell;
+}
+
+#values div
+{
+	display: table-cell;
+}*/
+
+.selected
+{
+	background: rgba(0,0,255,0.25);
+}
