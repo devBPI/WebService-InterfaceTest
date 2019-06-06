@@ -12,7 +12,7 @@
 				<div id="usedFor">
 					Employé pour&#160;:&#160;
 					<xsl:for-each select="usedFor_s/usedFor">
-						<xsl:if test="position() > 1">;&#160;</xsl:if>
+						<xsl:if test="position() > 1">&#160;;&#160;</xsl:if>
 						<xsl:value-of select="."/>
 					</xsl:for-each>
 				</div>
@@ -21,7 +21,7 @@
 				<div id="notesArrangements">
 					Notes sur le classement&#160;:&#160;
 					<xsl:for-each select="notesArrangements/noteArrangement">
-						<xsl:if test="position() > 1">;&#160;</xsl:if>
+						<xsl:if test="position() > 1">&#160;;&#160;</xsl:if>
 						<xsl:value-of select="."/>
 					</xsl:for-each>
 				</div>
