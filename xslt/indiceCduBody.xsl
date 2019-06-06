@@ -17,6 +17,7 @@
 					</xsl:for-each>
 				</div>
 			</xsl:if>
+			<br />
 			<xsl:if test="notesArrangements/noteArrangement">
 				<div id="notesArrangements">
 					Notes sur le classement&#160;:&#160;
