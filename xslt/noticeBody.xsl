@@ -4,7 +4,7 @@
 
 	<!-- <xsl:include href="lib/url-encode.xsl"/> -->
 
-	<xsl:template match="/notice">
+	<xsl:template match="/notice|/notice-themed/notice">
 		<div style="font-weight: bold;" id="collection_id">configuration_id : <xsl:value-of select="resultatDe"/></div>
 		<div style="font-weight: bold;" id="source_id">source_id : <xsl:value-of select="sourceId"/></div>
 		<br />
@@ -460,14 +460,8 @@
 			</div>
 		</xsl:if>
 
-		<!--<div id="s">
-			<xsl:for-each select="s/">
-				<div><xsl:value-of select="."/></div>
-			</xsl:for-each>
-		</div>-->
-
 		<br />
-		<xsl:if test="isbns/isbn">
+		<!--<xsl:if test="isbns/isbn">
 			<div id="quatrieme">
 				 Quatrième de couverture  
 				<xsl:value-of select="$quatrUrl"/><xsl:value-of select="isbns/isbn"/>
@@ -475,6 +469,73 @@
 			<div id="tableDesMatieres">
 				Table des matières 
 				<xsl:value-of select="$tabMatUrl"/><xsl:value-of select="isbns/isbn"/>
+			</div>
+		</xsl:if>-->
+		<xsl:if test="quatrieme">
+			<div>
+				<div><button class="derouleButton" style="margin-right:0.5em;" onclick="quatrieme(this);">+</button><span style="font-weight: bold; text-decoration: underline;">Quatrième de couverture</span></div>
+				<div id="quatrieme" style="margin-left: 2.5em; display: none;">
+					<xsl:for-each select="quatrieme">
+						<!--<xsl:value-of disable-output-escaping="yes" select="."/>-->
+						<xsl:if test="presentation">
+							<xsl:for-each select="presentation">
+								<div style="text-decoration: underline;">Presentation</div>
+								<div style="margin-left: 1em;">
+									<xsl:for-each select="p">
+										<xsl:choose>
+											<xsl:when test="i">
+												<i>— <xsl:value-of select="."/></i>
+											</xsl:when>
+											<xsl:otherwise>
+												<p>— <xsl:value-of select="."/></p>
+											</xsl:otherwise>
+										</xsl:choose>
+									</xsl:for-each>
+								</div>
+							</xsl:for-each>
+						</xsl:if>
+						<xsl:if test="biographie">
+							<xsl:for-each select="biographie">
+								<div style="text-decoration: underline;">Biographie</div>
+									<div style="margin-left: 1em;">
+									<xsl:for-each select="p">
+										<xsl:choose>
+											<xsl:when test="i">
+												<i>— <xsl:value-of select="."/></i>
+											</xsl:when>
+											<xsl:otherwise>
+												<p>— <xsl:value-of select="."/></p>
+											</xsl:otherwise>
+										</xsl:choose>
+									</xsl:for-each>
+								</div>
+							</xsl:for-each>
+						</xsl:if>
+					</xsl:for-each>
+				</div>
+			</div>
+		</xsl:if>
+		<br />
+		<xsl:if test="table-des-matieres">
+			<div>
+				<div><button class="derouleButton" style="margin-right:0.5em;" onclick="tableMatieres(this);">+</button><span style="font-weight: bold; text-decoration: underline;">Table des matières</span></div>
+				<div id="tableDesMatieres" style="margin-left: 2.5em; display:none;">
+					<xsl:for-each select="table-des-matieres">
+						<xsl:for-each select="head">
+							<div style="text-decoration: underline; margin-left:{@level*0.5}em;"><xsl:value-of select="." /></div>
+						</xsl:for-each>
+						<ul class="tableDesMatieres">
+							<xsl:for-each select="tocitem">
+								<li>
+									<span style="margin-left:{((item/@level)*0.6)}em;"><xsl:value-of select="item" /></span>
+									<!--<span><xsl:value-of select="item" /></span>-->
+									<span><xsl:value-of select="page" /></span>
+								</li>
+							</xsl:for-each>
+						</ul>
+						<!--<xsl:value-of select="."/>-->
+					</xsl:for-each>
+				</div>
 			</div>
 		</xsl:if>
 
@@ -523,12 +584,79 @@
 				<xsl:if test="(localisation) and (categorie)"><div><xsl:value-of select="localisation"/> <xsl:value-of select="categorie"/></div></xsl:if>
 			</div>
 		</xsl:for-each>
-		<xsl:if test="indices/indice/cote">
+
+		
+
+		<!--<xsl:if test="indices/indice/cote">
 			<div id="datasIndexes">
 				<div class="indiceCduFeuille" style="display:none;"><xsl:value-of select="indices/indice/cote"/></div>
 				<div class="isOnlineFeuille" style="display:none;"><xsl:value-of select="is-online"/></div>
 				<div class="feuilletageIndexes-tab">EMPTY TAB!!!</div>
 			</div>
-		</xsl:if>
+		</xsl:if>-->
 	</xsl:template>
+	<xsl:variable name="notices-label">notices</xsl:variable>
+	<xsl:variable name="notices-java-pagination">changeNoticesPage</xsl:variable>
+	<xsl:variable name="notices-rows-id">notices-rows</xsl:variable>
+	<xsl:include href="searchResultsNotices.xsl"/>
+	<!--<xsl:include href="searchResultsNoticesOnline.xsl"/>-->
+	<xsl:template match="/notice-themed/notices">
+		<div id="sameTheme">
+			<div>Sur le même thème dans le catalogue :</div>
+			<!--<xsl:call-template name="pagination"/>-->
+			<div class="noticesContainer">
+				<xsl:for-each select="noticesList/notice | noticesList/notice-online">
+					<div class="notice" style="overflow:hidden;">
+						<xsl:call-template name="noticesShortTop"/>
+
+						<xsl:if test="(./exemplaires)">
+							<div class="exemplaires">
+								<xsl:for-each select="./exemplaires/exemplaire">
+									<div class="exemplaire">
+										<div class="exemplaire-desc">
+											<div>
+												<xsl:value-of select="./availability"/> - <xsl:value-of select="./call_num"/>
+												<xsl:if test="(./material_support) and not((./material_support) = 'Papier')">
+													- <xsl:value-of select="./material_support"/>
+												</xsl:if>
+											</div>
+											<xsl:if test="(./note)">
+												<div>
+													<xsl:value-of select="./note"/>
+												</div>
+											</xsl:if>
+											<div>
+												<xsl:value-of select="./location"/>
+												<xsl:if test="(./category)">
+													 - <xsl:value-of select="./category"/>
+												</xsl:if>
+											</div>
+										</div>
+									</div>
+								</xsl:for-each>
+							</div>
+						</xsl:if>
+						<xsl:if test="(./liens)">
+							<div class="liens">
+								<xsl:for-each select="./liens/lien">
+									<div class="lien">
+										Lien <xsl:value-of select="position()"/>: 
+										<a href="{./url}"><xsl:value-of select="./url"/></a>
+										<xsl:if test="(./right)">
+											 - <xsl:value-of select="./right"/>
+										</xsl:if>
+									</div>
+								</xsl:for-each>
+							</div>
+						</xsl:if>
+
+						<div style="clear:both">
+							<xsl:call-template name="noticesShortBottom"/>
+						</div>
+					</div>
+				</xsl:for-each>
+			</div>
+		</div>
+	</xsl:template>
+	<xsl:template match="text()"/>
 </xsl:stylesheet>

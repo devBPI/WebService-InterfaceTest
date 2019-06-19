@@ -1,3 +1,31 @@
+function quatrieme(button)
+{
+	if(button.innerHTML=='+')
+	{
+		document.getElementById("quatrieme").style.display = 'block';
+		button.innerHTML='-';
+	}
+	else
+	{
+		document.getElementById("quatrieme").style.display = 'none';
+		button.innerHTML='+';
+	}
+}
+
+function tableMatieres(button)
+{
+	if(button.innerHTML=='+')
+	{
+		document.getElementById("tableDesMatieres").style.display = 'block';
+		button.innerHTML='-';
+	}
+	else
+	{
+		document.getElementById("tableDesMatieres").style.display = 'none';
+		button.innerHTML='+';
+	}
+}
+
 function sleep(ms)
 {
 	return new Promise(resolve => setTimeout(resolve, ms));
@@ -22,7 +50,8 @@ async function loadMemeThemes()
 
 $(window).load(function()
 {
-	loadMemeThemes();
+//	loadMemeThemes();
 	//loadQuatrieme();
 	//loadTableMatieres();
 });
+

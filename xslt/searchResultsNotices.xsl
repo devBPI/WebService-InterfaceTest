@@ -28,11 +28,13 @@
 					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
-				<div class="analytiques">
-					<xsl:for-each select="./titresAnalytiques/titreAnalytique">
-						<div>Dans <xsl:value-of select="."/></div>
-					</xsl:for-each>
-				</div>
+				<xsl:if test="./titresAnalytiques/titreAnalytique">
+					<div class="analytiques">
+						<xsl:for-each select="./titresAnalytiques/titreAnalytique">
+							<div>Dans <xsl:value-of select="."/></div>
+						</xsl:for-each>
+					</div>
+				</xsl:if>
 			</div>
 			<xsl:if test="(./auteurs/auteur) or (./realisateurs/realisateur)">
 				<div class="auteurs">
@@ -55,12 +57,14 @@
 					</xsl:if>
 				</div>
 			</xsl:if>
-			<div class="editeurs">
-				<xsl:for-each select="./editeurs/editeur">
-					<xsl:if test="position() > 1"> ; </xsl:if>
-					<xsl:value-of select="."/>	
-				</xsl:for-each>
-			</div>
+			<xsl:if test="./editeurs/editeur">
+				<div class="editeurs">
+					<xsl:for-each select="./editeurs/editeur">
+						<xsl:if test="position() > 1"> ; </xsl:if>
+						<xsl:value-of select="."/>	
+					</xsl:for-each>
+				</div>
+			</xsl:if>
 			<div class="dates">
 				<xsl:for-each select="./datesTextuelles/dateTextuelle">
 					<div><xsl:value-of select="."/></div>
@@ -85,4 +89,5 @@
 			</div>
 		</xsl:if>
 	</xsl:template>
+	<xsl:template match="text()"/>
 </xsl:stylesheet>
