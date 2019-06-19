@@ -87,7 +87,7 @@
 					</xsl:for-each>
 					<xsl:for-each select="indice-cdu">
 						<!--<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="{$position()}"/></div>-->
-						<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;"></span><xsl:value-of select="cote"/> <xsl:value-of select="libelle"/></div>
+						<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;"></span><xsl:value-of select="cote"/>&#160;-&#160;<xsl:value-of select="libelle"/></div>
 						<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;">Type d'autorité :</span>Indice Cdu</div>
 						<div><a href="indice-cdu/{permalink}"><xsl:value-of select="permalink"/></a></div>
 					</xsl:for-each>
