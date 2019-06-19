@@ -64,7 +64,7 @@ ul.tableDesMatieres
 	list-style: none;
 }
 
-ul.tableDesMatieres li:before 
+ul.tableDesMatieres li:before
 {
 	float: left;
 	width: 0;
@@ -84,6 +84,7 @@ ul.tableDesMatieres span:first-child
 	padding-right: 0.33em;
 	background: white;
 }
+
 ul.tableDesMatieres span + span
 {
 	float: right;

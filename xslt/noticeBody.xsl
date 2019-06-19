@@ -527,9 +527,12 @@
 						<ul class="tableDesMatieres">
 							<xsl:for-each select="tocitem">
 								<li>
-									<span style="margin-left:{((item/@level)*0.6)}em;"><xsl:value-of select="item" /></span>
-									<!--<span><xsl:value-of select="item" /></span>-->
-									<span><xsl:value-of select="page" /></span>
+									<div>
+										<span style="margin-left:{((item/@level)*0.6)}em;"><xsl:value-of select="item" /></span>
+										<!--<span><xsl:value-of select="item" /></span>-->
+										<span><xsl:value-of select="page" /></span>
+										<div class="clear" style="clear:both"></div>
+									</div>
 								</li>
 							</xsl:for-each>
 						</ul>
