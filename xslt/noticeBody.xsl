@@ -471,6 +471,7 @@
 				<xsl:value-of select="$tabMatUrl"/><xsl:value-of select="isbns/isbn"/>
 			</div>
 		</xsl:if>-->
+		<br />
 		<xsl:if test="quatrieme">
 			<div>
 				<div><button class="derouleButton" style="margin-right:0.5em;" onclick="quatrieme(this);">+</button><span style="font-weight: bold; text-decoration: underline;">Quatrième de couverture</span></div>
@@ -479,7 +480,7 @@
 						<!--<xsl:value-of disable-output-escaping="yes" select="."/>-->
 						<xsl:if test="presentation">
 							<xsl:for-each select="presentation">
-								<div style="text-decoration: underline;">Presentation</div>
+								<div style="text-decoration: underline;">Presentation :</div>
 								<div style="margin-left: 1em;">
 									<xsl:for-each select="p">
 										<xsl:choose>
@@ -496,7 +497,7 @@
 						</xsl:if>
 						<xsl:if test="biographie">
 							<xsl:for-each select="biographie">
-								<div style="text-decoration: underline;">Biographie</div>
+								<div style="text-decoration: underline;">Biographie :</div>
 									<div style="margin-left: 1em;">
 									<xsl:for-each select="p">
 										<xsl:choose>
@@ -514,8 +515,8 @@
 					</xsl:for-each>
 				</div>
 			</div>
+			<br />
 		</xsl:if>
-		<br />
 		<xsl:if test="table-des-matieres">
 			<div>
 				<div><button class="derouleButton" style="margin-right:0.5em;" onclick="tableMatieres(this);">+</button><span style="font-weight: bold; text-decoration: underline;">Table des matières</span></div>
@@ -540,6 +541,7 @@
 					</xsl:for-each>
 				</div>
 			</div>
+			<br />
 		</xsl:if>
 
 		<xsl:for-each select="exemplaires/exemplaire">
@@ -603,7 +605,7 @@
 	<xsl:variable name="notices-rows-id">notices-rows</xsl:variable>
 	<xsl:include href="searchResultsNotices.xsl"/>
 	<!--<xsl:include href="searchResultsNoticesOnline.xsl"/>-->
-	<xsl:template match="/notice-themed/notices">
+	<xsl:template match="/notice-themed/notices-same-theme">
 		<div id="sameTheme">
 			<div>Sur le même thème dans le catalogue :</div>
 			<!--<xsl:call-template name="pagination"/>-->
