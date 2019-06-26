@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template name="noticesShortTop">
-		<xsl:if test="./isbn">
+		<xsl:if test="./images-info/image-info/url">
 			<div style="float:left; margin-left: 4px; margin-right: 4px;" >
-				<img class="couverture lazy" src="{$imgUrl}{./isbn}"/>
+				<img class="couverture lazy" src="{./images-info/image-info/url}"/>
 			</div>
 		</xsl:if>
 		<div>

@@ -184,7 +184,7 @@
 		$proc = new XSLTProcessor();
 		$proc->importStyleSheet($xsl);
 
-		$proc->setParameter("", "imgUrl", $ini_array["CatalogueWebServiceUrl"]."electre/vignette/");
+		//$proc->setParameter("", "imgUrl", $ini_array["CatalogueWebServiceUrl"]."electre/vignette/");
 		$proc->setParameter("", "biblioMondoImgUrl", "https://dev-bpi-musique.bibliomondo.com/in/rest/Thumb/image?id=");
 	 
 		echo $proc->transformToXML($xml);

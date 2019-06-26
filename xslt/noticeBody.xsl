@@ -8,9 +8,9 @@
 		<div style="font-weight: bold;" id="collection_id">configuration_id : <xsl:value-of select="resultatDe"/></div>
 		<div style="font-weight: bold;" id="source_id">source_id : <xsl:value-of select="sourceId"/></div>
 		<br />
-		<xsl:if test="isbns/isbn">
+		<xsl:if test="images-info/image-info/url">
 			<div id="couverture">
-				<img class="couverture lazy" src="{$couvUrl}{isbns/isbn}"/>
+				<img class="couverture lazy" src="{images-info/image-info/url}"/>
 			</div>
 		</xsl:if>
 		<xsl:if test="type">
