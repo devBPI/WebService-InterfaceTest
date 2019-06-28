@@ -1,0 +1,9 @@
+#carousel
+{
+	max-width: 1024px;
+}
+
+#carousel div img
+{
+	max-height: 256px;
+}

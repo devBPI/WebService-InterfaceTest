@@ -29,6 +29,26 @@
 		<!--<a id="parkourMusique" onclick="window.location='/musique'+window.location.search;" <?php /*if($parkour=="musique"){echo "class=\"selected-parkour\"";}*/?>>Musique</a>-->
 		<a id="parkourPresse" onclick="window.location='/presse'+window.location.search;" <?php if($parkour=="presse"){echo "class=\"selected-parkour\"";}?>>Presse</a>
 	</div>
+	<div id="carouselWrapper">		
+		<?php
+			include('carousel.php');
+			/*switch($parkour)
+			{
+				case "autoformation":
+					include('carousel.php');
+				break;
+				case "cinema":
+					include('carousel.php');
+				break;
+				case "presse":
+					include('carousel.php');
+				break;
+				default:
+					include('carousel.php');
+				break;
+			}*/
+		?>
+	</div>
 	<div class="autocomplete">
 		<input type="text" id="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();}" <?php if($defaultSearchText!=null){echo "value=\"".$defaultSearchText."\"";} ?> />
 	</div>

@@ -81,6 +81,7 @@
 		<link rel="stylesheet" type="text/css" href="css/accessories.css" />
 		<link rel="stylesheet" type="text/css" href="css/table.css" />
 		<link rel="stylesheet" type="text/css" href="css/searchbar.css" />
+		<link rel="stylesheet" type="text/css" href="css/carousel.css" />
 		<link rel="stylesheet" type="text/css" href="css/notices.css" />
 		<link rel="stylesheet" type="text/css" href="css/facets.css" />
 		<link rel="stylesheet" type="text/css" href="css/authorities.css" />
@@ -112,6 +113,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript" language="javascript"></script>
 		<script src="js/advancedsearch.js" type="text/javascript" language="javascript"></script>
 		<script src="js/search.js"         type="text/javascript" language="javascript"></script>
+		<script src="js/carousel.js"       type="text/javascript" language="javascript"></script>
 		<script src="js/authorities.js"    type="text/javascript" language="javascript"></script>
 		<script src="js/facets.js"         type="text/javascript" language="javascript"></script>
 		<script src="js/images.js"         type="text/javascript" language="javascript"></script>
