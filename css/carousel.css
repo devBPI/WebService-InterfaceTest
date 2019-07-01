@@ -51,6 +51,11 @@
 	text-decoration: none;
 }
 
+.block-parent
+{
+	overflow: hidden;
+}
+
 .float-carousel {
 	max-height: 200px;
 	vertical-align: middle;
@@ -89,22 +94,29 @@
 /* Fading animation */
 .fade
 {
-	-webkit-animation-name: fade;
+	/*-webkit-animation-name: fade;
 	-webkit-animation-duration: 1.5s;
 	animation-name: fade;
-	animation-duration: 1.5s;
+	animation-duration: 1.5s;*/
+	-webkit-animation: fade 1.5s;/* infinite;*/
+	animation: fade 1.5s; /*infinite;*/
+	position :relative;
 }
 
 @-webkit-keyframes fade
 {
 	from {opacity: .4} 
 	to {opacity: 1}
+	/*from {right: 1024px;} 
+	to {right: 0px;}*/
 }
 
 @keyframes fade
 {
 	from {opacity: .4} 
 	to {opacity: 1}
+	/*from {right: 1024px;} 
+	to {right: 0px;}*/
 }
 
 /* On smaller screens, decrease text size */

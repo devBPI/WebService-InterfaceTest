@@ -10,7 +10,7 @@
 						<div class="numbertext"><xsl:value-of select="position()" /> / <xsl:value-of select="count(../element)" /></div>
 						<!--<img src="{image-path}" alt="{photo-credit}"/>-->
 						<a class="urlDiv" href="{url}">
-							<div class="block-parent" style="width:100%">
+							<div class="block-parent" style="width:100%;">
 								<img class="float-carousel" src="{image-path}" alt="{photo-credit}"/>
 								<h1><xsl:value-of select="title"/></h1>
 								<p><xsl:value-of select="description"/></p>
