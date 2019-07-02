@@ -15,6 +15,20 @@
 	error_reporting(E_ALL);
 
 	$url = $ini_array["CatalogueWebServiceUrl"];//.'carousel/general';
+	if(isset($_GET['parkour']) && $_GET['parkour'] != null && $_GET['parkour'] != '')
+	{
+		switch($_GET['parkour'])
+		{
+			case "autoformation":
+			case "cinema":
+			case "presse":
+				$parkour = $_GET['parkour'];
+			break;
+			default:
+				$parkour = "general";
+			break;
+		}
+	}
 	if(isset($parkour) && $parkour!=null && $parkour!='')
 	{
 		switch($parkour)

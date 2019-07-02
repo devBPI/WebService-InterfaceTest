@@ -6,24 +6,46 @@
 			<div class="slideshow-container">
 				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 				<xsl:for-each select="element">
-					<div class="mySlides fade" onload="showSlides(1);">
-						<div class="numbertext"><xsl:value-of select="position()" /> / <xsl:value-of select="count(../element)" /></div>
-						<!--<img src="{image-path}" alt="{photo-credit}"/>-->
-						<a class="urlDiv" href="{url}">
-							<div class="block-parent" style="width:100%;">
-								<img class="float-carousel" src="{image-path}" alt="{photo-credit}"/>
-								<h1><xsl:value-of select="title"/></h1>
-								<p><xsl:value-of select="description"/></p>
+					<xsl:choose>
+						<xsl:when test="position()=1">
+							<div class="mySlides fade">
+								<div class="numbertext"><xsl:value-of select="position()" /> / <xsl:value-of select="count(../element)" /></div>
+								<a class="urlDiv" href="{url}">
+									<div class="block-parent" style="width:100%;">
+										<img class="float-carousel" src="{image-path}" alt="{photo-credit}"/>
+										<h1><xsl:value-of select="title"/></h1>
+										<p><xsl:value-of select="description"/></p>
+									</div>
+								</a>
 							</div>
-						</a>
-					</div>
+						</xsl:when>
+						<xsl:otherwise>
+							<div class="mySlides fade" style="display:none;">
+								<div class="numbertext"><xsl:value-of select="position()" /> / <xsl:value-of select="count(../element)" /></div>
+								<a class="urlDiv" href="{url}">
+									<div class="block-parent" style="width:100%;">
+										<img class="float-carousel" src="{image-path}" alt="{photo-credit}"/>
+										<h1><xsl:value-of select="title"/></h1>
+										<p><xsl:value-of select="description"/></p>
+									</div>
+								</a>
+							</div>
+						</xsl:otherwise>
+					</xsl:choose>
 				</xsl:for-each>
 				<a class="next" onclick="plusSlides(1)">&#10095;</a>
 			</div>
 			<br />
 			<div style="text-align:center">
 				<xsl:for-each select="element">
-					<span class="dot" onclick="currentSlide({position()})">&#160;</span> 
+					<xsl:choose>
+						<xsl:when test="position()=1">
+							<span class="dot active" onclick="currentSlide({position()})">&#160;</span>
+						</xsl:when>
+						<xsl:otherwise>
+							<span class="dot" onclick="currentSlide({position()})">&#160;</span>
+						</xsl:otherwise>
+					</xsl:choose>
 				</xsl:for-each>
 			</div>
 			<br />

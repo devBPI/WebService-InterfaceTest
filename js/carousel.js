@@ -13,7 +13,7 @@ function currentSlide(n)
 function showSlides(n)
 {
 	var i;
-	var slides = document.getElementsByClassName("mySlides fade");
+	var slides = document.getElementsByClassName("mySlides");// fade");
 	var dots = document.getElementsByClassName("dot");
 	if (n > slides.length) {slideIndex = 1}    
 	if (n < 1) {slideIndex = slides.length}
@@ -29,4 +29,17 @@ function showSlides(n)
 	dots[slideIndex-1].className += " active";
 }
 
-$(document).ready(function() { showSlides(1)});
+function loadCarousel(parkour)
+{
+	var url = "carousel.php?parkour="+parkour;
+	$("#carouselWrapper").load(url);
+	//showSlides(1);
+}
+
+/*$(document).ready(function()
+{
+
+$("#carouselWrapper").load(url);
+showSlides(1)
+
+});*/

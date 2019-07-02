@@ -29,9 +29,9 @@
 		<!--<a id="parkourMusique" onclick="window.location='/musique'+window.location.search;" <?php /*if($parkour=="musique"){echo "class=\"selected-parkour\"";}*/?>>Musique</a>-->
 		<a id="parkourPresse" onclick="window.location='/presse'+window.location.search;" <?php if($parkour=="presse"){echo "class=\"selected-parkour\"";}?>>Presse</a>
 	</div>
-	<div id="carouselWrapper">		
+	<div id="carouselWrapper">
 		<?php
-			include('carousel.php');
+			//include('carousel.php');
 			/*switch($parkour)
 			{
 				case "autoformation":
@@ -53,7 +53,7 @@
 		<input type="text" id="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();}" <?php if($defaultSearchText!=null){echo "value=\"".$defaultSearchText."\"";} ?> />
 	</div>
 	<select id="searchBarSelection">
-		<option id="searchBarSelectionGenerale" <?php if($defaultGeneralSignification=="generale") echo "selected"; ?> value="generale">Tous les mots</option>
+		<option id="searchBarSelectionGenerale" <?php if($defaultGeneralSignification=="general") echo "selected"; ?> value="generale">Tous les mots</option>
 		<option id="searchBarSelectionAuteur" <?php if($defaultGeneralSignification=="auteur") echo "selected"; ?> value="auteur">Auteur</option>
 		<option id="searchBarSelectionTitre" <?php if($defaultGeneralSignification=="titre") echo "selected"; ?> value="titre">Titre</option>
 		<option id="searchBarSelectionSujet" <?php if($defaultGeneralSignification=="sujet") echo "selected"; ?> value="sujet">Sujet</option>

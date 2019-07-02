@@ -129,6 +129,8 @@
 					//console.log("UrlParams found");
 					search();
 				}
+
+				loadCarousel(<?php echo "\"".$parkour."\""; ?>);
 				//if(searchCriterias.getAll()!=null)
 				//	search();
 			}
