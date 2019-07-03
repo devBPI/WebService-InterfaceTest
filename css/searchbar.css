@@ -6,7 +6,8 @@
 }
 
 #loupe,
-#advancedSearchButton
+#advancedSearchButton,
+.addConditionButton
 {
 	width: 41px;
 	height: 41px;
@@ -19,10 +20,11 @@
 	background-size: 41px 41px;
 }
 
-#advancedSearchButton
+#advancedSearchButton,
+.addConditionButton
 {
-	background-color: #F1F1F1;
-	color: #101010;
+	background-color: #F1F1F1 !important;
+	color: #101010 !important;
 	line-height: 12px;
 	font-size: 24px;
 	font-weight: bold;

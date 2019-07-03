@@ -614,7 +614,7 @@
 					<div class="notice" style="overflow:hidden;">
 						<xsl:call-template name="noticesShortTop"/>
 
-						<xsl:if test="(./exemplaires/exemplaire)">
+						<!--<xsl:if test="(./exemplaires/exemplaire)">
 							<div class="exemplaires">
 								<xsl:for-each select="./exemplaires/exemplaire">
 									<div class="exemplaire">
@@ -640,7 +640,7 @@
 									</div>
 								</xsl:for-each>
 							</div>
-						</xsl:if>
+						</xsl:if>-->
 						<xsl:if test="(./liens/lien)">
 							<div class="liens">
 								<xsl:for-each select="./liens/lien">

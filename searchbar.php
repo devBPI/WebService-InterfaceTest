@@ -29,43 +29,33 @@
 		<!--<a id="parkourMusique" onclick="window.location='/musique'+window.location.search;" <?php /*if($parkour=="musique"){echo "class=\"selected-parkour\"";}*/?>>Musique</a>-->
 		<a id="parkourPresse" onclick="window.location='/presse'+window.location.search;" <?php if($parkour=="presse"){echo "class=\"selected-parkour\"";}?>>Presse</a>
 	</div>
-	<div id="carouselWrapper">
-		<?php
-			//include('carousel.php');
-			/*switch($parkour)
-			{
-				case "autoformation":
-					include('carousel.php');
-				break;
-				case "cinema":
-					include('carousel.php');
-				break;
-				case "presse":
-					include('carousel.php');
-				break;
-				default:
-					include('carousel.php');
-				break;
-			}*/
-		?>
+	<div id="carouselWrapper"></div>
+
+	<div>
+		<div>
+			<div class="autocomplete">
+				<input type="text" id="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();}" <?php if($defaultSearchText!=null){echo "value=\"".$defaultSearchText."\"";} ?> />
+			</div>
+			<select id="searchBarSelection">
+				<option id="searchBarSelectionGenerale" <?php if($defaultGeneralSignification=="general") echo "selected"; ?> value="generale">Tous les mots</option>
+				<option id="searchBarSelectionAuteur" <?php if($defaultGeneralSignification=="auteur") echo "selected"; ?> value="auteur">Auteur</option>
+				<option id="searchBarSelectionTitre" <?php if($defaultGeneralSignification=="titre") echo "selected"; ?> value="titre">Titre</option>
+				<option id="searchBarSelectionSujet" <?php if($defaultGeneralSignification=="sujet") echo "selected"; ?> value="sujet">Sujet</option>
+				<option id="searchBarSelectionIssnIsbnCom" <?php if($defaultGeneralSignification=="isbnissncommercial") echo "selected"; ?> value="isbnissncommercial">ISBN, ISSN, numéros commerciaux</option>
+				<option id="searchBarSelectionIndiceCote" <?php if($defaultGeneralSignification=="indicecote") echo "selected"; ?> value="indicecote">Indice / Cote</option>
+				<option id="searchBarSelectionDatePublication" <?php if($defaultGeneralSignification=="datepublication") echo "selected"; ?> value="datepublication">Date de publication (précise)</option>
+				<option id="searchBarSelectionEdition" <?php if($defaultGeneralSignification=="editeur") echo "selected"; ?> value="editeur">Éditeur</option>
+				<option id="searchBarSelectionRealisateur" <?php if($defaultGeneralSignification=="realisateur") echo "selected"; ?> value="realisateur">Réalisateur</option>
+				<option id="searchBarSelectionTheme" <?php if($defaultGeneralSignification=="theme") echo "selected"; ?> value="theme">Thème</option>
+			</select>
+			<input id="loupe" type="submit" value=" " onclick="search();" />
+			<input id="advancedSearchButton" type="submit" value="+" onclick="advancedSearch();" />
+		</div>
+		<div>
+			<input class="addConditionButton" type="submit" value="+" onclick="addCondition();" />
+			ajouter une condition
+		</div>
 	</div>
-	<div class="autocomplete">
-		<input type="text" id="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();}" <?php if($defaultSearchText!=null){echo "value=\"".$defaultSearchText."\"";} ?> />
-	</div>
-	<select id="searchBarSelection">
-		<option id="searchBarSelectionGenerale" <?php if($defaultGeneralSignification=="general") echo "selected"; ?> value="generale">Tous les mots</option>
-		<option id="searchBarSelectionAuteur" <?php if($defaultGeneralSignification=="auteur") echo "selected"; ?> value="auteur">Auteur</option>
-		<option id="searchBarSelectionTitre" <?php if($defaultGeneralSignification=="titre") echo "selected"; ?> value="titre">Titre</option>
-		<option id="searchBarSelectionSujet" <?php if($defaultGeneralSignification=="sujet") echo "selected"; ?> value="sujet">Sujet</option>
-		<option id="searchBarSelectionIssnIsbnCom" <?php if($defaultGeneralSignification=="isbnissncommercial") echo "selected"; ?> value="isbnissncommercial">ISBN, ISSN, numéros commerciaux</option>
-		<option id="searchBarSelectionIndiceCote" <?php if($defaultGeneralSignification=="indicecote") echo "selected"; ?> value="indicecote">Indice / Cote</option>
-		<option id="searchBarSelectionDatePublication" <?php if($defaultGeneralSignification=="datepublication") echo "selected"; ?> value="datepublication">Date de publication (précise)</option>
-		<option id="searchBarSelectionEdition" <?php if($defaultGeneralSignification=="editeur") echo "selected"; ?> value="editeur">Éditeur</option>
-		<option id="searchBarSelectionRealisateur" <?php if($defaultGeneralSignification=="realisateur") echo "selected"; ?> value="realisateur">Réalisateur</option>
-		<option id="searchBarSelectionTheme" <?php if($defaultGeneralSignification=="theme") echo "selected"; ?> value="theme">Thème</option>
-	</select>
-	<input id="loupe" type="submit" value=" " onclick="search();" />
-	<input id="advancedSearchButton" type="submit" value="+" onclick="advancedSearch();" />
 </div>
 <div id="advancedSearchDiv" style="margin-top: 10px; display:none;">
 	<?php include('advancedsearchbar.php'); ?>
