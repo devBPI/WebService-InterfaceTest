@@ -51,10 +51,10 @@
 			<input id="loupe" type="submit" value=" " onclick="search();" />
 			<input id="advancedSearchButton" type="submit" value="+" onclick="advancedSearch();" />
 		</div>
-		<div>
+		<!--<div>
 			<input class="addConditionButton" type="submit" value="+" onclick="addCondition();" />
 			ajouter une condition
-		</div>
+		</div>-->
 	</div>
 </div>
 <div id="advancedSearchDiv" style="margin-top: 10px; display:none;">

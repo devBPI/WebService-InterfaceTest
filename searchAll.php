@@ -120,9 +120,6 @@
 	if($defaultDatePublicationStart!=null) $data["date-publication-debut"]  = $defaultDatePublicationStart;
 	if($defaultDatePublicationEnd!=null)   $data["date-publication-fin"]    = $defaultDatePublicationEnd;
 
-
-
-
 	$xmlData = array_to_xml_main("search-criterias", $data);
 	//$url = $ini_array["CatalogueWebServiceUrl"].'search/notices?parcours='.$parkour.'&page='.$page.'&rows='.$rows.'&general='.urlencode($_GET['text']);
 	$url = $ini_array["CatalogueWebServiceUrl"]."search/all"."?criters=".urlencode($xmlData->asXML());
