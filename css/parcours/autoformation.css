@@ -2,8 +2,8 @@
 /* Advanced SearchBar */
 /**********************/
 
-#searchBarSelectionTheme,
-#searchBarSelectionEdition,
+.searchBarSelectionTheme,
+.searchBarSelectionEdition,
 #publiquesList
 {
 	display: block;

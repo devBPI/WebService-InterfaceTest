@@ -37,24 +37,50 @@
 				<input type="text" id="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();}" <?php if($defaultSearchText!=null){echo "value=\"".$defaultSearchText."\"";} ?> />
 			</div>
 			<select id="searchBarSelection">
-				<option id="searchBarSelectionGenerale" <?php if($defaultGeneralSignification=="general") echo "selected"; ?> value="generale">Tous les mots</option>
-				<option id="searchBarSelectionAuteur" <?php if($defaultGeneralSignification=="auteur") echo "selected"; ?> value="auteur">Auteur</option>
-				<option id="searchBarSelectionTitre" <?php if($defaultGeneralSignification=="titre") echo "selected"; ?> value="titre">Titre</option>
-				<option id="searchBarSelectionSujet" <?php if($defaultGeneralSignification=="sujet") echo "selected"; ?> value="sujet">Sujet</option>
-				<option id="searchBarSelectionIssnIsbnCom" <?php if($defaultGeneralSignification=="isbnissncommercial") echo "selected"; ?> value="isbnissncommercial">ISBN, ISSN, numéros commerciaux</option>
-				<option id="searchBarSelectionIndiceCote" <?php if($defaultGeneralSignification=="indicecote") echo "selected"; ?> value="indicecote">Indice / Cote</option>
-				<option id="searchBarSelectionDatePublication" <?php if($defaultGeneralSignification=="datepublication") echo "selected"; ?> value="datepublication">Date de publication (précise)</option>
-				<option id="searchBarSelectionEdition" <?php if($defaultGeneralSignification=="editeur") echo "selected"; ?> value="editeur">Éditeur</option>
-				<option id="searchBarSelectionRealisateur" <?php if($defaultGeneralSignification=="realisateur") echo "selected"; ?> value="realisateur">Réalisateur</option>
-				<option id="searchBarSelectionTheme" <?php if($defaultGeneralSignification=="theme") echo "selected"; ?> value="theme">Thème</option>
+				<option class="searchBarSelectionGenerale" <?php if($defaultGeneralSignification=="general") echo "selected"; ?> value="generale">Tous les mots</option>
+				<option class="searchBarSelectionAuteur" <?php if($defaultGeneralSignification=="auteur") echo "selected"; ?> value="auteur">Auteur</option>
+				<option class="searchBarSelectionTitre" <?php if($defaultGeneralSignification=="titre") echo "selected"; ?> value="titre">Titre</option>
+				<option class="searchBarSelectionSujet" <?php if($defaultGeneralSignification=="sujet") echo "selected"; ?> value="sujet">Sujet</option>
+				<option class="searchBarSelectionIssnIsbnCom" <?php if($defaultGeneralSignification=="isbnissncommercial") echo "selected"; ?> value="isbnissncommercial">ISBN, ISSN, numéros commerciaux</option>
+				<option class="searchBarSelectionIndiceCote" <?php if($defaultGeneralSignification=="indicecote") echo "selected"; ?> value="indicecote">Indice / Cote</option>
+				<option class="searchBarSelectionDatePublication" <?php if($defaultGeneralSignification=="datepublication") echo "selected"; ?> value="datepublication">Date de publication (précise)</option>
+				<option class="searchBarSelectionEdition" <?php if($defaultGeneralSignification=="editeur") echo "selected"; ?> value="editeur">Éditeur</option>
+				<option class="searchBarSelectionRealisateur" <?php if($defaultGeneralSignification=="realisateur") echo "selected"; ?> value="realisateur">Réalisateur</option>
+				<option class="searchBarSelectionTheme" <?php if($defaultGeneralSignification=="theme") echo "selected"; ?> value="theme">Thème</option>
 			</select>
 			<input id="loupe" type="submit" value=" " onclick="search();" />
 			<input id="advancedSearchButton" type="submit" value="+" onclick="advancedSearch();" />
 		</div>
-		<!--<div>
+		<div>
+			<div id="conditionSchema" style="display: none;">
+				<select>
+					<option value="ET">ET</option>
+					<option value="OU">OU</option>
+					<option value="SAUF">SAUF</option>
+				</select>
+				<div class="autocomplete">
+					<input type="text" id="searchbar" name="searchbar" autocomplete="off" size=42 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();}" <?php if($defaultSearchText!=null){echo "value=\"".$defaultSearchText."\"";} ?> />
+				</div>
+				<select class="searchBarSelection">
+					<option class="searchBarSelectionGenerale" <?php if($defaultGeneralSignification=="general") echo "selected"; ?> value="generale">Tous les mots</option>
+					<option class="searchBarSelectionAuteur" <?php if($defaultGeneralSignification=="auteur") echo "selected"; ?> value="auteur">Auteur</option>
+					<option class="searchBarSelectionTitre" <?php if($defaultGeneralSignification=="titre") echo "selected"; ?> value="titre">Titre</option>
+					<option class="searchBarSelectionSujet" <?php if($defaultGeneralSignification=="sujet") echo "selected"; ?> value="sujet">Sujet</option>
+					<option class="searchBarSelectionIssnIsbnCom" <?php if($defaultGeneralSignification=="isbnissncommercial") echo "selected"; ?> value="isbnissncommercial">ISBN, ISSN, numéros commerciaux</option>
+					<option class="searchBarSelectionIndiceCote" <?php if($defaultGeneralSignification=="indicecote") echo "selected"; ?> value="indicecote">Indice / Cote</option>
+					<option class="searchBarSelectionDatePublication" <?php if($defaultGeneralSignification=="datepublication") echo "selected"; ?> value="datepublication">Date de publication (précise)</option>
+					<option class="searchBarSelectionEdition" <?php if($defaultGeneralSignification=="editeur") echo "selected"; ?> value="editeur">Éditeur</option>
+					<option class="searchBarSelectionRealisateur" <?php if($defaultGeneralSignification=="realisateur") echo "selected"; ?> value="realisateur">Réalisateur</option>
+					<option class="searchBarSelectionTheme" <?php if($defaultGeneralSignification=="theme") echo "selected"; ?> value="theme">Thème</option>
+				</select>
+				<input class="delConditionButton" type="submit" value="-" onclick="removeCondition(this.parentNode);" />
+				Supprimer la condition
+			</div>
+			<div id="additionnalConditions">
+			</div>
 			<input class="addConditionButton" type="submit" value="+" onclick="addCondition();" />
 			ajouter une condition
-		</div>-->
+		</div>
 	</div>
 </div>
 <div id="advancedSearchDiv" style="margin-top: 10px; display:none;">
