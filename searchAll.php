@@ -35,6 +35,8 @@
 		}
 	}
 
+	$defaultBasicSearchCriterias = isGetOk("basicSearchCriterias");
+
 	$defaultGeneralSignification = isGetOk("generalSignification");
 	$defaultGeneral              = isGetOk("general");
 	$defaultTitre                = isGetOk("titre");
@@ -51,6 +53,8 @@
 	$defaultDatePublicationEnd   = isGetOk("datepublicationend");
 
 	$defaultFacets               = urldecode(isGetOk("facets"));
+
+	echo "<pre><code class='language-xml'>".htmlspecialchars($defaultBasicSearchCriterias, ENT_QUOTES)."</code></pre><br/>";
 
 	$ini_array = @parse_ini_file("etc/configuration.ini");
 	if(!$ini_array)
@@ -122,7 +126,12 @@
 
 	$xmlData = array_to_xml_main("search-criterias", $data);
 	//$url = $ini_array["CatalogueWebServiceUrl"].'search/notices?parcours='.$parkour.'&page='.$page.'&rows='.$rows.'&general='.urlencode($_GET['text']);
+
 	$url = $ini_array["CatalogueWebServiceUrl"]."search/all"."?criters=".urlencode($xmlData->asXML());
+
+	if(null != $defaultBasicSearchCriterias)
+		$url = $ini_array["CatalogueWebServiceUrl"]."search/all"."?criters=".urlencode($defaultBasicSearchCriterias);
+
 	if($defaultFacets!=null)
 		$url.=("&facets=".urlencode("<facets-wrap>".$defaultFacets."</facets-wrap>"));
 	$url.=("&rows=".$rows."&page=".$page);

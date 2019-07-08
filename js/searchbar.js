@@ -2,6 +2,7 @@ function addCondition()
 {
 	var itm = document.getElementById("conditionSchema");
 	var cln = itm.cloneNode(true);
+	//cln.getElementsByClassName("searchbar")[0].value="";
 	cln.style.display="block";
 	document.getElementById("additionnalConditions").appendChild(cln);
 }

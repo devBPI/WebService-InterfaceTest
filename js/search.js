@@ -85,6 +85,80 @@ function getGeneralSearchBar()
 	return "general";
 }
 
+function getBasicSearchCriterias()
+{
+	console.log("START");
+	//document.getElementsByClassname();
+	var searchBarOperators = document.getElementsByClassName("searchBarOperator");
+	var searchBars = document.getElementsByClassName("searchbar");
+	var searchBarSelections = document.getElementsByClassName("searchBarSelection");
+	var i;
+	var searchBarOperatorsArray = [], searchBarsArray = [], searchBarSelectionsArray = [];
+	for(i=0; i<searchBars.length; i++)
+	{
+		if(i==1)
+			continue;
+		if(i>0)
+			searchBarOperatorsArray.push(searchBarOperators[i-1].value);
+		else
+			searchBarOperatorsArray.push(null);
+		searchBarsArray.push(searchBars[i].value.EncodeXMLEscapeChars());
+		searchBarSelectionsArray.push(searchBarSelections[i].value);
+	}
+	/*console.log(searchBarOperatorsArray);
+	console.log(searchBarsArray);
+	console.log(searchBarSelectionsArray);*/
+	var basicSearchArray = [];
+	basicSearchArray["operators"] = searchBarOperatorsArray;
+	basicSearchArray["texts"] = searchBarsArray;
+	basicSearchArray["fields"] = searchBarSelectionsArray;
+	//console.log(basicSearchArray);
+
+	var xml = "";
+	for(i=0; i<basicSearchArray["texts"].length; i++)
+	{
+		xml += "<search-criterias>";
+		xml += "<" + basicSearchArray["fields"][i] + ">";
+		xml += basicSearchArray["texts"][i];
+		xml += "</" + basicSearchArray["fields"][i] + ">";
+		if(i<i<basicSearchArray["texts"].length-1)
+		{
+			switch(basicSearchArray["operators"][i+1])
+			{
+				case "OU":
+					xml += "<or>";
+				break;
+				case "SAUF":
+					xml += "<and><not>true</not>"
+				break;
+				case "ET":
+					xml += "<and>"
+				break;
+				default:
+				break;
+			}
+		}
+	}
+	for(i=basicSearchArray["texts"].length-1; i>=0; i--)
+	{
+		xml += "</search-criterias>";
+		if(i>0)
+		{
+			switch(basicSearchArray["operators"][i])
+			{
+				case "OU":
+					xml += "</or>";
+				break;
+				default:
+					xml += "</and>"
+				break;
+			}
+		}
+	}
+	//console.log(xml);
+	return xml;
+}
+
 function getSearchCriterias()
 {
 	var searchCriterias = {};
@@ -92,37 +166,39 @@ function getSearchCriterias()
 	var urlParams = new URLSearchParams();
 	//urlParams.set("general", document.getElementById("searchbar").value);
 
+	urlParams.set("basicSearchCriterias", getBasicSearchCriterias());
+
 	//alert(getGeneralSearchBar());
 	urlParams.set("generalSignification", getGeneralSearchBar());
 	if(document.getElementById("searchbar").value)
-		urlParams.set("general", document.getElementById("searchbar").value);
+		urlParams.set("general", document.getElementById("searchbar").value.EncodeXMLEscapeChars());
 	//console.log(document.getElementById("advancedsearch-titre").value);
 	if(document.getElementById("advancedsearch-titre").value)
-		urlParams.set("titre", document.getElementById("advancedsearch-titre").value);
+		urlParams.set("titre", document.getElementById("advancedsearch-titre").value.EncodeXMLEscapeChars());
 	//console.log(urlParams.get("titre"));
 	if(document.getElementById("advancedsearch-auteur").value)
-		urlParams.set("auteur", document.getElementById("advancedsearch-auteur").value);
+		urlParams.set("auteur", document.getElementById("advancedsearch-auteur").value.EncodeXMLEscapeChars());
 		//urlParams.set("auteur", encodeURIComponent(document.getElementById("advancedsearch-auteur").value));
 	if(document.getElementById("advancedsearch-sujet").value)
-		urlParams.set("sujet", document.getElementById("advancedsearch-sujet").value);
+		urlParams.set("sujet", document.getElementById("advancedsearch-sujet").value.EncodeXMLEscapeChars());
 	if(document.getElementById("advancedsearch-isbnissncommercial").value)
-		urlParams.set("isbnissncommercial", document.getElementById("advancedsearch-isbnissncommercial").value);
+		urlParams.set("isbnissncommercial", document.getElementById("advancedsearch-isbnissncommercial").value.EncodeXMLEscapeChars());
 	if(document.getElementById("advancedsearch-indicecote").value)
-		urlParams.set("indicecote", document.getElementById("advancedsearch-indicecote").value);
+		urlParams.set("indicecote", document.getElementById("advancedsearch-indicecote").value.EncodeXMLEscapeChars());
 	if(document.getElementById("advancedsearch-datepublication").value)
-		urlParams.set("datepublication", document.getElementById("advancedsearch-datepublication").value);
+		urlParams.set("datepublication", document.getElementById("advancedsearch-datepublication").value.EncodeXMLEscapeChars());
 	if(document.getElementById("advancedsearch-realisateur").value)
-		urlParams.set("realisateur", document.getElementById("advancedsearch-realisateur").value);
+		urlParams.set("realisateur", document.getElementById("advancedsearch-realisateur").value.EncodeXMLEscapeChars());
 	if(document.getElementById("advancedsearch-theme").value)
-		urlParams.set("theme", document.getElementById("advancedsearch-theme").value);
+		urlParams.set("theme", document.getElementById("advancedsearch-theme").value.EncodeXMLEscapeChars());
 	if(document.getElementById("advancedsearch-editeur").value)
-		urlParams.set("editeur", document.getElementById("advancedsearch-editeur").value);
+		urlParams.set("editeur", document.getElementById("advancedsearch-editeur").value.EncodeXMLEscapeChars());
 	if(document.getElementById("advancedsearch-collection").value)
-		urlParams.set("collection", document.getElementById("advancedsearch-collection").value);
+		urlParams.set("collection", document.getElementById("advancedsearch-collection").value.EncodeXMLEscapeChars());
 	if(document.getElementById("advancedsearch-datepublicationstart").value)
-		urlParams.set("datepublicationstart", document.getElementById("advancedsearch-datepublicationstart").value);
+		urlParams.set("datepublicationstart", document.getElementById("advancedsearch-datepublicationstart").value.EncodeXMLEscapeChars());
 	if(document.getElementById("advancedsearch-datepublicationend").value)
-		urlParams.set("datepublicationend", document.getElementById("advancedsearch-datepublicationend").value);
+		urlParams.set("datepublicationend", document.getElementById("advancedsearch-datepublicationend").value.EncodeXMLEscapeChars());
 	/*urlParams.set("baserecherche", document.getElementById("advancedsearch-baserecherche").value);
 	urlParams.set("langue", document.getElementById("advancedsearch-langue").value);
 	urlParams.set("type", document.getElementById("advancedsearch-type").value);
@@ -229,6 +305,9 @@ function searchAll(uriParams)
 
 function search()
 {
+	getBasicSearchCriterias();
+	//return;
+
 	//searchadvanced();
 	//console.log("documents getted");
 	//document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
