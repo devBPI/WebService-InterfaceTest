@@ -37,8 +37,8 @@
 
 	$defaultBasicSearchCriterias = isGetOk("basicSearchCriterias");
 
-	$defaultGeneralSignification = isGetOk("generalSignification");
-	$defaultGeneral              = isGetOk("general");
+	/*$defaultGeneralSignification = isGetOk("generalSignification");
+	$defaultGeneral              = isGetOk("general");*/
 	$defaultTitre                = isGetOk("titre");
 	$defaultAuteur               = isGetOk("auteur");
 	$defaultSujet                = isGetOk("sujet");
@@ -54,7 +54,7 @@
 
 	$defaultFacets               = urldecode(isGetOk("facets"));
 
-	echo "<pre><code class='language-xml'>".htmlspecialchars($defaultBasicSearchCriterias, ENT_QUOTES)."</code></pre><br/>";
+	//echo "<pre><code class='language-xml'>".htmlspecialchars($defaultBasicSearchCriterias, ENT_QUOTES)."</code></pre><br/>";
 
 	$ini_array = @parse_ini_file("etc/configuration.ini");
 	if(!$ini_array)
@@ -74,7 +74,7 @@
 
 	$data = array('parcours' => $parkour, 'page' => $page, 'rows' => $rows);
 
-	if($defaultGeneral!=null)
+	/*if($defaultGeneral!=null)
 	{
 		switch($defaultGeneralSignification)
 		{
@@ -109,7 +109,7 @@
 				$data["general"] = $defaultGeneral;
 		}
 		$data["spell"] = $defaultGeneral;
-	}
+	}*/
 
 	if($defaultTitre!=null)                $data["titre"]                   = $defaultTitre;
 	if($defaultAuteur!=null)               $data["auteur"]                  = $defaultAuteur;
