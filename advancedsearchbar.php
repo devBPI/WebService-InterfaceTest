@@ -50,7 +50,7 @@
 <div id="advancedSearchLists" style= "margin-left: 10px;">
 <?php
 	$data = array('parcours' => $parkour, 'page' => $page, 'rows' => $rows);
-	if($defaultGeneral!=null)              $data["general"]                 = $defaultGeneral;
+	//if($defaultGeneral!=null)              $data["general"]                 = $defaultGeneral;
 	if($defaultTitre!=null)                $data["titre"]                   = $defaultTitre;
 	if($defaultAuteur!=null)               $data["auteur"]                  = $defaultAuteur;
 	if($defaultSujet!=null)                $data["sujet"]                   = $defaultSujet;

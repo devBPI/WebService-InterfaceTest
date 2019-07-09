@@ -128,7 +128,6 @@
 		<xsl:call-template name="searchBar" />
 		<xsl:call-template name="searchBarSelection" />
 		<input id="loupe" type="submit" value="&#160;" onclick="search();"></input>
-		<input id="advancedSearchButton" type="submit" value="+" onclick="advancedSearch();"></input>
 		<!--<div id="additionnalConditions">&#191;</div>-->
 		<div id="additionnalConditions">
 			<xsl:choose>

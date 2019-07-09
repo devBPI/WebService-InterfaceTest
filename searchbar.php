@@ -68,7 +68,6 @@
 					<option class="searchBarSelectionTheme" value="theme">Thème</option>
 				</select>
 				<input id="loupe" type="submit" value=" " onclick="search();" />
-				<input id="advancedSearchButton" type="submit" value="+" onclick="advancedSearch();" />
 				<div id="additionnalConditions">
 				</div>
 <?php
@@ -99,13 +98,14 @@
 				Supprimer la condition
 			</div>
 			<input class="addConditionButton" type="submit" value="+" onclick="addCondition();" />
-			ajouter une condition
+			Ajouter une condition
 		</div>
 	</div>
 </div>
 <div id="advancedSearchDiv" style="margin-top: 10px; display:none;">
 	<?php include('advancedsearchbar.php'); ?>
 </div>
+<input id="advancedSearchButton" type="submit" value="+" onclick="advancedSearch();" /> Recherche avancée
 <div id="result-lists" style="width: 100%;">
 	<div id="facetsdiv" style="margin: 3px; grid-column: 1 / span 2;">
 		<div id="facets"></div>
