@@ -30,8 +30,9 @@
 	}
 
 	ini_set("display_errors",1);
-	$defaultGeneralSignification = urldecode(isGetOk("generalSignification"));
-	$defaultGeneral              = urldecode(isGetOk("general"));
+	$defaultBasicSearchCriterias = isGetOk("basicSearchCriterias");
+	//$defaultGeneralSignification = urldecode(isGetOk("generalSignification"));
+	//$defaultGeneral              = urldecode(isGetOk("general"));
 	$defaultSearchText           = urldecode(isGetOk("general"));
 	$defaultTitre                = urldecode(isGetOk("titre"));
 	$defaultAuteur               = urldecode(isGetOk("auteur"));

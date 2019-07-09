@@ -94,10 +94,8 @@ function getBasicSearchCriterias()
 	var searchBarSelections = document.getElementsByClassName("searchBarSelection");
 	var i;
 	var searchBarOperatorsArray = [], searchBarsArray = [], searchBarSelectionsArray = [];
-	for(i=0; i<searchBars.length; i++)
+	for(i=0; i<searchBars.length-1; i++)
 	{
-		if(i==1)
-			continue;
 		if(i>0)
 			searchBarOperatorsArray.push(searchBarOperators[i-1].value);
 		else
@@ -112,27 +110,27 @@ function getBasicSearchCriterias()
 	basicSearchArray["operators"] = searchBarOperatorsArray;
 	basicSearchArray["texts"] = searchBarsArray;
 	basicSearchArray["fields"] = searchBarSelectionsArray;
-	//console.log(basicSearchArray);
+	console.log(basicSearchArray);
 
 	var xml = "";
+	xml += "<search-criterias>";
 	for(i=0; i<basicSearchArray["texts"].length; i++)
 	{
-		xml += "<search-criterias>";
 		xml += "<" + basicSearchArray["fields"][i] + ">";
 		xml += basicSearchArray["texts"][i];
 		xml += "</" + basicSearchArray["fields"][i] + ">";
-		if(i<i<basicSearchArray["texts"].length-1)
+		if(i<basicSearchArray["texts"].length-1)
 		{
 			switch(basicSearchArray["operators"][i+1])
 			{
 				case "OU":
-					xml += "<or>";
+					xml += "<or><search-criterias>";
 				break;
 				case "SAUF":
-					xml += "<and><not>true</not>"
+					xml += "<and><search-criterias><not>true</not>"
 				break;
 				case "ET":
-					xml += "<and>"
+					xml += "<and><search-criterias>"
 				break;
 				default:
 				break;
@@ -155,7 +153,7 @@ function getBasicSearchCriterias()
 			}
 		}
 	}
-	//console.log(xml);
+	console.log(xml);
 	return xml;
 }
 
@@ -169,9 +167,9 @@ function getSearchCriterias()
 	urlParams.set("basicSearchCriterias", getBasicSearchCriterias());
 
 	//alert(getGeneralSearchBar());
-	urlParams.set("generalSignification", getGeneralSearchBar());
+	/*urlParams.set("generalSignification", getGeneralSearchBar());
 	if(document.getElementById("searchbar").value)
-		urlParams.set("general", document.getElementById("searchbar").value.EncodeXMLEscapeChars());
+		urlParams.set("general", document.getElementById("searchbar").value.EncodeXMLEscapeChars());*/
 	//console.log(document.getElementById("advancedsearch-titre").value);
 	if(document.getElementById("advancedsearch-titre").value)
 		urlParams.set("titre", document.getElementById("advancedsearch-titre").value.EncodeXMLEscapeChars());

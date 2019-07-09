@@ -4,6 +4,7 @@ function addCondition()
 	var cln = itm.cloneNode(true);
 	//cln.getElementsByClassName("searchbar")[0].value="";
 	cln.style.display="block";
+	cln.id="";
 	document.getElementById("additionnalConditions").appendChild(cln);
 }
 
