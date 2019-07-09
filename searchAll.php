@@ -72,7 +72,7 @@
 	header("Content-Type: text/xml");
 	header("Content-Type: text/html;charset=utf-8");
 
-	$data = array('parcours' => $parkour, 'page' => $page, 'rows' => $rows);
+	$data = array('parcours' => $parkour);//, 'page' => $page, 'rows' => $rows);
 
 	/*if($defaultGeneral!=null)
 	{
@@ -111,26 +111,71 @@
 		$data["spell"] = $defaultGeneral;
 	}*/
 
-	if($defaultTitre!=null)                $data["titre"]                   = $defaultTitre;
-	if($defaultAuteur!=null)               $data["auteur"]                  = $defaultAuteur;
-	if($defaultSujet!=null)                $data["sujet"]                   = $defaultSujet;
-	if($defaultIsbnIssnCommercial!=null)   $data["isbn-issn-numcommercial"] = $defaultIsbnIssnCommercial;
-	if($defaultIndiceCote!=null)           $data["indice-cote"]             = $defaultIndiceCote;
-	if($defaultDatePublication!=null)      $data["date-publication"]        = $defaultDatePublication;
-	if($defaultRealisateur!=null)          $data["realisateur"]             = $defaultRealisateur;
-	if($defaultTheme!=null)                $data["theme"]                   = $defaultTheme;
-	if($defaultEditeur!=null)              $data["editeur"]                 = $defaultEditeur;
-	if($defaultCollection!=null)           $data["collection-name"]         = $defaultCollection;
-	if($defaultDatePublicationStart!=null) $data["date-publication-debut"]  = $defaultDatePublicationStart;
-	if($defaultDatePublicationEnd!=null)   $data["date-publication-fin"]    = $defaultDatePublicationEnd;
+	$haveAdvancedSearch = false;
+	if($defaultTitre!=null)               { $data["titre"]                   = $defaultTitre;                $haveAdvancedSearch = true; }
+	if($defaultAuteur!=null)              { $data["auteur"]                  = $defaultAuteur;               $haveAdvancedSearch = true; }
+	if($defaultSujet!=null)               { $data["sujet"]                   = $defaultSujet;                $haveAdvancedSearch = true; }
+	if($defaultIsbnIssnCommercial!=null)  { $data["isbn-issn-numcommercial"] = $defaultIsbnIssnCommercial;   $haveAdvancedSearch = true; }
+	if($defaultIndiceCote!=null)          { $data["indice-cote"]             = $defaultIndiceCote;           $haveAdvancedSearch = true; }
+	if($defaultDatePublication!=null)     { $data["date-publication"]        = $defaultDatePublication;      $haveAdvancedSearch = true; }
+	if($defaultRealisateur!=null)         { $data["realisateur"]             = $defaultRealisateur;          $haveAdvancedSearch = true; }
+	if($defaultTheme!=null)               { $data["theme"]                   = $defaultTheme;                $haveAdvancedSearch = true; }
+	if($defaultEditeur!=null)             { $data["editeur"]                 = $defaultEditeur;              $haveAdvancedSearch = true; }
+	if($defaultCollection!=null)          { $data["collection-name"]         = $defaultCollection;           $haveAdvancedSearch = true; }
+	if($defaultDatePublicationStart!=null){ $data["date-publication-debut"]  = $defaultDatePublicationStart; $haveAdvancedSearch = true; }
+	if($defaultDatePublicationEnd!=null)  { $data["date-publication-fin"]    = $defaultDatePublicationEnd;   $haveAdvancedSearch = true; }
 
-	$xmlData = array_to_xml_main("search-criterias", $data);
+	$xmlAdvancedSearchCriterias = array_to_xml_main("search-criterias", $data);
 	//$url = $ini_array["CatalogueWebServiceUrl"].'search/notices?parcours='.$parkour.'&page='.$page.'&rows='.$rows.'&general='.urlencode($_GET['text']);
 
-	$url = $ini_array["CatalogueWebServiceUrl"]."search/all"."?criters=".urlencode($xmlData->asXML());
+	$url = $ini_array["CatalogueWebServiceUrl"]."search/all"."?criters=".urlencode($xmlAdvancedSearchCriterias->asXML());
+	/*echo "<br />";
+	var_dump($xmlAdvancedSearchCriterias);
+	echo "<br />";*/
 
-	if(null != $defaultBasicSearchCriterias)
-		$url = $ini_array["CatalogueWebServiceUrl"]."search/all"."?criters=".urlencode($defaultBasicSearchCriterias);
+	if(null != $defaultBasicSearchCriterias && $haveAdvancedSearch == true)
+	{
+		$xmlSearchCriterias = new SimpleXMLElement(urldecode($defaultBasicSearchCriterias));
+		$andXml = new SimpleXMLElement("<and/>");
+		xml_adopt($andXml, $xmlSearchCriterias);
+		xml_adopt($xmlAdvancedSearchCriterias, $andXml);
+		/*if($xmlAdvancedSearchCriterias->titre)
+			$xmlSearchCriterias->addChild("titre", $xmlAdvancedSearchCriterias->titre);
+		if($xmlAdvancedSearchCriterias->auteur)
+			$xmlSearchCriterias->addChild("auteur", $xmlAdvancedSearchCriterias->auteur);
+		if($xmlAdvancedSearchCriterias->sujet)
+			$xmlSearchCriterias->addChild("sujet", $xmlAdvancedSearchCriterias->sujet);
+		if($xmlAdvancedSearchCriterias->"isbn-issn-numcommercial")
+			$xmlSearchCriterias->addChild("isbn-issn-numcommercial", $xmlAdvancedSearchCriterias->"isbn-issn-numcommercial");
+		if($xmlAdvancedSearchCriterias->indice-cote)
+			$xmlSearchCriterias->addChild("indice-cote", $xmlAdvancedSearchCriterias->"indice-cote");
+		if($xmlAdvancedSearchCriterias->"date-publication")
+			$xmlSearchCriterias->addChild("date-publication", $xmlAdvancedSearchCriterias->"date-publication");
+		if($xmlAdvancedSearchCriterias->realisateur)
+			$xmlSearchCriterias->addChild("realisateur", $xmlAdvancedSearchCriterias->realisateur);
+		if($xmlAdvancedSearchCriterias->theme)
+			$xmlSearchCriterias->addChild("theme", $xmlAdvancedSearchCriterias->theme);
+		if($xmlAdvancedSearchCriterias->editeur)
+			$xmlSearchCriterias->addChild("editeur", $xmlAdvancedSearchCriterias->editeur);
+		if($xmlAdvancedSearchCriterias->"collection-name")
+			$xmlSearchCriterias->addChild("collection-name", $xmlAdvancedSearchCriterias->"collection-name");
+		if($xmlAdvancedSearchCriterias->"date-publication-debut")
+			$xmlSearchCriterias->addChild("date-publication-debut", $xmlAdvancedSearchCriterias->"date-publication-debut");
+		if($xmlAdvancedSearchCriterias->"date-publication-fin")
+			$xmlSearchCriterias->addChild("date-publication-fin", $xmlAdvancedSearchCriterias->"date-publication-fin");*/
+		$url = $ini_array["CatalogueWebServiceUrl"]."search/all"."?criters=".urlencode($xmlAdvancedSearchCriterias->asXML());
+		/*echo "<br />";
+		var_dump($xmlSearchCriterias);
+		echo "<br />";*/
+
+	}
+	else if(null != $defaultBasicSearchCriterias)
+	{
+		$xmlSearchCriterias = new SimpleXMLElement(urldecode($defaultBasicSearchCriterias));
+		$parcourXml = new SimpleXMLElement("<parcours>".$parkour."</parcours>");
+		xml_adopt($xmlSearchCriterias, $parcourXml);
+		$url = $ini_array["CatalogueWebServiceUrl"]."search/all"."?criters=".urlencode($xmlSearchCriterias->asXML());
+	}
 
 	if($defaultFacets!=null)
 		$url.=("&facets=".urlencode("<facets-wrap>".$defaultFacets."</facets-wrap>"));

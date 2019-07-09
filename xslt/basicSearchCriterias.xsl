@@ -59,8 +59,8 @@
 				<xsl:if test="sujet"><xsl:attribute name="selected">true</xsl:attribute></xsl:if>
 				Sujet
 			</option>
-			<option class="searchBarSelectionIssnIsbnCom" value="isbn-issn-commercial">
-				<xsl:if test="isbn-issn-commercial"><xsl:attribute name="selected">true</xsl:attribute></xsl:if>
+			<option class="searchBarSelectionIssnIsbnCom" value="isbn-issn-numcommercial">
+				<xsl:if test="isbn-issn-numcommercial"><xsl:attribute name="selected">true</xsl:attribute></xsl:if>
 				ISBN, ISSN, numéros commerciaux
 			</option>
 			<option class="searchBarSelectionIndiceCote" value="indice-cote">

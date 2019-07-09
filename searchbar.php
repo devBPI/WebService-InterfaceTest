@@ -60,7 +60,7 @@
 					<option class="searchBarSelectionAuteur" value="auteur">Auteur</option>
 					<option class="searchBarSelectionTitre" value="titre">Titre</option>
 					<option class="searchBarSelectionSujet" value="sujet">Sujet</option>
-					<option class="searchBarSelectionIssnIsbnCom" value="isbn-issn-commercial">ISBN, ISSN, numéros commerciaux</option>
+					<option class="searchBarSelectionIssnIsbnCom" value="isbn-issn-numcommercial">ISBN, ISSN, numéros commerciaux</option>
 					<option class="searchBarSelectionIndiceCote" value="indice-cote">Indice / Cote</option>
 					<option class="searchBarSelectionDatePublication" value="date-publication">Date de publication (précise)</option>
 					<option class="searchBarSelectionEdition" value="editeur">Éditeur</option>
@@ -87,7 +87,7 @@
 					<option class="searchBarSelectionAuteur" value="auteur">Auteur</option>
 					<option class="searchBarSelectionTitre" value="titre">Titre</option>
 					<option class="searchBarSelectionSujet" value="sujet">Sujet</option>
-					<option class="searchBarSelectionIssnIsbnCom" value="isbn-issn-commercial">ISBN, ISSN, numéros commerciaux</option>
+					<option class="searchBarSelectionIssnIsbnCom" value="isbn-issn-numcommercial">ISBN, ISSN, numéros commerciaux</option>
 					<option class="searchBarSelectionIndiceCote" value="indice-cote">Indice / Cote</option>
 					<option class="searchBarSelectionDatePublication" value="date-publication">Date de publication (précise)</option>
 					<option class="searchBarSelectionEdition" value="editeur">Éditeur</option>

@@ -33,3 +33,17 @@ function array_to_xml_main($mainname, $data)
 	array_to_xml($data,$xml_data);
 	return $xml_data;
 }
+
+function xml_adopt($root, $new)
+{
+	$node = $root->addChild($new->getName(), (string) $new);
+	foreach($new->attributes() as $attr => $value)
+	{
+		$node->addAttribute($attr, $value);
+	}
+	foreach($new->children() as $ch)
+	{
+		xml_adopt($node, $ch);
+	}
+}
+
