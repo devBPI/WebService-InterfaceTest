@@ -125,7 +125,14 @@
 			window.onload = function(e)
 			{
 				//advancedSearchBar();
-				autocomplete(document.getElementById("searchbar"), []);
+				searchbars = document.getElementsByClassName("searchbar");
+				var i;
+				for(i=0; i<searchbars.length; i++)
+				{
+					autocomplete(searchbars[i], []);
+				}
+
+				//autocomplete(document.getElementById("searchbar"), []);
 				var urlParams = new URLSearchParams(window.location.search);
 				if(urlParams.toString()!=null && urlParams.toString()!="")
 				{
