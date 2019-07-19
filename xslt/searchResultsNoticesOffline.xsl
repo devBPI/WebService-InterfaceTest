@@ -2,6 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:variable name="notices-label">notices</xsl:variable>
 	<xsl:variable name="notices-java-pagination">changeNoticesPage</xsl:variable>
+	<xsl:variable name="notices-java-changerows">changeNoticesRows</xsl:variable>
 	<xsl:variable name="notices-rows-id">notices-rows</xsl:variable>
 	<xsl:include href="searchResultsNotices.xsl"/>
 	<xsl:include href="searchResultsNoticesPagination.xsl"/>
@@ -35,6 +36,11 @@
 													 - <xsl:value-of select="./category"/>
 												</xsl:if>
 											</div>
+											<xsl:if test="(./last_received)">
+												<div>
+													Dernier numéro reçu : <xsl:value-of select="./last_received"/>
+												</div>
+											</xsl:if>
 										</div>
 									</div>
 								</xsl:for-each>

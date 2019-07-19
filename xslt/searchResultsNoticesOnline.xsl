@@ -2,6 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:variable name="notices-label">notices online</xsl:variable>
 	<xsl:variable name="notices-java-pagination">changeNoticesOnlinePage</xsl:variable>
+	<xsl:variable name="notices-java-changerows">changeNoticesOnlineRows</xsl:variable>
 	<xsl:variable name="notices-rows-id">notices-online-rows</xsl:variable>
 	<xsl:include href="searchResultsNotices.xsl"/>
 	<xsl:include href="searchResultsNoticesPagination.xsl"/>

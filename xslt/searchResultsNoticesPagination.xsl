@@ -39,7 +39,7 @@
 					<span style="margin-left:2px;">Page <xsl:value-of select="page"/> on <xsl:value-of select="num-pages"/> - </span>
 					<!--<span style="margin-left:2px;"><xsl:value-of select="notices/rows"/> rows</span>-->
 					<span style="margin-left:2px;">
-						<select id="{$notices-rows-id}" name="rows" onchange="changeNoticesRows({page}, {rows});">
+						<select id="{$notices-rows-id}" name="rows" onchange="{$notices-java-changerows}({page}, {rows});">
 							<xsl:choose>
 								<xsl:when test="rows=20">
 									<option value="20" selected="true">20</option>

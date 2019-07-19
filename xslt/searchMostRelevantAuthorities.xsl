@@ -8,7 +8,7 @@
 		<div style="margin-bottom: 0.5em;">
 			<span style="margin-right: 0.5em; font-weight: bold; text-decoration: underline;">Sujet(s) lié(s) :</span>
 			<xsl:for-each select="sujet-liee">
-				<xsl:if test="position() > 1">, </xsl:if>
+				<xsl:if test="position() &#62; 1">, </xsl:if>
 				<a href="{$rebondUrl}/?general={.}"><xsl:value-of select="."/></a>
 			</xsl:for-each>
 		</div>
@@ -21,7 +21,7 @@
 				<!--<xsl:value-of select="position()"/> | Last: <xsl:value-of select="last()"/>-->
 				<xsl:variable name="authorityDisplay">
 					<xsl:choose>
-						<xsl:when test="position()=1">
+						<xsl:when test="position() &#61; 1">
 							block
 						</xsl:when>
 						<xsl:otherwise>
@@ -44,23 +44,25 @@
 						<!--<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="{$position()}"/></div>-->
 						<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;"></span><xsl:value-of select="formeRetenue"/></div>
 						<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;">Type d'autorité :</span><xsl:value-of select="type"/></div>
-						<xsl:if test="(type='Vedettes matières / noms communs') or (type='Noms géographiques') and (autresNoms/autreNom)">
+						<xsl:if test="(type='Concept') or (type='Nom géographique') and (autresNoms/autreNom)">
 							<div id="autresNoms">
 								<span style="margin-right: 4px; text-decoration: underline;">Autre(s) nom(s) :</span>
 								<xsl:for-each select="autresNoms/autreNom">
-									<xsl:if test="position() > 1">; </xsl:if>
-									<xsl:value-of select="."/>
+									<xsl:if test="position() &#60;&#61; 2">
+										<xsl:if test="position() &#62; 1"> ; </xsl:if>
+										<xsl:value-of select="."/>
+									</xsl:if>
 								</xsl:for-each>
 							</div>
 						</xsl:if>
-						<xsl:if test="(type='Personne') or (type='Collectivité') or (type='Titres uniformes') or (type='Auteurs-titres')">
-							<div><xsl:value-of select="dateNaissance"/><xsl:if test="dateMort"> - <xsl:value-of select="dateMort"/></xsl:if></div>
+						<xsl:if test="(type='Personne') or (type='Collectivité') or (type='Titres uniformes') or (type='Oeuvre')">
+							<div><xsl:value-of select="dateNaissance"/> <xsl:if test="(type='Personne')">-</xsl:if> <xsl:value-of select="dateMort"/></div>
 						</xsl:if>
 						<xsl:if test="pays/pays">
 							<div id="pays">
 								<span style="margin-right: 4px; text-decoration: underline;">Pays:</span>
 								<xsl:for-each select="pays/pays">
-									<xsl:if test="position() > 1">; </xsl:if>
+									<xsl:if test="position() &#62; 1">; </xsl:if>
 									<xsl:value-of select="."/>
 								</xsl:for-each>
 							</div>
@@ -69,7 +71,7 @@
 							<div id="langues">
 								<span style="margin-right: 4px; text-decoration: underline;">Langue(s):</span>
 								<xsl:for-each select="langues/langue">
-									<xsl:if test="position() > 1">; </xsl:if>
+									<xsl:if test="position() &#62; 1">; </xsl:if>
 									<xsl:value-of select="."/>
 								</xsl:for-each>
 							</div>
@@ -78,7 +80,7 @@
 							<div id="activiteesPrincipales">
 								<span style="margin-right: 4px; text-decoration: underline;">Activité(s) principale(s) :</span>
 								<xsl:for-each select="activitesPrincipales/activitePrincipale">
-									<xsl:if test="position() > 1">; </xsl:if>
+									<xsl:if test="position() &#62; 1">; </xsl:if>
 									<xsl:value-of select="."/>
 								</xsl:for-each>
 							</div>
@@ -88,7 +90,8 @@
 					<xsl:for-each select="indice-cdu">
 						<!--<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="{$position()}"/></div>-->
 						<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;"></span><xsl:value-of select="cote"/>&#160;-&#160;<xsl:value-of select="libelle"/></div>
-						<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;">Type d'autorité :</span>Indice Cdu</div>
+						<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;">Type d'autorité :</span>Indice de classement</div>
+						<div>Dernier numéro reçu : <xsl:value-of select="dernier-numero"/></div>
 						<div><a href="indice-cdu/{permalink}"><xsl:value-of select="permalink"/></a></div>
 					</xsl:for-each>
 				</div>

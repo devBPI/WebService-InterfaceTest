@@ -342,7 +342,7 @@ function changeNoticesPage(page)
 	var searchCriterias = getSearchCriterias();
 	var parkour = getParkour();
 	searchCriterias.set("parkour", parkour);
-	var uriParams = searchCriterias.toString();
+	var uriParams = getUriParams();
 	//console.log(uriParams);
 
 	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
@@ -364,7 +364,7 @@ function changeNoticesOnlinePage(page)
 	var curFacets = urlParams.get('facets');
 	searchCriterias.set('facets', curFacets);
 
-	var uriParams = searchCriterias.toString();
+	var uriParams = getUriParams();
 	//console.log(uriParams);
 
 	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";

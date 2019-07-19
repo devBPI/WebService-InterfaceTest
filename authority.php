@@ -87,6 +87,7 @@
 		$proc = new XSLTProcessor;
 		$proc->importStyleSheet($xsl);
 
+		$proc->setParameter('', 'rebondUrl', "");
 		$proc->setParameter('', 'mappedNoticesUrl', $ini_array["CatalogueWebServiceUrl"]."details/authority/");
 
 		echo $proc->transformToXML($xml);

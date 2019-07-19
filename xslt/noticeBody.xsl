@@ -7,6 +7,9 @@
 	<xsl:template match="/notice|/notice-themed/notice">
 		<div style="font-weight: bold;" id="collection_id">configuration_id : <xsl:value-of select="resultatDe"/></div>
 		<div style="font-weight: bold;" id="source_id">source_id : <xsl:value-of select="sourceId"/></div>
+		<xsl:if test="permalink">
+			<div><a href="/notice/{permalink}"><xsl:value-of select="permalink" /></a></div>
+		</xsl:if>
 		<br />
 		<xsl:if test="images-info/image-info/url">
 			<div id="couverture">
@@ -38,7 +41,7 @@
 				Traduction de :
 				<xsl:for-each select="traductionsDe/traductionDe">
 					<div>
-						<a href='{$rebondUrl}/?titre={value}'><xsl:value-of select="."/></a>
+						<a href='{$rebondUrl}/?titre={.}'><xsl:value-of select="."/></a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -263,7 +266,9 @@
 			<div id="seriesCollection">
 				Série / Collection 
 				<xsl:for-each select="seriesCollection/serieCollection">
-					<div style="margin-left: 1em;"><xsl:value-of select="."/></div>
+					<div style="margin-left: 1em;">
+						<a href='{$rebondUrl}/?collection={.}'><xsl:value-of select="."/></a>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -306,12 +311,22 @@
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="conservations/conservation">
+		<!--<xsl:if test="conservations/conservation">
 			<div id="conservations">
 				Conservation 
 				<xsl:for-each select="conservations/conservation">
 					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
+				</xsl:for-each>
+			</div>
+		</xsl:if>-->
+		<xsl:if test="liens/lien/accessNumFirstIssueOnline">
+			<div id="conservations">
+				Conservation 
+				<xsl:for-each select="liens/lien">
+					<div style="margin-left: 1em;">
+						n.<xsl:value-of select="accessNumFirstIssueOnline"/>, vol.<xsl:value-of select="accessNumFirstVolOnline"/>, <xsl:value-of select="accessDateFirstIssueOnline"/> - n.<xsl:value-of select="accessNumLastIssueOnline"/>, vol.<xsl:value-of select="accessNumLastVolOnline"/>, <xsl:value-of select="accessDateLastIssueOnline"/>
+					</div>
 				</xsl:for-each>
 			</div>
 		</xsl:if>
@@ -448,7 +463,7 @@
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="nomPubliqueConfiguration">
+		<xsl:if test="(nomPubliqueConfiguration) and (resultatDe != 1)">
 			<div id="resultatDe">
 				Résultat de
 				<xsl:if test="(urlPubliqueConfiguration)">
@@ -565,9 +580,20 @@
 				<xsl:if test="(localisation) and (categorie)">
 					<div><xsl:value-of select="localisation"/> - <xsl:value-of select="categorie"/></div>
 				</xsl:if>
+				<xsl:if test="numeros-recus/numero">
+					<div id="numeros">
+						<div>Numéros reçus : </div>
+						<div>
+							<xsl:for-each select="numeros-recus/numero">
+								<xsl:sort select="." data-type="number" order="descending" />
+								<div><xsl:value-of select="."/></div>
+							</xsl:for-each>
+						</div>
+					</div>
+				</xsl:if>
 			</div>
 		</xsl:for-each>
-		<xsl:for-each select="seriels/seriel">
+		<!--<xsl:for-each select="seriels/seriel">
 			<div class="seriel">
 				<hr />
 				<xsl:value-of select="disponibilite"/> -
@@ -580,7 +606,7 @@
 				Dernier numéro reçu :
 				<div><xsl:value-of select="description"/></div>
 			</div>
-		</xsl:for-each>
+		</xsl:for-each>-->
 		<xsl:for-each select="liens/lien">
 			<div class="lien">
 				<hr />
@@ -612,7 +638,66 @@
 			<div class="noticesContainer">
 				<xsl:for-each select="noticesList/notice | noticesList/notice-online">
 					<div class="notice" style="overflow:hidden;">
-						<xsl:call-template name="noticesShortTop"/>
+
+						<xsl:if test="./images-info/image-info/url">
+							<div style="float:left; margin-left: 4px; margin-right: 4px;" >
+								<img class="couverture lazy" src="{./images-info/image-info/url}"/>
+							</div>
+						</xsl:if>
+						<div>
+							<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="./row"/></div>
+							<div class="" style="display: inline-block; float:right; margin-right: 4px; text-align: right;">
+								<xsl:value-of select="./type"/><br />
+								<xsl:if test="(./type='Vidéo') and ./formats/format">
+									<xsl:for-each select="./formats/format">
+										<div class="format"><xsl:value-of select="."/></div>
+									</xsl:for-each>
+								</xsl:if>
+
+								<xsl:if test="(./type!='Musique' and ./type!='Docelec' and ./type!='Site et base') and ./resumes">
+									<span title="Résumé : {./resumes}"><img src="/img/Gnome-dialog-question.svg" style="width: 24px; height: 24px; cursor: help;" /></span>
+								</xsl:if>
+								<xsl:if test="(./type='Musique' or ./type='Docelec' or ./type='Site et base') and ./contenus">
+									<span title="Contenu : {./contenus}"><img src="/img/Gnome-dialog-question.svg" style="width: 24px; height: 24px; cursor: help;" /></span>
+								</xsl:if>
+							</div>
+							<div class="titres">
+								<xsl:for-each select="./titres/titre">
+									<xsl:if test="position() > 1"> ; </xsl:if>
+									<xsl:value-of select="."/>
+								</xsl:for-each>
+								<xsl:if test="./titresAnalytiques/titreAnalytique">
+									<div class="analytiques">
+										<xsl:for-each select="./titresAnalytiques/titreAnalytique">
+											<div>Dans <xsl:value-of select="."/></div>
+										</xsl:for-each>
+									</div>
+								</xsl:if>
+							</div>
+							<xsl:if test="(./auteurs/auteur) or (./realisateurs/realisateur)">
+								<div class="auteurs">
+								par 
+									<xsl:for-each select="./auteurs/auteur">
+										<xsl:if test="position() > 1">; </xsl:if>
+										<xsl:value-of select="."/>	
+									</xsl:for-each>
+									<xsl:if test="auteursSecondaires/auteurSecondaire">
+										<xsl:for-each select="auteursSecondaires/auteurSecondaire">
+											<xsl:if test="position() > 1"> ; </xsl:if>
+											<xsl:value-of select="."/>	
+										</xsl:for-each>
+									</xsl:if>
+									<xsl:if test="./realisateurs/realisateur">
+										<xsl:for-each select="./realisateurs/realisateur">
+											<xsl:if test="position() > 1"> ; </xsl:if>
+											<xsl:value-of select="."/>	
+										</xsl:for-each>
+									</xsl:if>
+								</div>
+							</xsl:if>
+						</div>
+
+						<!--<xsl:call-template name="noticesShortTop"/>-->
 
 						<!--<xsl:if test="(./exemplaires/exemplaire)">
 							<div class="exemplaires">
@@ -661,6 +746,15 @@
 					</div>
 				</xsl:for-each>
 			</div>
+			<xsl:if test="list-cdu-used/cdu-used/cote">
+				<div id="voirTouts">
+					<xsl:for-each select="list-cdu-used/cdu-used">
+						<a href='{$rebondUrl}/?indicecote={cote}'>
+							<span class="voirToutButton">Voir tout</span>
+						</a>
+					</xsl:for-each>
+				</div>
+			</xsl:if>
 		</div>
 	</xsl:template>
 	<xsl:template match="text()"/>

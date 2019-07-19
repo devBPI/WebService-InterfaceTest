@@ -74,43 +74,6 @@
 
 	$data = array('parcours' => $parkour);//, 'page' => $page, 'rows' => $rows);
 
-	/*if($defaultGeneral!=null)
-	{
-		switch($defaultGeneralSignification)
-		{
-			case "auteur":
-				$data["auteur"] = $defaultGeneral;
-			break;
-			case "titre":
-				$data["titre"] = $defaultGeneral;
-			break;
-			case "sujet":
-				$data["sujet"] = $defaultGeneral;
-			break;
-			case "isbnissncommercial":
-				$data["isbn-issn-numcommercial"] = $defaultGeneral;
-			break;
-			case "indicecote":
-				$data["indice-cote"] = $defaultGeneral;
-			break;
-			case "datepublication":
-				$data["date-publication"] = $defaultGeneral;
-			break;
-			case "editeur":
-				$data["editeur"] = $defaultGeneral;
-			break;
-			case "realisateur":
-				$data["realisateur"] = $defaultGeneral;
-			break;
-			case "theme":
-				$data["theme"] = $defaultGeneral;
-			break;
-			default:
-				$data["general"] = $defaultGeneral;
-		}
-		$data["spell"] = $defaultGeneral;
-	}*/
-
 	$haveAdvancedSearch = false;
 	if($defaultTitre!=null)               { $data["titre"]                   = $defaultTitre;                $haveAdvancedSearch = true; }
 	if($defaultAuteur!=null)              { $data["auteur"]                  = $defaultAuteur;               $haveAdvancedSearch = true; }
@@ -126,12 +89,8 @@
 	if($defaultDatePublicationEnd!=null)  { $data["date-publication-fin"]    = $defaultDatePublicationEnd;   $haveAdvancedSearch = true; }
 
 	$xmlAdvancedSearchCriterias = array_to_xml_main("search-criterias", $data);
-	//$url = $ini_array["CatalogueWebServiceUrl"].'search/notices?parcours='.$parkour.'&page='.$page.'&rows='.$rows.'&general='.urlencode($_GET['text']);
 
 	$url = $ini_array["CatalogueWebServiceUrl"]."search/all"."?criters=".urlencode($xmlAdvancedSearchCriterias->asXML());
-	/*echo "<br />";
-	var_dump($xmlAdvancedSearchCriterias);
-	echo "<br />";*/
 
 	if(null != $defaultBasicSearchCriterias && $haveAdvancedSearch == true)
 	{
@@ -139,34 +98,7 @@
 		$andXml = new SimpleXMLElement("<and/>");
 		xml_adopt($andXml, $xmlSearchCriterias);
 		xml_adopt($xmlAdvancedSearchCriterias, $andXml);
-		/*if($xmlAdvancedSearchCriterias->titre)
-			$xmlSearchCriterias->addChild("titre", $xmlAdvancedSearchCriterias->titre);
-		if($xmlAdvancedSearchCriterias->auteur)
-			$xmlSearchCriterias->addChild("auteur", $xmlAdvancedSearchCriterias->auteur);
-		if($xmlAdvancedSearchCriterias->sujet)
-			$xmlSearchCriterias->addChild("sujet", $xmlAdvancedSearchCriterias->sujet);
-		if($xmlAdvancedSearchCriterias->"isbn-issn-numcommercial")
-			$xmlSearchCriterias->addChild("isbn-issn-numcommercial", $xmlAdvancedSearchCriterias->"isbn-issn-numcommercial");
-		if($xmlAdvancedSearchCriterias->indice-cote)
-			$xmlSearchCriterias->addChild("indice-cote", $xmlAdvancedSearchCriterias->"indice-cote");
-		if($xmlAdvancedSearchCriterias->"date-publication")
-			$xmlSearchCriterias->addChild("date-publication", $xmlAdvancedSearchCriterias->"date-publication");
-		if($xmlAdvancedSearchCriterias->realisateur)
-			$xmlSearchCriterias->addChild("realisateur", $xmlAdvancedSearchCriterias->realisateur);
-		if($xmlAdvancedSearchCriterias->theme)
-			$xmlSearchCriterias->addChild("theme", $xmlAdvancedSearchCriterias->theme);
-		if($xmlAdvancedSearchCriterias->editeur)
-			$xmlSearchCriterias->addChild("editeur", $xmlAdvancedSearchCriterias->editeur);
-		if($xmlAdvancedSearchCriterias->"collection-name")
-			$xmlSearchCriterias->addChild("collection-name", $xmlAdvancedSearchCriterias->"collection-name");
-		if($xmlAdvancedSearchCriterias->"date-publication-debut")
-			$xmlSearchCriterias->addChild("date-publication-debut", $xmlAdvancedSearchCriterias->"date-publication-debut");
-		if($xmlAdvancedSearchCriterias->"date-publication-fin")
-			$xmlSearchCriterias->addChild("date-publication-fin", $xmlAdvancedSearchCriterias->"date-publication-fin");*/
 		$url = $ini_array["CatalogueWebServiceUrl"]."search/all"."?criters=".urlencode($xmlAdvancedSearchCriterias->asXML());
-		/*echo "<br />";
-		var_dump($xmlSearchCriterias);
-		echo "<br />";*/
 
 	}
 	else if(null != $defaultBasicSearchCriterias)

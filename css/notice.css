@@ -108,3 +108,15 @@ ul.tableDesMatieres span + span
 	font-weight: bold;
 	cursor: pointer;
 }
+
+#voirTouts
+{
+	margin-top: 1em;
+}
+
+.voirToutButton
+{
+	padding: 0.5em;
+	border: 2px solid blue;
+	background-color: #CCCCCC;
+}
