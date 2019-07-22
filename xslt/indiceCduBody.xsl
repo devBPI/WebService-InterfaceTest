@@ -41,11 +41,11 @@
 					<tr>
 						<td>
 							<xsl:choose>
-								<xsl:when test="(.) = (../../../cote)">
-									<a class="selected" href="{$rebondUrl}/?indicecote={.}"><xsl:value-of select="."/></a>
+								<xsl:when test="(cote) = (../../../cote)">
+									<a class="selected" href="{$rebondUrl}/?indicecote={.}"><xsl:value-of select="cote"/>&#160;-&#160;<xsl:value-of select="libelle"/></a>
 								</xsl:when>
 								<xsl:otherwise>
-									<a href="{$rebondUrl}/?indicecote={.}"><xsl:value-of select="."/></a>
+									<a href="{$rebondUrl}/?indicecote={.}"><xsl:value-of select="cote"/>&#160;-&#160;<xsl:value-of select="libelle"/></a>
 								</xsl:otherwise>
 							</xsl:choose>
 						</td>
