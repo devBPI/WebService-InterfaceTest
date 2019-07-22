@@ -560,6 +560,7 @@
 		</xsl:if>
 
 		<xsl:for-each select="exemplaires/exemplaire">
+			<xsl:sort select="./cote"/>
 			<div class="exemplaire">
 				<hr />
 				<xsl:value-of select="disponibilite"/> - 
