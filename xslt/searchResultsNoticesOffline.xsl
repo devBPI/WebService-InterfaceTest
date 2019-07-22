@@ -17,6 +17,7 @@
 						<xsl:if test="(./exemplaires)">
 							<div class="exemplaires">
 								<xsl:for-each select="./exemplaires/exemplaire">
+									<xsl:sort select="./call_num"/>
 									<div class="exemplaire">
 										<div class="exemplaire-desc">
 											<div>
