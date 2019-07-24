@@ -72,6 +72,14 @@
 	header("Content-Type: text/xml");
 	header("Content-Type: text/html;charset=utf-8");
 
+	$opts = [
+	"http" => [
+		"method" => "GET",
+		"header" => "AuthOrigin: ".$ini_array["DefaultProfil"]."\r\n"
+		]
+	];
+	$context = stream_context_create($opts);
+
 	$data = array('parcours' => $parkour);//, 'page' => $page, 'rows' => $rows);
 
 	$haveAdvancedSearch = false;
@@ -117,7 +125,7 @@
 	echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px; font-style: bold;\">URL du WebService de recherche</a>";
 
 	$xml = new DOMDocument('1.0', 'utf-8');
-	if(FALSE !== ($searchPage = file_get_contents($url)))
+	if(FALSE !== ($searchPage = file_get_contents($url, false, $context)))
 	{
 		$simpleXml = new SimpleXMLElement($searchPage);
 		$xmlTxt =  $simpleXml->asXML();

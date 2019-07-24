@@ -19,7 +19,12 @@
 								<xsl:for-each select="./liens/lien">
 									<div class="lien">
 										Lien <xsl:value-of select="position()"/>: 
-										<a href="{./url}"><xsl:value-of select="./url"/></a>
+										<xsl:if test="url"><a href="{./url}"><xsl:value-of select="./url"/></a></xsl:if>
+										<xsl:if test="disponibilite">
+											<div class="disponibilite" style="font-weight: bold; color: #FF0000;">
+												<xsl:if test="used-profil">PROFIL&#160;<xsl:value-of select="used-profil"/></xsl:if>&#160;&#61;&#62;&#160;<xsl:value-of select="disponibilite"/>
+											</div>
+										</xsl:if>
 										<xsl:if test="(./right)">
 											 - <xsl:value-of select="./right"/>
 										</xsl:if>

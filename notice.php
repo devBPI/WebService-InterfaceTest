@@ -39,9 +39,17 @@
 	#header("Content-Type: text/xml");
 	//$autocomplete_page = file_get_contents('http://10.1.20.44:8983/solr/index_notices/autocomplete?q='.$_GET['text']);
 	$url = $ini_array["CatalogueWebServiceUrl"]."details/notice/".$_GET['permalink'];
+	$opts = [
+	"http" => [
+		"method" => "GET",
+		"header" => "Accept-language: en\r\n" .
+		"AuthOrigin: INTERNET\r\n"
+		]
+	];
+	$context = stream_context_create($opts);
 	$xslHeadUrl = "xslt/noticeHead.xsl";
 	$xslBodyUrl = "xslt/noticeBody.xsl";
-	$detailsPage = file_get_contents($url);
+	$detailsPage = file_get_contents($url, false, $context);
 	#var_dump($http_response_header);
 
 	$returnCode = getHttpCode($http_response_header);
