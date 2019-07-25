@@ -70,7 +70,7 @@
 	/*print_r($ini_array);
 	echo $ini_array["url"];*/
 
-	$requiredHttpHeader = $ini_array["AuthOriginHttpHeaderName"];
+	$requiredHttpHeader = $inter_array["AuthOriginHttpHeaderName"];
 	$AuthOrigin = getHeader($requiredHttpHeader);
 	/*if(NULL == $AuthOrigin)
 		$AuthOrigin = $requiredHttpHeader." not found";*/
