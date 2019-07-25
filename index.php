@@ -70,21 +70,15 @@
 	/*print_r($ini_array);
 	echo $ini_array["url"];*/
 
-	$allHeaders = getAllHeaders();
 	$requiredHttpHeader = $ini_array["AuthOriginHttpHeaderName"];
-
 	$AuthOrigin = getHeader($requiredHttpHeader);
-	if(NULL == $AuthOrigin)
-		$AuthOrigin = $requiredHttpHeader." not found";
-
-	/*$AuthOrigin = $requiredHttpHeader." not found";
-	if(array_key_exists($requiredHttpHeader, $allHeaders))
-		$AuthOrigin = $allHeaders[$requiredHttpHeader];*/
+	/*if(NULL == $AuthOrigin)
+		$AuthOrigin = $requiredHttpHeader." not found";*/
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Interface WebService Test <?php echo $AuthOrigin;?></title>
+		<title>Interface WebService Test<?php if(NULL != $AuthOrigin)echo " - ".$AuthOrigin;?></title>
 		<link rel="stylesheet" type="text/css" href="css/body.css" />
 		<link rel="stylesheet" type="text/css" href="css/head.css" />
 		<link rel="stylesheet" type="text/css" href="css/middle.css" />
@@ -175,8 +169,17 @@
 					echo "<a target=\"_blank\" href=\"".$ini_array["CatalogueWebServiceUrl"]."api/swagger.json\">swagger.json</a>";
 					echo "<br />";
 					echo "<a target=\"_blank\" href=\"".$ini_array["CatalogueWebServiceUrl"]."webjars/swagger-ui/3.17.6/index.html?url=".$ini_array["CatalogueWebServiceUrl"]."api/swagger.json\">SWAGGER</a>";
+				?>
+				<div class="profil">
+				<?php
+					if(NULL == $AuthOrigin) {
+						echo "AuthOrigin NOT FOUND!!! <br />";
+						$AuthOrigin  = "PUBLIC"
+					}
+					echo "PROFIL ".$AuthOrigin;
 					//echo "<br />INTERFACE 1";
 				?>
+				</div>
 			</div>
 		<?php
 			/*$url =  "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
@@ -195,6 +198,7 @@
 		</div>
 		<div class = "pageFoot">
 		<?php
+			$allHeaders = getAllHeaders();
 			print_r($allHeaders);
 		?>
 		</div>
