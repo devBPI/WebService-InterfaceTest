@@ -71,7 +71,7 @@
 	echo $ini_array["url"];*/
 
 	$allHeaders = getAllHeaders();
-	$requiredHttpHeader = "X-Forwarded-For";//$ini_array["AuthOriginHttpHeaderName"];
+	$requiredHttpHeader = $ini_array["AuthOriginHttpHeaderName"];
 	$AuthOrigin = $requiredHttpHeader." not found";
 	if(array_key_exists($requiredHttpHeader, $allHeaders))
 		$AuthOrigin = $allHeaders[$requiredHttpHeader];
