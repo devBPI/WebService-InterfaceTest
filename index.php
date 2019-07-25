@@ -70,11 +70,13 @@
 	/*print_r($ini_array);
 	echo $ini_array["url"];*/
 
+	$allHeaders = getAllHeaders();
+	$AuthOrigin = $allHeaders["AuthOrigin"];
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Interface WebService Test</title>
+		<title>Interface WebService Test <?php echo $AuthOrigin;?></title>
 		<link rel="stylesheet" type="text/css" href="css/body.css" />
 		<link rel="stylesheet" type="text/css" href="css/head.css" />
 		<link rel="stylesheet" type="text/css" href="css/middle.css" />
@@ -185,7 +187,6 @@
 		</div>
 		<div class = "pageFoot">
 		<?php
-			$allHeaders = getAllHeaders();
 			print_r($allHeaders);
 		?>
 		</div>
