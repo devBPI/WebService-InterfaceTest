@@ -71,7 +71,7 @@
 	echo $ini_array["url"];*/
 
 	$allHeaders = getAllHeaders();
-	$AuthOrigin = $allHeaders["AuthOrigin"];
+	$AuthOrigin = $allHeaders["X-Forwarded-For"];
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
