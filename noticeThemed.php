@@ -39,11 +39,18 @@
 	#header("Content-Type: text/xml");
 	//$autocomplete_page = file_get_contents('http://10.1.20.44:8983/solr/index_notices/autocomplete?q='.$_GET['text']);
 	$url = $ini_array["CatalogueWebServiceUrl"]."details/notice-themed/".$_GET['permalink'];
+	$opts = [
+	"http" => [
+		"method" => "GET",
+		"header" => "AuthOrigin: ".$ini_array["DefaultProfil"]."\r\n"
+		]
+	];
+	$context = stream_context_create($opts);
 	$xslHeadUrl = "xslt/noticeHead.xsl";
 	$xslBodyUrl = "xslt/noticeBody.xsl";
 	$xslNoticesOfflineUrl = "xslt/searchResultsNoticesOffline.xsl";
 	$xslNoticesOnlineUrl = "xslt/searchResultsNoticesOnline.xsl";
-	$detailsPage = file_get_contents($url);
+	$detailsPage = file_get_contents($url, false, $context);
 	#var_dump($http_response_header);
 
 	$returnCode = getHttpCode($http_response_header);
