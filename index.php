@@ -174,7 +174,7 @@
 				<?php
 					if(NULL == $AuthOrigin)
 					{
-						echo "AuthOrigin NOT FOUND!!! <br />";
+						echo "HTTP_HEADER[\"AuthOrigin\"] NOT FOUND!!! <br />";
 						$AuthOrigin  = "PUBLIC";
 					}
 					echo "PROFIL ".$AuthOrigin;
