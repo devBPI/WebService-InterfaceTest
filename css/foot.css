@@ -1,10 +1,11 @@
 .pageFoot
 {
+	display:inline-block;
 	position: fixed;
 	left: 0;
 	bottom: 0;
-	display:inline-block;
 	width: 100%;
+	background: #FFFFFF;
 	border-bottom: 1px solid #4D4D4D;
 	line-height: 20px;
 }
