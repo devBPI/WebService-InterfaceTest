@@ -25,3 +25,12 @@ function getHttpCode($http_response_header)
 	return 0;
 }
 
+function getHeader($headerName)
+{
+	$allHeaders = getAllHeaders();
+	$requiredHttpHeader = $headerName;
+	$requiredHeader = NULL;
+	if(array_key_exists($requiredHttpHeader, $allHeaders))
+		$requiredHeader = $allHeaders[$requiredHttpHeader];
+	return $requiredHeader;
+}

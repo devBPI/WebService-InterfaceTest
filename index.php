@@ -72,9 +72,14 @@
 
 	$allHeaders = getAllHeaders();
 	$requiredHttpHeader = $ini_array["AuthOriginHttpHeaderName"];
-	$AuthOrigin = $requiredHttpHeader." not found";
+
+	$AuthOrigin = getHeader($requiredHttpHeader);
+	if(NULL == $AuthOrigin)
+		$AuthOrigin = $requiredHttpHeader." not found";
+
+	/*$AuthOrigin = $requiredHttpHeader." not found";
 	if(array_key_exists($requiredHttpHeader, $allHeaders))
-		$AuthOrigin = $allHeaders[$requiredHttpHeader];
+		$AuthOrigin = $allHeaders[$requiredHttpHeader];*/
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
