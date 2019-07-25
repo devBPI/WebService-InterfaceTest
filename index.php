@@ -73,7 +73,7 @@
 	$allHeaders = getAllHeaders();
 	$requiredHttpHeader = "X-Forwarded-For";//$ini_array["AuthOriginHttpHeaderName"];
 	$AuthOrigin = $requiredHttpHeader." not found";
-	if(in_array($requiredHttpHeader, $allHeaders))
+	if(array_key_exists($requiredHttpHeader, $allHeaders))
 		$AuthOrigin = $allHeaders[$requiredHttpHeader];
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
