@@ -184,10 +184,10 @@
 			<?php include('searchbar.php'); ?>
 		</div>
 		<div class = "pageFoot">
-			<?php
-				$allHeaders = getAllHeaders();
-				print_r($allHeaders);
-			?>
+		<?php
+			$allHeaders = getAllHeaders();
+			print_r($allHeaders);
+		?>
 		</div>
 	</body>
 </html>
