@@ -172,9 +172,10 @@
 				?>
 				<div class="profil">
 				<?php
-					if(NULL == $AuthOrigin) {
+					if(NULL == $AuthOrigin)
+					{
 						echo "AuthOrigin NOT FOUND!!! <br />";
-						$AuthOrigin  = "PUBLIC"
+						$AuthOrigin  = "PUBLIC";
 					}
 					echo "PROFIL ".$AuthOrigin;
 					//echo "<br />INTERFACE 1";
