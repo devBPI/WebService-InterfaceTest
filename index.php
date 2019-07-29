@@ -175,7 +175,7 @@
 					if(NULL == $AuthOrigin)
 					{
 						echo "HTTP_HEADER[\"AuthOrigin\"] NOT FOUND!!! <br />";
-						$AuthOrigin  = "PUBLIC";
+						$AuthOrigin  = "INTERNET";
 					}
 					echo "PROFIL ".$AuthOrigin;
 					//echo "<br />INTERFACE 1";
