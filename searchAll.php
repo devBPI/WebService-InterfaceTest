@@ -56,6 +56,7 @@
 
 	//echo "<pre><code class='language-xml'>".htmlspecialchars($defaultBasicSearchCriterias, ENT_QUOTES)."</code></pre><br/>";
 
+	$inter_array = parse_ini_file("etc/interface.ini");
 	$ini_array = @parse_ini_file("etc/configuration.ini");
 	if(!$ini_array)
 		$ini_array = parse_ini_file("etc/default.ini");
@@ -75,7 +76,7 @@
 	$opts = [
 	"http" => [
 		"method" => "GET",
-		"header" => "AuthOrigin: ".$ini_array["DefaultProfil"]."\r\n"
+		"header" => "AuthOrigin: ".$inter_array["DefaultProfil"]."\r\n"
 		]
 	];
 	$context = stream_context_create($opts);
