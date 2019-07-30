@@ -73,10 +73,18 @@
 	header("Content-Type: text/xml");
 	header("Content-Type: text/html;charset=utf-8");
 
+	$requiredHttpHeader = $inter_array["AuthOriginHttpHeaderName"];
+	$AuthOrigin = getHeader($requiredHttpHeader);
+	if(NULL == $AuthOrigin)
+	{
+		echo "HTTP_HEADER[\"AuthOrigin\"] NOT FOUND!!! <br />";
+		$AuthOrigin  = $inter_array["DefaultProfil"];
+	}
+
 	$opts = [
 	"http" => [
 		"method" => "GET",
-		"header" => "AuthOrigin: ".$inter_array["DefaultProfil"]."\r\n"
+		"header" => "AuthOrigin: ".$AuthOrigin."\r\n"
 		]
 	];
 	$context = stream_context_create($opts);
