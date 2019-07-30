@@ -1,16 +1,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php
+	ini_set("display_errors",1);
+	error_reporting(E_ALL);
 	include "utils/phpUtils.php";
-	function getHttpCode($http_response_header)
-	{
-		if(is_array($http_response_header))
-		{
-			$parts=explode(' ', $http_response_header[0]);
-			if(count($parts) > 1)
-				return intval($parts[1]); //Get code
-		}
-		return 0;
-	}
 
 	$errorText="";
 	if(!isset($_GET['permalink']) || $_GET['permalink']=='' || $_GET['permalink']==null)
@@ -31,8 +23,6 @@
 		exit(500);
 	}
 
-	ini_set("display_errors",1);
-	error_reporting(E_ALL);
 
 	header("Content-Type: text/xml");
 	header("Content-Type: text/html;charset=utf-8");
