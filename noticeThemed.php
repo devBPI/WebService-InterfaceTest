@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php
+	include "utils/phpUtils.php";
 	function getHttpCode($http_response_header)
 	{
 		if(is_array($http_response_header))
@@ -40,10 +41,19 @@
 	#header("Content-Type: text/xml");
 	//$autocomplete_page = file_get_contents('http://10.1.20.44:8983/solr/index_notices/autocomplete?q='.$_GET['text']);
 	$url = $ini_array["CatalogueWebServiceUrl"]."details/notice-themed/".$_GET['permalink'];
+
+	$requiredHttpHeader = $inter_array["AuthOriginHttpHeaderName"];
+	$AuthOrigin = getHeader($requiredHttpHeader);
+	if(NULL == $AuthOrigin)
+	{
+		echo "HTTP_HEADER[\"AuthOrigin\"] NOT FOUND!!! <br />";
+		$AuthOrigin  = $inter_array["DefaultProfil"];
+	}
+
 	$opts = [
 	"http" => [
 		"method" => "GET",
-		"header" => "AuthOrigin: ".$inter_array["DefaultProfil"]."\r\n"
+		"header" => "AuthOrigin: ".$AuthOrigin."\r\n"
 		]
 	];
 	$context = stream_context_create($opts);
