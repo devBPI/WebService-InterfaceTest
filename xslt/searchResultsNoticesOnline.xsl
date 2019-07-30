@@ -14,39 +14,41 @@
 					<div class="notice-online" style="overflow:hidden;">
 						<xsl:call-template name="noticesShortTop"/>
 
-						<xsl:if test="(./liens)">
+						<xsl:if test="(liens)">
 							<div class="liens">
-								<xsl:for-each select="./liens/lien">
+								<xsl:for-each select="liens/lien">
 									<div class="lien">
-										Lien <xsl:value-of select="position()"/>: 
-										<xsl:if test="url"><a href="{./url}"><xsl:value-of select="./url"/></a></xsl:if>
+										<xsl:choose>
+											<xsl:when test="url">
+												Lien <xsl:value-of select="position()"/>: <a href="{url}"><xsl:value-of select="url"/></a>
+											</xsl:when>
+											<xsl:when test="media">
+												Lien <xsl:value-of select="position()"/>: 
+												<a href="/media.php?media={media}">
+													<xsl:choose>
+														<xsl:when test="title">
+															<xsl:value-of select="title"/>
+														</xsl:when>
+														<xsl:otherwise>
+															LIEN MEDIA
+														</xsl:otherwise>
+													</xsl:choose>
+												</a>
+											</xsl:when>
+											<xsl:otherwise></xsl:otherwise>
+										</xsl:choose>
 										<xsl:if test="disponibilite">
 											<div class="disponibilite" style="font-weight: bold; color: #FF0000;">
 												<xsl:if test="used-profil">PROFIL&#160;<xsl:value-of select="used-profil"/></xsl:if>&#160;&#61;&#62;&#160;<xsl:value-of select="disponibilite"/>
 											</div>
 										</xsl:if>
-										<xsl:if test="(./right)">
-											 - <xsl:value-of select="./right"/>
+										<xsl:if test="(right)">
+											 - <xsl:value-of select="right"/>
 										</xsl:if>
 									</div>
 								</xsl:for-each>
 							</div>
 						</xsl:if>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 						<xsl:call-template name="noticesShortBottom"/>
 						<div style="clear:both"></div>
 					</div>

@@ -48,6 +48,7 @@
 							</div>
 						</xsl:if>
 
+
 						<xsl:call-template name="noticesShortBottom"/>
 						<div style="clear:both"></div>
 					</div>
