@@ -7,7 +7,7 @@ function loadMappedNotices(element, key, id, count, page, rows)
 	var numPages=Math.ceil(count/rows);
 	console.log(id + " : load " + key + ", p" + page + "/" + numPages + " x " + count);
 	//element.innerHTML=("+"+page);
-	var url = "/mappedNoticesToAuthorities.php?key="+key+"&id="+id+"&rows="+rows+"&count="+count+"&page="+page+"&numPages="+numPages;
+	var url = "/mappedNoticesToIndicesCdu.php?key="+key+"&id="+id+"&rows="+rows+"&count="+count+"&page="+page+"&numPages="+numPages;
 	console.log(url);
 	$(element).load(url);
 }
