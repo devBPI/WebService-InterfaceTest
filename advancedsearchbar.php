@@ -1,21 +1,43 @@
 <div id="advancedSearchTyping" style="/*float: left; margin-right: 10px;*/">
-	<div class="autocomplete">
-		<input type="text" id="searchbar" class="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();}" <?php if($defaultSearchText!=null){echo "value=\"".$defaultSearchText."\"";} ?> />
-	</div>
-	<select id="searchBarSelection" class="searchBarSelection">
-		<option class="searchBarSelectionGenerale" "selected" value="general">Tous les mots</option>
-		<option class="searchBarSelectionTitre" value="titre">Titre</option>
-		<option class="searchBarSelectionAuteur" value="auteur">Auteur</option>
-		<option class="searchBarSelectionRealisateur" value="realisateur">Réalisateur</option>
-		<option class="searchBarSelectionSujet" value="sujet">Sujet</option>
-		<option class="searchBarSelectionTheme" value="theme">Thème</option>
-		<option class="searchBarSelectionEdition" value="editeur">Éditeur</option>
-		<option class="searchBarSelectionDatePublication" value="date-publication">Date de publication (précise)</option>
-		<option class="searchBarSelectionIssnIsbnCom" value="isbn-issn-numcommercial">ISBN, ISSN, numéros commerciaux</option>
-		<option class="searchBarSelectionIndiceCote" value="indice-cote">Indice / Cote</option>
-		<option class="searchBarSelectionCollection" value="collection">Collection</option>
-	</select>
-	<input id="loupe" type="submit" value=" " onclick="search();" />
+<?php
+	if(null != $defaultAdvancedSearchCriterias)
+	{
+		$xslUrl = "xslt/advancedSearchCriterias.xsl";
+		$xml = new DOMDocument('1.0', 'utf-8');
+		$xml->loadXML($defaultAdvancedSearchCriterias);
+
+		$xsl = new DOMDocument;
+		$xsl->load($xslUrl);
+
+		$proc = new XSLTProcessor;
+		$proc->importStyleSheet($xsl);
+
+		//echo str_replace("¿", "", $proc->transformToXML($xml));
+		echo $proc->transformToXML($xml);
+	}
+	else
+	{
+?>
+		<div class="autocomplete">
+			<input type="text" id="searchbar" class="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();}" />
+		</div>
+		<select id="searchBarSelection" class="searchBarSelection">
+			<option class="searchBarSelectionGenerale" "selected" value="general">Tous les mots</option>
+			<option class="searchBarSelectionTitre" value="titre">Titre</option>
+			<option class="searchBarSelectionAuteur" value="auteur">Auteur</option>
+			<option class="searchBarSelectionRealisateur" value="realisateur">Réalisateur</option>
+			<option class="searchBarSelectionSujet" value="sujet">Sujet</option>
+			<option class="searchBarSelectionTheme" value="theme">Thème</option>
+			<option class="searchBarSelectionEdition" value="editeur">Éditeur</option>
+			<option class="searchBarSelectionDatePublication" value="date-publication">Date de publication (précise)</option>
+			<option class="searchBarSelectionIssnIsbnCom" value="isbn-issn-numcommercial">ISBN, ISSN, numéros commerciaux</option>
+			<option class="searchBarSelectionIndiceCote" value="indice-cote">Indice / Cote</option>
+			<option class="searchBarSelectionCollection" value="collection">Collection</option>
+		</select>
+		<input id="loupe" type="submit" value=" " onclick="search();" />
+<?php
+	}
+?>
 	<div id="additionnalConditions">
 	</div>
 	<div id="conditionSchema" style="display: none;">
@@ -102,7 +124,7 @@
 <?php
 	$data = array('parcours' => $parkour, 'page' => $page, 'rows' => $rows);
 	//if($defaultGeneral!=null)              $data["general"]                 = $defaultGeneral;
-	if($defaultTitre!=null)                $data["titre"]                   = $defaultTitre;
+	/*if($defaultTitre!=null)                $data["titre"]                   = $defaultTitre;
 	if($defaultAuteur!=null)               $data["auteur"]                  = $defaultAuteur;
 	if($defaultSujet!=null)                $data["sujet"]                   = $defaultSujet;
 	if($defaultIsbnIssnCommercial!=null)   $data["isbn-issn-numcommercial"] = $defaultIsbnIssnCommercial;
@@ -114,7 +136,7 @@
 	if($defaultEditeur!=null)              $data["editeur"]                 = $defaultEditeur;
 	if($defaultCollection!=null)           $data["collection"]              = $defaultCollection;
 	if($defaultDatePublicationStart!=null) $data["date-publication-debut"]  = $defaultDatePublicationStart;
-	if($defaultDatePublicationEnd!=null)   $data["date-publication-fin"]    = $defaultDatePublicationEnd;
+	if($defaultDatePublicationEnd!=null)   $data["date-publication-fin"]    = $defaultDatePublicationEnd;*/
 	/*if($defaultLangue!=null)               $data["langue"]                  = $defaultLangue;
 	if($defaultType!=null)                 $data["type"]                    = $defaultType;
 	if($defaultSupport!=null)              $data["support"]                 = $defaultSupport;

@@ -30,15 +30,19 @@
 		<a id="parkourPresse" onclick="window.location='/presse'+window.location.search;" <?php if($parkour=="presse"){echo "class=\"selected-parkour\"";}?>>Presse</a>
 	</div>
 	<div id="carouselWrapper"></div>
-
-	<div id="simpleSearchDiv">
+<?php
+	if(null != $defaultAdvancedSearchCriterias)
+		echo "<div id=\"simpleSearchDiv\" style=\"display:none;\" selected>";
+	else
+		echo "<div id=\"simpleSearchDiv\" style=\"display:block;\" selected>";
+?>
 		<div>
 <?php
-			if(null != $defaultBasicSearchCriterias)
+			if(null != $defaultSimpleSearchCriterias)
 			{
-				$xslUrl = "xslt/basicSearchCriterias.xsl";
+				$xslUrl = "xslt/simpleSearchCriterias.xsl";
 				$xml = new DOMDocument('1.0', 'utf-8');
-				$xml->loadXML($defaultBasicSearchCriterias);
+				$xml->loadXML($defaultSimpleSearchCriterias);
 
 				$xsl = new DOMDocument;
 				$xsl->load($xslUrl);
@@ -53,7 +57,7 @@
 			{
 ?>
 				<div class="autocomplete">
-					<input type="text" id="searchbar" class="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();}" <?php if($defaultSearchText!=null){echo "value=\"".$defaultSearchText."\"";} ?> />
+					<input type="text" id="searchbar" class="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();}" />
 				</div>
 				<select id="searchBarSelection" class="searchBarSelection">
 					<option class="searchBarSelectionGenerale" "selected" value="general">Tous les mots</option>
@@ -73,7 +77,8 @@
 <?php
 			}
 ?>
-			<!--<div id="conditionSchema" style="display: none;">
+			<div style="display: none;">
+			<div id="conditionSchema" style="display: none;">
 				<select class="searchBarOperator">
 					<option value="ET">ET</option>
 					<option value="OU">OU</option>
@@ -98,13 +103,20 @@
 				Supprimer la condition
 			</div>
 			<input class="addConditionButton" type="submit" value="+" onclick="addCondition();" />
-			Ajouter une condition-->
+			Ajouter une condition
+			</div>
 		</div>
 	</div>
-	<div id="advancedSearchDiv" style="display:none;">
-		<?php include('advancedsearchbar.php'); ?>
+
+<?php
+	if(null != $defaultAdvancedSearchCriterias)
+		echo "<div id=\"advancedSearchDiv\" style=\"display:block;\" >";
+	else
+		echo "<div id=\"advancedSearchDiv\" style=\"display:none;\" ><span />";
+		include('advancedsearchbar.php');
+?>
 	</div>
-	<input id="advancedSearchButton" type="submit" value="+" onclick="advancedSearch();" /> Recherche avancée
+	<input id="advancedSearchButton" type="submit" <?php if(null != $defaultAdvancedSearchCriterias) echo 'value="-"'; else echo 'value="+"' ?> onclick="advancedSearch();" /> Recherche avancée
 </div>
 <div id="result-lists" style="width: 100%;">
 	<div id="facetsdiv" style="margin: 3px; grid-column: 1 / span 2;">

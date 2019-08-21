@@ -151,7 +151,7 @@
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="(datesPublication/datePublication)">
+		<xsl:if test="not(datesTextuelles/dateTextuelle) and (datesPublication/datePublication)">
 			<div id="dates">
 				Date(s)&#160;
 				<xsl:if test="(datesPublication/datePublication)">
@@ -165,7 +165,7 @@
 				</xsl:if>
 			</div>
 		</xsl:if>
-		<xsl:if test="not(datesPublication/datePublication) and (datesTextuelles/dateTextuelle)">
+		<xsl:if test="(datesTextuelles/dateTextuelle)">
 			<div id="dates">
 				Date(s)&#160;
 				<xsl:for-each select="datesTextuelles/dateTextuelle">

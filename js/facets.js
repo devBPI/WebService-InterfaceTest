@@ -228,3 +228,19 @@ function cleanFacets()
 	window.location.search = urlParams.toString();
 }
 
+function displayHideFacet(facetDiv)
+{
+	facetDiv.style.display = ((facetDiv.style.display == 'none') ? 'block' : 'none');
+}
+
+function hideFacets()
+{
+	document.getElementById("facetsContainer").style.display = 'none';
+	document.getElementById("facetsShowButton").style.display = 'block';
+}
+
+function displayFacets()
+{
+	document.getElementById("facetsContainer").style.display = 'block';
+	document.getElementById("facetsShowButton").style.display = 'none';
+}

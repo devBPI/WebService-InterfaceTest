@@ -30,10 +30,11 @@
 	}
 
 	ini_set("display_errors",1);
-	$defaultBasicSearchCriterias = isGetOk("basicSearchCriterias");
+	$defaultSimpleSearchCriterias   = isGetOk("simpleSearchCriterias");
+	$defaultAdvancedSearchCriterias = isGetOk("advancedSearchCriterias");
 	//$defaultGeneralSignification = urldecode(isGetOk("generalSignification"));
 	//$defaultGeneral              = urldecode(isGetOk("general"));
-	$defaultSearchText           = urldecode(isGetOk("general"));
+	/*$defaultSearchText           = urldecode(isGetOk("general"));
 	$defaultTitre                = urldecode(isGetOk("titre"));
 	$defaultAuteur               = urldecode(isGetOk("auteur"));
 	$defaultSujet                = urldecode(isGetOk("sujet"));
@@ -54,7 +55,7 @@
 	$defaultGenreFilm            = urldecode(isGetOk("genrefilm"));
 	$defaultGenreLitt            = urldecode(isGetOk("genrelitt"));
 	$defaultSecteur              = urldecode(isGetOk("secteur"));
-	$defaultAudience             = urldecode(isGetOk("audience"));
+	$defaultAudience             = urldecode(isGetOk("audience"));*/
 	$defaultFacets               = urldecode(isGetOk("facets"));
 	
 	$inter_array = parse_ini_file("etc/interface.ini");

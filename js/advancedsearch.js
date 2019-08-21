@@ -1,14 +1,20 @@
+function isAdvancedSearchSelected()
+{
+	var buttonValue=document.getElementById("advancedSearchButton").value;
+	return ((buttonValue=='-')? true : false);
+}
+
 function advancedSearch()
 {
 	var buttonValue=document.getElementById("advancedSearchButton").value;
-	if(buttonValue=='+')
+	if(!isAdvancedSearchSelected())
 	{
 		document.getElementById("advancedSearchButton").value = '-';
 		//document.getElementById("advancedSearchDiv").style.display = 'flex';
 		document.getElementById("advancedSearchDiv").style.display = 'block';
 		document.getElementById("simpleSearchDiv").style.display = 'none';
 	}
-	else if(buttonValue=='-')
+	else
 	{
 		document.getElementById("advancedSearchButton").value = '+';
 		document.getElementById("advancedSearchDiv").style.display = 'none';
