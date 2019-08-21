@@ -31,7 +31,7 @@
 	</div>
 	<div id="carouselWrapper"></div>
 
-	<div>
+	<div id="simpleSearchDiv">
 		<div>
 <?php
 			if(null != $defaultBasicSearchCriterias)
@@ -57,23 +57,23 @@
 				</div>
 				<select id="searchBarSelection" class="searchBarSelection">
 					<option class="searchBarSelectionGenerale" "selected" value="general">Tous les mots</option>
-					<option class="searchBarSelectionAuteur" value="auteur">Auteur</option>
 					<option class="searchBarSelectionTitre" value="titre">Titre</option>
+					<option class="searchBarSelectionAuteur" value="auteur">Auteur</option>
+					<option class="searchBarSelectionRealisateur" value="realisateur">Réalisateur</option>
 					<option class="searchBarSelectionSujet" value="sujet">Sujet</option>
+					<option class="searchBarSelectionTheme" value="theme">Thème</option>
+					<option class="searchBarSelectionEdition" value="editeur">Éditeur</option>
+					<option class="searchBarSelectionDatePublication" value="date-publication">Date de publication (précise)</option>
 					<option class="searchBarSelectionIssnIsbnCom" value="isbn-issn-numcommercial">ISBN, ISSN, numéros commerciaux</option>
 					<option class="searchBarSelectionIndiceCote" value="indice-cote">Indice / Cote</option>
-					<option class="searchBarSelectionDatePublication" value="date-publication">Date de publication (précise)</option>
-					<option class="searchBarSelectionEdition" value="editeur">Éditeur</option>
-					<option class="searchBarSelectionRealisateur" value="realisateur">Réalisateur</option>
-					<option class="searchBarSelectionTheme" value="theme">Thème</option>
 				</select>
 				<input id="loupe" type="submit" value=" " onclick="search();" />
-				<div id="additionnalConditions">
-				</div>
+				<!--<div id="additionnalConditions">
+				</div>-->
 <?php
 			}
 ?>
-			<div id="conditionSchema" style="display: none;">
+			<!--<div id="conditionSchema" style="display: none;">
 				<select class="searchBarOperator">
 					<option value="ET">ET</option>
 					<option value="OU">OU</option>
@@ -98,14 +98,14 @@
 				Supprimer la condition
 			</div>
 			<input class="addConditionButton" type="submit" value="+" onclick="addCondition();" />
-			Ajouter une condition
+			Ajouter une condition-->
 		</div>
 	</div>
+	<div id="advancedSearchDiv" style="display:none;">
+		<?php include('advancedsearchbar.php'); ?>
+	</div>
+	<input id="advancedSearchButton" type="submit" value="+" onclick="advancedSearch();" /> Recherche avancée
 </div>
-<div id="advancedSearchDiv" style="margin-top: 10px; display:none;">
-	<?php include('advancedsearchbar.php'); ?>
-</div>
-<input id="advancedSearchButton" type="submit" value="+" onclick="advancedSearch();" /> Recherche avancée
 <div id="result-lists" style="width: 100%;">
 	<div id="facetsdiv" style="margin: 3px; grid-column: 1 / span 2;">
 		<div id="facets"></div>

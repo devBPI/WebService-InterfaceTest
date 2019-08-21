@@ -1,5 +1,55 @@
-<div id="advancedSearchTyping" style="float: left; margin-right: 10px;">
-	<div id="advancedsearch-titre-div" class="autocomplete-title">
+<div id="advancedSearchTyping" style="/*float: left; margin-right: 10px;*/">
+	<div class="autocomplete">
+		<input type="text" id="searchbar" class="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();}" <?php if($defaultSearchText!=null){echo "value=\"".$defaultSearchText."\"";} ?> />
+	</div>
+	<select id="searchBarSelection" class="searchBarSelection">
+		<option class="searchBarSelectionGenerale" "selected" value="general">Tous les mots</option>
+		<option class="searchBarSelectionTitre" value="titre">Titre</option>
+		<option class="searchBarSelectionAuteur" value="auteur">Auteur</option>
+		<option class="searchBarSelectionRealisateur" value="realisateur">Réalisateur</option>
+		<option class="searchBarSelectionSujet" value="sujet">Sujet</option>
+		<option class="searchBarSelectionTheme" value="theme">Thème</option>
+		<option class="searchBarSelectionEdition" value="editeur">Éditeur</option>
+		<option class="searchBarSelectionDatePublication" value="date-publication">Date de publication (précise)</option>
+		<option class="searchBarSelectionIssnIsbnCom" value="isbn-issn-numcommercial">ISBN, ISSN, numéros commerciaux</option>
+		<option class="searchBarSelectionIndiceCote" value="indice-cote">Indice / Cote</option>
+		<option class="searchBarSelectionCollection" value="collection">Collection</option>
+	</select>
+	<input id="loupe" type="submit" value=" " onclick="search();" />
+	<div id="additionnalConditions">
+	</div>
+	<div id="conditionSchema" style="display: none;">
+		<select class="searchBarOperator">
+			<option value="ET">ET</option>
+			<option value="OU">OU</option>
+				<option value="SAUF">SAUF</option>
+		</select>
+		<div class="autocomplete">
+			<input type="text" class="searchbar" name="searchbar" autocomplete="off" size=42 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();}" />
+		</div>
+		<select class="searchBarSelection">
+			<option class="searchBarSelectionGenerale" value="general">Tous les mots</option>
+			<option class="searchBarSelectionTitre" value="titre">Titre</option>
+			<option class="searchBarSelectionAuteur" value="auteur">Auteur</option>
+			<option class="searchBarSelectionRealisateur" value="realisateur">Réalisateur</option>
+			<option class="searchBarSelectionSujet" value="sujet">Sujet</option>
+			<option class="searchBarSelectionTheme" value="theme">Thème</option>
+			<option class="searchBarSelectionEdition" value="editeur">Éditeur</option>
+			<option class="searchBarSelectionDatePublication" value="date-publication">Date de publication (précise)</option>
+			<option class="searchBarSelectionIssnIsbnCom" value="isbn-issn-numcommercial">ISBN, ISSN, numéros commerciaux</option>
+			<option class="searchBarSelectionIndiceCote" value="indice-cote">Indice / Cote</option>
+			<option class="searchBarSelectionCollection" value="collection">Collection</option>
+		</select>
+		<input class="delConditionButton" type="submit" value="-" onclick="removeCondition(this.parentNode);" />
+		Supprimer la condition
+	</div>
+	<input class="addConditionButton" type="submit" value="+" onclick="addCondition();" />
+	Ajouter une condition
+
+
+
+
+	<!--<div id="advancedsearch-titre-div" class="autocomplete-title">
 		<input type="text" id="advancedsearch-titre"                name="advancedsearch-titre"                 autocomplete="off" size=50 placeholder="Titre…"                         onkeyup="if(event.keyCode==13)search();" <?php if($defaultTitre!=null){echo "value=\"".encodeStringForInput($defaultTitre)."\"";} ?> /><br />
 	</div>
 	<div id="advancedsearch-auteur-div" class="autocomplete-unk">
@@ -45,9 +95,10 @@
 	<div id="advancedsearch-datepublicationstart-div" class="autocomplete-unk">
 	</div>
 	<div id="advancedsearch-datepublicationend-div" class="autocomplete-unk">
-	</div>
+	</div>-->
 </div>
-<div id="advancedSearchLists" style= "margin-left: 10px;">
+
+<div id="advancedSearchLists" style= "margin: 10px; display: flex;">
 <?php
 	$data = array('parcours' => $parkour, 'page' => $page, 'rows' => $rows);
 	//if($defaultGeneral!=null)              $data["general"]                 = $defaultGeneral;
@@ -80,12 +131,6 @@
 	$advancedSearchElements = file_get_contents($url);
 	$xslUrl = "xslt/advancedSearchBar.xsl";
 
-	echo "<div style='margin-bottom: 13px;'>";
-	echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";
-	echo "<br />";
-	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
-	echo "</div>";
-
 	$simpleXml = new SimpleXMLElement($advancedSearchElements);
 	$xmlTxt =  $simpleXml->asXML();
 	$xml = new DOMDocument('1.0', 'utf-8');
@@ -98,5 +143,11 @@
 	$proc->importStyleSheet($xsl);
 
 	echo $proc->transformToXML($xml);
+
+	echo "<div style='margin-left: 5px;'>";
+	echo "	<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px;\">URL du WebService</a>";
+	echo "	<br />";
+	echo "	<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
+	echo "</div>";
 ?>
 </div>

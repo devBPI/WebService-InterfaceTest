@@ -21,26 +21,6 @@
 				</ul>
 			</div>
 		</xsl:if>
-		<xsl:if test="langues/langue">
-			<div id="languesList" title="language" class="btn-group">
-				<button type="button" class="btn btn-default" data-toggle="dropdown" title="Langues" onclick="displayBtnGrp(this);">
-					<span class="multiselect-selected-text">Langues</span><div class="caret"></div>
-				</button><br />
-				<ul id="languesUl" class="multiselect-container dropdown-menu">
-					<xsl:for-each select="langues/langue">
-						<xsl:sort select="."/>
-						<li class="">
-							<div tabindex="0">
-								<label class="checkbox" title="{.}">
-									<input class="checkboxinput" type="checkbox" onchange="checkElement(this);"></input>
-									<xsl:value-of select="."/>
-								</label>
-							</div>
-						</li>
-					</xsl:for-each>
-				</ul>
-			</div>
-		</xsl:if>
 		<xsl:if test="types/type">
 			<div id="typesList" title="type" class="btn-group">
 				<button type="button" class="btn btn-default" data-toggle="dropdown" title="Type de document" onclick="displayBtnGrp(this);">
@@ -68,6 +48,26 @@
 				</button><br />
 				<ul id="supportsUl" class="multiselect-container dropdown-menu">
 					<xsl:for-each select="supports/support">
+						<xsl:sort select="."/>
+						<li class="">
+							<div tabindex="0">
+								<label class="checkbox" title="{.}">
+									<input class="checkboxinput" type="checkbox" onchange="checkElement(this);"></input>
+									<xsl:value-of select="."/>
+								</label>
+							</div>
+						</li>
+					</xsl:for-each>
+				</ul>
+			</div>
+		</xsl:if>
+		<xsl:if test="langues/langue">
+			<div id="languesList" title="language" class="btn-group">
+				<button type="button" class="btn btn-default" data-toggle="dropdown" title="Langues" onclick="displayBtnGrp(this);">
+					<span class="multiselect-selected-text">Langues</span><div class="caret"></div>
+				</button><br />
+				<ul id="languesUl" class="multiselect-container dropdown-menu">
+					<xsl:for-each select="langues/langue">
 						<xsl:sort select="."/>
 						<li class="">
 							<div tabindex="0">
@@ -141,13 +141,13 @@
 				</ul>
 			</div>
 		</xsl:if>
-		<xsl:if test="secteurs/secteur">
-			<div id="secteursList" title="secteur" class="btn-group">
-				<button type="button" class="btn btn-default" data-toggle="dropdown" title="Secteurs" onclick="displayBtnGrp(this);">
-					<span class="multiselect-selected-text">Secteur</span><div class="caret"></div>
+		<xsl:if test="publiques/publique">
+			<div id="publiquesList" title="audience" class="btn-group">
+				<button type="button" class="btn btn-default" data-toggle="dropdown" title="Public destinataire" onclick="displayBtnGrp(this);">
+					<span class="multiselect-selected-text">Public destinataire</span><div class="caret"></div>
 				</button><br />
-				<ul id="secteursUl" class="multiselect-container dropdown-menu">
-					<xsl:for-each select="secteurs/secteur">
+				<ul id="publiquesUl" class="multiselect-container dropdown-menu">
+					<xsl:for-each select="publiques/publique">
 						<xsl:sort select="."/>
 						<li class="">
 							<div tabindex="0">
@@ -161,13 +161,13 @@
 				</ul>
 			</div>
 		</xsl:if>
-		<xsl:if test="publiques/publique">
-			<div id="publiquesList" title="audience" class="btn-group">
-				<button type="button" class="btn btn-default" data-toggle="dropdown" title="Public destinataire" onclick="displayBtnGrp(this);">
-					<span class="multiselect-selected-text">Public destinataire</span><div class="caret"></div>
+		<xsl:if test="secteurs/secteur">
+			<div id="secteursList" title="secteur" class="btn-group">
+				<button type="button" class="btn btn-default" data-toggle="dropdown" title="Secteurs" onclick="displayBtnGrp(this);">
+					<span class="multiselect-selected-text">Secteur</span><div class="caret"></div>
 				</button><br />
-				<ul id="publiquesUl" class="multiselect-container dropdown-menu">
-					<xsl:for-each select="publiques/publique">
+				<ul id="secteursUl" class="multiselect-container dropdown-menu">
+					<xsl:for-each select="secteurs/secteur">
 						<xsl:sort select="."/>
 						<li class="">
 							<div tabindex="0">

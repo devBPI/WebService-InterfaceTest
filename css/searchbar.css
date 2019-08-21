@@ -113,6 +113,7 @@
 .btn-group
 {
 	margin-bottom: 5px;
+	margin-right: 5px;
 }
 
 .btn
@@ -202,9 +203,10 @@
 	cursor: pointer;
 }
 
-.searchBarSelectionEdition,
-.searchBarSelectionRealisateur,
-.searchBarSelectionTheme,
+#simpleSearchDiv .searchBarSelectionEdition,
+#simpleSearchDiv .searchBarSelectionRealisateur,
+#advancedSearchDiv .searchBarSelectionRealisateur,
+#simpleSearchDiv .searchBarSelectionTheme,
 #advancedsearch-realisateur-div,
 #publiquesList
 {

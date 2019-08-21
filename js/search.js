@@ -374,21 +374,6 @@ function changeNoticesOnlinePage(page)
 	$("#notices-online").load(url);
 }
 
-function advancedSearch()
-{
-	var buttonValue=document.getElementById("advancedSearchButton").value;
-	if(buttonValue=='+')
-	{
-		document.getElementById("advancedSearchButton").value = '-';
-		document.getElementById("advancedSearchDiv").style.display = 'flex';
-	}
-	else if(buttonValue=='-')
-	{
-		document.getElementById("advancedSearchButton").value = '+';
-		document.getElementById("advancedSearchDiv").style.display = 'none';
-	}
-}
-
 function displayHideFacet(facetDiv)
 {
 	facetDiv.style.display = ((facetDiv.style.display == 'none') ? 'block' : 'none');

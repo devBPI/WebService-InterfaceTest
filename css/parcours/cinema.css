@@ -2,7 +2,8 @@
 /* Advanced SearchBar */
 /**********************/
 
-.searchBarSelectionRealisateur,
+#simpleSearchDiv .searchBarSelectionRealisateur,
+#advancedSearchDiv .searchBarSelectionRealisateur,
 #advancedsearch-realisateur-div
 {
 	display: block;

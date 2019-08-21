@@ -1,3 +1,21 @@
+function advancedSearch()
+{
+	var buttonValue=document.getElementById("advancedSearchButton").value;
+	if(buttonValue=='+')
+	{
+		document.getElementById("advancedSearchButton").value = '-';
+		//document.getElementById("advancedSearchDiv").style.display = 'flex';
+		document.getElementById("advancedSearchDiv").style.display = 'block';
+		document.getElementById("simpleSearchDiv").style.display = 'none';
+	}
+	else if(buttonValue=='-')
+	{
+		document.getElementById("advancedSearchButton").value = '+';
+		document.getElementById("advancedSearchDiv").style.display = 'none';
+		document.getElementById("simpleSearchDiv").style.display = 'block';
+	}
+}
+
 function addDDmask(dropdown)
 {
 	var y = document.getElementsByClassName('dd-mask');
