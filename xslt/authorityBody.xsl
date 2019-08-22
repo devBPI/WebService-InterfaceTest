@@ -83,7 +83,7 @@
 				<div id="formesAssociees">
 					<div style="margin-right: 0.5em; text-decoration: underline;">Nom(s) associé(s) / Nom(s) lié(s)</div>
 					<xsl:for-each select="formesAssociees/formeAssociee">
-						<div style="margin-left: 0.5em;"><a href="{$rebondUrl}/?basicSearchCriterias=&#60;search-criterias&#62;&#60;general&#62;{.}&#60;&#47;general&#62;&#60;&#47;search-criterias&#62;"><xsl:value-of select="."/></a></div>
+						<div style="margin-left: 0.5em;"><a href="{$rebondUrl}/?simpleSearchCriterias=&#60;search-criterias&#62;&#60;general&#62;{.}&#60;&#47;general&#62;&#60;&#47;search-criterias&#62;"><xsl:value-of select="."/></a></div>
 					</xsl:for-each>
 				</div>
 			</xsl:if>
