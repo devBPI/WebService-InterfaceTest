@@ -6,7 +6,7 @@
 	<xsl:variable name="notices-rows-id">notices-rows</xsl:variable>
 	<xsl:include href="searchResultsNotices.xsl"/>
 	<xsl:include href="searchResultsNoticesPagination.xsl"/>
-	<xsl:template name="noticesOfflineSearch" match="notices|/results/notices">
+	<xsl:template match="notices|/results/notices">
 		<div>
 			<xsl:call-template name="pagination"/>
 			<div class="noticesContainer">

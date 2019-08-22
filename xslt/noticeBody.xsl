@@ -41,7 +41,7 @@
 				Traduction de :
 				<xsl:for-each select="traductionsDe/traductionDe">
 					<div>
-						<a href='{$rebondUrl}/?titre={.}'><xsl:value-of select="."/></a>
+						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Ctitre%3E{.}%3C%2Ftitre%3C%3E%2Fsearch-criterias%3E'><xsl:value-of select="."/></a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -66,7 +66,7 @@
 				<div id="realisateurs">
 					<xsl:for-each select="realisateurs/realisateur">
 						<div style="margin-left: 1em;">
-							<a href='{$rebondUrl}/?auteur={value}'><xsl:value-of select="."/></a>
+							<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Cauteur%3E{value}%3C%2Fauteur%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="."/></a>
 						</div>
 					</xsl:for-each>
 				</div>
@@ -77,7 +77,7 @@
 						Auteur(s)<xsl:if test="(type='Musique')">, compositeur(s), interprète(s)</xsl:if>&#160;:&#160; 
 						<xsl:for-each select="auteurs/auteur">
 							<div>
-								<a href='{$rebondUrl}/?auteur={value}'>
+								<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Cauteur%3E{value}%3C%2Fauteur%3E%3C%2Fsearch-criterias%3E'>
 									<xsl:value-of select="value"/>
 									<xsl:if test="complement">&#160;,&#160;<xsl:value-of select="complement"/></xsl:if>
 								</a>
@@ -108,7 +108,7 @@
 				Autre(s) auteur(s)<xsl:if test="(type='Musique')">, compositeur(s), interprète(s)</xsl:if>
 				<xsl:for-each select="auteursSecondaires/auteurSecondaire">
 					<div>
-						<a href='{$rebondUrl}/?auteur={value}'>
+						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Cauteur%3E{value}%3C%2Fauteur%3E%3C%2Fsearch-criterias%3E'>
 							<xsl:value-of select="value"/>
 							<xsl:if test="complement">&#160;,&#160;<xsl:value-of select="complement"/></xsl:if>
 						</a>
@@ -122,7 +122,7 @@
 				<xsl:if test="type='Vidéo'">
 					<xsl:for-each select="auteurs/auteur">
 						<div style="margin-left: 1em;">	
-							<a href='{$rebondUrl}/?auteur={value}'>
+							<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Cauteur%3E{value}%3C%2Fauteur%3E%3C%2Fsearch-criterias%3E'>
 								<xsl:value-of select="./value"/>
 								<xsl:if test="complement">&#160;-&#160;<xsl:value-of select="complement"/></xsl:if>
 							</a>
@@ -131,7 +131,7 @@
 				</xsl:if>
 				<xsl:for-each select="contributeurs/contributeur">
 					<div style="margin-left: 1em;">	
-						<a href='{$rebondUrl}/?auteur={value}'>
+						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Cauteur%3E{value}%3C%2Fauteur%3E%3C%2Fsearch-criterias%3E'>
 							<xsl:value-of select="./value"/>
 							<xsl:if test="complement">&#160;-&#160;<xsl:value-of select="complement"/></xsl:if>
 						</a>
@@ -144,7 +144,7 @@
 				Editeur(s)   
 				<xsl:for-each select="editeurs/editeur">
 					<div style="margin-left: 1em;">	
-						<a href='{$rebondUrl}/?editeur={.}'>
+						<a href='{$rebondUrl}/?advancedSearchCriterias=%3Csearch-criterias%3E%3Cediteur%3E{.}%3C%2Fediteur%3E%3C%2Fsearch-criterias%3E'>
 							<xsl:value-of select="."/>
 						</a>
 					</div>
@@ -200,7 +200,7 @@
 				Oeuvre(s) 
 				<xsl:for-each select="titresUniform/titreUniform">
 					<div style="margin-left: 1em;">
-						<a href='{$rebondUrl}/?titre={.}'><xsl:value-of select="."/></a>
+						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Ctitre%3E{.}%3C%2Ftitre%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="."/></a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -210,7 +210,7 @@
 				Autre(s) forme(s) de titre  
 				<xsl:for-each select="titresAlternatifs/titreAlternatif">
 					<div style="margin-left: 1em;">
-						<a href='{$rebondUrl}/?titre={.}'><xsl:value-of select="."/></a>
+						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Ctitre%3E{.}%3C%2Ftitre%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="."/></a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -267,7 +267,7 @@
 				Série / Collection 
 				<xsl:for-each select="seriesCollection/serieCollection">
 					<div style="margin-left: 1em;">
-						<a href='{$rebondUrl}/?collection={.}'><xsl:value-of select="."/></a>
+						<a href='{$rebondUrl}/?advancedSearchCriterias=%3Csearch-criterias%3E%3Ccollection%3E{.}%3C%2Fcollection%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="."/></a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -277,7 +277,7 @@
 				Titre(s) d'ensemble 
 				<xsl:for-each select="titresEnsemble/titreEnsemble">
 					<div style="margin-left: 1em;">
-						<a href='{$rebondUrl}/?titre={.}'><xsl:value-of select="."/></a>
+						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Ctitre%3E{.}%3C%2Ftitre%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="."/></a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -287,7 +287,7 @@
 				Titre(s) en relation 
 				<xsl:for-each select="titresEnRelation/titreEnRelation">
 					<div style="margin-left: 1em;">
-						<a href='{$rebondUrl}/?titre={.}'><xsl:value-of select="."/></a>
+						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Ctitre%3E{.}%3C%2Ftitre%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="."/></a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -297,7 +297,7 @@
 				Réunit  
 				<xsl:for-each select="reunits/reunit">
 					<div style="margin-left: 1em;">
-						<a href='{$rebondUrl}/?titre={.}'><xsl:value-of select="."/></a>
+						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Ctitre%3E{.}%3C%2Ftitre%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="."/></a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -335,7 +335,7 @@
 				Sujet(s)
 				<xsl:for-each select="sujets/sujet">
 					<div style="margin-left: 1em;">
-						<a href='{$rebondUrl}/?sujet={value}'>
+						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Csujet%3E{value}%3C%2Fsujet%3E%3C%2Fsearch-criterias%3E'>
 							<xsl:value-of select="./value"/><xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
 						</a>
 					</div>
@@ -347,7 +347,7 @@
 				Epoque
 				<xsl:for-each select="epoques/epoque">
 					<div style="margin-left: 1em;">
-						<a href='{$rebondUrl}/?sujet={.}'><xsl:value-of select="."/></a>
+						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Csujet%3E{.}%3C%2Fsujet%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="."/></a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -357,7 +357,7 @@
 				Lieu
 				<xsl:for-each select="lieux/lieu">
 					<div style="margin-left: 1em;">
-						<a href='{$rebondUrl}/?sujet={.}'><xsl:value-of select="."/></a>
+						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Csujet%3E{.}%3C%2Fsujet%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="."/></a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -367,7 +367,7 @@
 				Genre
 				<xsl:for-each select="genres/genre">
 					<div style="margin-left: 1em;">
-						<a href='{$rebondUrl}/?sujet={.}'><xsl:value-of select="."/></a>
+						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Csujet%3E{.}%3C%2Fsujet%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="."/></a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -377,7 +377,7 @@
 				Thème(s) 
 				<xsl:for-each select="themes/theme">
 					<div style="margin-left: 1em;">
-						<a href='{$rebondUrl}/?sujet={.}'><xsl:value-of select="."/></a>
+						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Csujet%3E{.}%3C%2Fsujet%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="."/></a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -414,7 +414,7 @@
 				Indice
 				<xsl:for-each select="indices/indice">
 					<div style="margin-left: 1em;">	
-						<a href='{$rebondUrl}/?indicecote={cote}'><xsl:value-of select="cote"/>&#160;<xsl:value-of select="libelle"/></a>
+						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Cindice-cote%3E{cote}%3C%2Findice-cote%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="cote"/>&#160;<xsl:value-of select="libelle"/></a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -755,7 +755,7 @@
 			<xsl:if test="list-cdu-used/cdu-used/cote">
 				<div id="voirTouts">
 					<xsl:for-each select="list-cdu-used/cdu-used">
-						<a href='{$rebondUrl}/?indicecote={cote}'>
+						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Cindice-cote%3E{cote}%3C%2Findice-cote%3E%3C%2Fsearch-criterias%3E'>
 							<span class="voirToutButton">Voir tout</span>
 						</a>
 					</xsl:for-each>
