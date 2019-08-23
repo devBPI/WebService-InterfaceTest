@@ -1,3 +1,17 @@
+#pagination .pageSelector,
+#pagination .rowsSelector
+{
+	float: none !important;
+}
+
+#notices .pageSelector,
+#notices-online .pageSelector,
+#notices .rowsSelector,
+#notices-online .rowsSelector
+{
+	display: none;
+}
+
 a.notice-link,
 a.notice-online-link
 {

@@ -57,7 +57,7 @@
 			{
 ?>
 				<div class="autocomplete">
-					<input type="text" id="searchbar" class="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();}" />
+					<input type="text" id="searchbar" class="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){launchSearch();}" />
 				</div>
 				<select id="searchBarSelection" class="searchBarSelection">
 					<option class="searchBarSelectionGenerale" "selected" value="general">Tous les mots</option>
@@ -71,7 +71,7 @@
 					<option class="searchBarSelectionIssnIsbnCom" value="isbn-issn-numcommercial">ISBN, ISSN, numéros commerciaux</option>
 					<option class="searchBarSelectionIndiceCote" value="indice-cote">Indice / Cote</option>
 				</select>
-				<input id="loupe" type="submit" value=" " onclick="search();" />
+				<input id="loupe" type="submit" value=" " onclick="launchSearch();" />
 				<!--<div id="additionnalConditions">
 				</div>-->
 <?php
@@ -85,7 +85,7 @@
 					<option value="SAUF">SAUF</option>
 				</select>
 				<div class="autocomplete">
-					<input type="text" class="searchbar" name="searchbar" autocomplete="off" size=42 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){search();}" />
+					<input type="text" class="searchbar" name="searchbar" autocomplete="off" size=42 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){launchSearch();}" />
 				</div>
 				<select class="searchBarSelection">
 					<option class="searchBarSelectionGenerale" value="general">Tous les mots</option>

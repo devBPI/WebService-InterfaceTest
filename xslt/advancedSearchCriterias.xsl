@@ -6,7 +6,7 @@
 		<xsl:param name="barsize">50</xsl:param>
 		<div class="autocomplete">
 			<input type="text" id="searchbar" class="searchbar" name="searchbar" autocomplete="off" size="{$barsize}" placeholder="Rechercher sur le site…"><!-- onkeyup="if(event.keyCode==13)search();">-->
-				<xsl:attribute name="onkeyup">if(event.keyCode==13){search();}</xsl:attribute>
+				<xsl:attribute name="onkeyup">if(event.keyCode==13){launchSearch();}</xsl:attribute>
 				<xsl:if test="general">
 					<xsl:attribute name="value"><xsl:value-of select="general"/></xsl:attribute>
 				</xsl:if>
@@ -127,7 +127,7 @@
 	<xsl:template match="search-criterias">
 		<xsl:call-template name="searchBar" />
 		<xsl:call-template name="searchBarSelection" />
-		<input id="loupe" type="submit" value="&#160;" onclick="search();"></input>
+		<input id="loupe" type="submit" value="&#160;" onclick="launchSearch();"></input>
 		<!--<div id="additionnalConditions">&#191;</div>-->
 		<div id="additionnalConditions">
 			<xsl:choose>
