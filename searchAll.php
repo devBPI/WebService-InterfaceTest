@@ -204,7 +204,7 @@
 
 ?>
 </div>
-<div id="notices" style="margin: 3px; grid-column: 1;">
+<div style="grid-column: 1 / 3">
 <?php
 	$xslUrl = "xslt/orthographicSuggestions.xsl";
 
@@ -223,6 +223,27 @@
 	echo $proc->transformToXML($xml);
 
 	echo "</div>";
+?>
+</div>
+<div id="notices" style="margin: 3px; grid-column: 1;">
+<?php
+	/*$xslUrl = "xslt/orthographicSuggestions.xsl";
+
+	echo "<div class=\"suggestions\">";
+
+	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
+
+	$xsl = new DOMDocument;
+	$xsl->load($xslUrl);
+
+	$proc = new XSLTProcessor();
+	$proc->importStyleSheet($xsl);
+
+	$proc->setParameter('', 'rebondUrl', "");
+
+	echo $proc->transformToXML($xml);
+
+	echo "</div>";*/
 
 	$xslUrl = "xslt/searchResultsNoticesOffline.xsl";
 	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
@@ -242,7 +263,7 @@
 </div>
 <div id="notices-online" style="margin: 3px; grid-column: 2;">
 <?php
-	$xslUrl = "xslt/orthographicSuggestionsOnline.xsl";
+	/*$xslUrl = "xslt/orthographicSuggestionsOnline.xsl";
 
 	echo "<div class=\"suggestions\">";
 
@@ -258,7 +279,7 @@
 
 	echo $proc->transformToXML($xml);
 
-	echo "</div>";
+	echo "</div>";*/
 
 	$xslUrl = "xslt/searchResultsNoticesOnline.xsl";
 	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
