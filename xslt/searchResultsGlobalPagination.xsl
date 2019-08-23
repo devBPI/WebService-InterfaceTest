@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	<xsl:variable name="notices-label">notices</xsl:variable>
+	<xsl:variable name="notices-java-pagination">changeSearchPage</xsl:variable>
+	<xsl:variable name="notices-java-changerows">changeSearchRows</xsl:variable>
+	<xsl:variable name="notices-java-changesort">changeSearchSort</xsl:variable>
+	<xsl:variable name="notices-rows-id">search-rows</xsl:variable>
+	<xsl:variable name="notices-sort-id">search-sort</xsl:variable>
 	<xsl:template name="pagination">
 		<div class="pagination">
 			<div style="overflow:hidden;">
@@ -68,9 +74,75 @@
 							</xsl:choose>
 						</select> rows
 					</span>
+					<span class="sortSelector">&#160;-&#160;Tri&#160;:&#160;
+						<select id="{$notices-sort-id}" name="sort" onchange="{$notices-java-changesort}();">
+							<xsl:choose>
+								<xsl:when test="not(sort) or sort='DEFAULT'">
+									<option value="DEFAULT" selected="true">Pertinence</option>
+								</xsl:when>
+								<xsl:otherwise>
+									<option value="DEFAULT">Pertinence</option>
+								</xsl:otherwise>
+							</xsl:choose>
+							<xsl:choose>
+								<xsl:when test="sort='TITRE_A_Z'">
+									<option value="TITRE_A_Z" selected="true">Titre A-Z</option>
+								</xsl:when>
+								<xsl:otherwise>
+									<option value="TITRE_A_Z">Titre A-Z</option>
+								</xsl:otherwise>
+							</xsl:choose>
+							<xsl:choose>
+								<xsl:when test="sort='TITRE_Z_A'">
+									<option value="TITRE_Z_A" selected="true">Titre Z-A</option>
+								</xsl:when>
+								<xsl:otherwise>
+									<option value="TITRE_Z_A">Titre Z-A</option>
+								</xsl:otherwise>
+							</xsl:choose>
+							<xsl:choose>
+								<xsl:when test="sort='AUTEUR_A_Z'">
+									<option value="AUTEUR_A_Z" selected="true">Auteur A-Z</option>
+								</xsl:when>
+								<xsl:otherwise>
+									<option value="AUTEUR_A_Z">Auteur A-Z</option>
+								</xsl:otherwise>
+							</xsl:choose>
+							<xsl:choose>
+								<xsl:when test="sort='AUTEUR_Z_A'">
+									<option value="AUTEUR_Z_A" selected="true">Auteur Z-A</option>
+								</xsl:when>
+								<xsl:otherwise>
+									<option value="AUTEUR_Z_A">Auteur Z-A</option>
+								</xsl:otherwise>
+							</xsl:choose>
+							<xsl:choose>
+								<xsl:when test="sort='YOUNGER'">
+									<option value="YOUNGER" selected="true">Date +</option>
+								</xsl:when>
+								<xsl:otherwise>
+									<option value="YOUNGER">Date +</option>
+								</xsl:otherwise>
+							</xsl:choose>
+							<xsl:choose>
+								<xsl:when test="sort='OLDER'">
+									<option value="OLDER" selected="true">Date -</option>
+								</xsl:when>
+								<xsl:otherwise>
+									<option value="OLDER">Date -</option>
+								</xsl:otherwise>
+							</xsl:choose>
+						</select>
+					</span>
 				</span>
 				<div style="clear:both"></div>
 			</div>
 		</div>
 	</xsl:template>
+	<xsl:template match="results">
+		<div>
+			<xsl:call-template name="pagination"/>
+		</div>
+	</xsl:template>
+	<xsl:template match="text()"/>
 </xsl:stylesheet>

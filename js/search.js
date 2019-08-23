@@ -135,7 +135,7 @@ function getSearchCriterias()
 	return urlParams;
 }
 
-function searchFacets(uriParams)
+/*function searchFacets(uriParams)
 {
 	document.getElementById("facets").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	var uri = "searchFacets.php?"+uriParams;
@@ -155,9 +155,9 @@ function searchNoticesOnline(uriParams)
 	var uri = "searchNoticesOnline.php?"+uriParams;
 	var url = encodeURI(uri);
 	$("#notices-online").load(url);
-}
+}*/
 
-function getUriParams()
+function getSearchCriteriasWithFacets()
 {
 	var searchCriterias = getSearchCriterias();
 	var parkour = getParkour();
@@ -165,14 +165,32 @@ function getUriParams()
 	var curFacets = urlParams.get('facets');
 	var searchFacets = searchCriterias.get('facets');
 	var hasAlreadyFacets = searchCriterias.has("facets");
-	if(curFacets!=null && !searchCriterias.has("facets"))
+	if(curFacets!=null && !hasAlreadyFacets)
 		searchCriterias.set("facets", curFacets);
-	var uriParams = searchCriterias.toString();
 
+	var curPage = urlParams.get('page');
+	if(curPage!=null)
+		searchCriterias.set("page", curPage);
+
+	var curRows = urlParams.get('rows');
+	if(curRows!=null)
+		searchCriterias.set("rows", curRows);
+
+	var curSort = urlParams.get('sort');
+	if(curSort!=null)
+		searchCriterias.set("sort", curSort);
+
+	return searchCriterias;
+}
+
+function getUriParams()
+{
+	var searchCriterias = getSearchCriteriasWithFacets();
+	var uriParams = searchCriterias.toString();
 	return uriParams;
 }
 
-function searchNoticesNoticesOnline(uriParams)
+/*function searchNoticesNoticesOnline(uriParams)
 {
 	var searchCriterias = getSearchCriterias();
 	var parkour = getParkour();
@@ -186,15 +204,15 @@ function searchNoticesNoticesOnline(uriParams)
 	searchNotices(uriParams);
 	searchNoticesOnline(uriParams);
 	searchFacets(uriParams);
-}
+}*/
 
-function searchMostRelevantAuthorities(uriParams)
+/*function searchMostRelevantAuthorities(uriParams)
 {
 	document.getElementById("mostRelevantAuthorities").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	var uri = "searchMostRelevantAuthorities.php?"+uriParams;
 	var url = encodeURI(uri);
 	$("#mostRelevantAuthorities").load(url);
-}
+}*/
 
 function searchAll(uriParams)
 {
@@ -212,12 +230,63 @@ function search()
 	var parkour = getParkour();
 	var uriParams = getUriParams();
 	console.log("search():\n\t/"+parkour+"?"+uriParams);
-	history.pushState({}, null, "./"+parkour+"?"+uriParams);
-	//window.location = "#./"+parkour+"?"+uriParams
+	//history.pushState({}, null, "./"+parkour+"?"+uriParams);
+	//window.location = "#./"+parkour+"?"+uriParams;
+	//window.location = "/"+parkour+"?"+uriParams;
 	searchAll(uriParams);
 }
 
-function changeNoticesRows(currentPage, currentRows)
+function launchSearch()
+{
+	var parkour = getParkour();
+	var uriParams = getUriParams();
+	console.log("search():\n\t/"+parkour+"?"+uriParams);
+	//history.pushState({}, null, "./"+parkour+"?"+uriParams);
+	//window.location = "#./"+parkour+"?"+uriParams;
+	window.location = "/"+parkour+"?"+uriParams;
+}
+
+function changeSearchPage(page)
+{
+	var parkour = getParkour();
+	var searchCriterias = getSearchCriteriasWithFacets();
+	searchCriterias.set("page", page);
+	var uriParams = searchCriterias.toString();
+	console.log("search():\n\t/"+parkour+"?"+uriParams);
+	//history.pushState({}, null, "./"+parkour+"?"+uriParams);
+	//window.location = "#./"+parkour+"?"+uriParams;
+	window.location = "/"+parkour+"?"+uriParams;
+}
+
+function changeSearchRows(currentPage, currentRows)
+{
+	var parkour = getParkour();
+	var searchCriterias = getSearchCriteriasWithFacets();
+	var rows=document.getElementById("search-rows").value;
+	var page = (Math.ceil(((currentPage-1)*currentRows+1)/rows));
+	searchCriterias.set("page", page);
+	searchCriterias.set("rows", rows);
+	var uriParams = searchCriterias.toString();
+	console.log("search():\n\t/"+parkour+"?"+uriParams);
+	//history.pushState({}, null, "./"+parkour+"?"+uriParams);
+	//window.location = "#./"+parkour+"?"+uriParams;
+	window.location = "/"+parkour+"?"+uriParams;
+}
+
+function changeSearchSort()
+{
+	var parkour = getParkour();
+	var searchCriterias = getSearchCriteriasWithFacets();
+	var sort = document.getElementById("search-sort").value;
+	searchCriterias.set("sort", sort);
+	var uriParams = searchCriterias.toString();
+	console.log("search():\n\t/"+parkour+"?"+uriParams);
+	//history.pushState({}, null, "./"+parkour+"?"+uriParams);
+	//window.location = "#./"+parkour+"?"+uriParams;
+	window.location = "/"+parkour+"?"+uriParams;
+}
+
+/*function changeNoticesRows(currentPage, currentRows)
 {
 	var rows=document.getElementById("notices-rows").value;
 
@@ -272,8 +341,7 @@ function changeNoticesOnlinePage(page)
 
 function changeNoticesSort(newSort)
 {
-	/*var rows=document.getElementById("notices-sort").value;
-
-	changeNoticesPage(Math.ceil(((currentPage-1)*currentRows+1)/rows));*/
-}
+	//var rows=document.getElementById("notices-sort").value;
+	//changeNoticesPage(Math.ceil(((currentPage-1)*currentRows+1)/rows));
+}*/
 

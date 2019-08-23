@@ -19,6 +19,11 @@
 	{
 		$rows=$_GET['rows'];
 	}
+	$sort='DEFAULT';
+	if(isset($_GET['sort']) && !is_numeric($_GET['sort']) && ($_GET['sort']=='TITRE_A_Z' || $_GET['sort']=='TITRE_Z_A' || $_GET['sort']=='AUTEUR_A_Z' || $_GET['sort']=='AUTEUR_Z_A' || $_GET['sort']=='OLDER' || $_GET['sort']=='YOUNGER'))
+	{
+		$sort=$_GET['sort'];
+	}
 	$parkour="general";
 	if(isset($_GET['parkour']) && $_GET['parkour']!=null && $_GET['parkour']!="")
 	{
@@ -80,7 +85,7 @@
 
 	if($defaultFacets!=null)
 		$url.=("&facets=".urlencode("<facets-wrap>".$defaultFacets."</facets-wrap>"));
-	$url.=("&rows=".$rows."&page=".$page);
+	$url.=("&rows=".$rows."&page=".$page."&sort=".$sort);
 	//$result = getArrayToXmlIntoUrl($url, "search-criterias", $data);
 
 	echo "<a href=\"".$url."\" target=\"_blank\" style=\"font-size: 12px; font-style: bold;\">URL du WebService de recherche</a>";
@@ -164,6 +169,41 @@
 ?>
 	</div>
 </div>
+<div id="pagination" style="padding: 1em; grid-column: 1 / 3">
+<?php
+
+	/*$xslUrl = "xslt/orthographicSuggestionsOnline.xsl";
+
+	echo "<div class=\"suggestions\">";
+
+	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
+
+	$xsl = new DOMDocument;
+	$xsl->load($xslUrl);
+
+	$proc = new XSLTProcessor();
+	$proc->importStyleSheet($xsl);
+
+	$proc->setParameter('', 'rebondUrl', "");
+
+	echo $proc->transformToXML($xml);
+
+	echo "</div>";*/
+
+	$xslUrl = "xslt/searchResultsGlobalPagination.xsl";
+	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
+	echo "<br />";
+
+	$xsl = new DOMDocument;
+	$xsl->load($xslUrl);
+
+	$proc = new XSLTProcessor();
+	$proc->importStyleSheet($xsl);
+		
+	echo $proc->transformToXML($xml);
+
+?>
+</div>
 <div id="notices" style="margin: 3px; grid-column: 1;">
 <?php
 	$xslUrl = "xslt/orthographicSuggestions.xsl";
@@ -171,7 +211,6 @@
 	echo "<div class=\"suggestions\">";
 
 	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
-	$searchPage;
 
 	$xsl = new DOMDocument;
 	$xsl->load($xslUrl);
@@ -208,7 +247,6 @@
 	echo "<div class=\"suggestions\">";
 
 	echo "<a href=\"/".$xslUrl."\" target=\"_blank\" style=\"font-size: 12px;\">XSLT utilisée</a>";
-	$searchPage;
 
 	$xsl = new DOMDocument;
 	$xsl->load($xslUrl);
