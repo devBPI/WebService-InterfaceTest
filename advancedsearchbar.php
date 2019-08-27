@@ -38,9 +38,9 @@
 <?php
 	}
 ?>
-	<div id="additionnalConditions">
+	<div id="additionnalAdvancedConditions">
 	</div>
-	<div id="conditionSchema" style="display: none;">
+	<div id="advancedConditionSchema" style="display: none;">
 		<select class="searchBarOperator">
 			<option value="ET">ET</option>
 			<option value="OU">OU</option>
