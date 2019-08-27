@@ -611,14 +611,35 @@
 		<xsl:for-each select="liens/lien">
 			<div class="lien">
 				<hr />
+				<xsl:choose>
+					<xsl:when test="url">
+						Lien <xsl:value-of select="position()"/>: <a href="{url}"><xsl:value-of select="url"/></a>
+					</xsl:when>
+					<xsl:when test="media">
+						Lien <xsl:value-of select="position()"/>: 
+						<a href="/media.php?media={media}">
+							<xsl:choose>
+								<xsl:when test="titre">
+									<xsl:value-of select="titre"/>
+								</xsl:when>
+								<xsl:otherwise>
+									LIEN MEDIA
+								</xsl:otherwise>
+							</xsl:choose>
+						</a>
+					</xsl:when>
+					<xsl:otherwise></xsl:otherwise>
+				</xsl:choose>
 				<xsl:if test="url"><div><a href="{url}"><xsl:value-of select="url"/></a></div></xsl:if>
 				<xsl:if test="disponibilite">
 					<div class="disponibilite" style="font-weight: bold; color: #FF0000;">
 						<xsl:if test="used-profil">PROFIL&#160;<xsl:value-of select="used-profil"/></xsl:if>&#160;&#61;&#62;&#160;<xsl:value-of select="disponibilite"/>
 					</div>
 				</xsl:if>
-				<xsl:if test="cote"><div><xsl:value-of select="cote"/></div></xsl:if>
-				<xsl:if test="(localisation) and (categorie)"><div><xsl:value-of select="localisation"/> <xsl:value-of select="categorie"/></div></xsl:if>
+				<xsl:if test="(../../type='Débat et enregistrement') or (../../type='Musique') or (../../type='Livre audio')">
+					<xsl:if test="cote"><div><xsl:value-of select="cote"/></div></xsl:if>
+					<xsl:if test="(localisation) and (categorie)"><div><xsl:value-of select="localisation"/>&#160;-&#160;<xsl:value-of select="categorie"/></div></xsl:if>
+				</xsl:if>
 			</div>
 		</xsl:for-each>
 
