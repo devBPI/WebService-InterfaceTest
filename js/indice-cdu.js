@@ -28,3 +28,12 @@ $(window).load(function()
 	loadReservation(3);
 	loadReservation(4);*/
 });
+
+function loadIndices(cdu)
+{
+	var feuilletageDiv = document.getElementById("around");
+	var url = "/indice-cdu-feuilletage.php?cduindex="+encodeURIComponent(cdu);
+	console.log(url);
+	$(feuilletageDiv).load(url);
+}
+

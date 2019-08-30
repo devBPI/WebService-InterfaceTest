@@ -50,6 +50,12 @@
 			<br />
 			<table id="around">
 				<tr>
+					<th>
+						<!--<a class="selected" href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Cindice-cote%3E{around-indexes-list/previous}%3C%2Findice-cote%3E%3C%2Fsearch-criterias%3E'>Page précédente</a>-->
+						<div class="selected" onclick="loadIndices('{around-indexes-list/previous}');">Page précédente</div>
+					</th>
+				</tr>
+				<tr>
 					<th>Feuilletage d'indices</th>
 				</tr>
 				<xsl:for-each select="around-indexes-list/around-indexes/index">
@@ -57,15 +63,21 @@
 						<td>
 							<xsl:choose>
 								<xsl:when test="(cote) = (../../../cote)">
-									<a class="selected" href="{$rebondUrl}/?indicecote={cote}"><xsl:value-of select="cote"/>&#160;-&#160;<xsl:value-of select="libelle"/></a>
+									<a class="selected" href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Cindice-cote%3E{cote}%3C%2Findice-cote%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="cote"/>&#160;-&#160;<xsl:value-of select="libelle"/></a>
 								</xsl:when>
 								<xsl:otherwise>
-									<a href="{$rebondUrl}/?indicecote={cote}"><xsl:value-of select="cote"/>&#160;-&#160;<xsl:value-of select="libelle"/></a>
+									<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Cindice-cote%3E{cote}%3C%2Findice-cote%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="cote"/>&#160;-&#160;<xsl:value-of select="libelle"/></a>
 								</xsl:otherwise>
 							</xsl:choose>
 						</td>
 					</tr>
 				</xsl:for-each>
+				<tr>
+					<th>
+						<!--<a class="selected" href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Cindice-cote%3E{around-indexes-list/next}%3C%2Findice-cote%3E%3C%2Fsearch-criterias%3E'>Page suivante</a>-->
+						<div class="selected" onclick="loadIndices('{around-indexes-list/next}');">Page suivante</div>
+					</th>
+				</tr>
 			</table>
 		</div>
 	</xsl:template>

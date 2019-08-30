@@ -51,12 +51,32 @@
 	text-decoration: none;
 }
 
-.block-parent
+.block-parent,
+.block-parent-notices
 {
 	overflow: hidden;
 }
 
-.float-carousel {
+.block-parent-notices
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.noticeUrlDiv
+{
+	width: 30% !important;
+	overflow: hidden;
+	font-size: 12px;
+}
+
+.noticeUrlDiv .urlDiv
+{
+}
+
+.float-carousel
+{
 	max-height: 200px;
 	vertical-align: middle;
 	float: left;

@@ -4,7 +4,7 @@
 	include "utils/postXML.php";
 
 	$errorText="";
-	if(!isset($_GET['permalink']) || $_GET['permalink']=='' || $_GET['permalink']==null)
+	if(!isset($_GET['cduindex']) || $_GET['cduindex']=='' || $_GET['cduindex']==null)
 	{
 		$errorText.=('&#x26a0 Missing text. &#x26a0<br />');
 		echo($errorText);
@@ -30,9 +30,8 @@
 
 	#header("Content-Type: text/xml");
 	//$autocomplete_page = file_get_contents('http://10.1.20.44:8983/solr/index_notices/autocomplete?q='.$_GET['text']);
-	$url = $ini_array["CatalogueWebServiceUrl"]."details/indice-cdu/".$_GET['permalink'];
-	$xslHeadUrl = "xslt/indiceCduHead.xsl";
-	$xslBodyUrl = "xslt/indiceCduBody.xsl";
+	$url = $ini_array["CatalogueWebServiceUrl"]."cdu-indexes/around?cduindex=".urlencode($_GET['cduindex']);
+	$xslUrl = "xslt/indiceCduFeuilletage.xsl";
 	$detailsPage = file_get_contents($url);
 	#var_dump($http_response_header);
 
@@ -45,36 +44,12 @@
 		$xml = new DOMDocument('1.0', 'utf-8');
 		$xml->loadXML($xmlTxt);
 ?>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<?php
-		$xsl = new DOMDocument;
-		$xsl->load($xslHeadUrl);
-
-		$proc = new XSLTProcessor;
-		$proc->importStyleSheet($xsl);
-
-		echo $proc->transformToXML($xml);
-?>
-		<link rel="stylesheet" type="text/css" href="/css/body.css" />
-		<link rel="stylesheet" type="text/css" href="/css/accessories.css" />
-		<link rel="stylesheet" type="text/css" href="/css/indiceCdu.css" />
-		<link rel="stylesheet" type="text/css" href="/css/fieldset.css" />
-		<link rel="stylesheet" type="text/css" href="/css/table.css" />
-		<style type="text/css" media="screen"></style>
-
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript" language="javascript"></script>
-		<script src="/js/indice-cdu.js" type="text/javascript" language="javascript"></script>
-		<script type="text/javascript" language="javascript">
-		</script>
-	</head>
-	<body>
 		<a href="<?php echo $url; ?>" target="_blank" style="font-size: 12px;">URL du WebService</a>
 		<br />
 		<a href="/<?php echo $xslBodyUrl; ?>" target="_blank" style="font-size: 12px;">XSLT utilisée</a>
 <?php
 		$xsl = new DOMDocument;
-		$xsl->load($xslBodyUrl);
+		$xsl->load($xslUrl);
 
 		$proc = new XSLTProcessor;
 		$proc->importStyleSheet($xsl);
@@ -89,5 +64,4 @@
 		exit($returnCode);
 	}
 	?>
-	</body>
 </html>

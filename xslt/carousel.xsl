@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	<xsl:template name="carouselWebMag">
+		<div class="numbertext"><xsl:value-of select="position()" /> / <xsl:value-of select="count(../element)" /></div>
+		<a class="urlDiv" href="{url}">
+			<div class="block-parent" style="width:100%;">
+				<img class="float-carousel" src="{image-path}" alt="{photo-credit}"/>
+				<h1><xsl:value-of select="title"/></h1>
+				<p><xsl:value-of select="description"/></p>
+			</div>
+		</a>
+	</xsl:template>
+	<xsl:template name="carouselNotices">
+		<div class="numbertext"><xsl:value-of select="position()" /> / <xsl:value-of select="count(../element)" /></div>
+		<div class="block-parent-notices" style="width:100%;">
+			<xsl:for-each select="notices/notice">
+				<div class="noticeUrlDiv">
+				<a class="urlDiv" href="/notice/{permalink}">
+					<img class="float-carousel" src="{image-path}" alt="img/defaultNotice.jpg"/>
+					<h1><xsl:value-of select="title"/></h1>
+					<p><xsl:value-of select="description"/></p>
+				</a>
+				</div>
+			</xsl:for-each>
+		</div>
+	</xsl:template>
+
 	<xsl:template match="elements">
 		<div id="carousel">
 			<div class="slideshow-container">
@@ -9,26 +34,26 @@
 					<xsl:choose>
 						<xsl:when test="position()=1">
 							<div class="mySlides fade">
-								<div class="numbertext"><xsl:value-of select="position()" /> / <xsl:value-of select="count(../element)" /></div>
-								<a class="urlDiv" href="{url}">
-									<div class="block-parent" style="width:100%;">
-										<img class="float-carousel" src="{image-path}" alt="{photo-credit}"/>
-										<h1><xsl:value-of select="title"/></h1>
-										<p><xsl:value-of select="description"/></p>
-									</div>
-								</a>
+								<xsl:choose>
+									<xsl:when test="notices">
+										<xsl:call-template name="carouselNotices"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:call-template name="carouselWebMag"/>
+									</xsl:otherwise>
+								</xsl:choose>
 							</div>
 						</xsl:when>
 						<xsl:otherwise>
 							<div class="mySlides fade" style="display:none;">
-								<div class="numbertext"><xsl:value-of select="position()" /> / <xsl:value-of select="count(../element)" /></div>
-								<a class="urlDiv" href="{url}">
-									<div class="block-parent" style="width:100%;">
-										<img class="float-carousel" src="{image-path}" alt="{photo-credit}"/>
-										<h1><xsl:value-of select="title"/></h1>
-										<p><xsl:value-of select="description"/></p>
-									</div>
-								</a>
+								<xsl:choose>
+									<xsl:when test="notices">
+										<xsl:call-template name="carouselNotices"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:call-template name="carouselWebMag"/>
+									</xsl:otherwise>
+								</xsl:choose>
 							</div>
 						</xsl:otherwise>
 					</xsl:choose>
