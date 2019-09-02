@@ -29,7 +29,9 @@
 		<!--<a id="parkourMusique" onclick="window.location='/musique'+window.location.search;" <?php /*if($parkour=="musique"){echo "class=\"selected-parkour\"";}*/?>>Musique</a>-->
 		<a id="parkourPresse" onclick="window.location='/presse'+window.location.search;" <?php if($parkour=="presse"){echo "class=\"selected-parkour\"";}?>>Presse</a>
 	</div>
-	<div id="carouselWrapper"></div>
+	<div id="carouselWrapper">
+		<?php include('carousel.php'); ?>
+	</div>
 <?php
 	if(null != $defaultAdvancedSearchCriterias)
 		echo "<div id=\"simpleSearchDiv\" style=\"display:none;\" selected>";

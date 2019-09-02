@@ -78,7 +78,7 @@
 	];
 	$context = stream_context_create($opts);
 
-	$xmlSearchCriterias = new SimpleXMLElement(urldecode((($advancedSearchCriterias)? $advancedSearchCriterias: $simpleSearchCriterias)));
+	$xmlSearchCriterias = new SimpleXMLElement(urldecode((($advancedSearchCriterias)? $advancedSearchCriterias : $simpleSearchCriterias)));
 	$parcourXml = new SimpleXMLElement("<parcours>".$parkour."</parcours>");
 	xml_adopt($xmlSearchCriterias, $parcourXml);
 	$url = $ini_array["CatalogueWebServiceUrl"]."search/all"."?criters=".urlencode($xmlSearchCriterias->asXML());

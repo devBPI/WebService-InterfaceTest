@@ -145,7 +145,7 @@
 					search();
 				}
 
-				loadCarousel(<?php echo "\"".$parkour."\""; ?>);
+				//loadCarousel(<?php echo "\"".$parkour."\""; ?>);
 				//if(searchCriterias.getAll()!=null)
 				//	search();
 			}
