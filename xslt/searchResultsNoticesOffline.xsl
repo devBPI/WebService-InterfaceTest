@@ -9,51 +9,53 @@
 	<xsl:template match="notices|/results/notices">
 		<div>
 			<xsl:call-template name="pagination"/>
-			<div class="noticesContainer">
-				<xsl:for-each select="noticesList/notice">
-					<div class="notice" style="overflow:hidden;">
-						<xsl:call-template name="noticesShortTop"/>
-
-						<xsl:if test="(./exemplaires)">
-							<div class="exemplaires">
-								<xsl:for-each select="./exemplaires/exemplaire">
-									<xsl:sort select="./call_num"/>
-									<div class="exemplaire">
-										<div class="exemplaire-desc">
-											<div>
-												<xsl:value-of select="./availability"/> - <xsl:value-of select="./call_num"/>
-												<xsl:if test="(./material_support) and not((./material_support) = 'Papier')">
-													- <xsl:value-of select="./material_support"/>
+			<xsl:if test="noticesList/notice">
+				<div class="noticesContainer">
+					<xsl:for-each select="noticesList/notice">
+						<div class="notice" style="overflow:hidden;">
+							<xsl:call-template name="noticesShortTop"/>
+	
+							<xsl:if test="(./exemplaires)">
+								<div class="exemplaires">
+									<xsl:for-each select="./exemplaires/exemplaire">
+										<xsl:sort select="./call_num"/>
+										<div class="exemplaire">
+											<div class="exemplaire-desc">
+												<div>
+													<xsl:value-of select="./availability"/> - <xsl:value-of select="./call_num"/>
+													<xsl:if test="(./material_support) and not((./material_support) = 'Papier')">
+														- <xsl:value-of select="./material_support"/>
+													</xsl:if>
+												</div>
+												<xsl:if test="(./note)">
+													<div>
+														<xsl:value-of select="./note"/>
+													</div>
+												</xsl:if>
+												<div>
+													<xsl:value-of select="./location"/>
+													<xsl:if test="(./category)">
+														 - <xsl:value-of select="./category"/>
+													</xsl:if>
+												</div>
+												<xsl:if test="(./last_received)">
+													<div>
+														Dernier numéro reçu : <xsl:value-of select="./last_received"/>
+													</div>
 												</xsl:if>
 											</div>
-											<xsl:if test="(./note)">
-												<div>
-													<xsl:value-of select="./note"/>
-												</div>
-											</xsl:if>
-											<div>
-												<xsl:value-of select="./location"/>
-												<xsl:if test="(./category)">
-													 - <xsl:value-of select="./category"/>
-												</xsl:if>
-											</div>
-											<xsl:if test="(./last_received)">
-												<div>
-													Dernier numéro reçu : <xsl:value-of select="./last_received"/>
-												</div>
-											</xsl:if>
 										</div>
-									</div>
-								</xsl:for-each>
-							</div>
-						</xsl:if>
+									</xsl:for-each>
+								</div>
+							</xsl:if>
 
 
-						<xsl:call-template name="noticesShortBottom"/>
-						<div style="clear:both"></div>
-					</div>
-				</xsl:for-each>
-			</div>
+							<xsl:call-template name="noticesShortBottom"/>
+							<!--<div style="clear:both"></div>-->
+						</div>
+					</xsl:for-each>
+				</div>
+			</xsl:if>
 		</div>
 	</xsl:template>
 	<xsl:template match="text()"/>

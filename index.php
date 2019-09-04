@@ -138,12 +138,12 @@
 				}
 
 				//autocomplete(document.getElementById("searchbar"), []);
-				var urlParams = new URLSearchParams(window.location.search);
+				/*var urlParams = new URLSearchParams(window.location.search);
 				if(urlParams.toString()!=null && urlParams.toString()!="")
 				{
 					//console.log("UrlParams found");
 					search();
-				}
+				}*/
 
 				//loadCarousel(<?php echo "\"".$parkour."\""; ?>);
 				//if(searchCriterias.getAll()!=null)

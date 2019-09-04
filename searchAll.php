@@ -1,6 +1,6 @@
 <?php
-	include "utils/phpUtils.php";
-	include "utils/postXML.php";
+	//include "utils/phpUtils.php";
+	//include "utils/postXML.php";
 
 	$errorText="";
 	/*if(!isset($_GET['general']) || $_GET['general']=='' || $_GET['general']==null)
@@ -59,8 +59,8 @@
 	ini_set("display_errors",1);
 	error_reporting(E_ALL);
 
-	header("Content-Type: text/xml");
-	header("Content-Type: text/html;charset=utf-8");
+	//header("Content-Type: text/xml");
+	//header("Content-Type: text/html;charset=utf-8");
 
 	$requiredHttpHeader = $inter_array["AuthOriginHttpHeaderName"];
 	$AuthOrigin = getHeader($requiredHttpHeader);

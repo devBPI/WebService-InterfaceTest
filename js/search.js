@@ -185,7 +185,7 @@ function getSearchCriteriasWithFacets()
 
 function getUriParams()
 {
-	var searchCriterias = getSearchCriteriasWithFacets();
+	var searchCriterias = getSearchCriterias();//= getSearchCriteriasWithFacets();
 	var uriParams = searchCriterias.toString();
 	return uriParams;
 }
@@ -219,7 +219,7 @@ function searchAll(uriParams)
 	document.getElementById("result-lists").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
 	var uri = "searchAll.php?parkour="+getParkour()+"&"+uriParams;
 	var url = encodeURI(uri);
-	$("#result-lists").load(url);
+	//$("#result-lists").load(url);
 }
 
 function search()

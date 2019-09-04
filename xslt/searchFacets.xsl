@@ -33,54 +33,56 @@
 						<xsl:variable name="doubleSlash">\\</xsl:variable>
 						<xsl:variable name="quote">'</xsl:variable>
 						<xsl:variable name="slashQuote">\'</xsl:variable>
-						<div id="facet{position()}" style="display: none;">
-							<xsl:choose>
-								<xsl:when test="name='date_publishing'">
-									<xsl:for-each select="valuesCounts/value">
-										<xsl:sort select="name" data-type="number" order="descending" />
-										<xsl:variable name="replacedSlashString">
-											<xsl:call-template name="replace_single_quote">
-												<xsl:with-param name="string" select="name" />
-												<xsl:with-param name="find" select="$slash" />
-												<xsl:with-param name="replace" select="$doubleSlash" />
-											</xsl:call-template>
-										</xsl:variable>
-										<xsl:variable name="replacedQuoteString">
-											<xsl:call-template name="replace_single_quote">
-												<xsl:with-param name="string" select="$replacedSlashString" />
-												<xsl:with-param name="find" select="$quote" />
-												<xsl:with-param name="replace" select="$slashQuote" />
-											</xsl:call-template>
-										</xsl:variable>
-										<div class="facet" onclick="addFacet('{$facetName}', '{$replacedQuoteString}');">
-											- <xsl:value-of select="name"/>&#160;<span style="font-weight: bold;">(<xsl:value-of select="count-total"/>)</span>
-										</div>
-									</xsl:for-each>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:for-each select="valuesCounts/value">
-										<xsl:sort select="count-total" data-type="number" order="descending"/>
-										<xsl:variable name="replacedSlashString">
-											<xsl:call-template name="replace_single_quote">
-												<xsl:with-param name="string" select="name" />
-												<xsl:with-param name="find" select="$slash" />
-												<xsl:with-param name="replace" select="$doubleSlash" />
-											</xsl:call-template>
-										</xsl:variable>
-										<xsl:variable name="replacedQuoteString">
-											<xsl:call-template name="replace_single_quote">
-												<xsl:with-param name="string" select="$replacedSlashString" />
-												<xsl:with-param name="find" select="$quote" />
-												<xsl:with-param name="replace" select="$slashQuote" />
-											</xsl:call-template>
-										</xsl:variable>
-										<div class="facet" onclick="addFacet('{$facetName}', '{$replacedQuoteString}');">
-											- <xsl:value-of select="name"/>&#160;<span style="font-weight: bold;">(<xsl:value-of select="count-total"/>)</span>
-										</div>
-									</xsl:for-each>
-								</xsl:otherwise>
-							</xsl:choose>
-						</div>
+						<xsl:if test="valuesCounts/value">
+							<div id="facet{position()}" style="display: none;">
+								<xsl:choose>
+									<xsl:when test="name='date_publishing'">
+										<xsl:for-each select="valuesCounts/value">
+											<xsl:sort select="name" data-type="number" order="descending" />
+											<xsl:variable name="replacedSlashString">
+												<xsl:call-template name="replace_single_quote">
+													<xsl:with-param name="string" select="name" />
+													<xsl:with-param name="find" select="$slash" />
+													<xsl:with-param name="replace" select="$doubleSlash" />
+												</xsl:call-template>
+											</xsl:variable>
+											<xsl:variable name="replacedQuoteString">
+												<xsl:call-template name="replace_single_quote">
+													<xsl:with-param name="string" select="$replacedSlashString" />
+													<xsl:with-param name="find" select="$quote" />
+													<xsl:with-param name="replace" select="$slashQuote" />
+												</xsl:call-template>
+											</xsl:variable>
+											<div class="facet" onclick="addFacet('{$facetName}', '{$replacedQuoteString}');">
+												- <xsl:value-of select="name"/>&#160;<span style="font-weight: bold;">(<xsl:value-of select="count-total"/>)</span>
+											</div>
+										</xsl:for-each>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:for-each select="valuesCounts/value">
+											<xsl:sort select="count-total" data-type="number" order="descending"/>
+											<xsl:variable name="replacedSlashString">
+												<xsl:call-template name="replace_single_quote">
+													<xsl:with-param name="string" select="name" />
+													<xsl:with-param name="find" select="$slash" />
+													<xsl:with-param name="replace" select="$doubleSlash" />
+												</xsl:call-template>
+											</xsl:variable>
+											<xsl:variable name="replacedQuoteString">
+												<xsl:call-template name="replace_single_quote">
+													<xsl:with-param name="string" select="$replacedSlashString" />
+													<xsl:with-param name="find" select="$quote" />
+													<xsl:with-param name="replace" select="$slashQuote" />
+												</xsl:call-template>
+											</xsl:variable>
+											<div class="facet" onclick="addFacet('{$facetName}', '{$replacedQuoteString}');">
+												- <xsl:value-of select="name"/>&#160;<span style="font-weight: bold;">(<xsl:value-of select="count-total"/>)</span>
+											</div>
+										</xsl:for-each>
+									</xsl:otherwise>
+								</xsl:choose>
+							</div>
+						</xsl:if>
 					</div>
 				</xsl:if>
 			</xsl:for-each>

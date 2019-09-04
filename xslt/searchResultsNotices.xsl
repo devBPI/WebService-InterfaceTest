@@ -65,11 +65,13 @@
 					</xsl:for-each>
 				</div>
 			</xsl:if>
-			<div class="dates">
-				<xsl:for-each select="./datesTextuelles/dateTextuelle">
-					<div><xsl:value-of select="."/></div>
-				</xsl:for-each>
-			</div>
+			<xsl:if test="./datesTextuelles/dateTextuelle">
+				<div class="dates">
+					<xsl:for-each select="./datesTextuelles/dateTextuelle">
+						<div><xsl:value-of select="."/></div>
+					</xsl:for-each>
+				</div>
+			</xsl:if>
 		</div>
 	</xsl:template>
 
@@ -89,5 +91,4 @@
 			</div>
 		</xsl:if>
 	</xsl:template>
-	<xsl:template match="text()"/>
 </xsl:stylesheet>

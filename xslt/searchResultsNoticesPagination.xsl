@@ -31,7 +31,7 @@
 					</xsl:choose>
 					<span onclick="{$notices-java-pagination}({num-pages})" class="pageButton clickablePageButton">≫</span>
 				</div>
-				<div style="clear:both"></div>
+				<!--<div style="clear:both"></div>-->
 			</div>
 			<div style="border-bottom : 2px solid black; overflow:hidden;">
 				<xsl:if test="($notices-label) and (results)">
@@ -69,7 +69,7 @@
 						</select> rows
 					</span>
 				</span>
-				<div style="clear:both"></div>
+				<!--<div style="clear:both"></div>-->
 			</div>
 		</div>
 	</xsl:template>

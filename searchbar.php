@@ -121,12 +121,13 @@
 	<input id="advancedSearchButton" type="submit" <?php if(null != $defaultAdvancedSearchCriterias) echo 'value="-"'; else echo 'value="+"' ?> onclick="advancedSearch();" /> Recherche avancée
 </div>
 <div id="result-lists" style="width: 100%;">
-	<div id="facetsdiv" style="margin: 3px; grid-column: 1 / span 2;">
+	<!--<div id="facetsdiv" style="margin: 3px; grid-column: 1 / span 2;">
 		<div id="facets"></div>
 	</div>
 	<div id="authoritiesdiv" style="margin: 3px; grid-column: 1 / span 2;">
 		<div id="mostRelevantAuthorities"></div>
 	</div>
 	<div id="notices" style="margin: 3px; grid-column: 1;"></div>
-	<div id="notices-online" style="margin: 3px; grid-column: 2;"></div>
+	<div id="notices-online" style="margin: 3px; grid-column: 2;"></div>-->
+	<?php include('searchAll.php'); ?>
 </div>
