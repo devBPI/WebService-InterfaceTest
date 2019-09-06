@@ -14,7 +14,7 @@ RewriteEngine On
 #RewriteCond %{THE_REQUEST} \s/+\?(admin[^\s&]+) [NC]
 #RewriteCond "%{REQUEST_FILENAME}" "!-f"
 #RewriteCond "%{REQUEST_FILENAME}" "!-d"
-RewriteRule "^(autoformation|cinema|musique|presse)$" "/?parkour=$1" [L,QSA]
+RewriteRule "^(general|autoformation|cinema|musique|presse)$" "/?parkour=$1" [L,QSA]
 RewriteRule ^(autoformation|cinema|musique|presse)/{0,1}$ /?parkour=$1 [L]
 #RewriteRule . /index.php [R]
 
