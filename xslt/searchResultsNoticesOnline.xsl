@@ -15,7 +15,7 @@
 						<div class="notice-online" style="overflow:hidden;">
 							<xsl:call-template name="noticesShortTop"/>
 
-							<xsl:if test="(liens)">
+							<xsl:if test="(liens/lien)">
 								<div class="liens">
 									<xsl:for-each select="liens/lien">
 										<div class="lien">
