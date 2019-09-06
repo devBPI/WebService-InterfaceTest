@@ -589,6 +589,12 @@
 				<xsl:if test="(localisation) and (categorie)">
 					<div><xsl:value-of select="localisation"/> - <xsl:value-of select="categorie"/></div>
 				</xsl:if>
+				<xsl:if test="dernier-numero">
+					<div id="dernier-numero">
+						<div>Dernier numéro reçu : <xsl:value-of select="dernier-numero"/>
+						</div>
+					</div>
+				</xsl:if>
 				<xsl:if test="numeros-recus/numero">
 					<div id="numeros">
 						<div>Numéros reçus : </div>
