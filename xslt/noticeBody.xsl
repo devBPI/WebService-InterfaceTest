@@ -87,7 +87,7 @@
 				</xsl:if>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:if test="(resumes/resume)">
+		<xsl:if test="(resumes/resume) and not(type='Musique')">
 			<div id="resume">
 				Résumé  
 				<xsl:for-each select="resumes/resume">
