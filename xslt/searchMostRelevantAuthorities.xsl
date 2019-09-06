@@ -9,7 +9,7 @@
 			<span style="margin-right: 0.5em; font-weight: bold; text-decoration: underline;">Sujet(s) lié(s) :</span>
 			<xsl:for-each select="sujet-liee">
 				<xsl:if test="position() &#62; 1">, </xsl:if>
-				<a href='{$rebondUrl}?simpleSearchCriterias=%3Csearch-criterias%3E%3Csujet%3E{sujet-liee}%3C%2Fsujet%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="."/></a>
+				<a href='{$rebondUrl}?simpleSearchCriterias=%3Csearch-criterias%3E%3Csujet%3E{.}%3C%2Fsujet%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="."/></a>
 			</xsl:for-each>
 		</div>
 	</xsl:template>
