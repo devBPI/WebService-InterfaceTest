@@ -118,18 +118,18 @@
 							</xsl:choose>
 							<xsl:choose>
 								<xsl:when test="sort='YOUNGER'">
-									<option value="YOUNGER" selected="true">Date +</option>
+									<option value="YOUNGER" selected="true">Les plus récents d'abord</option>
 								</xsl:when>
 								<xsl:otherwise>
-									<option value="YOUNGER">Date +</option>
+									<option value="YOUNGER">Les plus récents d'abord</option>
 								</xsl:otherwise>
 							</xsl:choose>
 							<xsl:choose>
 								<xsl:when test="sort='OLDER'">
-									<option value="OLDER" selected="true">Date -</option>
+									<option value="OLDER" selected="true">Les moins récents d'abord</option>
 								</xsl:when>
 								<xsl:otherwise>
-									<option value="OLDER">Date -</option>
+									<option value="OLDER">Les moins récents d'abord</option>
 								</xsl:otherwise>
 							</xsl:choose>
 						</select>

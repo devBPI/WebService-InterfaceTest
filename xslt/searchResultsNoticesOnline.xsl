@@ -21,10 +21,20 @@
 										<div class="lien">
 											<xsl:choose>
 												<xsl:when test="url">
-													Lien <xsl:value-of select="position()"/>: <a href="{url}"><xsl:value-of select="url"/></a>
+													Lien <xsl:value-of select="position()"/>:&#160;
+													<a href="{url}">
+														<xsl:choose>
+															<xsl:when test="title">
+																<xsl:value-of select="title"/>
+															</xsl:when>
+															<xsl:otherwise>
+																<xsl:value-of select="url"/>
+															</xsl:otherwise>
+														</xsl:choose>
+													</a>
 												</xsl:when>
 												<xsl:when test="media">
-													Lien <xsl:value-of select="position()"/>: 
+													Lien <xsl:value-of select="position()"/>:&#160;
 													<a href="/media.php?media={media}">
 														<xsl:choose>
 															<xsl:when test="title">

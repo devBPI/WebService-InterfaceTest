@@ -563,7 +563,15 @@
 			<xsl:sort select="./cote"/>
 			<div class="exemplaire">
 				<hr />
-				<xsl:value-of select="disponibilite"/> - 
+				<xsl:choose>
+					<xsl:when test="./disponibilite-label='DISPONIBLE'">
+						<span class="availability"><xsl:value-of select="./disponibilite-label"/>&#160;:&#160;<xsl:value-of select="./disponibilite"/></span>
+					</xsl:when>
+					<xsl:otherwise>
+						<span class="availability unavailable"><xsl:value-of select="./disponibilite-label"/>&#160;:&#160;<xsl:value-of select="./disponibilite"/></span>
+					</xsl:otherwise>
+				</xsl:choose>&#160;-&#160;
+				<!--<xsl:value-of select="disponibilite"/> - -->
 				<xsl:value-of select="cote"/> - 
 				<xsl:if test="not(supports/support='Papier')"> -
 					<xsl:for-each select="supports/support">
@@ -613,10 +621,20 @@
 				<hr />
 				<xsl:choose>
 					<xsl:when test="url">
-						Lien <xsl:value-of select="position()"/>: <a href="{url}"><xsl:value-of select="url"/></a>
+						Lien <xsl:value-of select="position()"/>:&#160;
+						<a href="{url}">
+							<xsl:choose>
+								<xsl:when test="titre">
+									<xsl:value-of select="titre"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="url"/>
+								</xsl:otherwise>
+							</xsl:choose>
+						</a>
 					</xsl:when>
 					<xsl:when test="media">
-						Lien <xsl:value-of select="position()"/>: 
+						Lien <xsl:value-of select="position()"/>:&#160;
 						<a href="/media.php?media={media}">
 							<xsl:choose>
 								<xsl:when test="titre">
@@ -630,7 +648,7 @@
 					</xsl:when>
 					<xsl:otherwise></xsl:otherwise>
 				</xsl:choose>
-				<xsl:if test="url"><div><a href="{url}"><xsl:value-of select="url"/></a></div></xsl:if>
+				<!--<xsl:if test="url"><div><a href="{url}"><xsl:value-of select="url"/></a></div></xsl:if>-->
 				<xsl:if test="disponibilite">
 					<div class="disponibilite" style="font-weight: bold; color: #FF0000;">
 						<xsl:if test="used-profil">PROFIL&#160;<xsl:value-of select="used-profil"/></xsl:if>&#160;&#61;&#62;&#160;<xsl:value-of select="disponibilite"/>

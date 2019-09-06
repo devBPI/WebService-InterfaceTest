@@ -129,5 +129,8 @@
 	</div>
 	<div id="notices" style="margin: 3px; grid-column: 1;"></div>
 	<div id="notices-online" style="margin: 3px; grid-column: 2;"></div>-->
-	<?php include('searchAll.php'); ?>
+<?php
+	if(isGetOk("simpleSearchCriterias") || isGetOk("advancedSearchCriterias"))
+		include('searchAll.php');
+?>
 </div>

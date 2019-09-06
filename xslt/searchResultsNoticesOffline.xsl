@@ -22,7 +22,14 @@
 										<div class="exemplaire">
 											<div class="exemplaire-desc">
 												<div>
-													<xsl:value-of select="./availability"/> - <xsl:value-of select="./call_num"/>
+													<xsl:choose>
+														<xsl:when test="./availability-label='DISPONIBLE'">
+															<span class="availability help-cursor" title="{./availability}"><xsl:value-of select="./availability-label"/></span> - <xsl:value-of select="./call_num"/>
+														</xsl:when>
+														<xsl:otherwise>
+															<span class="availability help-cursor unavailable" title="{./availability}"><xsl:value-of select="./availability-label"/></span> - <xsl:value-of select="./call_num"/>
+														</xsl:otherwise>
+													</xsl:choose>
 													<xsl:if test="(./material_support) and not((./material_support) = 'Papier')">
 														- <xsl:value-of select="./material_support"/>
 													</xsl:if>

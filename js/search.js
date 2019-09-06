@@ -135,28 +135,6 @@ function getSearchCriterias()
 	return urlParams;
 }
 
-/*function searchFacets(uriParams)
-{
-	document.getElementById("facets").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
-	var uri = "searchFacets.php?"+uriParams;
-	var url = encodeURI(uri);
-	$("#facets").load(url);
-}
-
-function searchNotices(uriParams)
-{
-	var uri = "searchNotices.php?"+uriParams;
-	var url = encodeURI(uri);
-	$("#notices").load(url);
-}
-
-function searchNoticesOnline(uriParams)
-{
-	var uri = "searchNoticesOnline.php?"+uriParams;
-	var url = encodeURI(uri);
-	$("#notices-online").load(url);
-}*/
-
 function getSearchCriteriasWithFacets()
 {
 	var searchCriterias = getSearchCriterias();
@@ -190,30 +168,6 @@ function getUriParams()
 	return uriParams;
 }
 
-/*function searchNoticesNoticesOnline(uriParams)
-{
-	var searchCriterias = getSearchCriterias();
-	var parkour = getParkour();
-	var urlParams = new URLSearchParams(window.location.search);
-	var curFacets = urlParams.get('facets');
-	if(curFacets!=null)
-		searchCriterias.set("facets", curFacets);
-	var uriParams = searchCriterias.toString();
-
-	uriParams = searchCriterias.toString();
-	searchNotices(uriParams);
-	searchNoticesOnline(uriParams);
-	searchFacets(uriParams);
-}*/
-
-/*function searchMostRelevantAuthorities(uriParams)
-{
-	document.getElementById("mostRelevantAuthorities").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
-	var uri = "searchMostRelevantAuthorities.php?"+uriParams;
-	var url = encodeURI(uri);
-	$("#mostRelevantAuthorities").load(url);
-}*/
-
 function searchAll(uriParams)
 {
 	document.getElementById("result-lists").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
@@ -243,7 +197,7 @@ function launchSearch()
 	console.log("search():\n\t/"+parkour+"?"+uriParams);
 	//history.pushState({}, null, "./"+parkour+"?"+uriParams);
 	//window.location = "#./"+parkour+"?"+uriParams;
-	window.location = "/"+parkour+"?"+uriParams;
+	window.location.href = "/"+parkour+"?"+uriParams;
 }
 
 function changeSearchPage(page)
@@ -285,63 +239,4 @@ function changeSearchSort()
 	//window.location = "#./"+parkour+"?"+uriParams;
 	window.location = "/"+parkour+"?"+uriParams;
 }
-
-/*function changeNoticesRows(currentPage, currentRows)
-{
-	var rows=document.getElementById("notices-rows").value;
-
-	changeNoticesPage(Math.ceil(((currentPage-1)*currentRows+1)/rows));
-}
-
-function changeNoticesOnlineRows(currentPage, currentRows)
-{
-	var rows=document.getElementById("notices-online-rows").value;
-
-	changeNoticesOnlinePage(Math.ceil(((currentPage-1)*currentRows+1)/rows));
-}
-
-function changeNoticesPage(page)
-{
-	var rows=document.getElementById("notices-rows").value;
-	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
-	var searchCriterias = getSearchCriterias();
-	var parkour = getParkour();
-	searchCriterias.set("parkour", parkour);
-	var uriParams = getUriParams();
-	//console.log(uriParams);
-
-	document.getElementById("notices").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
-
-	var uri = "searchNotices.php?"+uriParams+"&page="+page+"&rows="+rows
-	var url = encodeURI(uri);
-	$("#notices").load(url);
-}
-
-function changeNoticesOnlinePage(page)
-{
-	var rows=document.getElementById("notices-online-rows").value;
-	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
-	var searchCriterias = getSearchCriterias();
-	var parkour = getParkour();
-	searchCriterias.set("parkour", parkour);
-
-	var urlParams = new URLSearchParams(window.location.search);
-	var curFacets = urlParams.get('facets');
-	searchCriterias.set('facets', curFacets);
-
-	var uriParams = getUriParams();
-	//console.log(uriParams);
-
-	document.getElementById("notices-online").innerHTML = "<img style=\"width:60px; height: 60px;\" src=\"/img/spin.svg\" alt=\"loading\" srcset=\"/img/spin.svg\"/>";
-
-	var uri = "searchNoticesOnline.php?"+uriParams+"&page="+page+"&rows="+rows
-	var url = encodeURI(uri);
-	$("#notices-online").load(url);
-}
-
-function changeNoticesSort(newSort)
-{
-	//var rows=document.getElementById("notices-sort").value;
-	//changeNoticesPage(Math.ceil(((currentPage-1)*currentRows+1)/rows));
-}*/
 
