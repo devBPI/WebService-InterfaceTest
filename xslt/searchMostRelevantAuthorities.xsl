@@ -44,7 +44,7 @@
 						<!--<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="{$position()}"/></div>-->
 						<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;"></span><xsl:value-of select="formeRetenue"/></div>
 						<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;">Type d'autorité :</span><xsl:value-of select="type"/></div>
-						<xsl:if test="(type='Concept') or (type='Nom géographique') and (autresNoms/autreNom)">
+						<xsl:if test="((type='Concept') or (type='Nom géographique')) and (autresNoms/autreNom)">
 							<div id="autresNoms">
 								<span style="margin-right: 4px; text-decoration: underline;">Autre(s) nom(s) :</span>
 								<xsl:for-each select="autresNoms/autreNom">
