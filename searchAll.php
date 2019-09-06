@@ -163,7 +163,7 @@
 	$proc = new XSLTProcessor();
 	$proc->importStyleSheet($xsl);
 
-	$proc->setParameter('', 'rebondUrl', "");
+	$proc->setParameter('', 'rebondUrl', "/".$parkour);
 
 	echo $proc->transformToXML($xml);
 ?>
