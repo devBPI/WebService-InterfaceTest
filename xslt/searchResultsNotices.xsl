@@ -3,7 +3,14 @@
 	<xsl:template name="noticesShortTop">
 		<xsl:if test="./images-info/image-info/url">
 			<div style="float:left; margin-left: 4px; margin-right: 4px;" >
-				<img class="couverture lazy" src="{./images-info/image-info/url}"/>
+				<xsl:choose>
+					<xsl:when test="./images-info/image-info/description">
+						<img class="couverture lazy" src="{./images-info/image-info/url}" alt="{./images-info/image-info/description}"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<img class="couverture lazy" src="{./images-info/image-info/url}"/>
+					</xsl:otherwise>
+				</xsl:choose>
 			</div>
 		</xsl:if>
 		<div>

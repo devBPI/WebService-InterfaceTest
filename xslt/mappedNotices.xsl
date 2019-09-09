@@ -6,6 +6,18 @@
 		<div id="notices">
 		<xsl:for-each select="mappedNotices/mappedNotice">
 			<div class="notice" style="overflow:hidden;">
+				<xsl:if test="./images-info/image-info/url">
+					<div style="float:left; margin-left: 4px; margin-right: 4px;" >
+						<xsl:choose>
+							<xsl:when test="./images-info/image-info/description">
+								<img class="couverture lazy" src="{./images-info/image-info/url}" alt="{./images-info/image-info/description}"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<img class="couverture lazy" src="{./images-info/image-info/url}"/>
+							</xsl:otherwise>
+						</xsl:choose>
+					</div>
+				</xsl:if>
 				<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="../../pagination/start + position()"/></div>
 				<!--<div class="" style="display: inline-block; float:right; margin-right: 4px; text-align: right;">
 					<<xsl:value-of select="./type"/><br />
