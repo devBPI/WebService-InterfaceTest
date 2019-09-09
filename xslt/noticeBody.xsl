@@ -335,9 +335,12 @@
 				Sujet(s)
 				<xsl:for-each select="sujets/sujet">
 					<div style="margin-left: 1em;">
-						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Csujet%3E{value}%3C%2Fsujet%3E%3C%2Fsearch-criterias%3E'>
-							<xsl:value-of select="./value"/><xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Csujet%3E{.}%3C%2Fsujet%3E%3C%2Fsearch-criterias%3E'>
+							<xsl:value-of select="."/>
 						</a>
+						<!--<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Csujet%3E{value}%3C%2Fsujet%3E%3C%2Fsearch-criterias%3E'>
+							<xsl:value-of select="./value"/><xsl:if test="complement"> - <xsl:value-of select="complement"/></xsl:if>
+						</a>-->
 					</div>
 				</xsl:for-each>
 			</div>
