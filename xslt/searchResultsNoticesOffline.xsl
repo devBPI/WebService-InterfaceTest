@@ -24,7 +24,7 @@
 												<div>
 													<xsl:choose>
 														<xsl:when test="./availability-label='DISPONIBLE'">
-															<span class="availability help-cursor" title="{./availability}"><xsl:value-of select="./availability-label"/></span> - <xsl:value-of select="./call_num"/>
+															<span class="availability"><xsl:value-of select="./availability-label"/></span> - <xsl:value-of select="./call_num"/>
 														</xsl:when>
 														<xsl:otherwise>
 															<span class="availability help-cursor unavailable" title="{./availability}"><xsl:value-of select="./availability-label"/></span> - <xsl:value-of select="./call_num"/>

@@ -380,7 +380,7 @@
 				Thème(s) 
 				<xsl:for-each select="themes/theme">
 					<div style="margin-left: 1em;">
-						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Csujet%3E{.}%3C%2Fsujet%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="."/></a>
+						<a href='{$rebondUrl}/?advancedSearchCriterias=%3Csearch-criterias%3E%3Ctheme%3E{.}%3C%2Ftheme%3E%3C%2Fsearch-criterias%3E'><xsl:value-of select="."/></a>
 					</div>
 				</xsl:for-each>
 			</div>
@@ -568,7 +568,7 @@
 				<hr />
 				<xsl:choose>
 					<xsl:when test="./disponibilite-label='DISPONIBLE'">
-						<span class="availability"><xsl:value-of select="./disponibilite-label"/>&#160;:&#160;<xsl:value-of select="./disponibilite"/></span>
+						<span class="availability"><xsl:value-of select="./disponibilite-label"/></span>
 					</xsl:when>
 					<xsl:otherwise>
 						<span class="availability unavailable"><xsl:value-of select="./disponibilite-label"/>&#160;:&#160;<xsl:value-of select="./disponibilite"/></span>
