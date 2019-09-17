@@ -567,15 +567,15 @@
 			<div class="exemplaire">
 				<hr />
 				<xsl:choose>
-					<xsl:when test="./disponibilite-label='DISPONIBLE'">
+					<xsl:when test="./disponibilite-label='Disponible'">
 						<span class="availability"><xsl:value-of select="./disponibilite-label"/></span>
 					</xsl:when>
 					<xsl:otherwise>
 						<span class="availability unavailable"><xsl:value-of select="./disponibilite-label"/>&#160;:&#160;<xsl:value-of select="./disponibilite"/></span>
 					</xsl:otherwise>
-				</xsl:choose>&#160;-&#160;
+				</xsl:choose>&#160;
 				<!--<xsl:value-of select="disponibilite"/> - -->
-				<xsl:value-of select="cote"/> - 
+				<xsl:value-of select="cote"/>
 				<xsl:if test="not(supports/support='Papier')"> -
 					<xsl:for-each select="supports/support">
 						<xsl:if test="position()&gt;1"> - </xsl:if>

@@ -16,25 +16,25 @@
 		<div class="block-parent-notices" style="width:100%;">
 			<xsl:for-each select="notices/notice">
 				<div class="noticeUrlDiv">
-				<a class="urlDiv" href="/notice/{permalink}">
-					<xsl:choose>
-						<xsl:when test="image-path">
-							<img class="float-carousel" src="{image-path}"/>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:choose>
-								<xsl:when test="type='Livre'">
-									<img class="float-carousel" src="/img/NoticeLivre.png"/>
-								</xsl:when>
-								<xsl:otherwise>
-									<img class="float-carousel" src="/img/Notice.png"/>
-								</xsl:otherwise>
-							</xsl:choose>
-						</xsl:otherwise>
-					</xsl:choose>
-					<h1><xsl:value-of select="title"/></h1>
-					<h2><xsl:value-of select="creator"/></h2>
-					<p><xsl:value-of select="description"/></p>
+					<a class="urlDiv" href="/notice/{permalink}">
+						<xsl:choose>
+							<xsl:when test="image-path">
+								<img class="float-carousel" src="{image-path}"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:choose>
+									<xsl:when test="type='Livre'">
+										<img class="float-carousel" src="/img/NoticeLivre.png"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<img class="float-carousel" src="/img/Notice.png"/>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:otherwise>
+						</xsl:choose>
+						<h1><xsl:value-of select="title"/></h1>
+						<h2><xsl:value-of select="creator"/></h2>
+						<p><xsl:value-of select="description"/></p>
 				</a>
 				</div>
 			</xsl:for-each>
@@ -49,26 +49,16 @@
 					<xsl:choose>
 						<xsl:when test="position()=1">
 							<div class="mySlides fade">
-								<xsl:choose>
-									<xsl:when test="notices">
-										<xsl:call-template name="carouselNotices"/>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="carouselWebMag"/>
-									</xsl:otherwise>
-								</xsl:choose>
+								<xsl:if test="notices/notice">
+									<xsl:call-template name="carouselNotices"/>
+								</xsl:if>
 							</div>
 						</xsl:when>
 						<xsl:otherwise>
 							<div class="mySlides fade" style="display:none;">
-								<xsl:choose>
-									<xsl:when test="notices">
-										<xsl:call-template name="carouselNotices"/>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="carouselWebMag"/>
-									</xsl:otherwise>
-								</xsl:choose>
+								<xsl:if test="notices/notice">
+									<xsl:call-template name="carouselNotices"/>
+								</xsl:if>
 							</div>
 						</xsl:otherwise>
 					</xsl:choose>

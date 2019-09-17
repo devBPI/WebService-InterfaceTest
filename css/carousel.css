@@ -1,13 +1,15 @@
 #carousel
 {
-	max-width: 1024px;
+	width: 1024px;
+	height: 180px;
+	overflow: hidden;
 }
 
 /* Slideshow container */
 .slideshow-container
 {
 	max-width: 1024px;
-	max-height: 200px;
+	max-height: 128px;
 	position: relative;
 	background-color: rgba(200,200,200,0.5);
 	overflow: hidden;
@@ -47,8 +49,13 @@
 
 .urlDiv
 {
+	display: block;
+	height: 100%;
 	color: rgb(64,64,64);
 	text-decoration: none;
+	margin-right: 20px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .block-parent,
@@ -66,14 +73,14 @@
 
 .noticeUrlDiv
 {
-	width: 30% !important;
+	width: 25% !important;
+	height: 128px;
+	font-size: 9px;
 	overflow: hidden;
-	font-size: 12px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
-.noticeUrlDiv .urlDiv
-{
-}
 
 .float-carousel
 {
@@ -144,3 +151,43 @@
 {
 	.prev, .next,.text {font-size: 11px}
 }
+
+@media all and (min-width: 768px) and (max-width: 1023px)
+{
+	#carousel,
+	.slideshow-container
+	{
+		width: 768px !important;
+	}
+	.noticeUrlDiv
+	{
+		width: 33% !important;
+	}
+}
+
+@media all and (min-width: 512px) and (max-width: 767px)
+{
+	#carousel,
+	.slideshow-container
+	{
+		width: 512px !important;
+	}
+	.noticeUrlDiv
+	{
+		width: 50% !important;
+	}
+}
+
+@media all and (max-width: 511px)
+{
+	#carousel,
+	.slideshow-container
+	{
+		width: 256px !important;
+	}
+	.noticeUrlDiv
+	{
+		width: 100% !important;
+	}
+}
+
