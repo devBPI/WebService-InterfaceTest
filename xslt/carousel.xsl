@@ -52,6 +52,7 @@
 								<xsl:if test="notices/notice">
 									<xsl:call-template name="carouselNotices"/>
 								</xsl:if>
+								&#160;
 							</div>
 						</xsl:when>
 						<xsl:otherwise>
@@ -59,6 +60,7 @@
 								<xsl:if test="notices/notice">
 									<xsl:call-template name="carouselNotices"/>
 								</xsl:if>
+								&#160;
 							</div>
 						</xsl:otherwise>
 					</xsl:choose>
