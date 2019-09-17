@@ -23,7 +23,7 @@
 											<div class="exemplaire-desc">
 												<div>
 													<xsl:choose>
-														<xsl:when test="./availability-label='Diponible'">
+														<xsl:when test="./availability-label='Disponible'">
 															<span class="availability"><xsl:value-of select="./availability-label"/></span>&#160;<xsl:value-of select="./call_num"/>
 														</xsl:when>
 														<xsl:otherwise>
