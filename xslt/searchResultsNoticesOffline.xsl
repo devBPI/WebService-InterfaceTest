@@ -39,12 +39,13 @@
 														<xsl:value-of select="./note"/>
 													</div>
 												</xsl:if>
-												<div>
-													<xsl:value-of select="./location"/>
-													<xsl:if test="(./category)">
-														 - <xsl:value-of select="./category"/>
-													</xsl:if>
-												</div>
+												<xsl:if test="(./location) or (./category)">
+													<div>
+														<xsl:value-of select="./location"/>
+														<xsl:if test="(./category)">&#160;-&#160;<xsl:value-of select="./category"/>
+														</xsl:if>
+													</div>
+												</xsl:if>
 												<xsl:if test="(./last_received)">
 													<div>
 														Dernier numéro reçu : <xsl:value-of select="./last_received"/>
