@@ -34,16 +34,16 @@
 		switch($parkour)
 		{
 			case "autoformation":
-				$url.='carousel/autoformation';
+				$url.='carousel-obsolete/autoformation';
 			break;
 			case "cinema":
-				$url.='carousel/cinema';
+				$url.='carousel-obsolete/cinema';
 			break;
 			case "presse":
-				$url.='carousel/presse';
+				$url.='carousel-obsolete/presse';
 			break;
 			default:
-				$url.='carousel/general';
+				$url.='carousel-obsolete/general';
 			break;
 		}
 	}
