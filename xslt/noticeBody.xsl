@@ -247,11 +247,13 @@
 					<xsl:value-of select="."/>
 				</xsl:for-each>
 				<xsl:if test="(langues) and (languesOriginal)">, </xsl:if>
-				, traduit de :
-				<xsl:for-each select="languesOriginales/langueOriginale">
-					<xsl:if test="position() > 1">, </xsl:if>
-				<xsl:value-of select="."/>
-				</xsl:for-each>
+				<xsl:if test="languesOriginales/langueOriginale">
+					, traduit de :
+					<xsl:for-each select="languesOriginales/langueOriginale">
+						<xsl:if test="position() > 1">, </xsl:if>
+					<xsl:value-of select="."/>
+					</xsl:for-each>
+				</xsl:if>
 			</div>
 		</xsl:if>
 		<xsl:if test="descriptionsMaterielle/descriptionMaterielle">
