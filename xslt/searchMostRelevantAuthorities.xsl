@@ -77,7 +77,7 @@
 									</xsl:for-each>
 								</div>
 							</xsl:if>
-							<xsl:if test="(type='Personne') or (type='Collectivité') and (activitesPrincipales/activitePrincipale)">
+							<xsl:if test="((type='Personne') or (type='Collectivité')) and (activitesPrincipales/activitePrincipale)">
 								<div id="activiteesPrincipales">
 									<span style="margin-right: 4px; text-decoration: underline;">Activité(s) principale(s) :</span>
 									<xsl:for-each select="activitesPrincipales/activitePrincipale">
