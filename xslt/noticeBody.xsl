@@ -311,23 +311,20 @@
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<!--<xsl:if test="conservations/conservation">
+		<xsl:if test="(conservations/conservation) or (liens/lien/accessNumFirstIssueOnline)">
 			<div id="conservations">
-				Conservation 
+				Conservation : 
 				<xsl:for-each select="conservations/conservation">
 					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
-			</div>
-		</xsl:if>-->
-		<xsl:if test="liens/lien/accessNumFirstIssueOnline">
-			<div id="conservations">
-				Conservation 
-				<xsl:for-each select="liens/lien">
-					<div style="margin-left: 1em;">
-						n.<xsl:value-of select="accessNumFirstIssueOnline"/>, vol.<xsl:value-of select="accessNumFirstVolOnline"/>, <xsl:value-of select="accessDateFirstIssueOnline"/> - n.<xsl:value-of select="accessNumLastIssueOnline"/>, vol.<xsl:value-of select="accessNumLastVolOnline"/>, <xsl:value-of select="accessDateLastIssueOnline"/>
-					</div>
-				</xsl:for-each>
+				<xsl:if test="(liens/lien/accessNumFirstIssueOnline)">
+					<xsl:for-each select="liens/lien">
+						<div style="margin-left: 1em;">
+							n.<xsl:value-of select="accessNumFirstIssueOnline"/>, vol.<xsl:value-of select="accessNumFirstVolOnline"/>, <xsl:value-of select="accessDateFirstIssueOnline"/> - n.<xsl:value-of select="accessNumLastIssueOnline"/>, vol.<xsl:value-of select="accessNumLastVolOnline"/>, <xsl:value-of select="accessDateLastIssueOnline"/>
+						</div>
+					</xsl:for-each>
+				</xsl:if>
 			</div>
 		</xsl:if>
 		<xsl:if test="sujets/sujet">
