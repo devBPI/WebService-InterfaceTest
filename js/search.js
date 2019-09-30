@@ -203,9 +203,12 @@ function launchSearch()
 function changeSearchPage(page)
 {
 	var parkour = getParkour();
-	var searchCriterias = getSearchCriteriasWithFacets();
-	searchCriterias.set("page", page);
-	var uriParams = searchCriterias.toString();
+	//var searchCriterias = getSearchCriteriasWithFacets();
+
+	var urlParams = new URLSearchParams(window.location.search);
+	urlParams.set("page", page);
+	//searchCriterias.set("page", page);
+	var uriParams = urlParams.toString();//searchCriterias.toString();
 	console.log("search():\n\t/"+parkour+"?"+uriParams);
 	//history.pushState({}, null, "./"+parkour+"?"+uriParams);
 	//window.location = "#./"+parkour+"?"+uriParams;
@@ -215,12 +218,16 @@ function changeSearchPage(page)
 function changeSearchRows(currentPage, currentRows)
 {
 	var parkour = getParkour();
-	var searchCriterias = getSearchCriteriasWithFacets();
+	//var searchCriterias = getSearchCriteriasWithFacets();
 	var rows=document.getElementById("search-rows").value;
 	var page = (Math.ceil(((currentPage-1)*currentRows+1)/rows));
-	searchCriterias.set("page", page);
-	searchCriterias.set("rows", rows);
-	var uriParams = searchCriterias.toString();
+	//searchCriterias.set("page", page);
+	//searchCriterias.set("rows", rows);
+
+	var urlParams = new URLSearchParams(window.location.search);
+	urlParams.set("page", page);
+	urlParams.set("rows", rows);
+	var uriParams = urlParams.toString();//searchCriterias.toString();
 	console.log("search():\n\t/"+parkour+"?"+uriParams);
 	//history.pushState({}, null, "./"+parkour+"?"+uriParams);
 	//window.location = "#./"+parkour+"?"+uriParams;
