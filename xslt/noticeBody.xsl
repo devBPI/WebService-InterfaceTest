@@ -566,7 +566,10 @@
 			<div class="exemplaire">
 				<hr />
 				<xsl:choose>
-					<xsl:when test="(./disponibilite='Disponible') or (./disponibilite='Reçu')">
+					<xsl:when test="not(./disponibilite-label) and (./disponibilite)">
+						<span class="availability"><xsl:value-of select="./disponibilite"/></span>
+					</xsl:when>
+					<xsl:when test="((./disponibilite='Disponible') or (./disponibilite='Reçu')) and (./disponibilite-label)">
 						<span class="availability"><xsl:value-of select="./disponibilite-label"/></span>
 					</xsl:when>
 					<xsl:otherwise>
