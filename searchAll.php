@@ -43,7 +43,7 @@
 	$simpleSearchCriterias = isGetOk("simpleSearchCriterias");
 	$advancedSearchCriterias = isGetOk("advancedSearchCriterias");
 
-	$defaultFacets               = urldecode(isGetOk("facets"));
+	$defaultFacets = urldecode(isGetOk("facets"));
 
 	$inter_array = parse_ini_file("etc/interface.ini");
 	$ini_array = @parse_ini_file("etc/configuration.ini");

@@ -120,3 +120,8 @@ ul.tableDesMatieres span + span
 	border: 2px solid blue;
 	background-color: #CCCCCC;
 }
+
+.floatingTypeAbstractContent
+{
+	display: none !important;
+}

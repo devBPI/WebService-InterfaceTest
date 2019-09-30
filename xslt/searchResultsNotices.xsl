@@ -15,7 +15,7 @@
 		</xsl:if>
 		<div>
 			<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="./row"/></div>
-			<div class="" style="display: inline-block; float:right; margin-right: 4px; text-align: right;">
+			<div class="floatingTypeAbstractContent" style="display: inline-block; float:right; margin-right: 4px; text-align: right;">
 				<xsl:value-of select="./type"/><br />
 				<xsl:if test="(./type='Vidéo') and ./formats/format">
 					<xsl:for-each select="./formats/format">

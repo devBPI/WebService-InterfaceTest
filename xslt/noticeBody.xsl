@@ -693,7 +693,7 @@
 	<!--<xsl:include href="searchResultsNoticesOnline.xsl"/>-->
 	<xsl:template match="/notice-themed/notices-same-theme">
 		<div id="sameTheme">
-			<div>Sur le même thème dans le catalogue :</div>
+			<div>Sur le même thème :</div>
 			<!--<xsl:call-template name="pagination"/>-->
 			<div class="noticesContainer">
 				<xsl:for-each select="noticesList/notice | noticesList/notice-online">
@@ -706,7 +706,7 @@
 						</xsl:if>
 						<div>
 							<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="./row"/></div>
-							<div class="" style="display: inline-block; float:right; margin-right: 4px; text-align: right;">
+							<div class="floatingTypeAbstractContent" style="display: inline-block; float:right; margin-right: 4px; text-align: right;">
 								<xsl:value-of select="./type"/><br />
 								<xsl:if test="(./type='Vidéo') and ./formats/format">
 									<xsl:for-each select="./formats/format">
@@ -765,11 +765,11 @@
 									<div class="exemplaire">
 										<div class="exemplaire-desc">
 											<div>
-												<xsl:value-of select="./availability"/> - <xsl:value-of select="./call_num"/>
-												<xsl:if test="(./material_support) and not((./material_support) = 'Papier')">
-													- <xsl:value-of select="./material_support"/>
-												</xsl:if>
-											</div>
+											<xsl:value-of select="./availability"/> - <xsl:value-of select="./call_num"/>
+											<xsl:if test="(./material_support) and not((./material_support) = 'Papier')">
+												- <xsl:value-of select="./material_support"/>
+											</xsl:if>
+										</div>
 											<xsl:if test="(./note)">
 												<div>
 													<xsl:value-of select="./note"/>
@@ -810,7 +810,7 @@
 				<div id="voirTouts">
 					<xsl:for-each select="list-cdu-used/cdu-used">
 						<a href='{$rebondUrl}/?simpleSearchCriterias=%3Csearch-criterias%3E%3Cindice-cote%3E{cote}%3C%2Findice-cote%3E%3C%2Fsearch-criterias%3E'>
-							<span class="voirToutButton">Voir tout</span>
+							<span class="voirToutButton">Voir tout<xsl:if test="../../results">&#160;(<xsl:value-of select="../../results"/> notices)</xsl:if></span>
 						</a>
 					</xsl:for-each>
 				</div>
