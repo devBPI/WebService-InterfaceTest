@@ -65,7 +65,7 @@ function genautocomplete(inp, arr)
 							/*close the list of autocompleted values,
 							(or any other open lists of autocompleted values:*/
 							closeAllLists();
-							search();
+							launchSearch();
 						});
 						a.appendChild(b);
 					}
@@ -146,8 +146,8 @@ function genautocomplete(inp, arr)
 				if(x)
 					x[currentFocus].click();
 			}
-			search();
 			closeAllLists();
+			launchSearch();
 		}
 		else if(e.keyCode == 27) {
 			/*If the ESCAPE key is pressed,
