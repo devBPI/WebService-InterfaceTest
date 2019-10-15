@@ -37,6 +37,9 @@
 				<xsl:if test="indice-cote">
 					<xsl:attribute name="value"><xsl:value-of select="indice-cote"/></xsl:attribute>
 				</xsl:if>
+				<xsl:if test="collection">
+					<xsl:attribute name="value"><xsl:value-of select="collection"/></xsl:attribute>
+				</xsl:if>
 			</input>
 		</div>
 	</xsl:template>
@@ -82,6 +85,10 @@
 			<option class="searchBarSelectionTheme" value="theme">
 				<xsl:if test="theme"><xsl:attribute name="selected">true</xsl:attribute></xsl:if>
 				Thème
+			</option>
+			<option class="searchBarSelectionCollection" value="collection">
+				<xsl:if test="collection"><xsl:attribute name="selected">true</xsl:attribute></xsl:if>
+				Collection
 			</option>
 		</select>
 	</xsl:template>
