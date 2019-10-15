@@ -125,8 +125,10 @@
 	</xsl:template>
 
 	<xsl:template match="search-criterias">
-		<xsl:call-template name="searchBar" />
-		<xsl:call-template name="searchBarSelection" />
+		<span class="searchbarWithSelection">
+			<xsl:call-template name="searchBar" />
+			<xsl:call-template name="searchBarSelection" />
+		</span>
 		<input id="loupe" type="submit" value="&#160;" onclick="launchSearch();"></input>
 		<!--<div id="additionnalConditions">&#191;</div>-->
 		<div id="additionnalConditions">

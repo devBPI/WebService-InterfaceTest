@@ -1,22 +1,4 @@
-function addCondition()
-{
-	console.log("AddingCondition");
-	var itm = document.getElementById("advancedConditionSchema");
-	console.log(itm);
-	var cln = itm.cloneNode(true);
-	//cln.getElementsByClassName("searchbar")[0].value="";
-	cln.style.display="block";
-	cln.id="";
-	document.getElementById("additionnalAdvancedConditions").appendChild(cln);
-}
-
-function removeCondition(node)
-{
-	var childNode = node;
-	childNode.parentNode.removeChild(childNode);
-}
-
-function autocomplete(inp, arr)
+function genautocomplete(inp, arr)
 {
 	/*the autocomplete function takes two arguments,
  	the text field element and an array of possible autocompleted values:*/
@@ -40,7 +22,17 @@ function autocomplete(inp, arr)
 		/*append the DIV element as a child of the autocomplete container:*/
 		x.parentNode.appendChild(a);
 
-		var url = "autocomplete.php?text="+val;
+		var searchBarSelection = x.parentNode.parentNode.getElementsByClassName("searchBarSelection");
+		var i;
+		var criteria=null;
+		for (i = 0; i < searchBarSelection.length; i++)
+		{
+			criteria=searchBarSelection[i].value;
+			console.log(criteria);
+		}
+
+		var url = "autocomplete.php?"+((null!=criteria)?"criteria="+criteria+"&":"")+"text="+val;
+		console.log(url);
 		//alert(url);
 		var xmlHttp = new XMLHttpRequest();
 		xmlHttp.onreadystatechange = function() {
@@ -169,4 +161,30 @@ function autocomplete(inp, arr)
 	{
 		closeAllLists(e.target);
 	});
+}
+
+function addCondition()
+{
+	console.log("AddingCondition");
+	var itm = document.getElementById("advancedConditionSchema");
+	console.log(itm);
+	var cln = itm.cloneNode(true);
+	//cln.getElementsByClassName("searchbar")[0].value="";
+	cln.style.display="block";
+	cln.id="";
+	document.getElementById("additionnalAdvancedConditions").appendChild(cln);
+
+	var searchBar = cln.getElementsByClassName("searchbar");
+	var i;
+	var criteria=null;
+	for (i = 0; i < searchBar.length; i++)
+	{
+		genautocomplete(searchBar[i], []);
+	}
+}
+
+function removeCondition(node)
+{
+	var childNode = node;
+	childNode.parentNode.removeChild(childNode);
 }

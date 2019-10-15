@@ -134,7 +134,7 @@
 				var i;
 				for(i=0; i<searchbars.length; i++)
 				{
-					autocomplete(searchbars[i], []);
+					genautocomplete(searchbars[i], []);
 				}
 
 				//autocomplete(document.getElementById("searchbar"), []);

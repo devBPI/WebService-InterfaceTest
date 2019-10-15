@@ -18,22 +18,24 @@
 	else
 	{
 ?>
-		<div class="autocomplete">
-			<input type="text" id="searchbar" class="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){launchSearch();}" />
-		</div>
-		<select id="searchBarSelection" class="searchBarSelection">
-			<option class="searchBarSelectionGenerale" "selected" value="general">Tous les mots</option>
-			<option class="searchBarSelectionTitre" value="titre">Titre</option>
-			<option class="searchBarSelectionAuteur" value="auteur">Auteur</option>
-			<option class="searchBarSelectionRealisateur" value="realisateur">Réalisateur</option>
-			<option class="searchBarSelectionSujet" value="sujet">Sujet</option>
-			<option class="searchBarSelectionTheme" value="theme">Thème</option>
-			<option class="searchBarSelectionEdition" value="editeur">Éditeur</option>
-			<option class="searchBarSelectionDatePublication" value="date-publication">Date de publication (précise)</option>
-			<option class="searchBarSelectionIssnIsbnCom" value="isbn-issn-numcommercial">ISBN, ISSN, numéros commerciaux</option>
-			<option class="searchBarSelectionIndiceCote" value="indice-cote">Indice / Cote</option>
-			<option class="searchBarSelectionCollection" value="collection">Collection</option>
-		</select>
+		<span class="searchbarWithSelection">
+			<div class="autocomplete">
+				<input type="text" id="searchbar" class="searchbar" name="searchbar" autocomplete="off" size=50 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){launchSearch();}" />
+			</div>
+			<select class="searchBarSelection">
+				<option class="searchBarSelectionGenerale" "selected" value="general">Tous les mots</option>
+				<option class="searchBarSelectionTitre" value="titre">Titre</option>
+				<option class="searchBarSelectionAuteur" value="auteur">Auteur</option>
+				<option class="searchBarSelectionRealisateur" value="realisateur">Réalisateur</option>
+				<option class="searchBarSelectionSujet" value="sujet">Sujet</option>
+				<option class="searchBarSelectionTheme" value="theme">Thème</option>
+				<option class="searchBarSelectionEdition" value="editeur">Éditeur</option>
+				<option class="searchBarSelectionDatePublication" value="date-publication">Date de publication (précise)</option>
+				<option class="searchBarSelectionIssnIsbnCom" value="isbn-issn-numcommercial">ISBN, ISSN, numéros commerciaux</option>
+				<option class="searchBarSelectionIndiceCote" value="indice-cote">Indice / Cote</option>
+				<option class="searchBarSelectionCollection" value="collection">Collection</option>
+			</select>
+		</span>
 		<input id="loupe" type="submit" value=" " onclick="launchSearch();" />
 <?php
 	}
@@ -46,22 +48,24 @@
 			<option value="OU">OU</option>
 				<option value="SAUF">SAUF</option>
 		</select>
-		<div class="autocomplete">
-			<input type="text" class="searchbar" name="searchbar" autocomplete="off" size=42 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){launchSearch();}" />
-		</div>
-		<select class="searchBarSelection">
-			<option class="searchBarSelectionGenerale" value="general">Tous les mots</option>
-			<option class="searchBarSelectionTitre" value="titre">Titre</option>
-			<option class="searchBarSelectionAuteur" value="auteur">Auteur</option>
-			<option class="searchBarSelectionRealisateur" value="realisateur">Réalisateur</option>
-			<option class="searchBarSelectionSujet" value="sujet">Sujet</option>
-			<option class="searchBarSelectionTheme" value="theme">Thème</option>
-			<option class="searchBarSelectionEdition" value="editeur">Éditeur</option>
-			<option class="searchBarSelectionDatePublication" value="date-publication">Date de publication (précise)</option>
-			<option class="searchBarSelectionIssnIsbnCom" value="isbn-issn-numcommercial">ISBN, ISSN, numéros commerciaux</option>
-			<option class="searchBarSelectionIndiceCote" value="indice-cote">Indice / Cote</option>
-			<option class="searchBarSelectionCollection" value="collection">Collection</option>
-		</select>
+		<span class="searchbarWithSelection">
+			<div class="autocomplete">
+				<input type="text" class="searchbar" name="searchbar" autocomplete="off" size=42 placeholder="Rechercher sur le site…" onkeyup="if(event.keyCode==13){launchSearch();}" />
+			</div>
+			<select class="searchBarSelection">
+				<option class="searchBarSelectionGenerale" value="general">Tous les mots</option>
+				<option class="searchBarSelectionTitre" value="titre">Titre</option>
+				<option class="searchBarSelectionAuteur" value="auteur">Auteur</option>
+				<option class="searchBarSelectionRealisateur" value="realisateur">Réalisateur</option>
+				<option class="searchBarSelectionSujet" value="sujet">Sujet</option>
+				<option class="searchBarSelectionTheme" value="theme">Thème</option>
+				<option class="searchBarSelectionEdition" value="editeur">Éditeur</option>
+				<option class="searchBarSelectionDatePublication" value="date-publication">Date de publication (précise)</option>
+				<option class="searchBarSelectionIssnIsbnCom" value="isbn-issn-numcommercial">ISBN, ISSN, numéros commerciaux</option>
+				<option class="searchBarSelectionIndiceCote" value="indice-cote">Indice / Cote</option>
+				<option class="searchBarSelectionCollection" value="collection">Collection</option>
+			</select>
+		</span>
 		<input class="delConditionButton" type="submit" value="-" onclick="removeCondition(this.parentNode);" />
 		Supprimer la condition
 	</div>
