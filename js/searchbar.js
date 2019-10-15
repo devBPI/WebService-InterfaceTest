@@ -56,12 +56,15 @@ function genautocomplete(inp, arr)
 						b.innerHTML = "<strong>" + results[i].childNodes[0].nodeValue.substr(0, val.length) + "</strong>";
 						b.innerHTML += results[i].childNodes[0].nodeValue.substr(val.length);
 						/*insert a input field that will hold the current array item's value:*/
-						b.innerHTML += "<input type='hidden' value='" + results[i].childNodes[0].nodeValue + "'>";
+						//b.innerHTML += "<input type='hidden' value='" + results[i].childNodes[0].nodeValue.replace(/'/g, "\\\\'") + "'>";
+						b.innerHTML += "<input type='hidden' />";
+						b.getElementsByTagName("input")[0].value = results[i].childNodes[0].nodeValue;
 						/*execute a function when someone clicks on the item value (DIV element):*/
 						b.addEventListener("click", function(e)
 						{
 							/*insert the value for the autocomplete text field:*/
 							inp.value = this.getElementsByTagName("input")[0].value;
+							//inp.value = results[i].childNodes[0].nodeValue;
 							/*close the list of autocompleted values,
 							(or any other open lists of autocompleted values:*/
 							closeAllLists();
