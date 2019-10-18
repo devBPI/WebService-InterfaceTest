@@ -15,34 +15,32 @@
 	</xsl:template>
 	<xsl:template match="authorities-list">
 		<div style="margin-bottom: 0.5em; font-weight: bold; text-decoration: underline;">Notices d'Autorités les plus relevantes trouvées:</div>
-		<div id="authorities">
-			<xsl:for-each select="ranked-authority-indice-cdu">
-				<xsl:sort select="rank"/>
-				<!--<xsl:value-of select="position()"/> | Last: <xsl:value-of select="last()"/>-->
-				<xsl:variable name="authorityDisplay">
-					<xsl:choose>
-						<xsl:when test="position() &#61; 1">
-							block
-						</xsl:when>
-						<xsl:otherwise>
-							none
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:variable>
-				<xsl:variable name="authorityClass">
-					<xsl:choose>
-						<xsl:when test="position()=1">
-							authority
-						</xsl:when>
-						<xsl:otherwise>
-							authority supplAuthority
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:variable>
-				<xsl:if test="(authority) or (indice-cdu)">
+		<xsl:if test="(ranked-authority-indice-cdu/authority) or (ranked-authority-indice-cdu/indice-cdu)">
+			<div id="authorities">
+				<xsl:for-each select="ranked-authority-indice-cdu">
+					<xsl:sort select="rank"/>
+					<xsl:variable name="authorityDisplay">
+						<xsl:choose>
+							<xsl:when test="position() &#61; 1">
+								block
+							</xsl:when>
+							<xsl:otherwise>
+								none
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:variable>
+					<xsl:variable name="authorityClass">
+						<xsl:choose>
+							<xsl:when test="position()=1">
+								authority
+							</xsl:when>
+							<xsl:otherwise>
+								authority supplAuthority
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:variable>
 					<div class="{$authorityClass}" style="display: {$authorityDisplay};">
 						<xsl:for-each select="authority">
-							<!--<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="{$position()}"/></div>-->
 							<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;"></span><xsl:value-of select="formeRetenue"/></div>
 							<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;">Type d'autorité :</span><xsl:value-of select="type"/></div>
 							<xsl:if test="((type='Concept') or (type='Nom géographique')) and (autresNoms/autreNom)">
@@ -89,19 +87,18 @@
 							<div><a href="authority/{permalink}"><xsl:value-of select="permalink"/></a></div>
 						</xsl:for-each>
 						<xsl:for-each select="indice-cdu">
-							<!--<div class="pageButton" style="float:left; margin-right: 4px;"><xsl:value-of select="{$position()}"/></div>-->
 							<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;"></span><xsl:value-of select="cote"/>&#160;-&#160;<xsl:value-of select="libelle"/></div>
 							<div style="margin-left:2px;"><span style="margin-right: 4px; text-decoration: underline;">Type d'autorité :</span>Indice de classement</div>
 							<div><a href="indice-cdu/{permalink}"><xsl:value-of select="permalink"/></a></div>
 						</xsl:for-each>
 					</div>
-				</xsl:if>
-			</xsl:for-each>
-		</div>
-		<xsl:if test="count(ranked-authority-indice-cdu) > 1">
+				</xsl:for-each>
+			</div>
+		</xsl:if>
+		<!--<xsl:if test="count(ranked-authority-indice-cdu) > 1">
 			<input id="displaySupplAuthorities" class="bigButton" type="submit" value="+ Afficher plus d'autorités" onclick="displaySupplAuthorities();" />
 			<input id="hideSupplAuthorities"    class="bigButton" style="display:none;" type="submit" value="- Masquer les autorités supplémentaires" onclick="hideSupplAuthorities();" />
-		</xsl:if>
+		</xsl:if>-->
 	</xsl:template>
 	<xsl:template match="text()"/>
 </xsl:stylesheet>
