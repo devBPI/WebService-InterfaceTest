@@ -95,10 +95,10 @@
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<!--<xsl:if test="count(ranked-authority-indice-cdu) > 1">
+		<xsl:if test="count(ranked-authority-indice-cdu) > 1">
 			<input id="displaySupplAuthorities" class="bigButton" type="submit" value="+ Afficher plus d'autorités" onclick="displaySupplAuthorities();" />
 			<input id="hideSupplAuthorities"    class="bigButton" style="display:none;" type="submit" value="- Masquer les autorités supplémentaires" onclick="hideSupplAuthorities();" />
-		</xsl:if>-->
+		</xsl:if>
 	</xsl:template>
 	<xsl:template match="text()"/>
 </xsl:stylesheet>
