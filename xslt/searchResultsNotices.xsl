@@ -90,10 +90,7 @@
 		</div>
 		<xsl:if test="(./configurationName) and (./configurationId!=1)">
 			<div class="configurationOrigin">
-				<div>Resultat de <xsl:value-of select="./configurationName"/>
-					<xsl:if test="(./configurationPublicUrl)">
-						<a href="{./configurationPublicUrl}"><xsl:value-of select="./configurationPublicUrl"/></a>
-					</xsl:if>
+				<div>Resultat de <xsl:value-of select="./configurationName"/>&#160;<xsl:if test="(./configurationPublicUrl)"><a href="{./configurationPublicUrl}"><xsl:value-of select="./configurationPublicUrl"/></a></xsl:if>
 				</div>
 			</div>
 		</xsl:if>
