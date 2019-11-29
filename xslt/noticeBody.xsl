@@ -699,7 +699,7 @@
 			<div>Sur le même thème :</div>
 			<!--<xsl:call-template name="pagination"/>-->
 			<div class="noticesContainer">
-				<xsl:for-each select="noticesList/notice | noticesList/notice-online">
+				<xsl:for-each select="noticesList/notice | noticesOnlineList/notice-online">
 					<div class="notice" style="overflow:hidden;">
 
 						<xsl:if test="./images-info/image-info/url">
