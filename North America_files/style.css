@@ -1,0 +1,47 @@
+﻿/* fond de page */
+body {
+  background-color:rgb(200,200,240);
+  color: black;
+  margin: 0;
+}
+
+/* bandeau de titre */
+h1 { 
+  color: black;
+  border: black;
+  box-shadow: none;
+  background-color: rgba(255,255,255,0.3);
+  border-top: 3px solid rgba(255,255,255,0.6);
+  border-bottom: 3px solid rgba(255,255,255,0.6);
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  text-align : center;
+}
+
+
+/* contenu de la page */
+
+h3 > * { margin-left : 5em ; text-align : left ; padding-right : 40px; }
+h2 > * { margin-left : 3em ; text-align : left ; padding-right : 40px; }
+
+
+/* polices de caractères */
+body { text-align : left ; font-family: arial, sans-serif; }
+
+/* positionnement des champs */
+label { display: block; }
+label span { display: inline-block; width: 5em; height: 1.5em; }
+
+
+#map { height: 400px; width: 470px; float : right; color :black; margin-right: 25em;}
+#drapeau {padding-right : 150px; margin-left : 10em;}
+#selectedcapital {font-size : 1em , padding-left : 100px;}
+#info { margin-left :5em; }
+
+r { text-align : left ;font-family: arial; }
+l { text-align : center ; font-family : arial }
+G { size : 20px; }
+
+
+
+
