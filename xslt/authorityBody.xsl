@@ -44,14 +44,14 @@
 				</div>
 			</xsl:if>
 			<xsl:if test="(type='Personne')">
-				<xsl:if test="dateNaissance"><div>Naissance : <xsl:value-of select="dateNaissance"/><xsl:if test="lieuNaissance"> - <xsl:value-of select="lieuNaissance"/></xsl:if></div></xsl:if>
-				<xsl:if test="dateMort"><div>Mort : <xsl:value-of select="dateMort"/><xsl:if test="lieuNaissance"> - <xsl:value-of select="lieuMort"/></xsl:if></div></xsl:if>
+				<xsl:if test="dateNaissance"><div>Naissance&#160;:&#160;<xsl:value-of select="dateNaissance"/><xsl:if test="lieuNaissance">&#160;&#160;<xsl:value-of select="lieuNaissance"/></xsl:if></div></xsl:if>
+				<xsl:if test="dateMort"><div>Mort&#160;:&#160;<xsl:value-of select="dateMort"/><xsl:if test="lieuNaissance">&#160;-&#160;<xsl:value-of select="lieuMort"/></xsl:if></div></xsl:if>
 			</xsl:if>
 			<xsl:if test="(type!='Personne') and (type!='Nom géographique') and (type!='Concept')">
-				<div>Date(s) : <xsl:value-of select="dateNaissance"/>&#160;<xsl:value-of select="dateMort"/></div>
+				<div>Date(s)&#160;:&#160;<xsl:value-of select="dateNaissanceTextuelle"/>&#160;-&#160;<xsl:value-of select="dateMortTextuelle"/></div>
 			</xsl:if>
 			<xsl:if test="((type='Personne') or (type='Collectivité')) and (activitesPrincipales/activitePrincipale)">
-				<div>Activité(s) principale(s) : 
+				<div>Activité(s) principale(s)&#160;:&#160;
 					<div id="activiteesPrincipales" style="margin-left:0.5em;">
 						<xsl:for-each select="activitesPrincipales/activitePrincipale">
 							<xsl:if test="position() > 1">; </xsl:if>
