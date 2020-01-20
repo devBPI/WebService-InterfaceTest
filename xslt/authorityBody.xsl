@@ -47,8 +47,8 @@
 				<xsl:if test="dateNaissance"><div>Naissance&#160;:&#160;<xsl:value-of select="dateNaissance"/><xsl:if test="lieuNaissance">&#160;&#160;<xsl:value-of select="lieuNaissance"/></xsl:if></div></xsl:if>
 				<xsl:if test="dateMort"><div>Mort&#160;:&#160;<xsl:value-of select="dateMort"/><xsl:if test="lieuNaissance">&#160;-&#160;<xsl:value-of select="lieuMort"/></xsl:if></div></xsl:if>
 			</xsl:if>
-			<xsl:if test="(type!='Personne') and (type!='Nom géographique') and (type!='Concept')">
-				<div>Date(s)&#160;:&#160;<xsl:value-of select="dateNaissanceTextuelle"/>&#160;-&#160;<xsl:value-of select="dateMortTextuelle"/></div>
+			<xsl:if test="((type!='Personne') and (type!='Nom géographique') and (type!='Concept')) and (dateNaissance or dateMort)">
+				<div>Date(s)&#160;:&#160;<xsl:value-of select="dateNaissance"/><xsl:if test="dateMort">&#160;-&#160;<xsl:value-of select="dateMort"/></xsl:if></div>
 			</xsl:if>
 			<xsl:if test="((type='Personne') or (type='Collectivité')) and (activitesPrincipales/activitePrincipale)">
 				<div>Activité(s) principale(s)&#160;:&#160;
