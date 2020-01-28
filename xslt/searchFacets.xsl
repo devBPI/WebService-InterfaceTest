@@ -16,7 +16,7 @@
 								<xsl:when test="name='genre_musical'">Genre musical</xsl:when>
 								<xsl:when test="name='genre_film'">Genre film</xsl:when>
 								<xsl:when test="name='genre_litteraire'">Genre littéraire</xsl:when>
-								<xsl:when test="name='configuration_name'">Base de recherche</xsl:when>
+								<xsl:when test="name='configuration_name'">Bases de recherche</xsl:when>
 								<xsl:when test="name='secteur'">Secteur</xsl:when>
 								<xsl:when test="name='material_support'">Support</xsl:when>
 								<xsl:when test="name='audience'">Public destinataire</xsl:when>
