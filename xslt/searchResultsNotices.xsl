@@ -24,10 +24,16 @@
 				</xsl:if>
 
 				<xsl:if test="(./type!='Musique' and ./type!='Docelec' and ./type!='Site et base') and ./resumes">
-					<span title="Résumé : {./resumes}"><img src="/img/Gnome-dialog-question.svg" style="width: 24px; height: 24px; cursor: help;" /></span>
+					<xsl:variable name="resume">
+						<xsl:for-each select="./resumes/resume">&#10;&#160;<xsl:value-of select="."/></xsl:for-each>
+					</xsl:variable>
+					<span title="Résumé :{$resume}"><img src="/img/Gnome-dialog-question.svg" style="width: 24px; height: 24px; cursor: help;" /></span>
 				</xsl:if>
 				<xsl:if test="(./type='Musique' or ./type='Docelec' or ./type='Site et base') and ./contenus">
-					<span title="Contenu : {./contenus}"><img src="/img/Gnome-dialog-question.svg" style="width: 24px; height: 24px; cursor: help;" /></span>
+					<xsl:variable name="contenu">
+						<xsl:for-each select="./contenus/contenu">&#10;&#160;<xsl:value-of select="."/></xsl:for-each>
+					</xsl:variable>
+					<span title="Contenu :{$contenu}"><img src="/img/Gnome-dialog-question.svg" style="width: 24px; height: 24px; cursor: help;" /></span>
 				</xsl:if>
 			</div>
 			<div class="titres">
