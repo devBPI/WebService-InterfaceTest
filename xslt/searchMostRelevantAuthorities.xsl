@@ -55,7 +55,7 @@
 								</div>
 							</xsl:if>
 							<xsl:if test="((type='Personne') or (type='Collectivité') or (type='Titres uniformes') or (type='Oeuvre')) and ((dateNaissance) or (dateMort) or (dateNaissance) or (dateMort))">
-								<div><xsl:value-of select="dateNaissance"/>&#160;<xsl:if test="((type='Personne') or (type='Oeuvre'))">-</xsl:if>&#160;<xsl:value-of select="dateMort"/></div>
+								<div><xsl:value-of select="dateNaissance"/>&#160;<xsl:if test="((type='Personne') or (type='Collectivité') or (type='Oeuvre'))">-</xsl:if>&#160;<xsl:value-of select="dateMort"/></div>
 							</xsl:if>
 							<xsl:if test="pays/pays">
 								<div id="pays">
