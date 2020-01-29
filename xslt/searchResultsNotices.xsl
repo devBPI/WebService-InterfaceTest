@@ -36,19 +36,23 @@
 					<span title="Contenu :{$contenu}"><img src="/img/Gnome-dialog-question.svg" style="width: 24px; height: 24px; cursor: help;" /></span>
 				</xsl:if>
 			</div>
-			<div class="titres">
-				<xsl:for-each select="./titres/titre">
-					<xsl:if test="position() > 1"> ; </xsl:if>
-					<xsl:value-of select="."/>
-				</xsl:for-each>
-				<xsl:if test="./titresAnalytiques/titreAnalytique">
-					<div class="analytiques">
-						<xsl:for-each select="./titresAnalytiques/titreAnalytique">
-							<div>Dans <xsl:value-of select="."/></div>
+			<xsl:if test="(./titres/titre) or (./titresAnalytiques/titreAnalytique)">
+				<div class="titres">
+					<xsl:if test="./titres/titre">
+						<xsl:for-each select="./titres/titre">
+							<xsl:if test="position() > 1"> ; </xsl:if>
+							<xsl:value-of select="."/>
 						</xsl:for-each>
-					</div>
-				</xsl:if>
-			</div>
+					</xsl:if>
+					<xsl:if test="./titresAnalytiques/titreAnalytique">
+						<div class="analytiques">
+							<xsl:for-each select="./titresAnalytiques/titreAnalytique">
+								<div>Dans <xsl:value-of select="."/></div>
+							</xsl:for-each>
+						</div>
+					</xsl:if>
+				</div>
+			</xsl:if>
 			<xsl:if test="(./auteurs/auteur) or (./realisateurs/realisateur)">
 				<div class="auteurs">
 				par 
