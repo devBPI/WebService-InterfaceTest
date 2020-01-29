@@ -632,6 +632,9 @@
 					</xsl:for-each>
 				</div>
 				</xsl:if>
+				<xsl:if test="(bookbinding)">
+					<div><xsl:value-of select="bookbinding"/></div>
+				</xsl:if>
 				<xsl:if test="(localisation) and (categorie)">
 					<div><xsl:value-of select="localisation"/> - <xsl:value-of select="categorie"/></div>
 				</xsl:if>
