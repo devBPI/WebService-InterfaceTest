@@ -13,8 +13,6 @@
 	</xsl:template>
 	<xsl:template name="carouselNotices">
 		<!--<div class="numbertext"><xsl:value-of select="position()" /> / <xsl:value-of select="count(../element)" /></div>-->
-		<div class="block-parent-notices" style="width:100%;">
-			<xsl:for-each select="notices/notice">
 				<div class="noticeUrlDiv">
 					<a class="urlDiv" href="/notice/{permalink}">
 						<xsl:choose>
@@ -35,53 +33,56 @@
 						<h1><xsl:value-of select="title"/></h1>
 						<h2><xsl:value-of select="creator"/></h2>
 						<!--<p><xsl:value-of select="description"/></p>-->
-				</a>
+					</a>
 				</div>
-			</xsl:for-each>
-		</div>
 	</xsl:template>
 
-	<xsl:template match="elements">
+	<xsl:variable name="groupBy" select="4" />
+	<xsl:template match="carousel">
 		<div id="carousel">
-			<div class="slideshow-container">
-				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-				<xsl:for-each select="element">
-					<xsl:choose>
-						<xsl:when test="position()=1">
-							<div class="mySlides fade">
-								<xsl:if test="notices/notice">
-									<xsl:call-template name="carouselNotices"/>
-								</xsl:if>
-								&#160;
-							</div>
-						</xsl:when>
-						<xsl:otherwise>
-							<div class="mySlides fade" style="display:none;">
-								<xsl:if test="notices/notice">
-									<xsl:call-template name="carouselNotices"/>
-								</xsl:if>
-								&#160;
-							</div>
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:for-each>
-				<a class="next" onclick="plusSlides(1)">&#10095;</a>
-			</div>
+			<xsl:apply-templates select="notices/notice[position() mod $groupBy = 1]" mode="e1" />
 			<br />
 			<div style="text-align:center">
-				<xsl:for-each select="element">
-					<xsl:choose>
-						<xsl:when test="position()=1">
-							<span class="dot active" onclick="currentSlide({position()})">&#160;</span>
-						</xsl:when>
-						<xsl:otherwise>
-							<span class="dot" onclick="currentSlide({position()})">&#160;</span>
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:for-each>
+				<xsl:apply-templates select="notices/notice[position() mod $groupBy = 1]" mode="e2" />
 			</div>
 			<br />
 		</div>
 	</xsl:template>
+	<xsl:template match="notice" mode="e1">
+		<div class="slideshow-container">
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			<xsl:choose>
+				<xsl:when test="position()=1">
+					<div class="mySlides fade">
+						<div class="block-parent-notices" style="width:100%;">
+							<xsl:for-each select=".|following-sibling::notice[not(position() > $groupBy - 1)]">
+								<xsl:call-template name="carouselNotices"/>
+							</xsl:for-each>
+						</div>
+					</div>
+				</xsl:when>
+				<xsl:otherwise>
+					<div class="mySlides fade" style="display:none;">
+						<div class="block-parent-notices" style="width:100%;">
+							<xsl:for-each select=".|following-sibling::notice[not(position() > $groupBy - 1)]">
+								<xsl:call-template name="carouselNotices"/>
+							</xsl:for-each>
+						</div>
+					</div>
+				</xsl:otherwise>
+			</xsl:choose>
+			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		</div>
+ 	</xsl:template>
+	<xsl:template match="notice" mode="e2">
+			<xsl:choose>
+				<xsl:when test="position()=1">
+					<span class="dot active" onclick="currentSlide({position()})">&#160;</span>
+				</xsl:when>
+				<xsl:otherwise>
+					<span class="dot" onclick="currentSlide({position()})">&#160;</span>
+				</xsl:otherwise>
+			</xsl:choose>
+ 	</xsl:template>
 	<xsl:template match="text()"/>
 </xsl:stylesheet>
