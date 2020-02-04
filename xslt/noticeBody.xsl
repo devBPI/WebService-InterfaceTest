@@ -156,13 +156,13 @@
 				Date(s)&#160;
 				<xsl:if test="(datesPublication/datePublication)">
 					<xsl:for-each select="datesPublication/datePublication">
-						<xsl:if test="position() > 1"> ; </xsl:if>
+						<xsl:if test="position() > 1">&#160;-&#160;</xsl:if>
 						<xsl:value-of select="."/>
 					</xsl:for-each>
 				</xsl:if>
 				<xsl:if test="(datesTextuelles/dateTextuelle) and not(datesPublication/datePublication)">
 					<xsl:for-each select="datesTextuelles/dateTextuelle">
-						<xsl:if test="position() > 1"> ; </xsl:if>
+						<xsl:if test="position() > 1">&#160;-&#160;</xsl:if>
 						<xsl:value-of select="."/>
 					</xsl:for-each>
 				</xsl:if>
@@ -173,13 +173,13 @@
 				Date(s)&#160;
 				<xsl:if test="(datesTextuelles/dateTextuelle)">
 					<xsl:for-each select="datesTextuelles/dateTextuelle">
-						<xsl:if test="position() > 1"> ; </xsl:if>
+						<xsl:if test="position() > 1">&#160;-&#160;</xsl:if>
 						<xsl:value-of select="."/>
 					</xsl:for-each>
 				</xsl:if>
 				<xsl:if test="(datesPublication/datePublication) and not(datesTextuelles/dateTextuelle)">
 					<xsl:for-each select="datesPublication/datePublication">
-						<xsl:if test="position() > 1"> ; </xsl:if>
+						<xsl:if test="position() > 1">&#160;-&#160;</xsl:if>
 						<xsl:value-of select="."/>
 					</xsl:for-each>
 				</xsl:if>

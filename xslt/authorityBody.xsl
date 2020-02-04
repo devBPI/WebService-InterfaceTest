@@ -50,6 +50,14 @@
 			<xsl:if test="((type!='Personne') and (type!='Nom géographique') and (type!='Concept')) and (dateNaissance or dateMort)">
 				<div>Date(s)&#160;:&#160;<xsl:value-of select="dateNaissance"/><xsl:if test="dateMort">&#160;-&#160;<xsl:value-of select="dateMort"/></xsl:if></div>
 			</xsl:if>
+			<xsl:if test="((type!='Personne') and (type!='Nom géographique') and (type!='Concept')) and (dates)">
+				<div>Date(s)&#160;:&#160;
+					<xsl:for-each select="dates/date">
+						<xsl:if test="position() > 1">, </xsl:if>
+						<xsl:value-of select="."/>
+					</xsl:for-each>
+				</div>
+			</xsl:if>
 			<xsl:if test="((type='Personne') or (type='Collectivité')) and (activitesPrincipales/activitePrincipale)">
 				<div>Activité(s) principale(s)&#160;:&#160;
 					<div id="activiteesPrincipales" style="margin-left:0.5em;">
