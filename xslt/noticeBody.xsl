@@ -151,24 +151,21 @@
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="(type='Revue, journal')">
+		<!--<xsl:if test="(type='Revue, journal')">-->
 			<div id="dates">
 				Date(s)&#160;
 				<xsl:if test="(datesPublication/datePublication)">
-					<xsl:for-each select="datesPublication/datePublication">
-						<xsl:if test="position() > 1">&#160;-&#160;</xsl:if>
-						<xsl:value-of select="."/>
-					</xsl:for-each>
+					<xsl:for-each select="datesPublication/datePublication"><xsl:if test="position() > 1">&#160;-&#160;</xsl:if><xsl:value-of select="."/></xsl:for-each><xsl:if test="(type='Revue, journal') and (anneeMaximaleSeriel)">&#160;-&#160;<xsl:value-of select="anneeMaximaleSeriel"/></xsl:if>
 				</xsl:if>
-				<xsl:if test="(datesTextuelles/dateTextuelle) and not(datesPublication/datePublication)">
+				<!--<xsl:if test="(datesTextuelles/dateTextuelle) and not(datesPublication/datePublication)">
 					<xsl:for-each select="datesTextuelles/dateTextuelle">
 						<xsl:if test="position() > 1">&#160;-&#160;</xsl:if>
 						<xsl:value-of select="."/>
 					</xsl:for-each>
-				</xsl:if>
+				</xsl:if>-->
 			</div>
-		</xsl:if>
-		<xsl:if test="not(type='Revue, journal')">
+		<!--</xsl:if>-->
+		<!--<xsl:if test="not(type='Revue, journal')">
 			<div id="dates">
 				Date(s)&#160;
 				<xsl:if test="(datesTextuelles/dateTextuelle)">
@@ -184,7 +181,7 @@
 					</xsl:for-each>
 				</xsl:if>
 			</div>
-		</xsl:if>
+		</xsl:if>-->
 		<!--<xsl:if test="not(datesTextuelles/dateTextuelle) and (datesPublication/datePublication)">
 			<div id="dates">
 				Date(s)&#160;
