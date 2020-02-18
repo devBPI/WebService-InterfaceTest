@@ -210,7 +210,7 @@
 		</xsl:if>-->
 		<xsl:if test="autresDates/autreDate">
 			<div id="dates">
-				 Date d'édition papier 
+				Date d'édition papier&#160;
 				<xsl:for-each select="autresDates/autreDate">
 					<xsl:if test="position() > 1">. </xsl:if>
 					<xsl:value-of select="."/>

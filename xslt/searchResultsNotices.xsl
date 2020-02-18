@@ -82,14 +82,14 @@
 					</xsl:for-each>
 				</div>
 			</xsl:if>
-			<xsl:if test="./datesTextuelles/dateTextuelle">
+			<!--<xsl:if test="./datesTextuelles/dateTextuelle">
 				<div class="dates">Date(s):
 					<xsl:for-each select="./datesTextuelles/dateTextuelle">
 						<xsl:if test="position() > 1">&#160;-&#160;</xsl:if>
 						<xsl:value-of select="."/>
 					</xsl:for-each>
 				</div>
-			</xsl:if>
+			</xsl:if>-->
 			<xsl:if test="./datesPublication/datePublication">
 				<div class="dates">Date de publication:
 					<xsl:for-each select="./datesPublication/datePublication">
