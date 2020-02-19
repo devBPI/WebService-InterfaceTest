@@ -344,14 +344,14 @@
 				</xsl:for-each>
 			</div>
 		</xsl:if>
-		<xsl:if test="(conservations/conservation) or (liens/lien/accessNumFirstIssueOnline) or (liens/lien/accessDateFirstIssueOnline)">
+		<xsl:if test="(conservations/conservation) or (liens/lien/accessNumFirstIssueOnline) or (liens/lien/accessNumFirstVolOnline) or (liens/lien/accessDateFirstIssueOnline) or (liens/lien/accessNumLastIssueOnline) or (liens/lien/accessNumLastVolOnline) or (liens/lien/accessDateLastIssueOnline)">
 			<div id="conservations">
 				Conservation : 
 				<xsl:for-each select="conservations/conservation">
 					<xsl:if test="position() > 1"> ; </xsl:if>
 					<xsl:value-of select="."/>
 				</xsl:for-each>
-				<xsl:if test="(liens/lien/accessNumFirstIssueOnline) or (liens/lien/accessDateFirstIssueOnline)">
+				<xsl:if test="(liens/lien/accessNumFirstIssueOnline) or (liens/lien/accessNumFirstVolOnline) or (liens/lien/accessDateFirstIssueOnline) or (liens/lien/accessNumLastIssueOnline) or (liens/lien/accessNumLastVolOnline) or (liens/lien/accessDateLastIssueOnline)">
 					<xsl:for-each select="liens/lien">
 						<div style="margin-left: 1em;">
 							<xsl:if test="(accessNumFirstIssueOnline) and not(accessNumFirstIssueOnline=0)">n.<xsl:value-of select="accessNumFirstIssueOnline"/>,&#160;</xsl:if>
