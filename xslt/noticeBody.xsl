@@ -357,7 +357,7 @@
 							<xsl:if test="(accessNumFirstIssueOnline) and not(accessNumFirstIssueOnline=0)">n.<xsl:value-of select="accessNumFirstIssueOnline"/>,&#160;</xsl:if>
 							<xsl:if test="(accessNumFirstVolOnline) and not(accessNumFirstVolOnline=0)">vol.<xsl:value-of select="accessNumFirstVolOnline"/>,&#160;</xsl:if>
 							<xsl:if test="(accessDateFirstIssueOnline) and not(accessDateFirstIssueOnline=0)"><xsl:value-of select="accessDateFirstIssueOnline"/>&#160;</xsl:if>
-							<xsl:if test="((accessDateFirstIssueOnline) and not(accessDateFirstIssueOnline=0)) and (((accessNumLastIssueOnline) and not(accessNumLastIssueOnline=0)) or ((accessDateLastIssueOnline) and not(accessDateLastIssueOnline=0)))">-&#160;</xsl:if>
+							<xsl:if test="((accessDateFirstIssueOnline) and not(accessDateFirstIssueOnline=0)) or (((accessNumLastIssueOnline) and not(accessNumLastIssueOnline=0)) or ((accessDateLastIssueOnline) and not(accessDateLastIssueOnline=0)))">-&#160;</xsl:if>
 							<xsl:if test="(accessNumLastIssueOnline) and not(accessNumLastIssueOnline=0)">n.<xsl:value-of select="accessNumLastIssueOnline"/>,&#160;</xsl:if>
 							<xsl:if test="(accessNumLastVolOnline) and not(accessNumLastVolOnline=0)">vol.<xsl:value-of select="accessNumLastVolOnline"/>,&#160;</xsl:if>
 							<xsl:if test="(accessDateLastIssueOnline) and not(accessDateLastIssueOnline=0)"><xsl:value-of select="accessDateLastIssueOnline"/></xsl:if>
