@@ -102,7 +102,9 @@
 	</xsl:template>
 
 	<xsl:template name="noticesShortBottom">
-		<div class="score">Score SOLR: <xsl:value-of select="score"/></div>
+		<xsl:if test="(score)">
+			<div class="score">Score SOLR: <xsl:value-of select="score"/></div>
+		</xsl:if>
 		<div class="permalinks">
 			<xsl:for-each select="./permalink">
 				<div><a href="/notice/{.}"><xsl:value-of select="."/></a></div>
