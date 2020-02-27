@@ -150,6 +150,10 @@ a.notice-online-link
 .score
 {
 	float: right;
+	padding: 2px;
+	padding-left: 4px;
+	padding-right: 4px;
+	border: 1px solid;
 	font-size: small;
 }
 
