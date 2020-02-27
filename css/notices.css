@@ -147,6 +147,13 @@ a.notice-online-link
 	font-size: small;
 }
 
+.score
+{
+	float: right;
+	font-size: small;
+	text-decoration: underline;
+}
+
 .availability
 {
 	cursor: default;
