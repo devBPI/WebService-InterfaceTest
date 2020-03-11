@@ -22,7 +22,7 @@
 											<xsl:choose>
 												<xsl:when test="url">
 													Lien <xsl:value-of select="position()"/>:&#160;
-													<a href="{url}">
+													<a target="_blank" property="dc:direct_url" href="{url}">
 														<xsl:choose>
 															<xsl:when test="title">
 																<xsl:value-of select="title"/>
@@ -35,7 +35,7 @@
 												</xsl:when>
 												<xsl:when test="media">
 													Lien <xsl:value-of select="position()"/>:&#160;
-													<a href="/media.php?media={media}">
+													<a target="_blank" property="dc:direct_url" href="/media.php?media={media}">
 														<xsl:choose>
 															<xsl:when test="title">
 																<xsl:value-of select="title"/>
